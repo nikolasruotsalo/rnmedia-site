@@ -1,0 +1,533 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #ffffff;
+    --text: #0a2540;
+    --accent: #1a56db;
+    --accent-light: #e8f0fe;
+    --gray-50: #f8f9fb;
+    --gray-100: #f1f3f7;
+    --gray-200: #e4e8f0;
+    --gray-400: #8a94a6;
+    --gray-600: #4a5568;
+    --border: #e4e8f0;
+    --shadow-sm: 0 1px 3px rgba(10,37,64,0.06), 0 1px 2px rgba(10,37,64,0.04);
+    --shadow-md: 0 4px 16px rgba(10,37,64,0.08), 0 2px 8px rgba(10,37,64,0.04);
+    --shadow-lg: 0 12px 40px rgba(10,37,64,0.12), 0 4px 16px rgba(10,37,64,0.06);
+    --radius: 8px;
+    --radius-lg: 14px;
+    --radius-xl: 20px;
+  }
+
+  body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
+
+  .anton { font-family: 'Anton', sans-serif; font-weight: 400; letter-spacing: 0.02em; }
+
+  /* NAVBAR */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 0 40px;
+    height: 64px;
+    display: flex; align-items: center; justify-content: space-between;
+    transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
+    border-bottom: 1px solid transparent;
+  }
+  nav.scrolled {
+    background: rgba(255,255,255,0.97);
+    border-color: var(--border);
+    box-shadow: var(--shadow-sm);
+    backdrop-filter: blur(12px);
+  }
+  .nav-logo { font-family: 'Anton', sans-serif; font-size: 22px; letter-spacing: 0.06em; color: var(--text); text-decoration: none; }
+  .nav-links { display: flex; align-items: center; gap: 32px; }
+  .nav-links a { font-size: 14px; font-weight: 500; color: var(--gray-600); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--text); }
+  .btn-cta {
+    font-size: 13px; font-weight: 600; padding: 9px 20px;
+    background: var(--text); color: white; border-radius: var(--radius);
+    text-decoration: none; transition: background 0.2s, transform 0.15s;
+    letter-spacing: 0.02em;
+  }
+  .btn-cta:hover { background: #1a3a5c; transform: translateY(-1px); }
+
+  /* SECTIONS */
+  section { padding: 100px 40px; max-width: 1200px; margin: 0 auto; }
+  .full-width { max-width: none; padding: 80px 0; }
+  .full-width-inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding-top: 80px;
+    max-width: none; margin: 0;
+  }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--accent); background: var(--accent-light);
+    padding: 6px 14px; border-radius: 100px; margin-bottom: 32px;
+  }
+  .hero-eyebrow::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+  .hero-headline {
+    font-family: 'Anton', sans-serif; font-weight: 400;
+    font-size: clamp(52px, 8vw, 96px);
+    line-height: 0.95; letter-spacing: 0.01em;
+    color: var(--text); margin-bottom: 28px;
+  }
+  .hero-headline .blue { color: var(--accent); }
+  .hero-sub {
+    font-size: clamp(16px, 2vw, 19px); font-weight: 400; color: var(--gray-600);
+    line-height: 1.65; max-width: 540px; margin: 0 auto 40px;
+  }
+  .hero-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 64px; }
+  .btn-primary {
+    font-size: 15px; font-weight: 600; padding: 14px 28px;
+    background: var(--accent); color: white; border-radius: var(--radius);
+    text-decoration: none; transition: all 0.2s; letter-spacing: 0.01em;
+  }
+  .btn-primary:hover { background: #1540a8; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(26,86,219,0.3); }
+  .btn-secondary {
+    font-size: 15px; font-weight: 500; padding: 14px 28px;
+    background: transparent; color: var(--text); border-radius: var(--radius);
+    border: 1.5px solid var(--border); text-decoration: none; transition: all 0.2s;
+  }
+  .btn-secondary:hover { border-color: var(--text); background: var(--gray-50); }
+  .hero-stats {
+    display: flex; gap: 0; border: 1px solid var(--border);
+    border-radius: var(--radius-lg); overflow: hidden; background: var(--bg);
+    box-shadow: var(--shadow-sm);
+  }
+  .stat-item {
+    padding: 16px 28px; display: flex; flex-direction: column; align-items: center;
+    border-right: 1px solid var(--border); gap: 3px;
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-val { font-size: 15px; font-weight: 700; color: var(--text); }
+  .stat-label { font-size: 11px; font-weight: 500; color: var(--gray-400); letter-spacing: 0.04em; text-transform: uppercase; }
+
+  /* INDUSTRY SECTION */
+  .industry-section { background: var(--gray-50); }
+  .section-label {
+    font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 12px;
+  }
+  .section-heading {
+    font-family: 'Anton', sans-serif; font-weight: 400;
+    font-size: clamp(32px, 4vw, 52px); line-height: 1.05; letter-spacing: 0.01em;
+    color: var(--text); margin-bottom: 48px;
+  }
+  .chips { display: flex; flex-wrap: wrap; gap: 12px; }
+  .chip {
+    font-size: 14px; font-weight: 500; padding: 10px 20px;
+    border: 1.5px solid var(--border); border-radius: 100px;
+    color: var(--text); background: var(--bg); transition: all 0.2s; cursor: default;
+  }
+  .chip:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
+
+  /* SERVICES SECTION */
+  .services-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    border: 1px solid var(--border); border-radius: var(--radius-xl); overflow: hidden;
+  }
+  .service-card {
+    padding: 48px; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    transition: background 0.25s; cursor: default; position: relative; overflow: hidden;
+  }
+  .service-card:nth-child(2n) { border-right: none; }
+  .service-card:nth-child(3), .service-card:nth-child(4) { border-bottom: none; }
+  .service-card:hover { background: var(--gray-50); }
+  .service-card:hover .service-arrow { opacity: 1; transform: translate(0, 0); }
+  .service-num { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; color: var(--gray-400); margin-bottom: 24px; }
+  .service-title { font-family: 'Anton', sans-serif; font-size: 26px; letter-spacing: 0.02em; color: var(--text); margin-bottom: 14px; }
+  .service-desc { font-size: 14px; line-height: 1.7; color: var(--gray-600); max-width: 280px; }
+  .service-arrow {
+    position: absolute; top: 48px; right: 48px;
+    font-size: 24px; color: var(--accent);
+    opacity: 0; transform: translate(-6px, 6px); transition: all 0.25s;
+  }
+
+  /* PORTFOLIO SECTION */
+  .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 40px; }
+  .portfolio-card {
+    aspect-ratio: 4/3;
+    background: var(--gray-100); border-radius: var(--radius-lg);
+    border: 1px solid var(--border); display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 10px;
+    cursor: default; transition: all 0.25s;
+  }
+  .portfolio-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--gray-200); }
+  .portfolio-plus { font-size: 28px; color: var(--gray-400); line-height: 1; }
+  .portfolio-label { font-size: 12px; font-weight: 500; color: var(--gray-400); letter-spacing: 0.04em; }
+  .portfolio-cta {
+    font-size: 15px; font-weight: 600; color: var(--accent);
+    text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: gap 0.2s;
+  }
+  .portfolio-cta:hover { gap: 10px; }
+
+  /* PRICING SECTION */
+  .pricing-wrap { padding: 0 40px 100px; max-width: 1200px; margin: 0 auto; }
+  .pricing-grid { display: grid; grid-template-columns: 1fr 1.08fr 1fr; gap: 20px; align-items: start; }
+  .pricing-card {
+    border: 1px solid var(--border); border-radius: var(--radius-xl);
+    padding: 36px; background: var(--bg); position: relative; transition: box-shadow 0.25s;
+  }
+  .pricing-card:hover { box-shadow: var(--shadow-md); }
+  .pricing-card.featured { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent), var(--shadow-md); }
+  .pricing-card.featured:hover { box-shadow: 0 0 0 1px var(--accent), var(--shadow-lg); }
+  .badge {
+    display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 4px 10px; border-radius: 100px; margin-bottom: 6px;
+  }
+  .badge-blue { background: var(--accent-light); color: var(--accent); }
+  .badge-green { background: #e6f9ef; color: #0d7a45; }
+  .plan-name { font-family: 'Anton', sans-serif; font-size: 22px; letter-spacing: 0.04em; color: var(--text); margin-bottom: 8px; }
+  .plan-price { margin: 24px 0 28px; }
+  .plan-price strong { font-size: 42px; font-weight: 700; color: var(--text); letter-spacing: -0.02em; }
+  .plan-price span { font-size: 14px; color: var(--gray-400); font-weight: 400; }
+  .plan-features { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+  .plan-features li { font-size: 14px; color: var(--gray-600); display: flex; align-items: flex-start; gap: 10px; line-height: 1.5; }
+  .plan-features li::before { content: '✓'; font-size: 13px; font-weight: 700; color: var(--accent); flex-shrink: 0; margin-top: 1px; }
+  .btn-plan {
+    width: 100%; padding: 13px; border-radius: var(--radius); font-size: 14px; font-weight: 600;
+    text-align: center; text-decoration: none; display: block; transition: all 0.2s; cursor: pointer; border: none;
+  }
+  .btn-plan-outline { background: transparent; border: 1.5px solid var(--border); color: var(--text); }
+  .btn-plan-outline:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
+  .btn-plan-filled { background: var(--accent); color: white; }
+  .btn-plan-filled:hover { background: #1540a8; transform: translateY(-1px); }
+
+  /* CONTACT SECTION */
+  .contact-section { background: var(--gray-50); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .contact-heading { font-family: 'Anton', sans-serif; font-size: clamp(36px, 5vw, 64px); line-height: 0.95; letter-spacing: 0.01em; color: var(--text); margin-bottom: 20px; }
+  .contact-sub { font-size: 15px; line-height: 1.7; color: var(--gray-600); margin-bottom: 40px; max-width: 360px; }
+  .contact-meta { display: flex; flex-direction: column; gap: 12px; }
+  .contact-meta-item { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--gray-600); }
+  .contact-meta-icon { width: 32px; height: 32px; border-radius: var(--radius); background: var(--bg); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 14px; }
+  .contact-form { display: flex; flex-direction: column; gap: 14px; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-label { font-size: 12px; font-weight: 600; color: var(--text); letter-spacing: 0.04em; }
+  .form-input {
+    padding: 12px 14px; border: 1.5px solid var(--border); border-radius: var(--radius);
+    font-size: 14px; font-family: 'Inter', sans-serif; color: var(--text); background: var(--bg);
+    transition: border-color 0.2s; outline: none;
+  }
+  .form-input:focus { border-color: var(--accent); }
+  .form-input::placeholder { color: var(--gray-400); }
+  textarea.form-input { resize: vertical; min-height: 100px; }
+  .form-submit {
+    padding: 13px 24px; background: var(--text); color: white; border: none;
+    border-radius: var(--radius); font-size: 14px; font-weight: 600; cursor: pointer;
+    font-family: 'Inter', sans-serif; transition: all 0.2s; letter-spacing: 0.02em;
+  }
+  .form-submit:hover { background: var(--accent); transform: translateY(-1px); }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border); padding: 28px 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    max-width: none; background: var(--bg);
+  }
+  .footer-logo { font-family: 'Anton', sans-serif; font-size: 16px; letter-spacing: 0.06em; color: var(--text); }
+  .footer-copy { font-size: 12px; color: var(--gray-400); }
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a { font-size: 12px; color: var(--gray-400); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--text); }
+
+  /* ANIMATIONS */
+  .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+  .fade-up-delay-1 { transition-delay: 0.1s; }
+  .fade-up-delay-2 { transition-delay: 0.2s; }
+  .fade-up-delay-3 { transition-delay: 0.3s; }
+  .fade-up-delay-4 { transition-delay: 0.4s; }
+
+  @keyframes heroFadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-eyebrow { animation: heroFadeIn 0.6s ease 0.1s both; }
+  .hero-headline { animation: heroFadeIn 0.7s ease 0.2s both; }
+  .hero-sub { animation: heroFadeIn 0.7s ease 0.35s both; }
+  .hero-buttons { animation: heroFadeIn 0.7s ease 0.5s both; }
+  .hero-stats { animation: heroFadeIn 0.7s ease 0.65s both; }
+
+  /* DIVIDER */
+  .divider { width: 40px; height: 2px; background: var(--accent); border-radius: 2px; margin-bottom: 24px; }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    section { padding: 60px 20px; }
+    .hero { padding: 100px 20px 60px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .service-card { border-right: none; border-bottom: 1px solid var(--border); padding: 32px 24px; }
+    .service-card:last-child { border-bottom: none; }
+    .portfolio-grid { grid-template-columns: 1fr 1fr; }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    .pricing-wrap { padding: 0 20px 60px; }
+    .hero-stats { flex-wrap: wrap; }
+    .stat-item { border-right: none; border-bottom: 1px solid var(--border); width: 50%; }
+    .full-width-inner { padding: 0 20px; }
+    footer { flex-direction: column; gap: 12px; text-align: center; padding: 24px 20px; }
+  }
+</style>
+
+<nav id="navbar">
+  <a href="#" class="nav-logo">RN MEDIA</a>
+  <div class="nav-links">
+    <a href="#etusivu">Etusivu</a>
+    <a href="#palvelut">Palvelut</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#hinnat">Hinnat</a>
+    <a href="#ota-yhteytta" class="btn-cta">Ota yhteyttä</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div id="etusivu" class="hero">
+  <div class="hero-eyebrow">Lohjalainen somemarkkinointi</div>
+  <h1 class="hero-headline anton">
+    NÄKYVYYTTÄ.<br><span class="blue">ASIAKKAITA.</span><br>TULOKSIA.
+  </h1>
+  <p class="hero-sub">Tuotamme lyhytvideot ja somestrategian joka tuo uusia asiakkaita ovelle — ei pelkkiä tykkäyksiä.</p>
+  <div class="hero-buttons">
+    <a href="#ota-yhteytta" class="btn-primary">Aloitetaan →</a>
+    <a href="#portfolio" class="btn-secondary">Katso portfolio</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-item">
+      <span class="stat-val">3</span>
+      <span class="stat-label">Kieltä</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-val">24/7</span>
+      <span class="stat-label">Tavoitettavissa</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-val">100%</span>
+      <span class="stat-label">Tuloslähtöinen</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-val">Lohja</span>
+      <span class="stat-label">Paikallinen</span>
+    </div>
+  </div>
+</div>
+
+<!-- INDUSTRY -->
+<div class="full-width industry-section">
+  <div class="full-width-inner">
+    <section style="padding: 60px 0;" class="fade-up">
+      <p class="section-label">Erikoisalat</p>
+      <h2 class="section-heading">Toimialat joille<br>teemme sisältöä</h2>
+      <div class="chips">
+        <span class="chip">🍽 Ravintolat</span>
+        <span class="chip">🧘 Hyvinvointi</span>
+        <span class="chip">🏢 Kiinteistöhoito</span>
+        <span class="chip">💇 Kauneus &amp; Hiukset</span>
+        <span class="chip">⚽ Urheilu</span>
+        <span class="chip">⛳ Golf</span>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="palvelut" style="padding-top: 100px; padding-bottom: 0;">
+  <div class="fade-up" style="margin-bottom: 56px;">
+    <p class="section-label">Palvelut</p>
+    <h2 class="section-heading">Mitä teemme</h2>
+  </div>
+  <div class="services-grid fade-up fade-up-delay-1">
+    <div class="service-card">
+      <div class="service-num">01</div>
+      <div class="service-title">LYHYTVIDEO&shy;SISÄLTÖ</div>
+      <p class="service-desc">Koukkuisat, katseenvangitsevat lyhytvideot TikTokiin, Instagramiin ja Youtubeen — jotka muuttavat katsojat asiakkaiksi.</p>
+      <span class="service-arrow">↗</span>
+    </div>
+    <div class="service-card">
+      <div class="service-num">02</div>
+      <div class="service-title">SISÄLLÖN&shy;TUOTANTO</div>
+      <p class="service-desc">Ammattimainen kuvaus, editointi ja copy — kaikki yhdestä paikasta. Brändisi paras versio joka kerta.</p>
+      <span class="service-arrow">↗</span>
+    </div>
+    <div class="service-card">
+      <div class="service-num">03</div>
+      <div class="service-title">SOME&shy;STRATEGIA</div>
+      <p class="service-desc">Datalähtöinen strategia joka perustuu oikeisiin tavoitteisiisi — ei mutu-tuntumaan. Kasvu mitataan, ei arvailla.</p>
+      <span class="service-arrow">↗</span>
+    </div>
+    <div class="service-card">
+      <div class="service-num">04</div>
+      <div class="service-title">BRÄNDIN RAKENTAMINEN</div>
+      <p class="service-desc">Selkeä visuaalinen identiteetti, äänensävy ja positiointi joka erottaa sinut kilpailijoista ja jää mieleen.</p>
+      <span class="service-arrow">↗</span>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio" class="fade-up">
+  <div style="margin-bottom: 48px;">
+    <p class="section-label">Portfolio</p>
+    <h2 class="section-heading">Töitämme</h2>
+  </div>
+  <div class="portfolio-grid">
+    <div class="portfolio-card"><span class="portfolio-plus">+</span><span class="portfolio-label">Tulossa pian</span></div>
+    <div class="portfolio-card"><span class="portfolio-plus">+</span><span class="portfolio-label">Tulossa pian</span></div>
+    <div class="portfolio-card"><span class="portfolio-plus">+</span><span class="portfolio-label">Tulossa pian</span></div>
+    <div class="portfolio-card"><span class="portfolio-plus">+</span><span class="portfolio-label">Tulossa pian</span></div>
+    <div class="portfolio-card"><span class="portfolio-plus">+</span><span class="portfolio-label">Tulossa pian</span></div>
+    <div class="portfolio-card"><span class="portfolio-plus">+</span><span class="portfolio-label">Tulossa pian</span></div>
+  </div>
+  <a href="#ota-yhteytta" class="portfolio-cta">Haluatko ensimmäisten joukossa? →</a>
+</section>
+
+<!-- PRICING -->
+<div id="hinnat" style="background: var(--gray-50); padding: 80px 0 0;">
+  <div class="full-width-inner fade-up" style="padding-bottom: 60px;">
+    <p class="section-label">Hinnoittelu</p>
+    <h2 class="section-heading" style="margin-bottom: 0;">Selkeä hinnoittelu,<br>konkreettiset tulokset</h2>
+  </div>
+</div>
+<div class="pricing-wrap fade-up fade-up-delay-1" style="background: var(--gray-50);">
+  <div class="pricing-grid">
+    <!-- STARTER -->
+    <div class="pricing-card">
+      <div style="margin-bottom: 4px;"><span class="badge badge-green">Launch Deal</span></div>
+      <div class="plan-name">STARTER</div>
+      <div class="plan-price"><strong>€299</strong><span>/kk</span></div>
+      <ul class="plan-features">
+        <li>1 kuvaussessio / kk</li>
+        <li>4 lyhytvideota</li>
+        <li>Peruseditointi</li>
+        <li>1 korjauskierros</li>
+        <li>Kuukausiraportti</li>
+      </ul>
+      <a href="#ota-yhteytta" class="btn-plan btn-plan-outline">Aloitetaan →</a>
+    </div>
+    <!-- GROWTH -->
+    <div class="pricing-card featured">
+      <div style="margin-bottom: 4px; display: flex; gap: 6px; flex-wrap: wrap;">
+        <span class="badge badge-blue">Suosituin</span>
+        <span class="badge badge-green">Launch Deal</span>
+      </div>
+      <div class="plan-name">GROWTH</div>
+      <div class="plan-price"><strong>€699</strong><span>/kk</span></div>
+      <ul class="plan-features">
+        <li>2 kuvaussessiota / kk</li>
+        <li>~10 lyhytvideota</li>
+        <li>Edistynyt editointi</li>
+        <li>Hooks &amp; captions</li>
+        <li>Strategia + raportti</li>
+      </ul>
+      <a href="#ota-yhteytta" class="btn-plan btn-plan-filled">Aloitetaan →</a>
+    </div>
+    <!-- PREMIUM -->
+    <div class="pricing-card">
+      <div style="margin-bottom: 4px;"><span class="badge badge-green">Launch Deal</span></div>
+      <div class="plan-name">PREMIUM</div>
+      <div class="plan-price"><strong>€999</strong><span>/kk</span></div>
+      <ul class="plan-features">
+        <li>Jatkuvat shootit</li>
+        <li>Brändistrategia</li>
+        <li>Kampanjasuunnittelu</li>
+        <li>Konsultointi</li>
+        <li>Prioriteettituki</li>
+      </ul>
+      <a href="#ota-yhteytta" class="btn-plan btn-plan-outline">Aloitetaan →</a>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div id="ota-yhteytta" class="full-width contact-section" style="padding: 80px 0;">
+  <div class="full-width-inner">
+    <div class="contact-grid fade-up">
+      <div>
+        <p class="section-label">Yhteystiedot</p>
+        <h2 class="contact-heading">ALOITETAAN<br>YHDESSÄ</h2>
+        <p class="contact-sub">Valmis kasvattamaan näkyvyyttäsi? Kerro projektistasi — vastataan 24 tunnin sisällä.</p>
+        <div class="contact-meta">
+          <div class="contact-meta-item">
+            <div class="contact-meta-icon">📸</div>
+            <span>Instagram: @rnmedia.fi</span>
+          </div>
+          <div class="contact-meta-item">
+            <div class="contact-meta-icon">✉️</div>
+            <span>info@rnmedia.fi</span>
+          </div>
+          <div class="contact-meta-item">
+            <div class="contact-meta-icon">📍</div>
+            <span>Lohja, Finland</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="contact-form" id="contactForm">
+          <div class="form-group">
+            <label class="form-label">NIMI</label>
+            <input class="form-input" type="text" placeholder="Mikko Virtanen">
+          </div>
+          <div class="form-group">
+            <label class="form-label">SÄHKÖPOSTI</label>
+            <input class="form-input" type="email" placeholder="mikko@yritys.fi">
+          </div>
+          <div class="form-group">
+            <label class="form-label">YRITYS</label>
+            <input class="form-input" type="text" placeholder="Yritys Oy">
+          </div>
+          <div class="form-group">
+            <label class="form-label">VIESTI</label>
+            <textarea class="form-input" placeholder="Kerro projektistasi..."></textarea>
+          </div>
+          <button class="form-submit" onclick="handleSubmit(this)">Lähetä viesti →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">RN MEDIA</span>
+  <span class="footer-copy">© 2025 RN Media. Kaikki oikeudet pidätetään.</span>
+  <div class="footer-links">
+    <a href="#">Instagram</a>
+    <a href="#">Sähköposti</a>
+    <a href="#">Lohja</a>
+  </div>
+</footer>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 20) navbar.classList.add('scrolled');
+    else navbar.classList.remove('scrolled');
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    });
+  });
+
+  function handleSubmit(btn) {
+    btn.textContent = 'Lähetetty ✓';
+    btn.style.background = '#0d7a45';
+    btn.disabled = true;
+  }
+</script>
