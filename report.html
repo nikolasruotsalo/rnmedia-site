@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RN Media – Monthly Report</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:        #111111;
+      --surface:   #181818;
+      --surface2:  #1d1d1d;
+      --border:    #262626;
+      --border2:   #333333;
+      --text:      #f0f0f0;
+      --muted:     #888888;
+      --muted2:    #4a4a4a;
+      --ph:        #383838;
+      --white:     #ffffff;
+      --r:         10px;
+      --r-sm:      6px;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+
+    /* ── PRINT BUTTON ─────────────────────────── */
+    .print-btn {
+      position: fixed;
+      top: 20px; right: 20px;
+      z-index: 100;
+      padding: 10px 20px;
+      background: var(--white);
+      color: #111;
+      border: none;
+      border-radius: var(--r-sm);
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.15s;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.6);
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .print-btn:hover { background: #e5e5e5; transform: translateY(-1px); }
+
+    /* ── PAGE ─────────────────────────────────── */
+    .page {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 56px 64px 56px;
+    }
+
+    /* ── HEADER ───────────────────────────────── */
+    .hdr {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 40px;
+    }
+    .hdr-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+    .hdr-logo {
+      font-family: 'Anton', sans-serif;
+      font-size: 15px;
+      letter-spacing: 0.12em;
+      color: var(--white);
+    }
+    .hdr-sep {
+      width: 1px; height: 13px;
+      background: var(--border2);
+    }
+    .hdr-report-type {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .hdr-client {
+      font-family: 'Anton', sans-serif;
+      font-size: 52px;
+      line-height: 1.0;
+      letter-spacing: 0.01em;
+      color: var(--white);
+      outline: none;
+      margin-bottom: 10px;
+      min-width: 10px;
+    }
+    .hdr-period {
+      font-size: 17px;
+      font-weight: 300;
+      color: var(--muted);
+      outline: none;
+      min-width: 10px;
+    }
+    .hdr-right {
+      text-align: right;
+      padding-top: 2px;
+      flex-shrink: 0;
+    }
+    .hdr-right-line {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted2);
+      line-height: 2;
+    }
+    .hdr-right-line.domain { color: var(--muted); }
+
+    /* ── DIVIDER ──────────────────────────────── */
+    .rule {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin-bottom: 36px;
+    }
+
+    /* ── SECTION ──────────────────────────────── */
+    .sec { margin-bottom: 36px; }
+    .sec-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    /* ── KPI STRIP ────────────────────────────── */
+    .kpis {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      overflow: hidden;
+    }
+    .kpi {
+      padding: 22px 24px;
+      border-right: 1px solid var(--border);
+      background: var(--surface);
+    }
+    .kpi:last-child { border-right: none; }
+    .kpi.highlight { background: var(--surface2); }
+    .kpi-lbl {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+    .kpi-val {
+      font-family: 'Anton', sans-serif;
+      font-size: 34px;
+      line-height: 1.1;
+      color: var(--white);
+      outline: none;
+      min-width: 4px;
+    }
+    .kpi-val.auto {
+      font-size: 28px;
+      color: var(--text);
+    }
+    .kpi-pct {
+      font-family: 'Anton', sans-serif;
+      font-size: 14px;
+      color: var(--muted);
+      margin-top: 3px;
+      min-height: 18px;
+    }
+
+    /* ── TOP POSTS ────────────────────────────── */
+    .posts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .post {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 22px 20px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+    .post-n {
+      position: absolute;
+      top: 14px; right: 18px;
+      font-family: 'Anton', sans-serif;
+      font-size: 44px;
+      color: var(--border);
+      line-height: 1;
+      user-select: none;
+      pointer-events: none;
+    }
+    .post-platform {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--text);
+      background: var(--surface2);
+      border: 1px solid var(--border2);
+      border-radius: 100px;
+      padding: 4px 10px;
+      margin-bottom: 13px;
+      outline: none;
+      max-width: 130px;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    .post-desc {
+      font-size: 13px;
+      line-height: 1.65;
+      color: var(--text);
+      outline: none;
+      flex: 1;
+      min-height: 52px;
+      margin-bottom: 18px;
+    }
+    .post-metrics {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      border-top: 1px solid var(--border);
+      padding-top: 14px;
+    }
+    .metric-val {
+      font-family: 'Anton', sans-serif;
+      font-size: 22px;
+      color: var(--white);
+      outline: none;
+      min-width: 4px;
+    }
+    .metric-lbl {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    /* ── SUMMARY ──────────────────────────────── */
+    .summary-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--border2);
+      border-radius: var(--r);
+      padding: 26px 30px;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+    .summary-body {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.85;
+      color: var(--text);
+      outline: none;
+      min-height: 80px;
+    }
+
+    /* ── GOALS ────────────────────────────────── */
+    .goals {
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+    .goal-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .goal-row:first-child { border-top: 1px solid var(--border); }
+    .goal-bullet {
+      font-size: 7px;
+      color: var(--muted2);
+      margin-top: 6px;
+      flex-shrink: 0;
+      user-select: none;
+      pointer-events: none;
+    }
+    .goal-text {
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.55;
+      color: var(--text);
+      outline: none;
+      flex: 1;
+      min-width: 4px;
+    }
+
+    /* ── FOOTER ───────────────────────────────── */
+    .footer {
+      margin-top: 48px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-credit {
+      font-size: 11px;
+      color: var(--muted2);
+    }
+    .footer-logo {
+      font-family: 'Anton', sans-serif;
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      color: var(--border2);
+    }
+
+    /* ── PLACEHOLDERS ─────────────────────────── */
+    [data-ph]:empty::before {
+      content: attr(data-ph);
+      color: var(--ph);
+      pointer-events: none;
+    }
+
+    /* ── EDIT AFFORDANCES (screen only) ───────── */
+    [contenteditable]:focus {
+      border-radius: 3px;
+      background: rgba(255,255,255,0.03);
+    }
+
+    /* ── PRINT ────────────────────────────────── */
+    @media print {
+      .print-btn { display: none !important; }
+
+      @page {
+        size: A4;
+        margin: 14mm 12mm;
+      }
+
+      html, body {
+        background: #111111 !important;
+      }
+
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+      }
+
+      .page {
+        max-width: 100%;
+        padding: 0;
+      }
+
+      [contenteditable]:focus {
+        background: transparent !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<button class="print-btn" onclick="window.print()">
+  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M4 6V1.5A.5.5 0 014.5 1h7a.5.5 0 01.5.5V6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <rect x="1" y="6" width="14" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+    <path d="M4 10h8M4 12.5h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <circle cx="12.5" cy="8.5" r="1" fill="currentColor"/>
+  </svg>
+  Save as PDF
+</button>
+
+<div class="page">
+
+  <!-- ── HEADER ──────────────────────────────── -->
+  <div class="hdr">
+    <div class="hdr-left">
+      <div class="hdr-brand">
+        <span class="hdr-logo">RN MEDIA</span>
+        <div class="hdr-sep"></div>
+        <span class="hdr-report-type">Monthly Social Media Report</span>
+      </div>
+      <div class="hdr-client"
+           contenteditable="true"
+           spellcheck="false"
+           data-ph="Client Name"></div>
+      <div class="hdr-period"
+           contenteditable="true"
+           spellcheck="false"
+           data-ph="Month Year  ·  e.g. May 2025"></div>
+    </div>
+    <div class="hdr-right">
+      <div class="hdr-right-line">Prepared by</div>
+      <div class="hdr-right-line domain">rnmedia.fi</div>
+    </div>
+  </div>
+
+  <hr class="rule">
+
+  <!-- ── KPI STRIP ───────────────────────────── -->
+  <div class="sec">
+    <div class="sec-label">Performance Overview</div>
+    <div class="kpis">
+
+      <div class="kpi">
+        <div class="kpi-lbl">Followers Start</div>
+        <div class="kpi-val"
+             id="kpi-s"
+             contenteditable="true"
+             spellcheck="false"
+             data-ph="0"></div>
+      </div>
+
+      <div class="kpi">
+        <div class="kpi-lbl">Followers End</div>
+        <div class="kpi-val"
+             id="kpi-e"
+             contenteditable="true"
+             spellcheck="false"
+             data-ph="0"></div>
+      </div>
+
+      <div class="kpi highlight">
+        <div class="kpi-lbl">Follower Growth</div>
+        <div class="kpi-val auto" id="kpi-g">—</div>
+        <div class="kpi-pct" id="kpi-gp"></div>
+      </div>
+
+      <div class="kpi">
+        <div class="kpi-lbl">Total Reach</div>
+        <div class="kpi-val"
+             contenteditable="true"
+             spellcheck="false"
+             data-ph="0"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── TOP 3 POSTS ──────────────────────────── -->
+  <div class="sec">
+    <div class="sec-label">Top Performing Posts</div>
+    <div class="posts">
+
+      <div class="post">
+        <div class="post-n">01</div>
+        <div class="post-platform"
+             contenteditable="true"
+             spellcheck="false"
+             data-ph="Platform"></div>
+        <div class="post-desc"
+             contenteditable="true"
+             spellcheck="false"
+             data-ph="Post description or caption…"></div>
+        <div class="post-metrics">
+          <div>
+            <div class="metric-val" contenteditable="true" spellcheck="false" data-ph="0"></div>
+            <div class="metric-lbl">Likes</div>
+          </div>
+          <div>
+            <div class="metric-val" contenteditable="true" spellcheck="false" data-ph="0"></div>
+            <div class="metric-lbl">Comments</div>
+          </div>
+          <div>
+            <div class="metric-val" contenteditable="true" spellcheck="false" data-ph="0"></div>
+            <div class="metric-lbl">Shares</div>
+          </div>
+          <div>
+            <div class="metric-val" contenteditable="true" spellcheck="false" data-ph="0"></div>
+            <div class="metric-lbl">Reach</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="post">
+        <div class="post-n">02</div>
+        <div class="post-platform"
+             contenteditable="true"
+             spellcheck="false"
+             data-ph="Platform"></div>
+        <div class="post-desc"
+             contenteditable="true"
+             spellcheck="false"
+             data-ph="Post description or caption…"></div>
+        <div class="post-metrics">
+          <div>
+            <div class="metric-val" contenteditable="true" spellcheck="false" data-ph="0"></div>
+            <div class="metric-lbl">Likes</div>
+          </div>
+          <div>
+            <div class="metric-val" contenteditable="true" spellcheck="false" data-ph="0"></div>
+            <div class="metric-lbl">Comments</div>
+          </div>
+          <div>
+            <div class="metric-val" contenteditable="true" spellcheck="false" data-ph="0"></div>
+            <div class="metric-lbl">Shares</div>
+          </div>
+          <div>
+            <div class="metric-val" contenteditable="true" spellcheck="false" data-ph="0"></div>
+            <div class="metric-lbl">Reach</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="post">
+        <div class="post-n">03</div>
+        <div class="post-platform"
+             contenteditable="true"
+             spellcheck="false"
+             data-ph="Platform"></div>
+        <div class="post-desc"
+             contenteditable="true"
+             spellcheck="false"
+             data-ph="Post description or caption…"></div>
+        <div class="post-metrics">
+          <div>
+            <div class="metric-val" contenteditable="true" spellcheck="false" data-ph="0"></div>
+            <div class="metric-lbl">Likes</div>
+          </div>
+          <div>
+            <div class="metric-val" contenteditable="true" spellcheck="false" data-ph="0"></div>
+            <div class="metric-lbl">Comments</div>
+          </div>
+          <div>
+            <div class="metric-val" contenteditable="true" spellcheck="false" data-ph="0"></div>
+            <div class="metric-lbl">Shares</div>
+          </div>
+          <div>
+            <div class="metric-val" contenteditable="true" spellcheck="false" data-ph="0"></div>
+            <div class="metric-lbl">Reach</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── SUMMARY ──────────────────────────────── -->
+  <div class="sec">
+    <div class="sec-label">Monthly Summary</div>
+    <div class="summary-box">
+      <div class="summary-body"
+           contenteditable="true"
+           spellcheck="false"
+           data-ph="Write a summary of this month's social media performance — what worked, what didn't, and key takeaways…"></div>
+    </div>
+  </div>
+
+  <!-- ── GOALS ────────────────────────────────── -->
+  <div class="sec">
+    <div class="sec-label">Next Month's Goals</div>
+    <div class="goals" id="goals">
+      <div class="goal-row">
+        <span class="goal-bullet">◆</span>
+        <div class="goal-text" contenteditable="true" spellcheck="false" data-ph="Enter a goal…"></div>
+      </div>
+      <div class="goal-row">
+        <span class="goal-bullet">◆</span>
+        <div class="goal-text" contenteditable="true" spellcheck="false" data-ph="Enter a goal…"></div>
+      </div>
+      <div class="goal-row">
+        <span class="goal-bullet">◆</span>
+        <div class="goal-text" contenteditable="true" spellcheck="false" data-ph="Enter a goal…"></div>
+      </div>
+      <div class="goal-row">
+        <span class="goal-bullet">◆</span>
+        <div class="goal-text" contenteditable="true" spellcheck="false" data-ph="Enter a goal…"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── FOOTER ───────────────────────────────── -->
+  <div class="footer">
+    <div class="footer-credit">Prepared by RN Media &nbsp;·&nbsp; rnmedia.fi</div>
+    <div class="footer-logo">RN MEDIA</div>
+  </div>
+
+</div>
+
+<script>
+  // ── Follower growth auto-calculator ──────────────────────
+  function parseNum(id) {
+    const raw = document.getElementById(id).innerText.trim();
+    return parseInt(raw.replace(/[\s., ]/g, '')) || 0;
+  }
+
+  function refreshGrowth() {
+    const s = parseNum('kpi-s');
+    const e = parseNum('kpi-e');
+    const gEl  = document.getElementById('kpi-g');
+    const gpEl = document.getElementById('kpi-gp');
+
+    if (s === 0 && e === 0) {
+      gEl.textContent  = '—';
+      gpEl.textContent = '';
+      return;
+    }
+
+    const diff = e - s;
+    const sign = diff >= 0 ? '+' : '';
+    gEl.textContent = sign + diff.toLocaleString();
+
+    if (s > 0) {
+      const pct = ((diff / s) * 100).toFixed(1);
+      gpEl.textContent = sign + pct + '%';
+    } else {
+      gpEl.textContent = '';
+    }
+  }
+
+  document.getElementById('kpi-s').addEventListener('blur', refreshGrowth);
+  document.getElementById('kpi-e').addEventListener('blur', refreshGrowth);
+
+  // ── Goals: Enter adds row, Backspace on empty removes row ─
+  function makeGoalRow() {
+    const row = document.createElement('div');
+    row.className = 'goal-row';
+    row.innerHTML =
+      '<span class="goal-bullet">◆</span>' +
+      '<div class="goal-text" contenteditable="true" spellcheck="false" data-ph="Enter a goal…"></div>';
+    return row;
+  }
+
+  document.getElementById('goals').addEventListener('keydown', function (e) {
+    const target = e.target;
+    if (!target.classList.contains('goal-text')) return;
+
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      const newRow = makeGoalRow();
+      target.closest('.goal-row').after(newRow);
+      newRow.querySelector('.goal-text').focus();
+      return;
+    }
+
+    if (e.key === 'Backspace' && target.innerText.trim() === '') {
+      const rows = this.querySelectorAll('.goal-row');
+      if (rows.length <= 1) return;
+      e.preventDefault();
+      const currentRow = target.closest('.goal-row');
+      const prev = currentRow.previousElementSibling;
+      currentRow.remove();
+      if (prev) {
+        const pt = prev.querySelector('.goal-text');
+        pt.focus();
+        // move caret to end
+        const range = document.createRange();
+        const sel   = window.getSelection();
+        range.selectNodeContents(pt);
+        range.collapse(false);
+        sel.removeAllRanges();
+        sel.addRange(range);
+      }
+    }
+  });
+
+  // ── Prevent stray <br> from breaking :empty placeholders ─
+  document.querySelectorAll('[contenteditable]').forEach(function (el) {
+    el.addEventListener('input', function () {
+      if (this.innerHTML === '<br>') this.innerHTML = '';
+    });
+  });
+</script>
+
+</body>
+</html>
