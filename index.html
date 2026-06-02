@@ -4,7 +4,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RN Media — Somemarkkinointi</title>
- <link rel="icon" type="image/png" href="logo2.png">
+
+  <!-- SEO -->
+  <meta name="description" content="RN Media – Suomalainen somemarkkinointitoimisto Lohjalta. Lyhytvideot, somestrategia ja brändinrakennus – tuloksia, ei pelkkiä tykkäyksiä.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://rnmedia.fi">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://rnmedia.fi">
+  <meta property="og:title" content="RN Media — Somemarkkinointi">
+  <meta property="og:description" content="Suomalainen somemarkkinointitoimisto. Lyhytvideot ja somestrategia joka tuo uusia asiakkaita – ei pelkkiä tykkäyksiä.">
+  <meta property="og:image" content="https://rnmedia.fi/logo.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="RN Media — Somemarkkinointi">
+  <meta name="twitter:description" content="Suomalainen somemarkkinointitoimisto. Lyhytvideot ja somestrategia joka tuo uusia asiakkaita.">
+
+  <link rel="icon" type="image/png" href="logo2.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
@@ -39,18 +57,34 @@
       border-bottom: 1px solid transparent;
     }
     nav.scrolled { background: rgba(17,17,17,0.97); border-color: var(--border); box-shadow: var(--shadow-sm); backdrop-filter: blur(12px); }
-
-    /* ============================================
-       LOGO — replace the text below with an <img> tag if you have a logo file
-       Example: <img src="logo.png" alt="RN Media" style="height: 36px;">
-       ============================================ */
     .nav-logo { font-family: 'Anton', sans-serif; font-size: 22px; letter-spacing: 0.06em; color: var(--text); text-decoration: none; }
-
     .nav-links { display: flex; align-items: center; gap: 32px; }
     .nav-links a { font-size: 14px; font-weight: 500; color: var(--gray-600); text-decoration: none; transition: color 0.2s; }
     .nav-links a:hover { color: var(--text); }
     .btn-cta { font-size: 13px; font-weight: 600; padding: 9px 20px; background: var(--text); color: white; border-radius: var(--radius); text-decoration: none; transition: all 0.2s; }
     .btn-cta:hover { background: #333333; transform: translateY(-1px); }
+
+    /* HAMBURGER */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+      border: none;
+      background: none;
+      z-index: 101;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px; height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
     /* HERO */
     .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 100px 40px 60px; }
@@ -93,25 +127,59 @@
     .service-desc { font-size: 14px; line-height: 1.7; color: var(--gray-600); max-width: 280px; }
     .service-arrow { position: absolute; top: 48px; right: 48px; font-size: 24px; color: #ffffff; opacity: 0; transform: translate(-6px, 6px); transition: all 0.25s; }
 
-    /* PORTFOLIO */
-    .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 40px; }
-    .portfolio-card { aspect-ratio: 4/3; background: var(--gray-100); border-radius: var(--radius-lg); border: 1px solid var(--border); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; transition: all 0.25s; overflow: hidden; }
-    .portfolio-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    /* WHY US */
+    .why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .why-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 32px 28px; transition: border-color 0.2s; }
+    .why-card:hover { border-color: var(--gray-200); }
+    .why-icon { font-size: 28px; margin-bottom: 16px; }
+    .why-title { font-family: 'Anton', sans-serif; font-size: 18px; letter-spacing: 0.02em; color: var(--text); margin-bottom: 10px; }
+    .why-desc { font-size: 14px; line-height: 1.65; color: var(--gray-600); }
 
-    /* ============================================
-       PORTFOLIO CARDS — to add your own work:
-       Replace the inner content of each .portfolio-card with:
-       <img src="your-image.jpg" alt="Project name" style="width:100%;height:100%;object-fit:cover;">
-       ============================================ */
-    .portfolio-plus { font-size: 28px; color: var(--gray-400); }
-    .portfolio-label { font-size: 12px; font-weight: 500; color: var(--gray-400); letter-spacing: 0.04em; }
-    .portfolio-cta { font-size: 15px; font-weight: 600; color: #ffffff; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: gap 0.2s; }
-    .portfolio-cta:hover { gap: 10px; }
+    /* PORTFOLIO */
+    .portfolio-coming {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 80px 40px;
+      text-align: center;
+      background: var(--gray-50);
+    }
+    .portfolio-coming-icon { font-size: 36px; margin-bottom: 20px; }
+    .portfolio-coming h3 { font-family: 'Anton', sans-serif; font-size: 26px; letter-spacing: 0.02em; color: var(--text); margin-bottom: 12px; }
+    .portfolio-coming p { font-size: 15px; color: var(--gray-600); line-height: 1.7; max-width: 420px; margin: 0 auto 28px; }
+
+    /* PRICING TABS */
+    .pricing-tab-bar {
+      display: flex;
+      gap: 4px;
+      background: var(--gray-50);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 4px;
+      width: fit-content;
+      margin-bottom: 40px;
+    }
+    .ptab {
+      padding: 9px 22px;
+      border: none;
+      border-radius: 9px;
+      background: none;
+      color: var(--gray-400);
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .ptab.active { background: var(--bg); color: var(--text); box-shadow: var(--shadow-sm); }
+    .ptab:hover:not(.active) { color: var(--text); }
+    .pricing-panel { display: block; }
+    .pricing-panel.hidden { display: none; }
 
     /* PRICING */
     .pricing-bg { background: var(--gray-50); padding: 100px 0; }
     .pricing-inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
-    .pricing-grid { display: grid; grid-template-columns: 1fr 1.08fr 1fr; gap: 20px; align-items: start; margin-top: 56px; }
+    .pricing-grid { display: grid; grid-template-columns: 1fr 1.08fr 1fr; gap: 20px; align-items: start; }
+    .pricing-grid-wide { display: grid; grid-template-columns: 1fr 1.08fr 1fr; gap: 20px; align-items: start; margin-bottom: 20px; }
     .pricing-card { border: 1px solid var(--border); border-radius: var(--radius-xl); padding: 36px; background: var(--bg); transition: box-shadow 0.25s; }
     .pricing-card:hover { box-shadow: var(--shadow-md); }
     .pricing-card.featured { border-color: #ffffff; box-shadow: 0 0 0 1px #ffffff, var(--shadow-md); }
@@ -130,6 +198,33 @@
     .btn-plan-outline:hover { border-color: #ffffff; color: #ffffff; background: #222222; }
     .btn-plan-filled { background: #ffffff; color: #111111; }
     .btn-plan-filled:hover { background: #dddddd; transform: translateY(-1px); }
+    .alv-note { font-size: 11px; color: var(--gray-400); margin-top: 10px; }
+
+    /* FAQ */
+    .faq-bg { background: var(--gray-50); }
+    .faq-list { display: flex; flex-direction: column; border: 1px solid var(--border); border-radius: var(--radius-xl); overflow: hidden; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-item summary {
+      list-style: none;
+      padding: 22px 28px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      transition: background 0.2s;
+      user-select: none;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: '+'; font-size: 20px; font-weight: 300; color: var(--gray-400); flex-shrink: 0; transition: transform 0.25s; }
+    .faq-item[open] summary::after { transform: rotate(45deg); }
+    .faq-item summary:hover { background: var(--gray-100); }
+    .faq-item[open] summary { background: var(--gray-100); }
+    .faq-answer { padding: 0 28px 22px; font-size: 14px; line-height: 1.75; color: var(--gray-600); }
 
     /* CONTACT */
     .contact-bg { background: var(--gray-50); padding: 100px 0; }
@@ -166,61 +261,85 @@
     .delay-1 { transition-delay: 0.1s; }
     .delay-2 { transition-delay: 0.2s; }
 
+    /* RESPONSIVE */
     @media (max-width: 768px) {
       nav { padding: 0 20px; }
-      .nav-links { display: none; }
+      .hamburger { display: flex; }
+
+      .nav-links {
+        display: none;
+        position: fixed;
+        top: 64px; left: 0; right: 0; bottom: 0;
+        background: rgba(17,17,17,0.98);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 36px;
+        backdrop-filter: blur(16px);
+        z-index: 99;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { font-size: 20px; color: var(--text); }
+      .btn-cta { font-size: 16px; padding: 12px 28px; }
+
       .hero { padding: 100px 20px 60px; }
       .section { padding: 60px 20px; }
       .services-grid { grid-template-columns: 1fr; }
       .service-card { border-right: none !important; padding: 32px 24px; }
-      .portfolio-grid { grid-template-columns: 1fr 1fr; }
-      .pricing-grid { grid-template-columns: 1fr; }
+
+      .why-grid { grid-template-columns: 1fr 1fr; }
+
+      .portfolio-coming { padding: 48px 24px; }
+
+      .pricing-tab-bar { width: 100%; }
+      .ptab { flex: 1; text-align: center; padding: 9px 8px; font-size: 11px; }
+      .pricing-grid, .pricing-grid-wide { grid-template-columns: 1fr; }
+
+      .faq-item summary { padding: 18px 20px; font-size: 14px; }
+      .faq-answer { padding: 0 20px 18px; }
+
       .contact-grid { grid-template-columns: 1fr; gap: 40px; }
       .pricing-inner, .contact-inner { padding: 0 20px; }
       .hero-stats { flex-wrap: wrap; }
       .stat-item { width: 50%; border-right: none; border-bottom: 1px solid var(--border); }
       footer { flex-direction: column; gap: 12px; text-align: center; padding: 24px 20px; }
     }
+
+    @media (max-width: 480px) {
+      .why-grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
 
-<!-- ============================================
-     NAVBAR
-     To add your logo image: replace "RN MEDIA" text with
-     <img src="logo.png" alt="RN Media" style="height:36px;">
-     ============================================ -->
 <nav id="navbar">
   <a href="#etusivu" class="nav-logo"><img src="logo3.png" alt="RN Media" style="height:100px;"></a>
-  <div class="nav-links">
-    <a href="#etusivu">Etusivu</a>
-    <a href="#palvelut">Palvelut</a>
-    <a href="#portfolio">Portfolio</a>
-    <a href="#hinnat">Hinnat</a>
-    <!-- ============ EDIT: navbar CTA button ============ -->
-    <a href="#ota-yhteytta" class="btn-cta">Ota yhteyttä</a>
+  <div class="nav-links" id="nav-links">
+    <a href="#etusivu" class="nav-close-trigger">Etusivu</a>
+    <a href="#palvelut" class="nav-close-trigger">Palvelut</a>
+    <a href="#portfolio" class="nav-close-trigger">Portfolio</a>
+    <a href="#hinnat" class="nav-close-trigger">Hinnat</a>
+    <a href="#ukk" class="nav-close-trigger">UKK</a>
+    <a href="#ota-yhteytta" class="btn-cta nav-close-trigger">Ota yhteyttä</a>
   </div>
+  <button class="hamburger" id="hamburger" aria-label="Avaa valikko">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 </nav>
 
 <!-- HERO -->
 <section class="hero" id="etusivu">
-  <!-- ============ EDIT: change eyebrow text below ============ -->
   <div class="hero-eyebrow">Suomalainen somemarkkinointi</div>
-
-  <!-- ============ EDIT: main headline ============ -->
   <h1 class="hero-headline">
     NÄKYVYYTTÄ.<br><span class="blue">ASIAKKAITA.</span><br>TULOKSIA.
   </h1>
-
-  <!-- ============ EDIT: subheadline ============ -->
   <p class="hero-sub">Tuotamme lyhytvideot ja somestrategian joka tuo uusia asiakkaita ovelle — ei pelkkiä tykkäyksiä.</p>
-
   <div class="hero-buttons">
     <a href="#ota-yhteytta" class="btn-primary">Aloitetaan →</a>
     <a href="#portfolio" class="btn-secondary">Katso portfolio</a>
   </div>
-
-  <!-- ============ EDIT: stats row ============ -->
   <div class="hero-stats">
     <div class="stat-item"><span class="stat-val">3</span><span class="stat-label">Kieltä</span></div>
     <div class="stat-item"><span class="stat-val">24/7</span><span class="stat-label">Tavoitettavissa</span></div>
@@ -234,7 +353,6 @@
   <div class="section fade-up">
     <p class="section-label">Erikoisalat</p>
     <h2 class="section-heading">Toimialat joille<br>teemme sisältöä</h2>
-    <!-- ============ EDIT: add or remove industry chips ============ -->
     <div class="chips">
       <span class="chip">🍽 Ravintolat</span>
       <span class="chip">🧘 Hyvinvointi</span>
@@ -251,7 +369,6 @@
 <div class="section fade-up" id="palvelut">
   <p class="section-label">Palvelut</p>
   <h2 class="section-heading">Mitä teemme</h2>
-  <!-- ============ EDIT: service cards — change title and description ============ -->
   <div class="services-grid">
     <div class="service-card">
       <div class="service-num">01</div>
@@ -280,282 +397,282 @@
   </div>
 </div>
 
+<!-- WHY US -->
+<div class="industry-bg">
+  <div class="section fade-up">
+    <p class="section-label">Miksi RN Media</p>
+    <h2 class="section-heading">Teemme somesta<br>liiketoimintaa</h2>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">⚡</div>
+        <div class="why-title">NOPEA TOIMITUS</div>
+        <p class="why-desc">Ensimmäiset videot valmiina 5–7 arkipäivässä aloituksesta. Ei turhaa odottelua.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🎯</div>
+        <div class="why-title">TULOSLÄHTÖINEN</div>
+        <p class="why-desc">Mittaamme kasvua, konversioita ja liidejä — ei pelkästään tykkäyksiä ja kattavuutta.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🤝</div>
+        <div class="why-title">EI SITOUTUMISTA</div>
+        <p class="why-desc">Kaikki paketit voi peruuttaa milloin tahansa. Pysyt koska tulokset puhuvat puolestaan.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🇫🇮</div>
+        <div class="why-title">PAIKALLINEN</div>
+        <p class="why-desc">Suomalainen toimija, suomenkielinen palvelu, nopea viestintä. Tunnemme markkinan.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- PORTFOLIO -->
 <div class="section fade-up" id="portfolio">
   <p class="section-label">Portfolio</p>
   <h2 class="section-heading">Töitämme</h2>
-  <!-- ============================================================
-       PORTFOLIO — to add your own images replace the card content:
-       <div class="portfolio-card">
-         <img src="project1.jpg" alt="Projekti 1" style="width:100%;height:100%;object-fit:cover;border-radius:14px;">
-       </div>
-       Upload your images to GitHub in the same folder as index.html
-       ============================================================ -->
-  <div class="portfolio-grid">
-    <div class="portfolio-card"><span class="portfolio-plus">+</span><span class="portfolio-label">Tulossa pian</span></div>
-    <div class="portfolio-card"><span class="portfolio-plus">+</span><span class="portfolio-label">Tulossa pian</span></div>
-    <div class="portfolio-card"><span class="portfolio-plus">+</span><span class="portfolio-label">Tulossa pian</span></div>
-    <div class="portfolio-card"><span class="portfolio-plus">+</span><span class="portfolio-label">Tulossa pian</span></div>
-    <div class="portfolio-card"><span class="portfolio-plus">+</span><span class="portfolio-label">Tulossa pian</span></div>
-    <div class="portfolio-card"><span class="portfolio-plus">+</span><span class="portfolio-label">Tulossa pian</span></div>
+  <div class="portfolio-coming">
+    <div class="portfolio-coming-icon">📸</div>
+    <h3>Portfolio kasvaa parhaillaan</h3>
+    <p>Olemme tuore toimisto ja portfolio täydentyy kevään mittaan. Seuraa tuoreimmat työt Instagramissa.</p>
+    <a href="https://instagram.com/rnmediafi" target="_blank" rel="noopener" class="btn-primary">Seuraa @rnmediafi ↗</a>
   </div>
-  <a href="#ota-yhteytta" class="portfolio-cta">Haluatko ensimmäisten joukossa? →</a>
 </div>
 
 <!-- PRICING -->
 <div class="pricing-bg" id="hinnat">
   <div class="pricing-inner">
 
-    <!-- HEADING -->
     <div class="fade-up">
       <p class="section-label">Hinnoittelu</p>
       <h2 class="section-heading" style="margin-bottom:8px;">Selkeä hinnoittelu,<br>konkreettiset tulokset</h2>
-      <p style="font-size:13px; color:var(--gray-400); margin-bottom:16px;">Launch-hinnat voimassa <strong>31.8.2026</strong> asti. Ennen syyskuuta aloittavat asiakkaat pitävät launch-hinnan pysyvästi.</p>
-      <p style="font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); margin-bottom:0;">Kuukausipaketit — ei sitoutumista, peruuta milloin tahansa</p>
+      <p style="font-size:13px; color:var(--gray-400); margin-bottom:28px;">Launch-hinnat voimassa <strong>31.8.2026</strong> asti. Ennen syyskuuta aloittavat asiakkaat pitävät launch-hinnan pysyvästi.</p>
+      <div class="pricing-tab-bar">
+        <button class="ptab active" data-tab="kuukausi">Kuukausipaketit</button>
+        <button class="ptab" data-tab="kerta">Kertatilaukset</button>
+        <button class="ptab" data-tab="digital">Digitaaliset</button>
+      </div>
     </div>
 
-    <!-- MONTHLY PACKAGES -->
-    <div class="pricing-grid fade-up delay-1">
-
-      <div class="pricing-card">
-        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px;">
-          <span class="badge badge-green">Launch Deal</span>
+    <!-- TAB: KUUKAUSIPAKETIT -->
+    <div class="pricing-panel fade-up delay-1" id="tab-kuukausi">
+      <p style="font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); margin-bottom:24px;">Ei sitoutumista — peruuta milloin tahansa</p>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px;"><span class="badge badge-green">Launch Deal</span></div>
+          <div class="plan-name">STARTER</div>
+          <div class="plan-price">
+            <span style="font-size:13px;color:var(--gray-400);text-decoration:line-through;display:block;margin-bottom:2px;">€499/kk</span>
+            <strong>€299</strong><span>/kk</span>
+          </div>
+          <ul class="plan-features">
+            <li>1 kuvaussessio / kk</li>
+            <li>4 lyhytvideota</li>
+            <li>Peruseditointi</li>
+            <li>1 korjauskierros</li>
+            <li>Kuukausiraportti</li>
+            <li>Ei sitoutumista</li>
+          </ul>
+          <a href="#ota-yhteytta" class="btn-plan btn-plan-outline">Aloitetaan →</a>
         </div>
-        <div class="plan-name">STARTER</div>
-        <div class="plan-price">
-          <span style="font-size:13px;color:var(--gray-400);text-decoration:line-through;display:block;margin-bottom:2px;">€499/kk</span>
-          <strong>€299</strong><span>/kk</span>
+        <div class="pricing-card featured">
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px;"><span class="badge badge-blue">Suosituin</span><span class="badge badge-green">Launch Deal</span></div>
+          <div class="plan-name">GROWTH</div>
+          <div class="plan-price">
+            <span style="font-size:13px;color:var(--gray-400);text-decoration:line-through;display:block;margin-bottom:2px;">€999/kk</span>
+            <strong>€499</strong><span>/kk</span>
+          </div>
+          <ul class="plan-features">
+            <li>2 kuvaussessiota / kk</li>
+            <li>~10 lyhytvideota</li>
+            <li>Edistynyt editointi</li>
+            <li>Hooks &amp; captions</li>
+            <li>Strategia + raportti</li>
+            <li>Ei sitoutumista</li>
+          </ul>
+          <a href="#ota-yhteytta" class="btn-plan btn-plan-filled">Aloitetaan →</a>
         </div>
-        <ul class="plan-features">
-          <li>1 kuvaussessio / kk</li>
-          <li>4 lyhytvideota</li>
-          <li>Peruseditointi</li>
-          <li>1 korjauskierros</li>
-          <li>Kuukausiraportti</li>
-          <li>Ei sitoutumista</li>
-        </ul>
-        <a href="#ota-yhteytta" class="btn-plan btn-plan-outline">Aloitetaan →</a>
+        <div class="pricing-card">
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px;"><span class="badge badge-green">Launch Deal</span></div>
+          <div class="plan-name">PREMIUM</div>
+          <div class="plan-price">
+            <span style="font-size:13px;color:var(--gray-400);text-decoration:line-through;display:block;margin-bottom:2px;">€1 499/kk</span>
+            <strong>€799</strong><span>/kk</span>
+          </div>
+          <ul class="plan-features">
+            <li>Jatkuvat shootit</li>
+            <li>Brändistrategia</li>
+            <li>Kampanjasuunnittelu</li>
+            <li>Konsultointi</li>
+            <li>Prioriteettituki</li>
+            <li>Ei sitoutumista</li>
+          </ul>
+          <a href="#ota-yhteytta" class="btn-plan btn-plan-outline">Aloitetaan →</a>
+        </div>
       </div>
-
-      <div class="pricing-card featured">
-        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px;">
-          <span class="badge badge-blue">Suosituin</span>
-          <span class="badge badge-green">Launch Deal</span>
-        </div>
-        <div class="plan-name">GROWTH</div>
-        <div class="plan-price">
-          <span style="font-size:13px;color:var(--gray-400);text-decoration:line-through;display:block;margin-bottom:2px;">€999/kk</span>
-          <strong>€499</strong><span>/kk</span>
-        </div>
-        <ul class="plan-features">
-          <li>2 kuvaussessiota / kk</li>
-          <li>~10 lyhytvideota</li>
-          <li>Edistynyt editointi</li>
-          <li>Hooks &amp; captions</li>
-          <li>Strategia + raportti</li>
-          <li>Ei sitoutumista</li>
-        </ul>
-        <a href="#ota-yhteytta" class="btn-plan btn-plan-filled">Aloitetaan →</a>
-      </div>
-
-      <div class="pricing-card">
-        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px;">
-          <span class="badge badge-green">Launch Deal</span>
-        </div>
-        <div class="plan-name">PREMIUM</div>
-        <div class="plan-price">
-          <span style="font-size:13px;color:var(--gray-400);text-decoration:line-through;display:block;margin-bottom:2px;">€1,499/kk</span>
-          <strong>€799</strong><span>/kk</span>
-        </div>
-        <ul class="plan-features">
-          <li>Jatkuvat shootit</li>
-          <li>Brändistrategia</li>
-          <li>Kampanjasuunnittelu</li>
-          <li>Konsultointi</li>
-          <li>Prioriteettituki</li>
-          <li>Ei sitoutumista</li>
-        </ul>
-        <a href="#ota-yhteytta" class="btn-plan btn-plan-outline">Aloitetaan →</a>
-      </div>
-
+      <p class="alv-note">Kaikki hinnat +alv 25,5%</p>
     </div>
 
-    <!-- ALV note -->
-    <p style="font-size:11px;color:var(--gray-400);margin-top:10px;margin-bottom:60px;">Kaikki hinnat +alv 25,5%</p>
-
-    <!-- ONE-OFFS HEADING -->
-    <div class="fade-up" style="margin-bottom:32px;">
-      <p class="section-label">Kertatilaukset</p>
-      <h3 style="font-family:'Anton',sans-serif;font-size:clamp(22px,3vw,34px);color:var(--text);margin-bottom:12px;letter-spacing:0.01em;">Rakenna oma paketti</h3>
-      <p style="font-size:15px;color:var(--gray-600);line-height:1.7;max-width:580px;">Et halua sitoutua kuukausipakettiin? Ei hätää. Aloita yhdellä tilauksella, katso tulokset — ja päätä sitten. Täydellinen tapa tutustua RN Mediaan.</p>
+    <!-- TAB: KERTATILAUKSET -->
+    <div class="pricing-panel hidden fade-up delay-1" id="tab-kerta">
+      <p style="font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); margin-bottom:24px;">Kokeile riskittömästi — ei kuukausisitoutumista</p>
+      <div class="pricing-grid-wide">
+        <div class="pricing-card">
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px;"><span class="badge badge-blue">Kokeile riskittömästi</span></div>
+          <div class="plan-name">1 LYHYTVIDEO</div>
+          <div class="plan-price"><strong>€99</strong><span> / kerta</span></div>
+          <ul class="plan-features">
+            <li>1 valmis lyhytvideo</li>
+            <li>Editoitu, julkaisuvalmis</li>
+            <li>Toimitus 5 arkipäivässä</li>
+          </ul>
+          <a href="#ota-yhteytta" class="btn-plan btn-plan-outline">Tilaa →</a>
+        </div>
+        <div class="pricing-card featured">
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px;"><span class="badge badge-blue">Suosituin kertatilaus</span></div>
+          <div class="plan-name">KUVAUSSESSIO + 2 VIDEOTA</div>
+          <div class="plan-price"><strong>€199</strong><span> / kerta</span></div>
+          <ul class="plan-features">
+            <li>1h kuvaussessio</li>
+            <li>2 editoitua lyhytvideota</li>
+            <li>Julkaisuvalmis sisältö</li>
+            <li>Näet koko prosessin</li>
+          </ul>
+          <a href="#ota-yhteytta" class="btn-plan btn-plan-filled">Tilaa →</a>
+        </div>
+        <div class="pricing-card">
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px;"><span class="badge badge-green">Täydellinen startti</span></div>
+          <div class="plan-name">3 VIDEOTA + STRATEGIA</div>
+          <div class="plan-price"><strong>€349</strong><span> / kerta</span></div>
+          <ul class="plan-features">
+            <li>Kuvaussessio</li>
+            <li>3 editoitua videota</li>
+            <li>Kirjallinen somestrategia</li>
+            <li>Täydellinen kokonaisuus</li>
+          </ul>
+          <a href="#ota-yhteytta" class="btn-plan btn-plan-outline">Tilaa →</a>
+        </div>
+      </div>
+      <div class="pricing-grid-wide">
+        <div class="pricing-card">
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px;"><span class="badge badge-blue">Tiedä missä olet</span></div>
+          <div class="plan-name">BRÄNDIANALYYSI</div>
+          <div class="plan-price"><strong>€149</strong><span> / kerta</span></div>
+          <ul class="plan-features">
+            <li>Kirjallinen some-analyysi</li>
+            <li>Konkreettiset kehitysehdotukset</li>
+            <li>Tiedät mitä tehdä seuraavaksi</li>
+          </ul>
+          <a href="#ota-yhteytta" class="btn-plan btn-plan-outline">Tilaa →</a>
+        </div>
+        <div class="pricing-card featured">
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px;"><span class="badge badge-blue">Suosituin</span><span class="badge badge-green">Katso tulokset ensin</span></div>
+          <div class="plan-name">KOEKUUKAUSI</div>
+          <div class="plan-price"><strong>€249</strong><span> / 1 kk</span></div>
+          <ul class="plan-features">
+            <li>Starter-paketti, 1 kuukausi</li>
+            <li>Ei sitoutumista</li>
+            <li>Täydellinen tapa aloittaa</li>
+            <li>Jatka jos tykkäät</li>
+          </ul>
+          <a href="#ota-yhteytta" class="btn-plan btn-plan-filled">Tilaa →</a>
+        </div>
+        <div class="pricing-card">
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px;"><span class="badge badge-green">Ilmainen aloitus</span></div>
+          <div class="plan-name">KONSULTOINTI</div>
+          <div class="plan-price">
+            <span style="font-size:13px;color:var(--gray-400);display:block;margin-bottom:2px;">Ensimmäinen 30 min</span>
+            <strong style="color:#ffffff;">Ilmainen</strong>
+          </div>
+          <ul class="plan-features">
+            <li>30 min maksuton sessio</li>
+            <li>Strategia, sisältö, some</li>
+            <li>Jatkotunnit €99/h</li>
+          </ul>
+          <a href="#ota-yhteytta" class="btn-plan btn-plan-outline">Varaa aika →</a>
+        </div>
+      </div>
+      <p class="alv-note">Kaikki hinnat +alv 25,5%</p>
     </div>
 
-    <!-- ONE-OFF CARDS — same grid as monthly but 3-col wrapping -->
-    <div class="fade-up delay-1" style="display:grid;grid-template-columns:1fr 1.08fr 1fr;gap:20px;align-items:start;margin-bottom:12px;">
-
-      <!-- 1 video -->
-      <div class="pricing-card">
-        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px;">
-          <span class="badge badge-blue">Kokeile riskittömästi</span>
+    <!-- TAB: DIGITAALISET -->
+    <div class="pricing-panel hidden fade-up delay-1" id="tab-digital">
+      <p style="font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); margin-bottom:24px;">Verkkosivut, verkkokauppa &amp; sometilit — kertamaksulla</p>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px;"><span class="badge badge-blue">Kertamaksu</span></div>
+          <div class="plan-name">VERKKOSIVUT</div>
+          <div class="plan-price"><strong>€399</strong><span> / kerta</span></div>
+          <ul class="plan-features">
+            <li>Täysin räätälöity design</li>
+            <li>Mobiiliystävällinen</li>
+            <li>Nopea toimitus</li>
+            <li>Julkaisuvalmis</li>
+          </ul>
+          <a href="#ota-yhteytta" class="btn-plan btn-plan-outline">Tilaa →</a>
         </div>
-        <div class="plan-name">1 LYHYTVIDEO</div>
-        <div class="plan-price"><strong>€99</strong><span> / kerta</span></div>
-        <ul class="plan-features">
-          <li>1 valmis lyhytvideo</li>
-          <li>Editoitu, julkaisuvalmis</li>
-          <li>Toimitus 5 arkipäivässä</li>
-        </ul>
-        <a href="#ota-yhteytta" class="btn-plan btn-plan-outline">Tilaa →</a>
+        <div class="pricing-card featured">
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px;"><span class="badge badge-blue">Kertamaksu</span><span class="badge badge-green">Suosittu</span></div>
+          <div class="plan-name">SHOPIFY-VERKKOKAUPPA</div>
+          <div class="plan-price"><strong>€399</strong><span> / kerta</span></div>
+          <ul class="plan-features">
+            <li>Valmis verkkokauppa</li>
+            <li>Tuotteet &amp; maksut kunnossa</li>
+            <li>Domain yhdistettynä</li>
+            <li>Julkaisuvalmis</li>
+          </ul>
+          <a href="#ota-yhteytta" class="btn-plan btn-plan-filled">Tilaa →</a>
+        </div>
+        <div class="pricing-card">
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px;"><span class="badge badge-blue">Kertamaksu</span></div>
+          <div class="plan-name">SOMETILIN PERUSTAMINEN</div>
+          <div class="plan-price"><strong>€99</strong><span> / tili</span></div>
+          <ul class="plan-features">
+            <li>Instagram tai Facebook</li>
+            <li>Optimoitu bio &amp; profiili</li>
+            <li>Brändätty ulkoasu</li>
+            <li>3 ensimmäistä julkaisua</li>
+          </ul>
+          <a href="#ota-yhteytta" class="btn-plan btn-plan-outline">Tilaa →</a>
+        </div>
       </div>
-
-      <!-- Shoot + 2 videos — FEATURED -->
-      <div class="pricing-card featured">
-        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px;">
-          <span class="badge badge-blue">Suosituin kertatilaus</span>
-        </div>
-        <div class="plan-name">KUVAUSSESSIO + 2 VIDEOTA</div>
-        <div class="plan-price"><strong>€199</strong><span> / kerta</span></div>
-        <ul class="plan-features">
-          <li>1h kuvaussessio</li>
-          <li>2 editoitua lyhytvideota</li>
-          <li>Julkaisuvalmis sisältö</li>
-          <li>Näet koko prosessin</li>
-        </ul>
-        <a href="#ota-yhteytta" class="btn-plan btn-plan-filled">Tilaa →</a>
-      </div>
-
-      <!-- 3 videos + strategy -->
-      <div class="pricing-card">
-        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px;">
-          <span class="badge badge-green">Täydellinen startti</span>
-        </div>
-        <div class="plan-name">3 VIDEOTA + STRATEGIA</div>
-        <div class="plan-price"><strong>€349</strong><span> / kerta</span></div>
-        <ul class="plan-features">
-          <li>Kuvaussessio</li>
-          <li>3 editoitua videota</li>
-          <li>Kirjallinen somestrategia</li>
-          <li>Täydellinen kokonaisuus</li>
-        </ul>
-        <a href="#ota-yhteytta" class="btn-plan btn-plan-outline">Tilaa →</a>
-      </div>
-
-      <!-- Brand analysis -->
-      <div class="pricing-card">
-        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px;">
-          <span class="badge badge-blue">Tiedä missä olet</span>
-        </div>
-        <div class="plan-name">BRÄNDIANALYYSI</div>
-        <div class="plan-price"><strong>€149</strong><span> / kerta</span></div>
-        <ul class="plan-features">
-          <li>Kirjallinen some-analyysi</li>
-          <li>Konkreettiset kehitysehdotukset</li>
-          <li>Tiedät mitä tehdä seuraavaksi</li>
-        </ul>
-        <a href="#ota-yhteytta" class="btn-plan btn-plan-outline">Tilaa →</a>
-      </div>
-
-      <!-- Trial month -->
-      <div class="pricing-card featured">
-        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px;">
-          <span class="badge badge-blue">Suosituin</span>
-          <span class="badge badge-green">Katso tulokset ensin</span>
-        </div>
-        <div class="plan-name">KOEKUUKAUSI</div>
-        <div class="plan-price"><strong>€249</strong><span> / 1 kk</span></div>
-        <ul class="plan-features">
-          <li>Starter-paketti, 1 kuukausi</li>
-          <li>Ei sitoutumista</li>
-          <li>Täydellinen tapa aloittaa</li>
-          <li>Jatka jos tykkäät</li>
-        </ul>
-        <a href="#ota-yhteytta" class="btn-plan btn-plan-filled">Tilaa →</a>
-      </div>
-
-      <!-- Consulting -->
-      <div class="pricing-card">
-        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px;">
-          <span class="badge badge-green">Ilmainen aloitus</span>
-        </div>
-        <div class="plan-name">KONSULTOINTI</div>
-        <div class="plan-price">
-          <span style="font-size:13px;color:var(--gray-400);display:block;margin-bottom:2px;">Ensimmäinen 30 min</span>
-          <strong style="color:#ffffff;">Ilmainen</strong>
-        </div>
-        <ul class="plan-features">
-          <li>30 min maksuton sessio</li>
-          <li>Strategia, sisältö, some</li>
-          <li>Jatkotunnit €99/h</li>
-        </ul>
-        <a href="#ota-yhteytta" class="btn-plan btn-plan-outline">Varaa aika →</a>
-      </div>
-
+      <p class="alv-note">Kaikki hinnat +alv 25,5% &nbsp;·&nbsp; Launch-hinnat voimassa 31.8.2026 asti</p>
     </div>
 
-    <!-- DIGITAL SERVICES HEADING -->
-    <div class="fade-up" style="margin-top:60px;margin-bottom:32px;">
-      <p class="section-label">Digitaaliset palvelut</p>
-      <h3 style="font-family:'Anton',sans-serif;font-size:clamp(22px,3vw,34px);color:var(--text);margin-bottom:12px;letter-spacing:0.01em;">Verkkosivut & Verkkokauppa</h3>
-      <p style="font-size:15px;color:var(--gray-600);line-height:1.7;max-width:580px;">Tarvitsetko verkkosivut, verkkokaupan tai some-tilit valmiiksi? Hoidetaan kuntoon nopeasti ja edullisesti — kertamaksulla.</p>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="faq-bg" id="ukk">
+  <div class="section fade-up">
+    <p class="section-label">UKK</p>
+    <h2 class="section-heading">Usein kysytyt<br>kysymykset</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>Mikä on sopimuksen kesto?</summary>
+        <p class="faq-answer">Ei sitoutumista. Kaikki kuukausipaketit voi peruuttaa milloin tahansa ilman irtisanomisaikaa. Pysyt vain jos tulokset puhuvat puolestaan.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Kuinka nopeasti saan ensimmäiset videot?</summary>
+        <p class="faq-answer">Yleensä 5–7 arkipäivää aloituksesta. Sovimme kuvausajan, editoimme materiaalin ja toimitus on valmis ennen kuin ehdit odottaa.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Missä päin Suomea toimitte?</summary>
+        <p class="faq-answer">Kotipaikkamme on Lohja, Uusimaa. Teemme töitä myös ympäri Suomea ja tarvittaessa etänä — sijainti ei ole este.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Tarvitsenko valmiit sometilit aloittaakseni?</summary>
+        <p class="faq-answer">Et tarvitse. Autamme sometilin perustamisessa, profilin optimoinnissa ja kaiken käynnistämisessä alusta alkaen. Katso Digitaaliset-välilehti hinnoittelusivulta.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Mitä jos en ole tyytyväinen sisältöön?</summary>
+        <p class="faq-answer">Jokaiseen pakettiin sisältyy korjauskierros. Haluamme että olet 100% tyytyväinen ennen julkaisua. Lisäkierrokset sovitaan tapauskohtaisesti.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Sopiiko tämä pienelle yritykselle tai yksinyrittäjälle?</summary>
+        <p class="faq-answer">Erityisesti. Pienet yritykset ja yrittäjät hyötyvät eniten orgaanisesta näkyvyydestä somessa. Emme myy isoja paketteja joita et tarvitse — aloitetaan sopivalta tasolta.</p>
+      </details>
     </div>
-
-    <!-- DIGITAL SERVICE CARDS -->
-    <div class="fade-up delay-1" style="display:grid;grid-template-columns:1fr 1.08fr 1fr;gap:20px;align-items:start;margin-bottom:12px;">
-
-      <!-- Website -->
-      <div class="pricing-card">
-        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px;">
-          <span class="badge badge-blue">Kertamaksu</span>
-        </div>
-        <div class="plan-name">VERKKOSIVUT</div>
-        <div class="plan-price"><strong>€399</strong><span> / kerta</span></div>
-        <ul class="plan-features">
-          <li>Täysin räätälöity design</li>
-          <li>Mobiiliystävällinen</li>
-          <li>Nopea toimitus</li>
-          <li>Julkaisuvalmis</li>
-        </ul>
-        <a href="#ota-yhteytta" class="btn-plan btn-plan-outline">Tilaa →</a>
-      </div>
-
-      <!-- Shopify -->
-      <div class="pricing-card featured">
-        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px;">
-          <span class="badge badge-blue">Kertamaksu</span>
-          <span class="badge badge-green">Suosittu</span>
-        </div>
-        <div class="plan-name">SHOPIFY-VERKKOKAUPPA</div>
-        <div class="plan-price"><strong>€399</strong><span> / kerta</span></div>
-        <ul class="plan-features">
-          <li>Valmis verkkokauppa</li>
-          <li>Tuotteet & maksut kunnossa</li>
-          <li>Domain yhdistettynä</li>
-          <li>Julkaisuvalmis</li>
-        </ul>
-        <a href="#ota-yhteytta" class="btn-plan btn-plan-filled">Tilaa →</a>
-      </div>
-
-      <!-- Some setup -->
-      <div class="pricing-card">
-        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px;">
-          <span class="badge badge-blue">Kertamaksu</span>
-        </div>
-        <div class="plan-name">SOMETILIN PERUSTAMINEN</div>
-        <div class="plan-price"><strong>€99</strong><span> / tili</span></div>
-        <ul class="plan-features">
-          <li>Instagram tai Facebook</li>
-          <li>Optimoitu bio & profiili</li>
-          <li>Brändätty ulkoasu</li>
-          <li>3 ensimmäistä julkaisua</li>
-        </ul>
-        <a href="#ota-yhteytta" class="btn-plan btn-plan-outline">Tilaa →</a>
-      </div>
-
-    </div>
-
-    <!-- ALV + price lock -->
-    <p style="font-size:11px;color:var(--gray-400);margin-top:8px;margin-bottom:0;">Kaikki hinnat +alv 25,5% &nbsp;·&nbsp; Launch-hinnat voimassa 31.8.2026 asti &nbsp;·&nbsp; Ennen syyskuuta aloittavat asiakkaat pitävät hinnan pysyvästi</p>
-
   </div>
 </div>
 
@@ -567,9 +684,8 @@
         <p class="section-label">Yhteystiedot</p>
         <h2 class="contact-heading">ALOITETAAN<br>YHDESSÄ</h2>
         <p class="contact-sub">Valmis kasvattamaan näkyvyyttäsi? Kerro projektistasi — vastataan 24 tunnin sisällä.</p>
-        <!-- ============ EDIT: contact info links below ============ -->
         <div class="contact-meta">
-          <a class="contact-meta-item" href="https://instagram.com/rnmedia.fi" target="_blank">
+          <a class="contact-meta-item" href="https://instagram.com/rnmedia.fi" target="_blank" rel="noopener">
             <div class="contact-meta-icon">📸</div>
             <span>@rnmediafi</span>
           </a>
@@ -579,17 +695,10 @@
           </a>
           <div class="contact-meta-item">
             <div class="contact-meta-icon">📍</div>
-           <a href="https://maps.google.com/?q=Lohja,Finland" target="_blank">Lohja, Uusimaa, Finlnand</a>
+            <a href="https://maps.google.com/?q=Lohja,Finland" target="_blank" rel="noopener">Lohja, Uusimaa, Finland</a>
           </div>
         </div>
       </div>
-
-      <!-- ============================================================
-           CONTACT FORM — powered by Formspree
-           Your form ID is: xeedvgln
-           Submissions go to your email automatically.
-           To change the email, log in at formspree.io
-           ============================================================ -->
       <form class="contact-form" action="https://formspree.io/f/xeedvgln" method="POST">
         <div class="form-group">
           <label class="form-label">NIMI</label>
@@ -614,14 +723,13 @@
 </div>
 
 <!-- FOOTER -->
-<!-- ============ EDIT: footer links and copyright ============ -->
 <footer>
   <span class="footer-logo"><img src="logo.png" alt="RN Media" style="height:36px;"></span>
   <span class="footer-copy">© 2026 RN Media. Kaikki oikeudet pidätetään.</span>
   <div class="footer-links">
-    <a href="https://instagram.com/rnmediafi" target="_blank">Instagram</a>
+    <a href="https://instagram.com/rnmediafi" target="_blank" rel="noopener">Instagram</a>
     <a href="mailto:nikolas.ruotsalo@rnmedia.fi">Sähköposti</a>
-    <a href="https://maps.google.com/?q=Lohja,Finland" target="_blank">Lohja</a>
+    <a href="https://maps.google.com/?q=Lohja,Finland" target="_blank" rel="noopener">Lohja</a>
   </div>
 </footer>
 
@@ -632,13 +740,40 @@
     navbar.classList.toggle('scrolled', window.scrollY > 20);
   });
 
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const navLinks  = document.getElementById('nav-links');
+  hamburger.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+    hamburger.setAttribute('aria-label', open ? 'Sulje valikko' : 'Avaa valikko');
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  document.querySelectorAll('.nav-close-trigger').forEach(el => {
+    el.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      hamburger.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // Pricing tabs
+  document.querySelectorAll('.ptab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.ptab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.pricing-panel').forEach(p => p.classList.add('hidden'));
+      tab.classList.add('active');
+      document.getElementById('tab-' + tab.dataset.tab).classList.remove('hidden');
+    });
+  });
+
   // Scroll reveal
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.08 });
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-  // Smooth scroll for all anchor links
+  // Smooth scroll
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       const target = document.querySelector(a.getAttribute('href'));
