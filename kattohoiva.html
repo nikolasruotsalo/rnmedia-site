@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KattoHoiva Oy — Älykäs vesikaton elinkaaren hallinta</title>
+
+  <!-- SEO -->
+  <meta name="description" content="KattoHoiva Oy — Suomen johtava älykkäitä kattoratkaisuja tarjoava vesikattoihin erikoistunut asiantuntijayritys. Tarkastukset, huollot, korjaukset ja reaaliaikainen katon elinkaaren hallinta 24/7/365.">
+  <meta name="keywords" content="vesikatto, kattotarkastus, kattohuolto, korjausurakointi, älykäs kattoratkaisu, KattoOnline, katon elinkaari, Suomi">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="KattoHoiva Oy">
+  <link rel="canonical" href="https://kattohoiva.fi">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://kattohoiva.fi">
+  <meta property="og:title" content="KattoHoiva Oy — Älykäs vesikaton elinkaaren hallinta">
+  <meta property="og:description" content="Suomen johtava älykkäitä kattoratkaisuja tarjoava vesikattoihin erikoistunut asiantuntijayritys. 24/7/365 tavoitettavissa.">
+  <meta property="og:image" content="https://kattohoiva.fi/og-image.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="KattoHoiva Oy — Älykäs vesikaton elinkaaren hallinta">
+  <meta name="twitter:description" content="Suomen johtava älykkäitä kattoratkaisuja tarjoava vesikattoihin erikoistunut asiantuntijayritys.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── VARIABLES ────────────────────────────────── */
+    :root {
+      --bg:           #ffffff;
+      --navy:         #0a1628;
+      --navy-mid:     #112240;
+      --navy-light:   #1a3358;
+      --blue:         #1e40af;
+      --blue-mid:     #2563eb;
+      --blue-light:   #3b82f6;
+      --blue-pale:    #eff6ff;
+      --blue-pale2:   #dbeafe;
+      --text:         #374151;
+      --text-muted:   #6b7280;
+      --border:       #e5e7eb;
+      --gray-50:      #f9fafb;
+      --gray-100:     #f3f4f6;
+      --white:        #ffffff;
+      --r:            10px;
+      --r-lg:         16px;
+      --r-xl:         24px;
+      --shadow-sm:    0 1px 3px rgba(0,0,0,0.08);
+      --shadow-md:    0 4px 20px rgba(0,0,0,0.10);
+      --shadow-lg:    0 16px 48px rgba(0,0,0,0.14);
+      --t:            0.25s ease;
+    }
+
+    /* ── RESET ────────────────────────────────────── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* ── NAVBAR ───────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      height: 72px;
+      display: flex; align-items: center;
+      padding: 0 32px;
+      transition: background 0.35s, box-shadow 0.35s, border-color 0.35s;
+      border-bottom: 1px solid transparent;
+    }
+    .nav-inner {
+      width: 100%; max-width: 1280px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 20px;
+    }
+    nav.scrolled {
+      background: rgba(255,255,255,0.97);
+      border-color: var(--border);
+      box-shadow: var(--shadow-sm);
+      backdrop-filter: blur(12px);
+    }
+
+    /* Logo */
+    .nav-logo { display: flex; flex-direction: column; line-height: 1.15; }
+    .logo-main { font-family: 'Anton', sans-serif; font-size: 21px; letter-spacing: 0.06em; color: #fff; transition: color 0.35s; }
+    .logo-oy   { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.45); transition: color 0.35s; }
+    nav.scrolled .logo-main { color: var(--navy); }
+    nav.scrolled .logo-oy   { color: var(--text-muted); }
+
+    /* Center phone */
+    .nav-phone {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 14px; font-weight: 700;
+      color: rgba(255,255,255,0.9);
+      transition: color 0.35s;
+    }
+    nav.scrolled .nav-phone { color: var(--navy); }
+    .nav-phone a { color: inherit; transition: color 0.2s; }
+    .nav-phone a:hover { color: var(--blue-light); }
+    nav.scrolled .nav-phone a:hover { color: var(--blue); }
+    .nav-phone svg { width: 15px; height: 15px; flex-shrink: 0; }
+
+    /* Right */
+    .nav-right { display: flex; align-items: center; gap: 28px; }
+    .nav-links { display: flex; align-items: center; gap: 22px; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.72); transition: color 0.2s; white-space: nowrap; }
+    .nav-links a:hover { color: #fff; }
+    nav.scrolled .nav-links a { color: var(--text-muted); }
+    nav.scrolled .nav-links a:hover { color: var(--navy); }
+
+    .btn-nav {
+      padding: 9px 20px;
+      background: var(--blue);
+      color: #fff !important;
+      border-radius: var(--r);
+      font-size: 13px; font-weight: 700;
+      white-space: nowrap;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-nav:hover { background: var(--blue-mid); transform: translateY(-1px); }
+
+    /* Hamburger */
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; padding: 6px; border: none; background: none;
+    }
+    .hamburger span { display: block; width: 22px; height: 2px; background: #fff; border-radius: 2px; transition: transform 0.3s, opacity 0.3s, background 0.35s; }
+    nav.scrolled .hamburger span { background: var(--navy); }
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    /* Mobile overlay */
+    .mob-menu {
+      display: none; position: fixed;
+      top: 72px; left: 0; right: 0; bottom: 0;
+      background: rgba(10,22,40,0.98);
+      flex-direction: column; align-items: center; justify-content: center;
+      gap: 32px; z-index: 999;
+      backdrop-filter: blur(16px);
+    }
+    .mob-menu.open { display: flex; }
+    .mob-menu a { font-size: 22px; font-weight: 600; color: rgba(255,255,255,0.8); transition: color 0.2s; }
+    .mob-menu a:hover { color: #fff; }
+    .mob-menu .btn-nav { font-size: 16px; padding: 14px 36px; }
+
+    /* ── HERO ─────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      padding: 128px 40px 80px;
+      position: relative;
+      text-align: center;
+      background:
+        radial-gradient(ellipse at 25% 40%, rgba(37,99,235,0.28) 0%, transparent 55%),
+        radial-gradient(ellipse at 75% 65%, rgba(14,30,80,0.35) 0%, transparent 55%),
+        linear-gradient(160deg, #071020 0%, #0d1e38 55%, #0a1628 100%);
+      overflow: hidden;
+    }
+    /* Dot pattern */
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0; pointer-events: none;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 36px 36px;
+    }
+    /* Diagonal lines accent */
+    .hero::after {
+      content: '';
+      position: absolute; bottom: -1px; left: 0; right: 0;
+      height: 80px; pointer-events: none;
+      background: linear-gradient(to bottom, transparent, var(--bg));
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 920px; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--blue-light);
+      background: rgba(37,99,235,0.15);
+      border: 1px solid rgba(59,130,246,0.3);
+      padding: 6px 16px; border-radius: 100px;
+      margin-bottom: 32px;
+      animation: fadeUp 0.7s ease 0.1s both;
+    }
+    .hero-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--blue-light); animation: blink 2s ease infinite; }
+    @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
+    .hero h1 {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(28px, 5vw, 62px);
+      line-height: 1.02; letter-spacing: 0.015em;
+      color: #fff;
+      margin-bottom: 28px;
+      animation: fadeUp 0.7s ease 0.2s both;
+    }
+    .hero-sub {
+      font-size: clamp(15px, 1.8vw, 18px);
+      line-height: 1.75; color: rgba(255,255,255,0.68);
+      max-width: 740px; margin: 0 auto 44px;
+      animation: fadeUp 0.7s ease 0.35s both;
+    }
+    .btn-hero {
+      display: inline-flex; align-items: center;
+      padding: 16px 40px;
+      background: #fff; color: var(--navy);
+      border-radius: var(--r); font-size: 16px; font-weight: 700;
+      transition: all 0.2s;
+      animation: fadeUp 0.7s ease 0.5s both;
+      box-shadow: 0 6px 28px rgba(0,0,0,0.35);
+    }
+    .btn-hero:hover { background: #e8f0ff; color: var(--blue); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,0,0,0.4); }
+
+    /* ── TRUST BAR ────────────────────────────────── */
+    .trust-bar {
+      background: var(--navy-mid);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      overflow: hidden;
+    }
+    .trust-inner {
+      display: flex; align-items: center; justify-content: center;
+      max-width: 1280px; margin: 0 auto;
+    }
+    .trust-item {
+      display: flex; align-items: center; gap: 10px;
+      padding: 18px 28px; flex-shrink: 0;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+    .trust-item:last-child { border-right: none; }
+    .t-icon {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: rgba(59,130,246,0.18);
+      border: 1px solid rgba(59,130,246,0.25);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .t-icon svg { width: 15px; height: 15px; color: var(--blue-light); }
+    .t-text { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.82); white-space: nowrap; }
+    .platina {
+      display: inline-flex; align-items: center; gap: 4px;
+      background: linear-gradient(135deg, #e0e0e0 0%, #b8b8b8 50%, #e0e0e0 100%);
+      color: #1a1a1a;
+      border-radius: 4px; padding: 2px 8px;
+      font-size: 10px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase;
+    }
+
+    /* ── SHARED SECTION ATOMS ─────────────────────── */
+    .sec { padding: 96px 40px; }
+    .sec-inner { max-width: 1200px; margin: 0 auto; }
+    .sec-label { font-size: 12px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: var(--blue); margin-bottom: 12px; }
+    .sec-heading { font-family: 'Anton', sans-serif; font-size: clamp(26px, 3.2vw, 46px); line-height: 1.05; color: var(--navy); margin-bottom: 48px; letter-spacing: 0.01em; }
+    .sec-heading-white { font-family: 'Anton', sans-serif; font-size: clamp(26px, 3.2vw, 46px); line-height: 1.05; color: #fff; margin-bottom: 48px; letter-spacing: 0.01em; }
+
+    /* ── PRINCIPLES ───────────────────────────────── */
+    .principles-bg { background: var(--bg); }
+    .principles-intro { font-size: 16px; line-height: 1.75; color: var(--text-muted); max-width: 680px; margin-bottom: 48px; }
+    .principles-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .p-card {
+      background: var(--gray-50);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 36px; display: flex; gap: 20px; align-items: flex-start;
+      transition: border-color var(--t), box-shadow var(--t), transform var(--t);
+    }
+    .p-card:hover { border-color: var(--blue-pale2); box-shadow: var(--shadow-md); transform: translateY(-2px); }
+    .p-num { font-family: 'Anton', sans-serif; font-size: 54px; line-height: 1; color: var(--blue-pale2); flex-shrink: 0; width: 60px; text-align: center; }
+    .p-title { font-family: 'Anton', sans-serif; font-size: 17px; letter-spacing: 0.02em; color: var(--navy); margin-bottom: 8px; }
+    .p-desc { font-size: 14px; line-height: 1.65; color: var(--text-muted); }
+
+    /* ── SERVICES ─────────────────────────────────── */
+    .services-bg { background: var(--gray-50); }
+    .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+    .srv-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 36px;
+      position: relative; overflow: hidden;
+      transition: border-color var(--t), box-shadow var(--t), transform var(--t);
+    }
+    .srv-card::after {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 3px; background: var(--blue);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.35s ease;
+    }
+    .srv-card:hover::after { transform: scaleX(1); }
+    .srv-card:hover { border-color: var(--blue-pale2); box-shadow: var(--shadow-lg); transform: translateY(-4px); }
+    .srv-head { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 16px; }
+    .srv-ico {
+      width: 48px; height: 48px; border-radius: var(--r);
+      background: var(--blue-pale); display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      transition: background 0.2s;
+    }
+    .srv-card:hover .srv-ico { background: var(--blue-pale2); }
+    .srv-ico svg { width: 24px; height: 24px; color: var(--blue); }
+    .srv-meta {}
+    .srv-num { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 4px; }
+    .srv-title { font-family: 'Anton', sans-serif; font-size: 20px; letter-spacing: 0.02em; color: var(--navy); }
+    .srv-desc { font-size: 14px; line-height: 1.72; color: var(--text-muted); margin-bottom: 20px; }
+    .srv-expand { border-top: 1px solid var(--border); padding-top: 16px; }
+    .srv-expand-lbl { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+    .srv-list { display: flex; flex-direction: column; gap: 7px; }
+    .srv-list li { display: flex; align-items: flex-start; gap: 9px; font-size: 13px; color: var(--text); line-height: 1.4; }
+    .srv-list li::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--blue); flex-shrink: 0; margin-top: 5px; }
+
+    /* Desktop: reveal on hover */
+    @media (min-width: 769px) {
+      .srv-expand {
+        max-height: 0; overflow: hidden; opacity: 0;
+        border-top-color: transparent; padding-top: 0;
+        transition: max-height 0.45s ease, opacity 0.3s ease, padding-top 0.3s, border-color 0.3s;
+      }
+      .srv-card:hover .srv-expand {
+        max-height: 700px; opacity: 1;
+        border-top-color: var(--border); padding-top: 16px;
+      }
+    }
+
+    /* ── PHILOSOPHY / QUOTE ───────────────────────── */
+    .philosophy-bg {
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(37,99,235,0.22) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(14,30,80,0.4) 0%, transparent 60%),
+        linear-gradient(150deg, #071020 0%, #0d1e38 100%);
+    }
+    .philosophy-inner { max-width: 860px; margin: 0 auto; text-align: center; }
+    .q-mark { font-family: 'Anton', sans-serif; font-size: 110px; line-height: 0.7; color: rgba(59,130,246,0.35); margin-bottom: 8px; }
+    .q-text { font-size: clamp(15px, 1.8vw, 19px); line-height: 1.82; color: rgba(255,255,255,0.82); font-style: italic; font-weight: 300; margin-bottom: 44px; }
+    .q-author { display: flex; align-items: center; justify-content: center; gap: 18px; }
+    .q-avatar {
+      width: 62px; height: 62px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue) 0%, var(--blue-mid) 100%);
+      border: 3px solid rgba(255,255,255,0.18);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Anton', sans-serif; font-size: 20px; color: #fff; flex-shrink: 0;
+    }
+    .q-name { font-family: 'Anton', sans-serif; font-size: 18px; letter-spacing: 0.03em; color: #fff; }
+    .q-title-text { font-size: 13px; color: rgba(255,255,255,0.5); margin-top: 3px; }
+
+    /* ── WHY US ───────────────────────────────────── */
+    .why-bg { background: var(--bg); }
+    .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .why-body { font-size: 15px; line-height: 1.82; color: var(--text-muted); margin-bottom: 32px; }
+    .why-highlight {
+      background: var(--blue-pale); border-left: 4px solid var(--blue);
+      border-radius: 0 var(--r) var(--r) 0;
+      padding: 14px 20px; font-size: 14px; font-weight: 600; color: var(--navy); margin-bottom: 32px;
+    }
+    .why-features { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .wf-card {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 16px; background: var(--gray-50);
+      border: 1px solid var(--border); border-radius: var(--r);
+      transition: border-color var(--t);
+    }
+    .wf-card:hover { border-color: var(--blue-pale2); }
+    .wf-ico { width: 36px; height: 36px; border-radius: var(--r); background: var(--blue-pale); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .wf-ico svg { width: 18px; height: 18px; color: var(--blue); }
+    .wf-title { font-family: 'Anton', sans-serif; font-size: 14px; letter-spacing: 0.02em; color: var(--navy); margin-bottom: 4px; }
+    .wf-desc { font-size: 12px; line-height: 1.5; color: var(--text-muted); }
+    /* Right panel: KattoOnline feature */
+    .katto-online {
+      background: var(--navy);
+      border-radius: var(--r-xl); padding: 44px; position: relative; overflow: hidden;
+    }
+    .katto-online::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at top right, rgba(37,99,235,0.3) 0%, transparent 65%);
+    }
+    .ko-label { font-size: 11px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: var(--blue-light); margin-bottom: 16px; position: relative; }
+    .ko-title { font-family: 'Anton', sans-serif; font-size: 32px; letter-spacing: 0.03em; color: #fff; margin-bottom: 14px; position: relative; }
+    .ko-desc { font-size: 14px; line-height: 1.72; color: rgba(255,255,255,0.62); margin-bottom: 28px; position: relative; }
+    .ko-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 28px; position: relative; }
+    .ko-stat { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--r); padding: 16px; }
+    .ko-stat-val { font-family: 'Anton', sans-serif; font-size: 28px; color: #fff; line-height: 1; }
+    .ko-stat-lbl { font-size: 11px; color: rgba(255,255,255,0.45); margin-top: 4px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; }
+    .ko-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 14px; font-weight: 600; color: var(--blue-light);
+      transition: gap 0.2s; position: relative;
+    }
+    .ko-link:hover { gap: 12px; }
+
+    /* ── FAQ ──────────────────────────────────────── */
+    .faq-bg { background: var(--blue-pale); }
+    .faq-list { border: 1px solid var(--blue-pale2); border-radius: var(--r-xl); overflow: hidden; background: #fff; box-shadow: var(--shadow-sm); }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-item summary {
+      list-style: none; padding: 22px 28px;
+      font-size: 16px; font-weight: 600; color: var(--navy);
+      cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px;
+      transition: background 0.2s; user-select: none;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: '+'; font-size: 22px; font-weight: 300; color: var(--blue); flex-shrink: 0; transition: transform 0.25s; }
+    .faq-item[open] summary::after { transform: rotate(45deg); }
+    .faq-item summary:hover { background: var(--blue-pale); }
+    .faq-item[open] summary { background: var(--blue-pale); }
+    .faq-ans { padding: 0 28px 22px; font-size: 15px; line-height: 1.78; color: var(--text-muted); }
+
+    /* ── CONTACT ──────────────────────────────────── */
+    .contact-bg { background: var(--gray-50); border-top: 1px solid var(--border); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: start; }
+    .contact-heading { font-family: 'Anton', sans-serif; font-size: clamp(36px, 5vw, 64px); line-height: 0.95; letter-spacing: 0.02em; color: var(--navy); margin-bottom: 16px; }
+    .contact-sub { font-size: 15px; line-height: 1.75; color: var(--text-muted); max-width: 400px; margin-bottom: 40px; }
+    .contact-items { display: flex; flex-direction: column; gap: 14px; }
+    .c-item { display: flex; align-items: center; gap: 14px; }
+    .c-ico { width: 44px; height: 44px; border-radius: var(--r); background: var(--blue-pale); border: 1px solid var(--blue-pale2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .c-ico svg { width: 20px; height: 20px; color: var(--blue); }
+    .c-val { font-size: 14px; color: var(--text-muted); }
+    .c-val a { color: inherit; transition: color 0.2s; }
+    .c-val a:hover { color: var(--blue); }
+    .c-phone { font-family: 'Anton', sans-serif; font-size: 26px; letter-spacing: 0.03em; color: var(--navy); }
+
+    /* Form */
+    .contact-form { background: #fff; border: 1px solid var(--border); border-radius: var(--r-xl); padding: 40px; box-shadow: var(--shadow-md); }
+    .form-title { font-family: 'Anton', sans-serif; font-size: 22px; letter-spacing: 0.03em; color: var(--navy); margin-bottom: 6px; }
+    .form-sub { font-size: 14px; color: var(--text-muted); margin-bottom: 28px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+    .form-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy); }
+    .form-input {
+      padding: 12px 16px; border: 1.5px solid var(--border); border-radius: var(--r);
+      font-size: 14px; font-family: 'Inter', sans-serif; color: var(--navy);
+      background: var(--gray-50); transition: border-color 0.2s, box-shadow 0.2s, background 0.2s; outline: none;
+    }
+    .form-input:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(30,64,175,0.1); background: #fff; }
+    .form-input::placeholder { color: #9ca3af; }
+    textarea.form-input { resize: vertical; min-height: 120px; }
+    .form-submit { width: 100%; padding: 14px; background: var(--blue); color: #fff; border: none; border-radius: var(--r); font-size: 15px; font-weight: 700; font-family: 'Inter', sans-serif; cursor: pointer; transition: background 0.2s, transform 0.2s; margin-top: 4px; }
+    .form-submit:hover { background: var(--blue-mid); transform: translateY(-1px); }
+
+    /* ── FOOTER ───────────────────────────────────── */
+    footer { background: var(--navy); padding: 72px 40px 32px; }
+    .ft-inner { max-width: 1200px; margin: 0 auto; }
+    .ft-top { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 32px; }
+    .ft-brand-name { font-family: 'Anton', sans-serif; font-size: 22px; letter-spacing: 0.06em; color: #fff; }
+    .ft-brand-oy { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 14px; }
+    .ft-tagline { font-size: 13px; line-height: 1.65; color: rgba(255,255,255,0.45); max-width: 230px; margin-bottom: 20px; }
+    .ft-social { display: flex; gap: 8px; }
+    .ft-social a { width: 36px; height: 36px; border-radius: var(--r); background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; transition: background 0.2s, border-color 0.2s; }
+    .ft-social a:hover { background: var(--blue); border-color: var(--blue); }
+    .ft-social svg { width: 16px; height: 16px; color: rgba(255,255,255,0.65); }
+    .ft-social a:hover svg { color: #fff; }
+    .ft-col {}
+    .ft-col-title { font-size: 11px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: rgba(255,255,255,0.38); margin-bottom: 16px; }
+    .ft-links { display: flex; flex-direction: column; gap: 10px; }
+    .ft-links a { font-size: 13px; color: rgba(255,255,255,0.55); transition: color 0.2s; }
+    .ft-links a:hover { color: #fff; }
+    .ft-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    .ft-copy { font-size: 12px; color: rgba(255,255,255,0.28); }
+    .ft-badge-row { display: flex; align-items: center; gap: 12px; }
+
+    /* ── ANIMATIONS ───────────────────────────────── */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+    .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.75s ease, transform 0.75s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .d1 { transition-delay: 0.08s; }
+    .d2 { transition-delay: 0.16s; }
+    .d3 { transition-delay: 0.24s; }
+    .d4 { transition-delay: 0.32s; }
+
+    /* ── RESPONSIVE ───────────────────────────────── */
+    @media (max-width: 1100px) {
+      .ft-top { grid-template-columns: 1fr 1fr; gap: 36px; }
+      .why-grid { grid-template-columns: 1fr; }
+      .katto-online { display: none; }
+    }
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-phone, .nav-right { display: none; }
+      .hamburger { display: flex; }
+
+      .hero { padding: 100px 24px 64px; }
+
+      .trust-inner {
+        overflow-x: auto; justify-content: flex-start;
+        -webkit-overflow-scrolling: touch; scrollbar-width: none; padding: 0 16px;
+      }
+      .trust-inner::-webkit-scrollbar { display: none; }
+
+      .sec { padding: 64px 24px; }
+      .principles-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      .form-row { grid-template-columns: 1fr; }
+      .contact-form { padding: 28px 24px; }
+      .ft-top { grid-template-columns: 1fr 1fr; gap: 28px; }
+      .ft-bottom { flex-direction: column; text-align: center; }
+      .why-features { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 28px; }
+      .ft-top { grid-template-columns: 1fr; }
+      .principles-grid, .services-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAVBAR ──────────────────────────────────────── -->
+<nav id="navbar">
+  <div class="nav-inner">
+
+    <a href="#etusivu" class="nav-logo">
+      <span class="logo-main">KATTOHOIVA</span>
+      <span class="logo-oy">Oy</span>
+    </a>
+
+    <div class="nav-phone">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.63 19.79 19.79 0 01.0 2.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.72 6.72l1.28-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+      </svg>
+      <a href="tel:0207345090">020 734 5090</a>
+    </div>
+
+    <div class="nav-right">
+      <nav class="nav-links">
+        <a href="#palvelut">Palvelut</a>
+        <a href="#miksi">Miksi KattoHoiva</a>
+        <a href="#ukk">UKK</a>
+        <a href="#yhteydenotto">Yhteydenotto</a>
+      </nav>
+      <a href="#yhteydenotto" class="btn-nav">Pyydä tarjous →</a>
+    </div>
+
+    <button class="hamburger" id="hamburger" aria-label="Avaa valikko">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mob-menu" id="mob-menu">
+  <a href="#palvelut" class="mob-close">Palvelut</a>
+  <a href="#miksi" class="mob-close">Miksi KattoHoiva</a>
+  <a href="#ukk" class="mob-close">UKK</a>
+  <a href="#yhteydenotto" class="mob-close">Yhteydenotto</a>
+  <a href="#yhteydenotto" class="btn-nav mob-close">Pyydä tarjous →</a>
+  <a href="tel:0207345090" style="font-size:18px;color:rgba(255,255,255,0.6);">020 734 5090</a>
+</div>
+
+<!-- ── HERO ──────────────────────────────────────────── -->
+<section class="hero" id="etusivu">
+  <div class="hero-content">
+    <div class="hero-badge">Suomen johtava älykkäiden kattopalveluiden tarjoaja</div>
+    <h1>ÄLYKÄSTÄ JA VASTUULLISTA VESIKATON ELINKAAREN HALLINTAA 24/7/365</h1>
+    <p class="hero-sub">KattoHoiva on Suomen johtava älykkäitä kattoratkaisuja tarjoava vesikattoihin erikoistunut asiantuntijayritys. Olipa tarpeesi akuutti korjaus, perinteinen kattopalvelu tai älykäs kattoratkaisu, löydät kaiken KattoHoivalta saman katon alta – luotettavasti, läpinäkyvästi ja puolueettomasti.</p>
+    <a href="#yhteydenotto" class="btn-hero">Pyydä ilmainen tarkastus →</a>
+  </div>
+</section>
+
+<!-- ── TRUST BAR ──────────────────────────────────────── -->
+<div class="trust-bar">
+  <div class="trust-inner">
+
+    <div class="trust-item">
+      <div class="t-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+        </svg>
+      </div>
+      <div><span class="t-text"><span class="platina">★ Suomen Vahvimmat</span> Platina</span></div>
+    </div>
+
+    <div class="trust-item">
+      <div class="t-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+        </svg>
+      </div>
+      <span class="t-text">24/7/365 Tavoitettavissa</span>
+    </div>
+
+    <div class="trust-item">
+      <div class="t-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+      </div>
+      <span class="t-text">Puolueeton asiantuntija</span>
+    </div>
+
+    <div class="trust-item">
+      <div class="t-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+        </svg>
+      </div>
+      <span class="t-text">Reaaliaikainen data</span>
+    </div>
+
+    <div class="trust-item">
+      <div class="t-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+        </svg>
+      </div>
+      <span class="t-text">Koko Suomi</span>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── 4 CORE PRINCIPLES ──────────────────────────────── -->
+<section class="sec principles-bg" id="periaatteet">
+  <div class="sec-inner">
+    <div class="fade-up">
+      <p class="sec-label">Toimintamalli</p>
+      <h2 class="sec-heading">Älykäs ja vastuullinen vesikaton<br>elinkaarenhallinta perustuu 4 periaatteeseen</h2>
+    </div>
+    <div class="principles-grid">
+
+      <div class="p-card fade-up d1">
+        <div class="p-num">01</div>
+        <div>
+          <div class="p-title">LUOTETTAVA JA REAALIAIKAINEN DATA</div>
+          <p class="p-desc">Päätökset tehdään faktojen, ei oletusten pohjalta. Jatkuva seuranta ja mittaus antavat tarkan kuvan katon kunnosta reaaliajassa.</p>
+        </div>
+      </div>
+
+      <div class="p-card fade-up d2">
+        <div class="p-num">02</div>
+        <div>
+          <div class="p-title">RIIPPUMATON ASIANTUNTIJANÄKEMYS</div>
+          <p class="p-desc">KattoHoiva toimii aina asiakkaan edun mukaisesti. Emme myy tuotteita tai korjauksia, joita ei tarvita — vain ratkaisuja, jotka ovat perusteltuja.</p>
+        </div>
+      </div>
+
+      <div class="p-card fade-up d3">
+        <div class="p-num">03</div>
+        <div>
+          <div class="p-title">PUOLUEETON ANALYYSI</div>
+          <p class="p-desc">Katon kunto arvioidaan objektiivisesti ilman kaupallisia intressejä. Saat selkeän, dokumentoidun näkemyksen — ei myyntipuhetta.</p>
+        </div>
+      </div>
+
+      <div class="p-card fade-up d4">
+        <div class="p-num">04</div>
+        <div>
+          <div class="p-title">AMMATTIMAISET PALVELUT</div>
+          <p class="p-desc">Tarkastukset, huollot ja korjaukset toteutetaan ammattitaidolla, oikea-aikaisesti ja dokumentoidusti — alusta loppuun.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICES ───────────────────────────────────────── -->
+<section class="sec services-bg" id="palvelut">
+  <div class="sec-inner">
+    <div class="fade-up">
+      <p class="sec-label">Palvelut</p>
+      <h2 class="sec-heading">Kaikki kattopalvelut<br>saman katon alta</h2>
+    </div>
+    <div class="services-grid">
+
+      <!-- Card 1 -->
+      <div class="srv-card fade-up d1">
+        <div class="srv-head">
+          <div class="srv-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/>
+              <line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/>
+              <line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/>
+              <line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/>
+              <line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/>
+            </svg>
+          </div>
+          <div class="srv-meta">
+            <div class="srv-num">01</div>
+            <div class="srv-title">ÄLYKKÄÄT KATTORATKAISUT</div>
+          </div>
+        </div>
+        <p class="srv-desc">Älykäs ja vastuullinen katon elinkaaren hallinta perustuu aina ennakointiin, ei reaktiivisiin toimenpiteisiin. Kattoa ei hoideta vasta silloin, kun ongelmat ovat jo näkyviä, vaan sen kuntoa seurataan ja hallitaan jatkuvasti reaaliaikaisen datan ja asiantuntijanäkemyksen avulla.</p>
+        <div class="srv-expand">
+          <div class="srv-expand-lbl">Sisältää:</div>
+          <ul class="srv-list">
+            <li>Miksi älyä katoille</li>
+            <li>Vastuullinen elinkaarenhallinta</li>
+            <li>Reaaliaikainen riskienhallinta</li>
+            <li>Sähköä johtavat alusmateriaalit</li>
+            <li>Älykäs lumikuorman hallinta</li>
+            <li>Katon ilmakuvaukset</li>
+            <li>KattoOnline pilvipalvelu</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="srv-card fade-up d2">
+        <div class="srv-head">
+          <div class="srv-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/>
+              <rect x="9" y="3" width="6" height="4" rx="1"/>
+              <polyline points="9 12 11 14 15 10"/>
+            </svg>
+          </div>
+          <div class="srv-meta">
+            <div class="srv-num">02</div>
+            <div class="srv-title">TARKASTUS- JA ASIANTUNTIJAPALVELUT</div>
+          </div>
+        </div>
+        <p class="srv-desc">Säännölliset tarkastukset ja selkeä raportointi muodostavat kokonaiskuvan katon kunnosta. Asiantuntijanäkemys varmistaa, että päätökset perustuvat todelliseen tilaan, ei arvauksiin.</p>
+        <div class="srv-expand">
+          <div class="srv-expand-lbl">Sisältää:</div>
+          <ul class="srv-list">
+            <li>Katon kuntotarkastus (2×/vuosi)</li>
+            <li>Katon kuntoarviot (2–3 vuoden välein)</li>
+            <li>Kattoturvan tarkastus ja huolto (lakisääteinen 1×/vuosi)</li>
+            <li>Sähköinen vuodonpaikannus</li>
+            <li>Rakenneselvitykset</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="srv-card fade-up d3">
+        <div class="srv-head">
+          <div class="srv-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>
+            </svg>
+          </div>
+          <div class="srv-meta">
+            <div class="srv-num">03</div>
+            <div class="srv-title">HUOLTO- JA ELINKAARIPALVELUT</div>
+          </div>
+        </div>
+        <p class="srv-desc">Suunnitelmallinen ja oikea-aikainen huolto varmistaa katon toimivuuden, turvallisuuden ja pitkän käyttöiän. Ennaltaehkäisy on aina kustannustehokkaampaa kuin korjaaminen.</p>
+        <div class="srv-expand">
+          <div class="srv-expand-lbl">Sisältää:</div>
+          <ul class="srv-list">
+            <li>Kausi- ja vuosihuollot (kevät / syksy / talvi)</li>
+            <li>Pesut, pinnoitukset ja maalaukset</li>
+            <li>Tiivistykset ja vuodonpaikannukset</li>
+            <li>Korjaukset ja osakorjaukset</li>
+            <li>Sammaleen / jäkälän / levän poisto</li>
+            <li>Peltityöt, Tulityöt</li>
+            <li>Lumenpudotukset</li>
+            <li>Kattoturva-asennukset</li>
+            <li>Ylläpitävät huollot</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="srv-card fade-up d4">
+        <div class="srv-head">
+          <div class="srv-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+          </div>
+          <div class="srv-meta">
+            <div class="srv-num">04</div>
+            <div class="srv-title">KORJAUSURAKOINTI</div>
+          </div>
+        </div>
+        <p class="srv-desc">Ammattimaiset korjausurakat kaikenkokoisiin kohteisiin. Jokainen korjaus perustuu huolelliseen analyysiin ja toteutetaan laadukkailla materiaaleilla ja osaavalla työvoimalla.</p>
+        <div class="srv-expand">
+          <div class="srv-expand-lbl">Sisältää:</div>
+          <ul class="srv-list">
+            <li>Katon korjausurakointi</li>
+            <li>Osittaiset ja täydelliset korjaukset</li>
+            <li>Kaikenkokoiset kohteet</li>
+            <li>Dokumentoitu laadunvarmistus</li>
+            <li>Huoltohistoria KattoOnline-portaaliin</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── PHILOSOPHY / MIKA QUOTE ────────────────────────── -->
+<section class="sec philosophy-bg">
+  <div class="sec-inner">
+    <div class="philosophy-inner fade-up">
+      <div class="q-mark">"</div>
+      <blockquote class="q-text">
+        Aiemmassa työssäni näin usein tilanteita, joissa vesikaton uusimista suositeltiin liian kevyin perustein. Todellisuudessa katon elinkaarta olisi voitu pidentää merkittävästi huollolla ja tiivistyksillä, murto-osalla uusimisen kustannuksista. Halusimme rakentaa toimintamallin, jossa kattojen kunto arvioidaan objektiivisesti, päätökset perustuvat faktaan ja ratkaisut valitaan elinkaaren ja kustannustehokkuuden näkökulmasta, ei oletusten.
+      </blockquote>
+      <div class="q-author">
+        <div class="q-avatar">MR</div>
+        <div>
+          <div class="q-name">Mika Ruotsalo</div>
+          <div class="q-title-text">Yrittäjä, toimitusjohtaja — KattoHoiva Oy</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── WHY US ─────────────────────────────────────────── -->
+<section class="sec why-bg" id="miksi">
+  <div class="sec-inner">
+    <div class="why-grid">
+
+      <div>
+        <div class="fade-up">
+          <p class="sec-label">Miksi KattoHoiva</p>
+          <h2 class="sec-heading">Älykkäät kattopalvelut – päätökset tiedolla, ei arvauksilla</h2>
+          <p class="why-body">Sanonta kuuluu, että "tyhmästä päästä kärsii koko ruumis". Kattojen kohdalla tämä tarkoittaa sitä, että väärät päätökset, puutteellinen seuranta tai liian myöhäinen reagointi voivat aiheuttaa merkittäviä vahinkoja koko rakennukselle ja suuria kustannuksia sen omistajille.</p>
+          <div class="why-highlight">KattoHoivan älykkäät kattopalvelut yhdistävät ennakoinnin, tarkastukset, raportoinnin ja huollon yhdeksi hallituksi kokonaisuudeksi.</div>
+        </div>
+        <div class="why-features fade-up">
+          <div class="wf-card">
+            <div class="wf-ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div>
+              <div class="wf-title">ENNAKOINTI</div>
+              <div class="wf-desc">Ongelmat tunnistetaan ennen kuin ne kasvavat kalliiksi.</div>
+            </div>
+          </div>
+          <div class="wf-card">
+            <div class="wf-ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <div>
+              <div class="wf-title">REAALIAIKAINEN DATA</div>
+              <div class="wf-desc">KattoOnline-portaali pitää sinut ajan tasalla 24/7.</div>
+            </div>
+          </div>
+          <div class="wf-card">
+            <div class="wf-ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div>
+              <div class="wf-title">PUOLUEETTOMUUS</div>
+              <div class="wf-desc">Ei kaupallisia intressejä — vain paras ratkaisu sinulle.</div>
+            </div>
+          </div>
+          <div class="wf-card">
+            <div class="wf-ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>
+            </div>
+            <div>
+              <div class="wf-title">LÄPINÄKYVYYS</div>
+              <div class="wf-desc">Kaikki toimenpiteet dokumentoidaan ja raportoidaan.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- KattoOnline feature panel -->
+      <div class="katto-online fade-up">
+        <div class="ko-label">Digitaalinen pilvipalvelu</div>
+        <div class="ko-title">KattoOnline</div>
+        <p class="ko-desc">Seuraa kattosi kuntoa, historiatietoja, raportteja ja huoltoaikatauluja reaaliajassa — missä ja milloin tahansa. Kaikki tieto yhdessä paikassa, läpinäkyvästi ja luotettavasti.</p>
+        <div class="ko-stats">
+          <div class="ko-stat">
+            <div class="ko-stat-val">24/7</div>
+            <div class="ko-stat-lbl">Käytettävissä</div>
+          </div>
+          <div class="ko-stat">
+            <div class="ko-stat-val">100%</div>
+            <div class="ko-stat-lbl">Läpinäkyvä</div>
+          </div>
+          <div class="ko-stat">
+            <div class="ko-stat-val">≡</div>
+            <div class="ko-stat-lbl">Reaaliaikaiset raportit</div>
+          </div>
+          <div class="ko-stat">
+            <div class="ko-stat-val">🔒</div>
+            <div class="ko-stat-lbl">Turvallinen pilvi</div>
+          </div>
+        </div>
+        <a href="https://online.kattohoiva.fi" target="_blank" rel="noopener" class="ko-link">
+          Avaa KattoOnline-portaali →
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ────────────────────────────────────────────── -->
+<section class="sec faq-bg" id="ukk">
+  <div class="sec-inner">
+    <div class="fade-up" style="max-width:640px;">
+      <p class="sec-label">UKK</p>
+      <h2 class="sec-heading">Usein kysytyt<br>kysymykset</h2>
+    </div>
+    <div class="faq-list fade-up">
+
+      <details class="faq-item">
+        <summary>Mikä on sopimuksen kesto?</summary>
+        <p class="faq-ans">Räätälöimme palvelut tarpeidenne mukaan — sekä kertatilaukset että jatkuvat huoltosopimukset onnistuvat. Ei pakollista sitoutumista.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Kuinka nopeasti saatte tehtyä tarkastuksen?</summary>
+        <p class="faq-ans">Akuuteissa tapauksissa reagoimme nopeasti. Ota yhteyttä puhelimitse (020 734 5090) tai lomakkeella, niin sovitaan aikataulu tilanteesi mukaan.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Toimitteko koko Suomessa?</summary>
+        <p class="faq-ans">Kyllä. Palvelemme asiakkaita ympäri Suomen — niin pienissä kuin suurissa kohteissa.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Miksi valita älykäs kattoratkaisu perinteisen sijaan?</summary>
+        <p class="faq-ans">Ennakointi on aina edullisempaa kuin reaktiivinen korjaaminen. Reaaliaikainen seuranta tunnistaa riskit ennen kuin ne muuttuvat kalliiksi vahingoiksi — säästät aikaa, rahaa ja vaivaa.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Kenelle palvelunne sopivat?</summary>
+        <p class="faq-ans">Kiinteistöjen omistajille, taloyhtiöille, yrityksille ja ammattilaisille — kaikille jotka haluavat hallita kattonsa elinkaarta suunnitelmallisesti ja kustannustehokkaasti.</p>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ────────────────────────────────────────── -->
+<section class="sec contact-bg" id="yhteydenotto">
+  <div class="sec-inner">
+    <div class="contact-grid">
+
+      <div class="fade-up">
+        <p class="sec-label">Ota yhteyttä</p>
+        <h2 class="contact-heading">ALOITETAAN<br>YHDESSÄ</h2>
+        <p class="contact-sub">Haluatko tietää tarkemmin palveluistamme? Ota yhteyttä tai pyydä tarjous — asiantuntijamme auttavat löytämään parhaan ratkaisun kattosi tarpeisiin.</p>
+
+        <div class="contact-items">
+          <div class="c-item">
+            <div class="c-ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.63 19.79 19.79 0 01.0 2.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.72 6.72l1.28-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+              </svg>
+            </div>
+            <div class="c-val">
+              <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:2px;">Puhelin</div>
+              <a href="tel:0207345090" class="c-phone">020 734 5090</a>
+            </div>
+          </div>
+          <div class="c-item">
+            <div class="c-ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+            </div>
+            <div class="c-val"><a href="mailto:info@kattohoiva.fi">info@kattohoiva.fi</a></div>
+          </div>
+          <div class="c-item">
+            <div class="c-ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+              </svg>
+            </div>
+            <div class="c-val">Koko Suomi</div>
+          </div>
+          <div class="c-item">
+            <div class="c-ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </div>
+            <div class="c-val">Tavoitettavissa 24/7/365</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form fade-up">
+        <div class="form-title">Pyydä ilmainen tarkastus</div>
+        <p class="form-sub">Täytä lomake — otamme yhteyttä 24 tunnin sisällä.</p>
+        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Nimi *</label>
+              <input class="form-input" type="text" name="name" placeholder="Matti Meikäläinen" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Sähköposti *</label>
+              <input class="form-input" type="email" name="email" placeholder="matti@yritys.fi" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Yritys</label>
+              <input class="form-input" type="text" name="company" placeholder="Yritys Oy">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Puhelinnumero</label>
+              <input class="form-input" type="tel" name="phone" placeholder="050 123 4567">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Viesti *</label>
+            <textarea class="form-input" name="message" placeholder="Kerro kattosi tarpeesta — kohteen tyyppi, sijainti ja mitä tarvitset..." required></textarea>
+          </div>
+          <button type="submit" class="form-submit">Pyydä tarjous →</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────────────── -->
+<footer>
+  <div class="ft-inner">
+    <div class="ft-top">
+
+      <div>
+        <div class="ft-brand-name">KATTOHOIVA</div>
+        <div class="ft-brand-oy">OY</div>
+        <p class="ft-tagline">Älykästä ja vastuullista vesikaton elinkaaren hallintaa — 24/7/365.</p>
+        <div class="ft-social">
+          <!-- LinkedIn -->
+          <a href="https://linkedin.com/company/kattohoiva-oy" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <!-- Facebook -->
+          <a href="https://facebook.com/kattohoiva" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <!-- Instagram -->
+          <a href="https://instagram.com/kattohoiva" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="ft-col">
+        <div class="ft-col-title">Palvelut</div>
+        <div class="ft-links">
+          <a href="#palvelut">Älykkäät kattoratkaisut</a>
+          <a href="#palvelut">Tarkastuspalvelut</a>
+          <a href="#palvelut">Huolto- ja elinkaaripalvelut</a>
+          <a href="#palvelut">Korjausurakointi</a>
+        </div>
+      </div>
+
+      <div class="ft-col">
+        <div class="ft-col-title">Yritys</div>
+        <div class="ft-links">
+          <a href="#miksi">Miksi KattoHoiva</a>
+          <a href="#periaatteet">Toimintamalli</a>
+          <a href="#ukk">UKK</a>
+          <a href="https://online.kattohoiva.fi" target="_blank" rel="noopener">KattoOnline-portaali ↗</a>
+        </div>
+      </div>
+
+      <div class="ft-col">
+        <div class="ft-col-title">Yhteystiedot</div>
+        <div class="ft-links">
+          <a href="tel:0207345090">020 734 5090</a>
+          <a href="mailto:info@kattohoiva.fi">info@kattohoiva.fi</a>
+          <a href="#yhteydenotto">Pyydä tarjous</a>
+          <a href="#yhteydenotto">Ilmainen tarkastus</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="ft-bottom">
+      <p class="ft-copy">© 2025 KattoHoiva Oy. Kaikki oikeudet pidätetään.</p>
+      <div class="ft-badge-row">
+        <span class="platina">★ Suomen Vahvimmat Platina</span>
+        <span style="font-size:11px;color:rgba(255,255,255,0.25);">Mika Ruotsalo, toimitusjohtaja</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ── Sticky navbar ────────────────────────────────────
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // ── Hamburger / mobile menu ──────────────────────────
+  const hamburger = document.getElementById('hamburger');
+  const mobMenu   = document.getElementById('mob-menu');
+  hamburger.addEventListener('click', () => {
+    const open = mobMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+    hamburger.setAttribute('aria-label', open ? 'Sulje valikko' : 'Avaa valikko');
+  });
+  document.querySelectorAll('.mob-close').forEach(el => {
+    el.addEventListener('click', () => {
+      mobMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // ── Scroll reveal ────────────────────────────────────
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // ── Smooth scroll ────────────────────────────────────
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        const offset = target.getBoundingClientRect().top + window.scrollY - 80;
+        window.scrollTo({ top: offset, behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
