@@ -108,84 +108,87 @@
     .hamburger.open span:nth-child(2) { opacity: 0; transform: translateX(-50%) scaleX(0); }
     .hamburger.open span:nth-child(3) { top: 21px; transform: translateX(-50%) rotate(-45deg); }
 
-    /* ── FULL-SCREEN MENU ─────────────────────────────────── */
-    #side-drawer {
-      position: fixed; inset: 0; z-index: 260;
-      background: #0a0a0a;
-      display: flex; flex-direction: column;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.35s ease, visibility 0.35s ease;
+    /* ── SLIDE-IN DRAWER ──────────────────────────────────── */
+    #drawer-overlay {
+      position: fixed; inset: 0; z-index: 250;
+      background: rgba(0,0,0,0.55);
+      opacity: 0; visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
     }
-    #side-drawer.open { opacity: 1; visibility: visible; }
+    #drawer-overlay.open { opacity: 1; visibility: visible; }
+
+    #side-drawer {
+      position: fixed; top: 0; right: 0; bottom: 0; z-index: 260;
+      width: 280px;
+      background: #0d0d0d;
+      border-left: 1px solid var(--border);
+      display: flex; flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(.23,1,.32,1);
+      overflow-y: auto;
+    }
+    #side-drawer.open { transform: translateX(0); }
 
     .drawer-head {
       display: flex; align-items: center; justify-content: space-between;
-      padding: 16px 28px;
+      padding: 16px 24px;
       border-bottom: 1px solid var(--border);
+      min-height: 64px;
     }
-    .drawer-logo img { height: 52px; width: auto; opacity: 0.85; }
+    .drawer-logo { height: 44px; width: auto; opacity: 0.85; }
     .drawer-close {
-      width: 44px; height: 44px;
+      width: 40px; height: 40px;
       border: 1px solid var(--border); border-radius: var(--radius);
       background: none; cursor: pointer; color: var(--gray-400);
-      font-size: 18px; display: flex; align-items: center; justify-content: center;
-      transition: border-color 0.2s, color 0.2s, background 0.2s;
+      font-size: 16px; display: flex; align-items: center; justify-content: center;
+      transition: border-color 0.2s, color 0.2s;
+      flex-shrink: 0;
     }
-    .drawer-close:hover { border-color: var(--gray-400); color: var(--text); background: var(--gray-50); }
+    .drawer-close:hover { border-color: var(--gray-400); color: var(--text); }
 
-    /* nav links — stacked list in the center */
-    .drawer-body {
-      flex: 1;
-      display: flex; flex-direction: column; justify-content: center;
-      padding: 32px 40px;
-      overflow-y: auto;
-    }
     .drawer-nav {
       display: flex; flex-direction: column;
-      margin-bottom: 32px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
     }
     .drawer-link {
-      font-family: 'Anton', sans-serif;
-      font-size: clamp(32px, 7vw, 48px);
-      line-height: 1; letter-spacing: 0.01em;
-      color: var(--gray-400); text-decoration: none;
-      padding: 11px 0;
+      font-size: 15px; font-weight: 500;
+      color: var(--gray-600); text-decoration: none;
+      padding: 14px 24px;
+      display: block;
       border-bottom: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: space-between;
-      opacity: 0; transform: translateY(16px);
-      transition: opacity 0.3s ease, transform 0.3s cubic-bezier(.23,1,.32,1),
-                  color 0.15s;
+      transition: color 0.15s, background 0.15s;
+      opacity: 0; transform: translateX(16px);
+      transition: opacity 0.25s ease, transform 0.25s cubic-bezier(.23,1,.32,1),
+                  color 0.15s, background 0.15s;
     }
-    .drawer-link::after { content: '↗'; font-size: 0.5em; opacity: 0; transition: opacity 0.15s; }
-    .drawer-link:hover { color: var(--text); }
-    .drawer-link:hover::after { opacity: 1; }
-    .drawer-link:first-child { border-top: 1px solid var(--border); }
+    .drawer-link:last-child { border-bottom: none; }
+    .drawer-link:hover { color: var(--text); background: var(--gray-50); }
+    #side-drawer.open .drawer-link { opacity: 1; transform: translateX(0); }
+    #side-drawer.open .drawer-link:nth-child(1) { transition-delay: 0.06s; }
+    #side-drawer.open .drawer-link:nth-child(2) { transition-delay: 0.10s; }
+    #side-drawer.open .drawer-link:nth-child(3) { transition-delay: 0.14s; }
+    #side-drawer.open .drawer-link:nth-child(4) { transition-delay: 0.18s; }
+    #side-drawer.open .drawer-link:nth-child(5) { transition-delay: 0.22s; }
+    #side-drawer.open .drawer-link:nth-child(6) { transition-delay: 0.26s; }
 
-    #side-drawer.open .drawer-link { opacity: 1; transform: translateY(0); }
-    #side-drawer.open .drawer-link:nth-child(1) { transition-delay: 0.07s; }
-    #side-drawer.open .drawer-link:nth-child(2) { transition-delay: 0.12s; }
-    #side-drawer.open .drawer-link:nth-child(3) { transition-delay: 0.17s; }
-    #side-drawer.open .drawer-link:nth-child(4) { transition-delay: 0.22s; }
-    #side-drawer.open .drawer-link:nth-child(5) { transition-delay: 0.27s; }
-    #side-drawer.open .drawer-link:nth-child(6) { transition-delay: 0.32s; }
-
-    /* portal links at the bottom */
     .drawer-portal {
-      display: flex; flex-direction: row; gap: 10px; flex-wrap: wrap;
+      display: flex; flex-direction: column; gap: 8px;
+      padding: 16px 24px;
     }
     .drawer-portal-link {
       font-size: 13px; font-weight: 600; color: var(--gray-600);
-      text-decoration: none; padding: 11px 18px;
+      text-decoration: none; padding: 11px 16px;
       border: 1.5px solid var(--border); border-radius: var(--radius);
-      display: flex; align-items: center; gap: 8px;
-      opacity: 0; transform: translateY(12px);
-      transition: opacity 0.3s ease, transform 0.3s ease,
+      display: flex; align-items: center; justify-content: space-between;
+      transition: color 0.15s, border-color 0.15s, background 0.15s;
+      opacity: 0; transform: translateX(16px);
+      transition: opacity 0.25s ease, transform 0.25s cubic-bezier(.23,1,.32,1),
                   color 0.15s, border-color 0.15s, background 0.15s;
     }
     .drawer-portal-link:hover { color: var(--text); border-color: var(--gray-400); background: var(--gray-50); }
-    #side-drawer.open .drawer-portal-link:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0.38s; }
-    #side-drawer.open .drawer-portal-link:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 0.44s; }
+    #side-drawer.open .drawer-portal-link:nth-child(1) { opacity: 1; transform: translateX(0); transition-delay: 0.30s; }
+    #side-drawer.open .drawer-portal-link:nth-child(2) { opacity: 1; transform: translateX(0); transition-delay: 0.34s; }
 
     /* ── HERO ─────────────────────────────────────────────── */
     .hero {
@@ -472,25 +475,23 @@
 <!-- scroll progress bar -->
 <div id="scroll-progress"></div>
 
-<!-- full-screen menu -->
-<div id="side-drawer" role="dialog" aria-label="Valikko">
+<div id="drawer-overlay"></div>
+<div id="side-drawer">
   <div class="drawer-head">
-    <a href="#etusivu" class="drawer-logo drawer-close-trigger"><img src="logo3.png" alt="RN Media"></a>
+    <img src="logo3.png" alt="RN Media" class="drawer-logo">
     <button class="drawer-close" id="drawer-close-btn" aria-label="Sulje valikko">✕</button>
   </div>
-  <div class="drawer-body">
-    <nav class="drawer-nav">
-      <a href="#etusivu"      class="drawer-link drawer-close-trigger">Etusivu</a>
-      <a href="#palvelut"     class="drawer-link drawer-close-trigger">Palvelut</a>
-      <a href="#portfolio"    class="drawer-link drawer-close-trigger">Portfolio</a>
-      <a href="#hinnat"       class="drawer-link drawer-close-trigger">Hinnat</a>
-      <a href="#ukk"          class="drawer-link drawer-close-trigger">UKK</a>
-      <a href="#ota-yhteytta" class="drawer-link drawer-close-trigger">Yhteystiedot</a>
-    </nav>
-    <div class="drawer-portal">
-      <a href="/asiakkaille"    class="drawer-portal-link drawer-close-trigger">Uusi asiakas →</a>
-      <a href="/asiakasportaali" class="drawer-portal-link drawer-close-trigger">Kirjaudu sisään →</a>
-    </div>
+  <nav class="drawer-nav">
+    <a href="#etusivu"      class="drawer-link drawer-close-trigger">Etusivu</a>
+    <a href="#palvelut"     class="drawer-link drawer-close-trigger">Palvelut</a>
+    <a href="#portfolio"    class="drawer-link drawer-close-trigger">Portfolio</a>
+    <a href="#hinnat"       class="drawer-link drawer-close-trigger">Hinnat</a>
+    <a href="#ukk"          class="drawer-link drawer-close-trigger">UKK</a>
+    <a href="#ota-yhteytta" class="drawer-link drawer-close-trigger">Yhteystiedot</a>
+  </nav>
+  <div class="drawer-portal">
+    <a href="/asiakkaille"     class="drawer-portal-link drawer-close-trigger">Uusi asiakas <span>→</span></a>
+    <a href="/asiakasportaali" class="drawer-portal-link drawer-close-trigger">Kirjaudu sisään <span>→</span></a>
   </div>
 </div>
 
@@ -923,22 +924,24 @@
   // ── Drawer ─────────────────────────────────────────────
   const hamburger = document.getElementById('hamburger');
   const drawer    = document.getElementById('side-drawer');
+  const overlay   = document.getElementById('drawer-overlay');
   const closeBtn  = document.getElementById('drawer-close-btn');
 
   function openDrawer() {
     drawer.classList.add('open');
+    overlay.classList.add('open');
     hamburger.classList.add('open');
-    hamburger.setAttribute('aria-label', 'Sulje valikko');
     document.body.style.overflow = 'hidden';
   }
   function closeDrawer() {
     drawer.classList.remove('open');
+    overlay.classList.remove('open');
     hamburger.classList.remove('open');
-    hamburger.setAttribute('aria-label', 'Avaa valikko');
     document.body.style.overflow = '';
   }
 
   hamburger.addEventListener('click', () => drawer.classList.contains('open') ? closeDrawer() : openDrawer());
+  overlay.addEventListener('click', closeDrawer);
   closeBtn.addEventListener('click', closeDrawer);
   document.querySelectorAll('.drawer-close-trigger').forEach(el => el.addEventListener('click', closeDrawer));
 
