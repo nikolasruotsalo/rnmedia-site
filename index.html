@@ -88,10 +88,11 @@
       background: none;
       padding: 0;
       position: relative;
-      z-index: 300;
+      z-index: 210;
       transition: border-color 0.2s, background 0.2s;
     }
     .hamburger:hover { border-color: var(--gray-400); background: var(--gray-50); }
+    .hamburger.open { pointer-events: none; opacity: 0; }
     .hamburger span {
       display: block;
       position: absolute;
@@ -110,7 +111,7 @@
 
     /* ── SLIDE-IN DRAWER ──────────────────────────────────── */
     #drawer-overlay {
-      position: fixed; inset: 0; z-index: 250;
+      position: fixed; inset: 0; z-index: 400;
       background: rgba(0,0,0,0.55);
       opacity: 0; visibility: hidden;
       transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -118,7 +119,7 @@
     #drawer-overlay.open { opacity: 1; visibility: visible; }
 
     #side-drawer {
-      position: fixed; top: 0; right: 0; bottom: 0; z-index: 260;
+      position: fixed; top: 0; right: 0; bottom: 0; z-index: 410;
       width: 280px;
       background: #0d0d0d;
       border-left: 1px solid var(--border);
@@ -148,7 +149,7 @@
 
     .drawer-nav {
       display: flex; flex-direction: column;
-      padding: 8px 0;
+      padding: 24px 0 8px;
       border-bottom: 1px solid var(--border);
     }
     .drawer-link {
