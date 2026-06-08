@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RN Media – Asiakasportaali</title>
+  <link rel="icon" href="/logo2.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <script>
+    // ============================================================
+    //  ✏️  EDIT HERE — add clients as PIN: { url, key } pairs.
+    //  PIN must be exactly 8 digits.
+    //  url  = path to redirect to after correct PIN
+    //  key  = sessionStorage flag set before redirect
+    // ============================================================
+    const clients = {
+      "12345678": { url: "/asiakasportaali/fora", key: "rnmedia_auth_fora" },
+    };
+    // ============================================================
+    //  END EDIT HERE
+    // ============================================================
+  </script>
+
+  <style>
+    :root {
+      --bg:       #0a0a0a;
+      --surface:  #141414;
+      --surface2: #1a1a1a;
+      --border:   #242424;
+      --border2:  #303030;
+      --text:     #f0f0f0;
+      --muted:    #888888;
+      --muted2:   #444444;
+      --accent:   #e8e0d0;
+      --red:      #ef4444;
+      --mono:     'DM Mono', monospace;
+      --r:        10px;
+      --r-sm:     6px;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: var(--mono);
+      background: var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in { animation: fadeIn 0.5s ease forwards; }
+
+    /* ── LOGO ──────────────────────────────────────────────── */
+    .logo-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 44px;
+    }
+    .logo-img {
+      height: 40px;
+      width: auto;
+      opacity: 0.9;
+    }
+    .logo-sub {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ── PIN CARD ──────────────────────────────────────────── */
+    .pin-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 40px 36px 36px;
+      width: 340px;
+      text-align: center;
+    }
+    .pin-title {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+
+    @keyframes pinShake {
+      0%,100% { transform: translateX(0); }
+      20%,60%  { transform: translateX(-7px); }
+      40%,80%  { transform: translateX(7px); }
+    }
+
+    .pin-display {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 32px;
+    }
+    .pin-dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      border: 2px solid var(--border2);
+      background: transparent;
+      transition: background 0.12s, border-color 0.12s;
+    }
+    .pin-dot.filled { background: var(--accent); border-color: var(--accent); }
+    .pin-dot.error  { background: var(--red);    border-color: var(--red); }
+
+    /* ── NUMPAD ────────────────────────────────────────────── */
+    .pin-pad {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 4px;
+    }
+    .pin-btn {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: var(--r-sm);
+      color: var(--text);
+      font-family: var(--mono);
+      font-size: 20px;
+      font-weight: 400;
+      height: 58px;
+      cursor: pointer;
+      transition: background 0.1s, transform 0.08s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .pin-btn:hover  { background: #222222; }
+    .pin-btn:active { transform: scale(0.95); background: #2a2a2a; }
+    .pin-btn.del    { font-size: 18px; color: var(--muted); }
+    .pin-btn.empty  { pointer-events: none; background: transparent; border-color: transparent; }
+
+    .pin-confirm {
+      margin-top: 16px;
+      width: 100%;
+      background: var(--accent);
+      color: #0a0a0a;
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: var(--r-sm);
+      padding: 14px;
+      cursor: pointer;
+      transition: opacity 0.15s, transform 0.1s;
+    }
+    .pin-confirm:hover  { opacity: 0.88; }
+    .pin-confirm:active { transform: scale(0.98); }
+    .pin-confirm:disabled { opacity: 0.3; cursor: not-allowed; transform: none; }
+
+    .pin-error {
+      margin-top: 16px;
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      color: var(--red);
+      min-height: 18px;
+    }
+
+    /* ── RESPONSIVE ────────────────────────────────────────── */
+    @media (max-width: 400px) {
+      .pin-card { width: 100%; border-radius: 0; border-left: none; border-right: none; padding: 36px 24px 32px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="fade-in">
+  <div class="logo-wrap">
+    <img src="/logo3.png" alt="RN Media" class="logo-img">
+    <span class="logo-sub">Asiakasportaali</span>
+  </div>
+
+  <div class="pin-card">
+    <div class="pin-title">Syötä 8-numeroinen PIN</div>
+
+    <div class="pin-display" id="pin-display">
+      <div class="pin-dot" id="d0"></div>
+      <div class="pin-dot" id="d1"></div>
+      <div class="pin-dot" id="d2"></div>
+      <div class="pin-dot" id="d3"></div>
+      <div class="pin-dot" id="d4"></div>
+      <div class="pin-dot" id="d5"></div>
+      <div class="pin-dot" id="d6"></div>
+      <div class="pin-dot" id="d7"></div>
+    </div>
+
+    <div class="pin-pad">
+      <button class="pin-btn" onclick="pinPress('1')">1</button>
+      <button class="pin-btn" onclick="pinPress('2')">2</button>
+      <button class="pin-btn" onclick="pinPress('3')">3</button>
+      <button class="pin-btn" onclick="pinPress('4')">4</button>
+      <button class="pin-btn" onclick="pinPress('5')">5</button>
+      <button class="pin-btn" onclick="pinPress('6')">6</button>
+      <button class="pin-btn" onclick="pinPress('7')">7</button>
+      <button class="pin-btn" onclick="pinPress('8')">8</button>
+      <button class="pin-btn" onclick="pinPress('9')">9</button>
+      <button class="pin-btn empty"></button>
+      <button class="pin-btn" onclick="pinPress('0')">0</button>
+      <button class="pin-btn del" onclick="pinDel()">⌫</button>
+    </div>
+
+    <button class="pin-confirm" id="confirm-btn" onclick="checkPin()" disabled>Kirjaudu sisään</button>
+    <div class="pin-error" id="pin-error"></div>
+  </div>
+</div>
+
+<script>
+  const PIN_LEN = 8;
+  let pinValue = '';
+
+  function pinPress(digit) {
+    if (pinValue.length >= PIN_LEN) return;
+    pinValue += digit;
+    updateDots();
+    document.getElementById('confirm-btn').disabled = pinValue.length < PIN_LEN;
+  }
+
+  function pinDel() {
+    pinValue = pinValue.slice(0, -1);
+    updateDots();
+    document.getElementById('pin-error').textContent = '';
+    document.getElementById('confirm-btn').disabled = pinValue.length < PIN_LEN;
+  }
+
+  function updateDots() {
+    for (let i = 0; i < PIN_LEN; i++) {
+      const d = document.getElementById('d' + i);
+      d.classList.toggle('filled', i < pinValue.length);
+      d.classList.remove('error');
+    }
+  }
+
+  function checkPin() {
+    const client = clients[pinValue];
+    if (client) {
+      sessionStorage.setItem(client.key, 'true');
+      window.location.href = client.url;
+    } else {
+      const disp = document.getElementById('pin-display');
+      for (let i = 0; i < PIN_LEN; i++) {
+        const d = document.getElementById('d' + i);
+        d.classList.remove('filled');
+        d.classList.add('error');
+      }
+      document.getElementById('pin-error').textContent = 'Väärä PIN-koodi. Yritä uudelleen.';
+      disp.style.animation = 'pinShake 0.4s ease';
+      document.getElementById('confirm-btn').disabled = true;
+      setTimeout(() => {
+        disp.style.animation = '';
+        for (let i = 0; i < PIN_LEN; i++) document.getElementById('d' + i).classList.remove('error');
+        document.getElementById('pin-error').textContent = '';
+        pinValue = '';
+        updateDots();
+      }, 900);
+    }
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key >= '0' && e.key <= '9') pinPress(e.key);
+    if (e.key === 'Backspace') pinDel();
+    if (e.key === 'Enter' && pinValue.length === PIN_LEN) checkPin();
+  });
+</script>
+</body>
+</html>
