@@ -171,24 +171,8 @@
     #side-drawer.open .drawer-link:nth-child(4) { transition-delay: 0.18s; }
     #side-drawer.open .drawer-link:nth-child(5) { transition-delay: 0.22s; }
     #side-drawer.open .drawer-link:nth-child(6) { transition-delay: 0.26s; }
-
-    .drawer-portal {
-      display: flex; flex-direction: column; gap: 8px;
-      padding: 16px 24px;
-    }
-    .drawer-portal-link {
-      font-size: 13px; font-weight: 600; color: var(--gray-600);
-      text-decoration: none; padding: 11px 16px;
-      border: 1.5px solid var(--border); border-radius: var(--radius);
-      display: flex; align-items: center; justify-content: space-between;
-      transition: color 0.15s, border-color 0.15s, background 0.15s;
-      opacity: 0; transform: translateX(16px);
-      transition: opacity 0.25s ease, transform 0.25s cubic-bezier(.23,1,.32,1),
-                  color 0.15s, border-color 0.15s, background 0.15s;
-    }
-    .drawer-portal-link:hover { color: var(--text); border-color: var(--gray-400); background: var(--gray-50); }
-    #side-drawer.open .drawer-portal-link:nth-child(1) { opacity: 1; transform: translateX(0); transition-delay: 0.30s; }
-    #side-drawer.open .drawer-portal-link:nth-child(2) { opacity: 1; transform: translateX(0); transition-delay: 0.34s; }
+    #side-drawer.open .drawer-link:nth-child(7) { transition-delay: 0.30s; }
+    #side-drawer.open .drawer-link:nth-child(8) { transition-delay: 0.34s; }
 
     /* ── HERO ─────────────────────────────────────────────── */
     .hero {
@@ -479,20 +463,18 @@
 <div id="side-drawer">
   <div class="drawer-head">
     <img src="logo3.png" alt="RN Media" class="drawer-logo">
-    <button class="drawer-close" id="drawer-close-btn" aria-label="Sulje valikko">✕</button>
+    <button class="drawer-close drawer-close-trigger" id="drawer-close-btn" aria-label="Sulje valikko">✕</button>
   </div>
   <nav class="drawer-nav">
-    <a href="#etusivu"      class="drawer-link drawer-close-trigger">Etusivu</a>
-    <a href="#palvelut"     class="drawer-link drawer-close-trigger">Palvelut</a>
-    <a href="#portfolio"    class="drawer-link drawer-close-trigger">Portfolio</a>
-    <a href="#hinnat"       class="drawer-link drawer-close-trigger">Hinnat</a>
-    <a href="#ukk"          class="drawer-link drawer-close-trigger">UKK</a>
-    <a href="#ota-yhteytta" class="drawer-link drawer-close-trigger">Yhteystiedot</a>
+    <a href="#etusivu"         class="drawer-link drawer-close-trigger">Etusivu</a>
+    <a href="#palvelut"        class="drawer-link drawer-close-trigger">Palvelut</a>
+    <a href="#portfolio"       class="drawer-link drawer-close-trigger">Portfolio</a>
+    <a href="#hinnat"          class="drawer-link drawer-close-trigger">Hinnat</a>
+    <a href="#ukk"             class="drawer-link drawer-close-trigger">UKK</a>
+    <a href="#ota-yhteytta"    class="drawer-link drawer-close-trigger">Yhteystiedot</a>
+    <a href="/asiakkaille"     class="drawer-link drawer-close-trigger">Uusi asiakas</a>
+    <a href="/asiakasportaali" class="drawer-link drawer-close-trigger">Kirjaudu sisään</a>
   </nav>
-  <div class="drawer-portal">
-    <a href="/asiakkaille"     class="drawer-portal-link drawer-close-trigger">Uusi asiakas <span>→</span></a>
-    <a href="/asiakasportaali" class="drawer-portal-link drawer-close-trigger">Kirjaudu sisään <span>→</span></a>
-  </div>
 </div>
 
 <nav id="navbar">
