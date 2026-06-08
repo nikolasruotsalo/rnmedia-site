@@ -17,7 +17,7 @@
     //  key  = sessionStorage flag set before redirect
     // ============================================================
     const clients = {
-      "12345678": { url: "/asiakasportaali/fora", key: "rnmedia_auth_fora" },
+      "456389": { url: "/asiakasportaali/fora", key: "rnmedia_auth_fora" },
     };
     // ============================================================
     //  END EDIT HERE
@@ -193,7 +193,7 @@
   </div>
 
   <div class="pin-card">
-    <div class="pin-title">Syötä 8-numeroinen PIN</div>
+    <div class="pin-title">Syötä 6-numeroinen PIN</div>
 
     <div class="pin-display" id="pin-display">
       <div class="pin-dot" id="d0"></div>
@@ -202,8 +202,6 @@
       <div class="pin-dot" id="d3"></div>
       <div class="pin-dot" id="d4"></div>
       <div class="pin-dot" id="d5"></div>
-      <div class="pin-dot" id="d6"></div>
-      <div class="pin-dot" id="d7"></div>
     </div>
 
     <div class="pin-pad">
@@ -227,7 +225,7 @@
 </div>
 
 <script>
-  const PIN_LEN = 8;
+  const PIN_LEN = 6;
   let pinValue = '';
 
   function pinPress(digit) {
