@@ -315,7 +315,7 @@
     </div>
   </div>
 
-  <form id="onboarding-form" action="https://formspree.io/f/xeedvgln" method="POST">
+  <form id="onboarding-form" action="https://formspree.io/f/mdajqwqr" method="POST">
     <input type="hidden" name="_subject" value="Uusi asiakkaan aloituslomake — RN Media">
 
     <!-- YRITYKSEN PERUSTIEDOT -->
@@ -481,7 +481,7 @@
       const res = await fetch(form.action, {
         method: 'POST',
         headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-        body: JSON.stringify(aggregated),
+        body: JSON.stringify({ ...aggregated, _replyto: aggregated.email }),
       });
       if (res.ok) {
         form.style.display = 'none';
