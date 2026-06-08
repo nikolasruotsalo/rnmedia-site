@@ -178,6 +178,40 @@
       min-height: 18px;
     }
 
+    /* ── NAV ───────────────────────────────────────────────── */
+    .portal-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      padding: 0 32px; height: 56px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(10,10,10,0.96);
+      border-bottom: 1px solid var(--border2);
+      backdrop-filter: blur(12px);
+    }
+    .portal-nav-logo { display: flex; align-items: center; text-decoration: none; }
+    .portal-nav-logo img { height: 56px; width: auto; }
+    .portal-nav-back {
+      font-size: 12px; font-weight: 500; letter-spacing: 0.06em;
+      color: var(--muted); text-decoration: none; transition: color 0.2s;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .portal-nav-back:hover { color: var(--accent); }
+    .portal-nav-back::before { content: '←'; }
+
+    /* ── FOOTER ────────────────────────────────────────────── */
+    .pin-footer {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      padding: 14px 32px;
+      display: flex; align-items: center; justify-content: center;
+      border-top: 1px solid var(--border);
+      background: rgba(10,10,10,0.96);
+      backdrop-filter: blur(12px);
+    }
+    .pin-footer a {
+      font-size: 11px; color: var(--muted2); text-decoration: none;
+      letter-spacing: 0.06em; transition: color 0.2s;
+    }
+    .pin-footer a:hover { color: var(--muted); }
+
     /* ── RESPONSIVE ────────────────────────────────────────── */
     @media (max-width: 400px) {
       .pin-card { width: 100%; border-radius: 0; border-left: none; border-right: none; padding: 36px 24px 32px; }
@@ -186,9 +220,13 @@
 </head>
 <body>
 
-<div class="fade-in">
+<nav class="portal-nav">
+  <a href="/" class="portal-nav-logo"><img src="/logo3.png" alt="RN Media"></a>
+  <a href="/" class="portal-nav-back">rnmedia.fi</a>
+</nav>
+
+<div class="fade-in" style="padding-top:56px;padding-bottom:56px;">
   <div class="logo-wrap">
-    <img src="/logo3.png" alt="RN Media" class="logo-img">
     <span class="logo-sub">Asiakasportaali</span>
   </div>
 
@@ -223,6 +261,10 @@
     <div class="pin-error" id="pin-error"></div>
   </div>
 </div>
+
+<footer class="pin-footer">
+  <a href="/">rnmedia.fi</a>
+</footer>
 
 <script>
   const PIN_LEN = 6;
