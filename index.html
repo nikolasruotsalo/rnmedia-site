@@ -384,6 +384,19 @@
     textarea.form-input { resize: vertical; min-height: 100px; }
     .form-submit { padding: 13px 24px; background: var(--text); color: white; border: none; border-radius: var(--radius); font-size: 14px; font-weight: 600; cursor: pointer; font-family: 'Inter', sans-serif; transition: all 0.2s; }
     .form-submit:hover { background: #333333; transform: translateY(-1px); }
+    .form-submit:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+    .form-success {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 10px; padding: 48px 24px; text-align: center;
+    }
+    .form-success-icon {
+      width: 52px; height: 52px; border-radius: 50%;
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; color: var(--text);
+    }
+    .form-success-title { font-size: 18px; font-weight: 700; color: var(--text); font-family: 'Inter', sans-serif; }
+    .form-success-sub { font-size: 14px; color: var(--gray-400); font-family: 'Inter', sans-serif; }
 
     /* ── FOOTER ───────────────────────────────────────────── */
     footer { border-top: 1px solid var(--border); padding: 28px 40px; display: flex; align-items: center; justify-content: space-between; background: var(--bg); }
@@ -856,7 +869,7 @@
           </div>
         </div>
       </div>
-      <form class="contact-form" action="https://formspree.io/f/xeedvgln" method="POST">
+      <form class="contact-form" id="contact-form" novalidate>
         <div class="form-group">
           <label class="form-label">NIMI</label>
           <input class="form-input" type="text" name="name" placeholder="Mikko Virtanen" required>
@@ -873,7 +886,12 @@
           <label class="form-label">VIESTI</label>
           <textarea class="form-input" name="message" placeholder="Kerro projektistasi..." required></textarea>
         </div>
-        <button type="submit" class="form-submit">Lähetä viesti →</button>
+        <button type="submit" class="form-submit" id="contact-submit">Lähetä viesti →</button>
+        <div class="form-success" id="form-success" style="display:none;">
+          <div class="form-success-icon">✓</div>
+          <p class="form-success-title">Viesti lähetetty!</p>
+          <p class="form-success-sub">Vastataan 24 tunnin sisällä.</p>
+        </div>
       </form>
     </div>
   </div>
@@ -931,6 +949,36 @@
   document.querySelectorAll('.drawer-close-trigger').forEach(el => el.addEventListener('click', closeDrawer));
 
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(); });
+
+  // ── Contact form AJAX ──────────────────────────────────
+  const contactForm   = document.getElementById('contact-form');
+  const contactSubmit = document.getElementById('contact-submit');
+  const formSuccess   = document.getElementById('form-success');
+
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!contactForm.checkValidity()) { contactForm.reportValidity(); return; }
+    contactSubmit.disabled = true;
+    contactSubmit.textContent = 'Lähetetään…';
+    try {
+      const res = await fetch('https://formspree.io/f/xeedvgln', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(contactForm),
+      });
+      if (res.ok) {
+        contactForm.querySelectorAll('.form-group').forEach(g => g.style.display = 'none');
+        contactSubmit.style.display = 'none';
+        formSuccess.style.display = 'flex';
+      } else {
+        contactSubmit.disabled = false;
+        contactSubmit.textContent = 'Lähetä viesti →';
+      }
+    } catch {
+      contactSubmit.disabled = false;
+      contactSubmit.textContent = 'Lähetä viesti →';
+    }
+  });
 
   // ── Pricing tabs ───────────────────────────────────────
   document.querySelectorAll('.ptab').forEach(tab => {
