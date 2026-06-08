@@ -111,90 +111,88 @@
     /* ── DRAWER OVERLAY ───────────────────────────────────── */
     #drawer-overlay {
       position: fixed; inset: 0; z-index: 250;
-      background: rgba(0,0,0,0);
+      background: transparent;
       pointer-events: none;
       transition: background 0.4s ease;
     }
     #drawer-overlay.open {
-      background: rgba(0,0,0,0.6);
+      background: rgba(0,0,0,0.65);
       pointer-events: all;
-      backdrop-filter: blur(4px);
     }
 
     /* ── SIDE DRAWER ──────────────────────────────────────── */
     #side-drawer {
       position: fixed; top: 0; right: 0; bottom: 0; z-index: 260;
-      width: 340px;
+      width: 320px;
       background: #0d0d0d;
       border-left: 1px solid var(--border);
       display: flex; flex-direction: column;
-      padding: 24px 0 40px;
+      overflow-y: auto;
       transform: translateX(100%);
       transition: transform 0.45s cubic-bezier(.23,1,.32,1);
-      box-shadow: -20px 0 60px rgba(0,0,0,0.5);
+      box-shadow: -24px 0 60px rgba(0,0,0,0.6);
     }
     #side-drawer.open { transform: translateX(0); }
 
     .drawer-head {
       display: flex; align-items: center; justify-content: space-between;
-      padding: 0 32px 28px;
+      padding: 20px 28px 20px;
       border-bottom: 1px solid var(--border);
-      margin-bottom: 12px;
+      flex-shrink: 0;
     }
-    .drawer-logo img { height: 52px; width: auto; opacity: 0.8; }
+    .drawer-logo img { height: 48px; width: auto; opacity: 0.85; }
     .drawer-close {
-      width: 36px; height: 36px;
+      width: 36px; height: 36px; flex-shrink: 0;
       border: 1px solid var(--border); border-radius: var(--radius);
       background: none; cursor: pointer; color: var(--gray-400);
-      font-size: 18px; display: flex; align-items: center; justify-content: center;
+      font-size: 16px; display: flex; align-items: center; justify-content: center;
       transition: border-color 0.2s, color 0.2s;
     }
     .drawer-close:hover { border-color: var(--gray-400); color: var(--text); }
 
     .drawer-nav {
       display: flex; flex-direction: column;
-      padding: 8px 24px; flex: 1;
-      gap: 2px;
+      padding: 16px 20px 8px;
+      flex: 1;
     }
     .drawer-link {
       font-family: 'Anton', sans-serif;
-      font-size: 28px; letter-spacing: 0.02em;
+      font-size: 30px; line-height: 1; letter-spacing: 0.02em;
       color: var(--gray-400); text-decoration: none;
-      padding: 10px 8px;
+      padding: 13px 10px;
       border-radius: var(--radius);
       display: block;
-      transition: color 0.2s, background 0.2s, padding-left 0.25s;
       opacity: 0;
-      transform: translateX(20px);
-      transition: color 0.2s, background 0.2s, padding-left 0.2s,
-                  opacity 0.35s ease, transform 0.35s cubic-bezier(.23,1,.32,1);
+      transform: translateX(24px);
+      transition: opacity 0.32s ease, transform 0.32s cubic-bezier(.23,1,.32,1),
+                  color 0.15s, background 0.15s, padding-left 0.2s;
     }
-    .drawer-link:hover { color: var(--text); padding-left: 16px; background: var(--gray-50); }
+    .drawer-link:hover { color: var(--text); padding-left: 18px; background: var(--gray-50); }
     #side-drawer.open .drawer-link { opacity: 1; transform: translateX(0); }
-    #side-drawer.open .drawer-link:nth-child(1) { transition-delay: 0.06s; }
-    #side-drawer.open .drawer-link:nth-child(2) { transition-delay: 0.1s; }
-    #side-drawer.open .drawer-link:nth-child(3) { transition-delay: 0.14s; }
-    #side-drawer.open .drawer-link:nth-child(4) { transition-delay: 0.18s; }
-    #side-drawer.open .drawer-link:nth-child(5) { transition-delay: 0.22s; }
-    #side-drawer.open .drawer-link:nth-child(6) { transition-delay: 0.26s; }
+    #side-drawer.open .drawer-link:nth-child(1) { transition-delay: 0.07s; }
+    #side-drawer.open .drawer-link:nth-child(2) { transition-delay: 0.12s; }
+    #side-drawer.open .drawer-link:nth-child(3) { transition-delay: 0.17s; }
+    #side-drawer.open .drawer-link:nth-child(4) { transition-delay: 0.22s; }
+    #side-drawer.open .drawer-link:nth-child(5) { transition-delay: 0.27s; }
+    #side-drawer.open .drawer-link:nth-child(6) { transition-delay: 0.32s; }
 
-    .drawer-divider { height: 1px; background: var(--border); margin: 12px 32px; }
+    .drawer-divider { height: 1px; background: var(--border); margin: 8px 20px 16px; flex-shrink: 0; }
 
-    .drawer-portal { padding: 0 24px; display: flex; flex-direction: column; gap: 10px; }
+    .drawer-portal { padding: 0 20px 32px; display: flex; flex-direction: column; gap: 10px; flex-shrink: 0; }
     .drawer-portal-link {
       font-size: 13px; font-weight: 600; color: var(--gray-600);
-      text-decoration: none; padding: 11px 16px;
+      text-decoration: none; padding: 12px 16px;
       border: 1.5px solid var(--border); border-radius: var(--radius);
       display: flex; align-items: center; justify-content: space-between;
-      transition: all 0.2s;
-      opacity: 0; transform: translateX(20px);
-      transition: color 0.2s, border-color 0.2s, background 0.2s,
-                  opacity 0.35s ease, transform 0.35s cubic-bezier(.23,1,.32,1);
+      opacity: 0;
+      transform: translateX(24px);
+      transition: opacity 0.32s ease, transform 0.32s cubic-bezier(.23,1,.32,1),
+                  color 0.15s, border-color 0.15s, background 0.15s;
     }
     .drawer-portal-link:hover { color: var(--text); border-color: var(--gray-400); background: var(--gray-50); }
-    .drawer-portal-link span { font-size: 16px; opacity: 0.5; }
-    #side-drawer.open .drawer-portal-link:nth-child(1) { opacity: 1; transform: translateX(0); transition-delay: 0.3s; }
-    #side-drawer.open .drawer-portal-link:nth-child(2) { opacity: 1; transform: translateX(0); transition-delay: 0.36s; }
+    .drawer-portal-link span { font-size: 14px; opacity: 0.5; }
+    #side-drawer.open .drawer-portal-link:nth-child(1) { opacity: 1; transform: translateX(0); transition-delay: 0.37s; }
+    #side-drawer.open .drawer-portal-link:nth-child(2) { opacity: 1; transform: translateX(0); transition-delay: 0.42s; }
 
     /* ── HERO ─────────────────────────────────────────────── */
     .hero {
@@ -419,39 +417,36 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* base reveal — waits for JS to add .visible */
+    /* Scroll reveal: elements slide up and fade in */
     .reveal {
       opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.65s ease, transform 0.65s ease;
+      transform: translateY(32px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
     }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    /* stagger children inside a revealed container */
+    /* Stagger: children animate in sequence — NO opacity on parent */
     .stagger > * {
       opacity: 0;
-      transform: translateY(22px);
+      transform: translateY(24px);
       transition: opacity 0.55s ease, transform 0.55s ease;
     }
-    .stagger.visible > *:nth-child(1) { opacity: 1; transform: none; transition-delay: 0.05s; }
-    .stagger.visible > *:nth-child(2) { opacity: 1; transform: none; transition-delay: 0.13s; }
-    .stagger.visible > *:nth-child(3) { opacity: 1; transform: none; transition-delay: 0.21s; }
-    .stagger.visible > *:nth-child(4) { opacity: 1; transform: none; transition-delay: 0.29s; }
-    .stagger.visible > *:nth-child(5) { opacity: 1; transform: none; transition-delay: 0.37s; }
-    .stagger.visible > *:nth-child(6) { opacity: 1; transform: none; transition-delay: 0.45s; }
-    .stagger.visible > *:nth-child(7) { opacity: 1; transform: none; transition-delay: 0.53s; }
+    .stagger.visible > *:nth-child(1) { opacity: 1; transform: none; transition-delay: 0.04s; }
+    .stagger.visible > *:nth-child(2) { opacity: 1; transform: none; transition-delay: 0.12s; }
+    .stagger.visible > *:nth-child(3) { opacity: 1; transform: none; transition-delay: 0.20s; }
+    .stagger.visible > *:nth-child(4) { opacity: 1; transform: none; transition-delay: 0.28s; }
+    .stagger.visible > *:nth-child(5) { opacity: 1; transform: none; transition-delay: 0.36s; }
+    .stagger.visible > *:nth-child(6) { opacity: 1; transform: none; transition-delay: 0.44s; }
+    .stagger.visible > *:nth-child(7) { opacity: 1; transform: none; transition-delay: 0.52s; }
 
-    /* keep old fade-up class working */
     .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .fade-up.visible { opacity: 1; transform: translateY(0); }
-    .delay-1 { transition-delay: 0.1s; }
-    .delay-2 { transition-delay: 0.2s; }
 
     /* ── RESPONSIVE ───────────────────────────────────────── */
     @media (max-width: 768px) {
       nav { padding: 0 20px; }
 
-      #side-drawer { width: 100%; border-left: none; }
+      #side-drawer { width: 88%; max-width: 320px; }
 
       .hero { padding: 100px 20px 60px; }
       .section { padding: 60px 20px; }
@@ -541,7 +536,7 @@
   <div class="section reveal">
     <p class="section-label">Erikoisalat</p>
     <h2 class="section-heading">Toimialat joille<br>teemme sisältöä</h2>
-    <div class="chips stagger reveal">
+    <div class="chips stagger">
       <span class="chip">🍽 Ravintolat</span>
       <span class="chip">🧘 Hyvinvointi</span>
       <span class="chip">🏢 Kiinteistöhoito</span>
@@ -557,7 +552,7 @@
 <div class="section reveal" id="palvelut">
   <p class="section-label">Palvelut</p>
   <h2 class="section-heading">Mitä teemme</h2>
-  <div class="services-grid stagger reveal">
+  <div class="services-grid stagger">
     <div class="service-card">
       <div class="service-num">01</div>
       <div class="service-title">LYHYTVIDEOSISÄLTÖ</div>
@@ -590,7 +585,7 @@
   <div class="section reveal">
     <p class="section-label">Miksi RN Media</p>
     <h2 class="section-heading">Teemme somesta<br>liiketoimintaa</h2>
-    <div class="why-grid stagger reveal">
+    <div class="why-grid stagger">
       <div class="why-card">
         <div class="why-icon">⚡</div>
         <div class="why-title">NOPEA TOIMITUS</div>
@@ -645,7 +640,7 @@
     <!-- TAB: KUUKAUSIPAKETIT -->
     <div class="pricing-panel" id="tab-kuukausi">
       <p style="font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); margin-bottom:24px;">Ei sitoutumista — peruuta milloin tahansa</p>
-      <div class="pricing-grid stagger reveal">
+      <div class="pricing-grid stagger">
         <div class="pricing-card">
           <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px;"><span class="badge badge-green">Launch Deal</span></div>
           <div class="plan-name">STARTER</div>
@@ -704,7 +699,7 @@
     <!-- TAB: KERTATILAUKSET -->
     <div class="pricing-panel hidden" id="tab-kerta">
       <p style="font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); margin-bottom:24px;">Kokeile riskittömästi — ei kuukausisitoutumista</p>
-      <div class="pricing-grid-wide stagger reveal">
+      <div class="pricing-grid-wide stagger">
         <div class="pricing-card">
           <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px;"><span class="badge badge-blue">Kokeile riskittömästi</span></div>
           <div class="plan-name">1 LYHYTVIDEO</div>
@@ -741,7 +736,7 @@
           <a href="#ota-yhteytta" class="btn-plan btn-plan-outline">Tilaa →</a>
         </div>
       </div>
-      <div class="pricing-grid-wide stagger reveal">
+      <div class="pricing-grid-wide stagger">
         <div class="pricing-card">
           <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px;"><span class="badge badge-blue">Tiedä missä olet</span></div>
           <div class="plan-name">BRÄNDIANALYYSI</div>
@@ -786,7 +781,7 @@
     <!-- TAB: DIGITAALISET -->
     <div class="pricing-panel hidden" id="tab-digital">
       <p style="font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); margin-bottom:24px;">Verkkosivut, verkkokauppa &amp; sometilit — kertamaksulla</p>
-      <div class="pricing-grid stagger reveal">
+      <div class="pricing-grid stagger">
         <div class="pricing-card">
           <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px;"><span class="badge badge-blue">Kertamaksu</span></div>
           <div class="plan-name">VERKKOSIVUT</div>
@@ -975,15 +970,18 @@
   });
 
   // ── Scroll reveal ──────────────────────────────────────
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        revealObserver.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.07 });
-  document.querySelectorAll('.reveal, .stagger, .fade-up').forEach(el => revealObserver.observe(el));
+  // rAF ensures initial CSS paint (opacity:0) happens before observer fires
+  requestAnimationFrame(() => {
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          revealObserver.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.07 });
+    document.querySelectorAll('.reveal, .stagger, .fade-up').forEach(el => revealObserver.observe(el));
+  });
 
   // ── Service card subtle mouse-follow glow ──────────────
   document.querySelectorAll('.service-card').forEach(card => {
