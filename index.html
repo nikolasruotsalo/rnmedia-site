@@ -64,6 +64,18 @@
     .btn-cta { font-size: 13px; font-weight: 600; padding: 9px 20px; background: var(--text); color: white; border-radius: var(--radius); text-decoration: none; transition: all 0.2s; }
     .btn-cta:hover { background: #333333; transform: translateY(-1px); }
 
+    /* NAV PORTAL LINKS */
+    .nav-divider { width: 1px; height: 18px; background: var(--border); margin: 0 4px; }
+    .nav-portal-link { font-size: 14px; font-weight: 500; color: var(--gray-600); text-decoration: none; transition: color 0.2s; }
+    .nav-portal-link:hover { color: var(--text); }
+    .nav-login-btn {
+      font-size: 13px !important; font-weight: 600 !important;
+      padding: 8px 18px; border: 1.5px solid var(--border);
+      border-radius: var(--radius); color: var(--text) !important;
+      transition: border-color 0.2s, background 0.2s !important;
+    }
+    .nav-login-btn:hover { border-color: var(--text) !important; background: var(--gray-50) !important; }
+
     /* HAMBURGER */
     .hamburger {
       display: none;
@@ -281,6 +293,9 @@
       .nav-links.open { display: flex; }
       .nav-links a { font-size: 20px; color: var(--text); }
       .btn-cta { font-size: 16px; padding: 12px 28px; }
+      .nav-divider { width: 40px; height: 1px; background: var(--border); margin: 0; }
+      .nav-portal-link { font-size: 18px !important; color: var(--gray-600) !important; }
+      .nav-login-btn { font-size: 16px !important; padding: 12px 28px !important; border-radius: var(--radius) !important; }
 
       .hero { padding: 100px 20px 60px; }
       .section { padding: 60px 20px; }
@@ -321,6 +336,9 @@
     <a href="#hinnat" class="nav-close-trigger">Hinnat</a>
     <a href="#ukk" class="nav-close-trigger">UKK</a>
     <a href="#ota-yhteytta" class="btn-cta nav-close-trigger">Ota yhteyttä</a>
+    <div class="nav-divider"></div>
+    <a href="/asiakkaille" class="nav-close-trigger nav-portal-link">Uusi asiakas</a>
+    <a href="/asiakasportaali" class="nav-close-trigger nav-portal-link nav-login-btn">Kirjaudu sisään</a>
   </div>
   <button class="hamburger" id="hamburger" aria-label="Avaa valikko">
     <span></span>
