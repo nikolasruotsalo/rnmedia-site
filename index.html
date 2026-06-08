@@ -24,7 +24,7 @@
 
   <link rel="icon" type="image/png" href="logo2.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600&family=DM+Mono:wght@300;400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
@@ -303,48 +303,113 @@
 
     /* ── PRICING TABS ─────────────────────────────────────── */
     .pricing-tab-bar {
-      display: flex; gap: 4px;
-      background: var(--gray-50); border: 1px solid var(--border);
-      border-radius: 12px; padding: 4px; width: fit-content; margin-bottom: 40px;
+      display: inline-flex;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 48px;
     }
     .ptab {
-      padding: 9px 22px; border: none; border-radius: 9px;
-      background: none; color: var(--gray-400);
-      font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600;
-      cursor: pointer; transition: all 0.2s;
+      padding: 9px 20px; border: none; background: none;
+      color: var(--gray-400);
+      font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500;
+      letter-spacing: 0.10em; text-transform: uppercase;
+      cursor: pointer; transition: color 0.2s, background 0.2s;
+      border-right: 1px solid var(--border);
     }
-    .ptab.active { background: var(--bg); color: var(--text); box-shadow: var(--shadow-sm); }
+    .ptab:last-child { border-right: none; }
+    .ptab.active { background: var(--border); color: var(--text); }
     .ptab:hover:not(.active) { color: var(--text); }
-    .pricing-panel { display: block; }
+    .pricing-panel { display: block; animation: priceIn 0.2s ease; }
     .pricing-panel.hidden { display: none; }
+    @keyframes priceIn { from { opacity: 0; } to { opacity: 1; } }
 
     /* ── PRICING ──────────────────────────────────────────── */
-    .pricing-bg { background: var(--gray-50); padding: 100px 0; }
-    .pricing-inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
-    .pricing-grid { display: grid; grid-template-columns: 1fr 1.08fr 1fr; gap: 20px; align-items: start; }
-    .pricing-grid-wide { display: grid; grid-template-columns: 1fr 1.08fr 1fr; gap: 20px; align-items: start; margin-bottom: 20px; }
+    .pricing-bg { background: var(--bg); padding: 100px 0; }
+    .pricing-inner { max-width: 1160px; margin: 0 auto; padding: 0 40px; }
+    .pricing-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; align-items: start; border: 1px solid var(--border); border-radius: var(--radius-xl); overflow: hidden; margin-bottom: 0; }
+    .pricing-grid-2 { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; align-items: start; border: 1px solid var(--border); border-top: none; border-radius: 0 0 var(--radius-xl) var(--radius-xl); overflow: hidden; }
     .pricing-card {
-      border: 1px solid var(--border); border-radius: var(--radius-xl);
-      padding: 36px; background: var(--bg); transition: box-shadow 0.25s, transform 0.25s;
+      padding: 36px 32px 32px;
+      background: var(--bg);
+      border-right: 1px solid var(--border);
+      position: relative;
+      transition: background 0.2s;
     }
-    .pricing-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
-    .pricing-card.featured { border-color: #ffffff; box-shadow: 0 0 0 1px #ffffff, var(--shadow-md); }
-    .badge { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 4px 10px; border-radius: 100px; margin-bottom: 6px; }
-    .badge-blue { background: #2a2a2a; color: #ffffff; }
-    .badge-green { background: #2a2a2a; color: #aaaaaa; }
-    .plan-name { font-family: 'Anton', sans-serif; font-size: 22px; letter-spacing: 0.04em; color: var(--text); margin-bottom: 8px; }
-    .plan-price { margin: 24px 0 28px; }
-    .plan-price strong { font-size: 42px; font-weight: 700; color: var(--text); letter-spacing: -0.02em; }
-    .plan-price span { font-size: 14px; color: var(--gray-400); }
-    .plan-features { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
-    .plan-features li { font-size: 14px; color: var(--gray-600); display: flex; align-items: flex-start; gap: 10px; line-height: 1.5; }
-    .plan-features li::before { content: '✓'; font-size: 13px; font-weight: 700; color: #ffffff; flex-shrink: 0; margin-top: 1px; }
-    .btn-plan { width: 100%; padding: 13px; border-radius: var(--radius); font-size: 14px; font-weight: 600; text-align: center; text-decoration: none; display: block; transition: all 0.2s; cursor: pointer; border: none; font-family: 'Inter', sans-serif; }
-    .btn-plan-outline { background: transparent; border: 1.5px solid var(--border); color: var(--text); }
-    .btn-plan-outline:hover { border-color: #ffffff; color: #ffffff; background: #222222; }
-    .btn-plan-filled { background: #ffffff; color: #111111; }
-    .btn-plan-filled:hover { background: #dddddd; transform: translateY(-1px); }
-    .alv-note { font-size: 11px; color: var(--gray-400); margin-top: 10px; }
+    .pricing-card:last-child { border-right: none; }
+    .pricing-card:hover { background: var(--gray-50); }
+    .pricing-card.featured { background: #111111; }
+    .pricing-card.featured:hover { background: #151515; }
+    .plan-label {
+      font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 500;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--gray-400); margin-bottom: 20px; min-height: 16px;
+      display: block;
+    }
+    .plan-label.featured-label { color: #cccccc; }
+    .plan-name {
+      font-family: 'DM Mono', monospace; font-size: 13px; font-weight: 500;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--text); margin-bottom: 28px;
+    }
+    .plan-price { margin-bottom: 28px; }
+    .plan-price-strike {
+      font-family: 'DM Mono', monospace; font-size: 12px;
+      color: var(--gray-400); text-decoration: line-through;
+      display: block; margin-bottom: 4px; letter-spacing: 0.04em;
+    }
+    .plan-price-main {
+      font-family: 'Playfair Display', serif; font-style: italic;
+      font-size: 40px; color: var(--text); line-height: 1;
+    }
+    .plan-price-main .plan-period {
+      font-family: 'DM Mono', monospace; font-style: normal;
+      font-size: 12px; color: var(--gray-400); margin-left: 4px;
+      letter-spacing: 0.06em;
+    }
+    .plan-price-sub {
+      font-family: 'DM Mono', monospace; font-size: 11px;
+      color: var(--gray-400); display: block; margin-top: 4px;
+      letter-spacing: 0.04em;
+    }
+    .plan-features { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
+    .plan-features li {
+      font-family: 'DM Mono', monospace; font-size: 12px;
+      color: var(--gray-600); display: flex; align-items: flex-start;
+      gap: 10px; line-height: 1.6; letter-spacing: 0.02em;
+    }
+    .plan-features li::before {
+      content: '–'; font-size: 12px; color: var(--gray-400);
+      flex-shrink: 0; margin-top: 1px;
+    }
+    .btn-plan {
+      width: 100%; padding: 12px; border-radius: 4px;
+      font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      text-align: center; text-decoration: none; display: block;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+      cursor: pointer;
+    }
+    .btn-plan-outline {
+      background: transparent; border: 1px solid var(--border); color: var(--gray-400);
+    }
+    .btn-plan-outline:hover { background: #ffffff; color: #000000; border-color: #ffffff; }
+    .btn-plan-filled {
+      background: transparent; border: 1px solid #ffffff; color: #ffffff;
+    }
+    .btn-plan-filled:hover { background: #ffffff; color: #000000; }
+    .pricing-caption {
+      font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.06em;
+      color: var(--gray-400); margin-top: 20px; display: block;
+    }
+    .alv-note {
+      font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.06em;
+      color: var(--gray-400); margin-top: 20px; display: block;
+    }
+    .panel-caption {
+      font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--gray-400); margin-bottom: 28px;
+    }
 
     /* ── FAQ ──────────────────────────────────────────────── */
     .faq-bg { background: var(--gray-50); }
@@ -614,8 +679,7 @@
 
     <div class="reveal">
       <p class="section-label">Hinnoittelu</p>
-      <h2 class="section-heading" style="margin-bottom:8px;">Selkeä hinnoittelu,<br>konkreettiset tulokset</h2>
-      <p style="font-size:13px; color:var(--gray-400); margin-bottom:28px;">Launch-hinnat voimassa <strong>31.8.2026</strong> asti. Ennen syyskuuta aloittavat asiakkaat pitävät launch-hinnan pysyvästi.</p>
+      <h2 class="section-heading" style="margin-bottom:32px;">Selkeä hinnoittelu,<br>konkreettiset tulokset</h2>
       <div class="pricing-tab-bar">
         <button class="ptab active" data-tab="kuukausi">Kuukausipaketit</button>
         <button class="ptab" data-tab="kerta">Kertatilaukset</button>
@@ -625,14 +689,15 @@
 
     <!-- TAB: KUUKAUSIPAKETIT -->
     <div class="pricing-panel" id="tab-kuukausi">
-      <p style="font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); margin-bottom:24px;">Ei sitoutumista — peruuta milloin tahansa</p>
-      <div class="pricing-grid stagger">
+      <p class="panel-caption">Ei sitoutumista — peruuta milloin tahansa</p>
+      <div class="pricing-grid">
+        <!-- STARTER -->
         <div class="pricing-card">
-          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px;"><span class="badge badge-green">Launch Deal</span></div>
-          <div class="plan-name">STARTER</div>
+          <span class="plan-label">Launch Deal</span>
+          <div class="plan-name">Starter</div>
           <div class="plan-price">
-            <span style="font-size:13px;color:var(--gray-400);text-decoration:line-through;display:block;margin-bottom:2px;">€499/kk</span>
-            <strong>€299</strong><span>/kk</span>
+            <span class="plan-price-strike">€499/kk</span>
+            <span class="plan-price-main">€299<span class="plan-period">/kk</span></span>
           </div>
           <ul class="plan-features">
             <li>1 kuvaussessio / kk</li>
@@ -642,14 +707,15 @@
             <li>Kuukausiraportti</li>
             <li>Ei sitoutumista</li>
           </ul>
-          <a href="#ota-yhteytta" class="btn-plan btn-plan-outline">Aloitetaan →</a>
+          <a href="#ota-yhteytta" class="btn-plan btn-plan-outline">Aloitetaan</a>
         </div>
+        <!-- GROWTH -->
         <div class="pricing-card featured">
-          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px;"><span class="badge badge-blue">Suosituin</span><span class="badge badge-green">Launch Deal</span></div>
-          <div class="plan-name">GROWTH</div>
+          <span class="plan-label featured-label">Suosituin — Launch Deal</span>
+          <div class="plan-name">Growth</div>
           <div class="plan-price">
-            <span style="font-size:13px;color:var(--gray-400);text-decoration:line-through;display:block;margin-bottom:2px;">€999/kk</span>
-            <strong>€499</strong><span>/kk</span>
+            <span class="plan-price-strike">€999/kk</span>
+            <span class="plan-price-main">€499<span class="plan-period">/kk</span></span>
           </div>
           <ul class="plan-features">
             <li>2 kuvaussessiota / kk</li>
@@ -659,14 +725,15 @@
             <li>Strategia + raportti</li>
             <li>Ei sitoutumista</li>
           </ul>
-          <a href="#ota-yhteytta" class="btn-plan btn-plan-filled">Aloitetaan →</a>
+          <a href="#ota-yhteytta" class="btn-plan btn-plan-filled">Aloitetaan</a>
         </div>
+        <!-- PREMIUM -->
         <div class="pricing-card">
-          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px;"><span class="badge badge-green">Launch Deal</span></div>
-          <div class="plan-name">PREMIUM</div>
+          <span class="plan-label">Launch Deal</span>
+          <div class="plan-name">Premium</div>
           <div class="plan-price">
-            <span style="font-size:13px;color:var(--gray-400);text-decoration:line-through;display:block;margin-bottom:2px;">€1 499/kk</span>
-            <strong>€799</strong><span>/kk</span>
+            <span class="plan-price-strike">€1 499/kk</span>
+            <span class="plan-price-main">€799<span class="plan-period">/kk</span></span>
           </div>
           <ul class="plan-features">
             <li>Jatkuvat shootit</li>
@@ -676,136 +743,154 @@
             <li>Prioriteettituki</li>
             <li>Ei sitoutumista</li>
           </ul>
-          <a href="#ota-yhteytta" class="btn-plan btn-plan-outline">Aloitetaan →</a>
+          <a href="#ota-yhteytta" class="btn-plan btn-plan-outline">Aloitetaan</a>
         </div>
       </div>
-      <p class="alv-note">Kaikki hinnat +alv 25,5%</p>
+      <span class="pricing-caption">Launch-hinnat voimassa 31.8.2026 asti</span>
+      <span class="alv-note">Kaikki hinnat +alv 25,5%</span>
     </div>
 
     <!-- TAB: KERTATILAUKSET -->
     <div class="pricing-panel hidden" id="tab-kerta">
-      <p style="font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); margin-bottom:24px;">Kokeile riskittömästi — ei kuukausisitoutumista</p>
-      <div class="pricing-grid-wide stagger">
+      <p class="panel-caption">Kokeile riskittömästi — ei kuukausisitoutumista</p>
+      <div class="pricing-grid">
         <div class="pricing-card">
-          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px;"><span class="badge badge-blue">Kokeile riskittömästi</span></div>
-          <div class="plan-name">1 LYHYTVIDEO</div>
-          <div class="plan-price"><strong>€99</strong><span> / kerta</span></div>
+          <span class="plan-label">Kokeile riskittömästi</span>
+          <div class="plan-name">1 Lyhytvideo</div>
+          <div class="plan-price">
+            <span class="plan-price-main">€99<span class="plan-period">/ kerta</span></span>
+          </div>
           <ul class="plan-features">
             <li>1 valmis lyhytvideo</li>
             <li>Editoitu, julkaisuvalmis</li>
             <li>Toimitus 5 arkipäivässä</li>
           </ul>
-          <a href="#ota-yhteytta" class="btn-plan btn-plan-outline">Tilaa →</a>
+          <a href="#ota-yhteytta" class="btn-plan btn-plan-outline">Tilaa</a>
         </div>
         <div class="pricing-card featured">
-          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px;"><span class="badge badge-blue">Suosituin kertatilaus</span></div>
-          <div class="plan-name">KUVAUSSESSIO + 2 VIDEOTA</div>
-          <div class="plan-price"><strong>€199</strong><span> / kerta</span></div>
+          <span class="plan-label featured-label">Suosituin kertatilaus</span>
+          <div class="plan-name">Kuvaussessio + 2 videota</div>
+          <div class="plan-price">
+            <span class="plan-price-main">€199<span class="plan-period">/ kerta</span></span>
+          </div>
           <ul class="plan-features">
             <li>1h kuvaussessio</li>
             <li>2 editoitua lyhytvideota</li>
             <li>Julkaisuvalmis sisältö</li>
             <li>Näet koko prosessin</li>
           </ul>
-          <a href="#ota-yhteytta" class="btn-plan btn-plan-filled">Tilaa →</a>
+          <a href="#ota-yhteytta" class="btn-plan btn-plan-filled">Tilaa</a>
         </div>
         <div class="pricing-card">
-          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px;"><span class="badge badge-green">Täydellinen startti</span></div>
-          <div class="plan-name">3 VIDEOTA + STRATEGIA</div>
-          <div class="plan-price"><strong>€349</strong><span> / kerta</span></div>
+          <span class="plan-label">Täydellinen startti</span>
+          <div class="plan-name">3 videota + strategia</div>
+          <div class="plan-price">
+            <span class="plan-price-main">€349<span class="plan-period">/ kerta</span></span>
+          </div>
           <ul class="plan-features">
             <li>Kuvaussessio</li>
             <li>3 editoitua videota</li>
             <li>Kirjallinen somestrategia</li>
             <li>Täydellinen kokonaisuus</li>
           </ul>
-          <a href="#ota-yhteytta" class="btn-plan btn-plan-outline">Tilaa →</a>
+          <a href="#ota-yhteytta" class="btn-plan btn-plan-outline">Tilaa</a>
         </div>
       </div>
-      <div class="pricing-grid-wide stagger">
+      <div class="pricing-grid-2">
         <div class="pricing-card">
-          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px;"><span class="badge badge-blue">Tiedä missä olet</span></div>
-          <div class="plan-name">BRÄNDIANALYYSI</div>
-          <div class="plan-price"><strong>€149</strong><span> / kerta</span></div>
+          <span class="plan-label">Tiedä missä olet</span>
+          <div class="plan-name">Brändianalyysi</div>
+          <div class="plan-price">
+            <span class="plan-price-main">€149<span class="plan-period">/ kerta</span></span>
+          </div>
           <ul class="plan-features">
             <li>Kirjallinen some-analyysi</li>
             <li>Konkreettiset kehitysehdotukset</li>
             <li>Tiedät mitä tehdä seuraavaksi</li>
           </ul>
-          <a href="#ota-yhteytta" class="btn-plan btn-plan-outline">Tilaa →</a>
+          <a href="#ota-yhteytta" class="btn-plan btn-plan-outline">Tilaa</a>
         </div>
         <div class="pricing-card featured">
-          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px;"><span class="badge badge-blue">Suosituin</span><span class="badge badge-green">Katso tulokset ensin</span></div>
-          <div class="plan-name">KOEKUUKAUSI</div>
-          <div class="plan-price"><strong>€249</strong><span> / 1 kk</span></div>
+          <span class="plan-label featured-label">Suosituin — katso tulokset ensin</span>
+          <div class="plan-name">Koekuukausi</div>
+          <div class="plan-price">
+            <span class="plan-price-main">€249<span class="plan-period">/ 1 kk</span></span>
+          </div>
           <ul class="plan-features">
             <li>Starter-paketti, 1 kuukausi</li>
             <li>Ei sitoutumista</li>
             <li>Täydellinen tapa aloittaa</li>
             <li>Jatka jos tykkäät</li>
           </ul>
-          <a href="#ota-yhteytta" class="btn-plan btn-plan-filled">Tilaa →</a>
+          <a href="#ota-yhteytta" class="btn-plan btn-plan-filled">Tilaa</a>
         </div>
         <div class="pricing-card">
-          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px;"><span class="badge badge-green">Ilmainen aloitus</span></div>
-          <div class="plan-name">KONSULTOINTI</div>
+          <span class="plan-label">Ilmainen aloitus</span>
+          <div class="plan-name">Konsultointi</div>
           <div class="plan-price">
-            <span style="font-size:13px;color:var(--gray-400);display:block;margin-bottom:2px;">Ensimmäinen 30 min</span>
-            <strong style="color:#ffffff;">Ilmainen</strong>
+            <span class="plan-price-sub">Ensimmäinen 30 min</span>
+            <span class="plan-price-main">Ilmainen</span>
           </div>
           <ul class="plan-features">
             <li>30 min maksuton sessio</li>
             <li>Strategia, sisältö, some</li>
             <li>Jatkotunnit €99/h</li>
           </ul>
-          <a href="#ota-yhteytta" class="btn-plan btn-plan-outline">Varaa aika →</a>
+          <a href="#ota-yhteytta" class="btn-plan btn-plan-outline">Varaa aika</a>
         </div>
       </div>
-      <p class="alv-note">Kaikki hinnat +alv 25,5%</p>
+      <span class="alv-note">Kaikki hinnat +alv 25,5%</span>
     </div>
 
     <!-- TAB: DIGITAALISET -->
     <div class="pricing-panel hidden" id="tab-digital">
-      <p style="font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); margin-bottom:24px;">Verkkosivut, verkkokauppa &amp; sometilit — kertamaksulla</p>
-      <div class="pricing-grid stagger">
+      <p class="panel-caption">Verkkosivut, verkkokauppa &amp; sometilit — kertamaksulla</p>
+      <div class="pricing-grid">
         <div class="pricing-card">
-          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px;"><span class="badge badge-blue">Kertamaksu</span></div>
-          <div class="plan-name">VERKKOSIVUT</div>
-          <div class="plan-price"><strong>€399</strong><span> / kerta</span></div>
+          <span class="plan-label">Kertamaksu</span>
+          <div class="plan-name">Verkkosivut</div>
+          <div class="plan-price">
+            <span class="plan-price-main">€399<span class="plan-period">/ kerta</span></span>
+          </div>
           <ul class="plan-features">
             <li>Täysin räätälöity design</li>
             <li>Mobiiliystävällinen</li>
             <li>Nopea toimitus</li>
             <li>Julkaisuvalmis</li>
           </ul>
-          <a href="#ota-yhteytta" class="btn-plan btn-plan-outline">Tilaa →</a>
+          <a href="#ota-yhteytta" class="btn-plan btn-plan-outline">Tilaa</a>
         </div>
         <div class="pricing-card featured">
-          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px;"><span class="badge badge-blue">Kertamaksu</span><span class="badge badge-green">Suosittu</span></div>
-          <div class="plan-name">SHOPIFY-VERKKOKAUPPA</div>
-          <div class="plan-price"><strong>€399</strong><span> / kerta</span></div>
+          <span class="plan-label featured-label">Kertamaksu — suosittu</span>
+          <div class="plan-name">Shopify-verkkokauppa</div>
+          <div class="plan-price">
+            <span class="plan-price-main">€399<span class="plan-period">/ kerta</span></span>
+          </div>
           <ul class="plan-features">
             <li>Valmis verkkokauppa</li>
             <li>Tuotteet &amp; maksut kunnossa</li>
             <li>Domain yhdistettynä</li>
             <li>Julkaisuvalmis</li>
           </ul>
-          <a href="#ota-yhteytta" class="btn-plan btn-plan-filled">Tilaa →</a>
+          <a href="#ota-yhteytta" class="btn-plan btn-plan-filled">Tilaa</a>
         </div>
         <div class="pricing-card">
-          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px;"><span class="badge badge-blue">Kertamaksu</span></div>
-          <div class="plan-name">SOMETILIN PERUSTAMINEN</div>
-          <div class="plan-price"><strong>€99</strong><span> / tili</span></div>
+          <span class="plan-label">Kertamaksu</span>
+          <div class="plan-name">Sometilin perustaminen</div>
+          <div class="plan-price">
+            <span class="plan-price-main">€99<span class="plan-period">/ tili</span></span>
+          </div>
           <ul class="plan-features">
             <li>Instagram tai Facebook</li>
             <li>Optimoitu bio &amp; profiili</li>
             <li>Brändätty ulkoasu</li>
             <li>3 ensimmäistä julkaisua</li>
           </ul>
-          <a href="#ota-yhteytta" class="btn-plan btn-plan-outline">Tilaa →</a>
+          <a href="#ota-yhteytta" class="btn-plan btn-plan-outline">Tilaa</a>
         </div>
       </div>
-      <p class="alv-note">Kaikki hinnat +alv 25,5% &nbsp;·&nbsp; Launch-hinnat voimassa 31.8.2026 asti</p>
+      <span class="pricing-caption">Launch-hinnat voimassa 31.8.2026 asti</span>
+      <span class="alv-note">Kaikki hinnat +alv 25,5%</span>
     </div>
 
   </div>
