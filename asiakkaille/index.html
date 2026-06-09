@@ -323,8 +323,8 @@
       <div class="form-section-title">Yrityksen perustiedot</div>
       <div class="form-row" style="margin-bottom:14px">
         <div class="form-group">
-          <label class="form-label" for="yritys">Yrityksen nimi <span class="req">*</span></label>
-          <input class="form-input" type="text" id="yritys" name="yritys" required placeholder="Yritys Oy">
+          <label class="form-label" for="yritys">Yrityksen nimi</label>
+          <input class="form-input" type="text" id="yritys" name="yritys" placeholder="Yritys Oy">
         </div>
         <div class="form-group">
           <label class="form-label" for="yhteyshenkilö">Yhteyshenkilön nimi <span class="req">*</span></label>
@@ -337,8 +337,8 @@
           <input class="form-input" type="email" id="email" name="email" required placeholder="matti@yritys.fi">
         </div>
         <div class="form-group">
-          <label class="form-label" for="puhelin">Puhelinnumero <span class="req">*</span></label>
-          <input class="form-input" type="tel" id="puhelin" name="puhelin" required placeholder="+358 40 123 4567">
+          <label class="form-label" for="puhelin">Puhelinnumero</label>
+          <input class="form-input" type="tel" id="puhelin" name="puhelin" placeholder="+358 40 123 4567">
         </div>
       </div>
       <div class="form-group">
@@ -351,8 +351,8 @@
     <div class="form-section">
       <div class="form-section-title">Brändi</div>
       <div class="form-group" style="margin-bottom:14px">
-        <label class="form-label" for="savy">Minkälainen sävy ja tunnelma brändissänne on? <span class="req">*</span></label>
-        <textarea class="form-input" id="savy" name="brändi_sävy" required placeholder="Esim. rento ja humoristinen, tai ammattimainen ja tyylikäs..."></textarea>
+        <label class="form-label" for="savy">Minkälainen sävy ja tunnelma brändissänne on?</label>
+        <textarea class="form-input" id="savy" name="brändi_sävy" placeholder="Esim. rento ja humoristinen, tai ammattimainen ja tyylikäs..."></textarea>
       </div>
       <div class="form-group" style="margin-bottom:14px">
         <label class="form-label" for="brandivarit">Brändiväreinne tai fontit, jos tiedossa</label>
@@ -391,8 +391,8 @@
         </div>
       </div>
       <div class="form-group" style="margin-bottom:14px">
-        <label class="form-label" for="ihailet">Kolme tiliä tai brändiä, joita ihailette <span class="req">*</span></label>
-        <textarea class="form-input" id="ihailet" name="ihaillut_tilit" required placeholder="Esim. @nike, @gymshark, @lokalahti_brewing"></textarea>
+        <label class="form-label" for="ihailet">Kolme tiliä tai brändiä, joita ihailette</label>
+        <textarea class="form-input" id="ihailet" name="ihaillut_tilit" placeholder="Esim. @nike, @gymshark, @lokalahti_brewing"></textarea>
       </div>
       <div class="form-group">
         <label class="form-label">Onko teillä olemassa olevaa videomateriaalia?</label>
@@ -407,12 +407,28 @@
     <div class="form-section">
       <div class="form-section-title">Tavoitteet</div>
       <div class="form-group" style="margin-bottom:14px">
-        <label class="form-label" for="tavoite">Tärkein tavoitteenne somessa seuraavan 3 kuukauden aikana <span class="req">*</span></label>
-        <textarea class="form-input" id="tavoite" name="tavoite_3kk" required placeholder="Esim. kasvattaa seuraajamäärää, saada lisää myyntiä verkkokauppaan..."></textarea>
+        <label class="form-label" for="tavoite">Tärkein tavoitteenne somessa seuraavan 3 kuukauden aikana</label>
+        <textarea class="form-input" id="tavoite" name="tavoite_3kk" placeholder="Esim. kasvattaa seuraajamäärää, saada lisää myyntiä verkkokauppaan..."></textarea>
       </div>
       <div class="form-group">
         <label class="form-label" for="ei-haluta">Jotain mitä ette halua sisältöönne?</label>
         <textarea class="form-input" id="ei-haluta" name="ei_haluttua_sisältöä" placeholder="Esim. kilpailijoiden mainitseminen, tietyt aiheet..."></textarea>
+      </div>
+    </div>
+
+    <!-- PALVELUT -->
+    <div class="form-section">
+      <div class="form-section-title">Kiinnostavia palveluja</div>
+      <div class="form-group">
+        <label class="form-label">Mitä palveluja olette kiinnostuneita?</label>
+        <div class="checkbox-group">
+          <label class="checkbox-label"><input type="checkbox" name="palvelut" value="Somemarkkinointi / lyhytvideot"> Somemarkkinointi / lyhytvideot</label>
+          <label class="checkbox-label"><input type="checkbox" name="palvelut" value="Kuukausipaketti"> Kuukausipaketti</label>
+          <label class="checkbox-label"><input type="checkbox" name="palvelut" value="Verkkosivut"> Verkkosivut</label>
+          <label class="checkbox-label"><input type="checkbox" name="palvelut" value="Shopify-verkkokauppa"> Shopify-verkkokauppa</label>
+          <label class="checkbox-label"><input type="checkbox" name="palvelut" value="Brändianalyysi"> Brändianalyysi</label>
+          <label class="checkbox-label"><input type="checkbox" name="palvelut" value="Konsultointi"> Konsultointi</label>
+        </div>
       </div>
     </div>
 
