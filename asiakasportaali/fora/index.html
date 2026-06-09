@@ -218,6 +218,16 @@
       width: 100%; aspect-ratio: 9/16;
       background: var(--surface2); position: relative; overflow: hidden;
     }
+    .card-media.drive-embed {
+      aspect-ratio: unset;
+      overflow: visible;
+      height: auto;
+    }
+    .card-media.drive-embed iframe {
+      display: block; border: none;
+      width: 100%; aspect-ratio: 9/16;
+      height: auto;
+    }
     .card-media iframe, .card-media video { width: 100%; height: 100%; border: none; display: block; }
     .card-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .card-placeholder {
@@ -499,6 +509,7 @@
       };
 
       let media = '';
+      let mediaClass = 'card-media';
       if (item.embedUrl) {
         if (/youtube\.com|youtu\.be/.test(item.embedUrl)) {
           const vid = item.embedUrl.match(/(?:v=|youtu\.be\/)([^&?/]+)/)?.[1] || '';
@@ -507,7 +518,8 @@
           const vid = item.embedUrl.match(/vimeo\.com\/(\d+)/)?.[1] || '';
           media = `<iframe src="https://player.vimeo.com/video/${vid}" allowfullscreen></iframe>`;
         } else if (/drive\.google\.com/.test(item.embedUrl)) {
-          media = `<iframe src="${item.embedUrl}" allowfullscreen></iframe>`;
+          mediaClass = 'card-media drive-embed';
+          media = `<iframe src="${item.embedUrl}" allowfullscreen allow="autoplay"></iframe>`;
         } else {
           media = `<video src="${item.embedUrl}" controls playsinline></video>`;
         }
@@ -530,7 +542,7 @@
       const requestActive = st === 'Muutoksia pyydetty' ? ' active' : '';
 
       card.innerHTML = `
-        <div class="card-media">${media}</div>
+        <div class="${mediaClass}">${media}</div>
         <div class="card-body">
           <div class="card-meta">
             <div style="display:flex;gap:4px;flex-wrap:wrap">${platforms.map(p => `<span class="platform-tag ${platClassMap[p]||'tiktok'}">${p}</span>`).join('')}</div>
