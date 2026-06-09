@@ -24,7 +24,7 @@
 
   <link rel="icon" type="image/png" href="logo2.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600&family=DM+Mono:wght@300;400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
@@ -45,8 +45,7 @@
       --radius-lg: 14px;
       --radius-xl: 20px;
     }
-    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
-    .anton { font-family: 'Anton', sans-serif; font-weight: 400; letter-spacing: 0.02em; }
+    body { font-family: 'DM Mono', monospace; background: var(--bg); color: var(--text); overflow-x: hidden; }
 
     /* ── SCROLL PROGRESS ──────────────────────────────────── */
     #scroll-progress {
@@ -75,9 +74,24 @@
     .nav-logo img { height: 80px; width: auto; transition: opacity 0.2s; }
     .nav-logo:hover img { opacity: 0.8; }
 
+    /* ── DESKTOP NAV LINKS ──────────────────────────────────── */
+    .nav-links {
+      display: flex; align-items: center; gap: 36px;
+    }
+    .nav-link {
+      font-family: 'Playfair Display', serif;
+      font-weight: 300;
+      font-size: 15px;
+      letter-spacing: 0.12em;
+      color: var(--gray-600);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-link:hover { color: var(--text); }
+
     /* ── HAMBURGER ────────────────────────────────────────── */
     .hamburger {
-      display: flex;
+      display: none;
       flex-direction: column;
       justify-content: center;
       gap: 0;
@@ -154,7 +168,9 @@
       padding: 32px 0 32px;
     }
     .drawer-link {
-      font-size: 18px; font-weight: 500;
+      font-family: 'Playfair Display', serif;
+      font-size: 18px; font-weight: 300;
+      letter-spacing: 0.08em;
       color: var(--gray-600); text-decoration: none;
       padding: 16px 24px;
       width: 100%; text-align: center;
@@ -172,8 +188,6 @@
     #side-drawer.open .drawer-link:nth-child(4) { transition-delay: 0.18s; }
     #side-drawer.open .drawer-link:nth-child(5) { transition-delay: 0.22s; }
     #side-drawer.open .drawer-link:nth-child(6) { transition-delay: 0.26s; }
-    #side-drawer.open .drawer-link:nth-child(7) { transition-delay: 0.30s; }
-    #side-drawer.open .drawer-link:nth-child(8) { transition-delay: 0.34s; }
 
     /* ── HERO ─────────────────────────────────────────────── */
     .hero {
@@ -182,7 +196,6 @@
       text-align: center; padding: 100px 40px 60px;
       position: relative; overflow: hidden;
     }
-    /* subtle radial glow behind hero text */
     .hero::before {
       content: '';
       position: absolute; top: 20%; left: 50%;
@@ -193,21 +206,22 @@
     }
     .hero-eyebrow {
       display: inline-flex; align-items: center; gap: 8px;
-      font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+      font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
       color: var(--accent); background: var(--accent-light);
       padding: 6px 14px; border-radius: 100px; margin-bottom: 32px;
       animation: fadeUp 0.6s ease 0.1s both;
     }
     .hero-eyebrow::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #ffffff; }
     .hero-headline {
-      font-family: 'Anton', sans-serif;
-      font-size: clamp(52px, 8vw, 96px); line-height: 0.95; letter-spacing: 0.01em;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(52px, 8vw, 96px); line-height: 0.95; letter-spacing: 0.02em;
+      font-weight: 400;
       color: var(--text); margin-bottom: 28px;
       animation: fadeUp 0.7s ease 0.2s both;
     }
     .hero-headline .blue { color: #ffffff; }
     .hero-sub {
-      font-size: clamp(16px, 2vw, 19px); color: var(--gray-600);
+      font-size: clamp(13px, 1.6vw, 16px); color: var(--gray-600);
       line-height: 1.65; max-width: 540px; margin: 0 auto 40px;
       animation: fadeUp 0.7s ease 0.35s both;
     }
@@ -216,13 +230,17 @@
       animation: fadeUp 0.7s ease 0.5s both;
     }
     .btn-primary {
-      font-size: 15px; font-weight: 600; padding: 14px 28px;
+      font-family: 'DM Mono', monospace;
+      font-size: 12px; font-weight: 500; letter-spacing: 0.08em;
+      padding: 14px 28px;
       background: #ffffff; color: #111111; border-radius: var(--radius);
       text-decoration: none; transition: all 0.2s;
     }
     .btn-primary:hover { background: #dddddd; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,255,255,0.15); }
     .btn-secondary {
-      font-size: 15px; font-weight: 500; padding: 14px 28px;
+      font-family: 'DM Mono', monospace;
+      font-size: 12px; font-weight: 400; letter-spacing: 0.08em;
+      padding: 14px 28px;
       background: transparent; color: var(--text); border-radius: var(--radius);
       border: 1.5px solid var(--border); text-decoration: none; transition: all 0.2s;
     }
@@ -234,22 +252,24 @@
     }
     .stat-item {
       padding: 16px 28px; display: flex; flex-direction: column; align-items: center;
-      border-right: 1px solid var(--border); gap: 3px;
+      border-right: 1px solid var(--border); gap: 4px;
     }
     .stat-item:last-child { border-right: none; }
-    .stat-val { font-size: 15px; font-weight: 700; color: var(--text); }
-    .stat-label { font-size: 11px; font-weight: 500; color: var(--gray-400); letter-spacing: 0.04em; text-transform: uppercase; }
+    .stat-val { font-size: 12px; font-weight: 500; color: var(--text); letter-spacing: 0.04em; }
+    .stat-label { font-size: 10px; font-weight: 400; color: var(--gray-400); letter-spacing: 0.04em; }
 
     /* ── SECTIONS ─────────────────────────────────────────── */
     .section { padding: 100px 40px; max-width: 1200px; margin: 0 auto; }
-    .section-label { font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #888888; margin-bottom: 12px; }
-    .section-heading { font-family: 'Anton', sans-serif; font-size: clamp(32px, 4vw, 52px); line-height: 1.05; color: var(--text); margin-bottom: 48px; }
+    .section-label { font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #888888; margin-bottom: 12px; }
+    .section-heading { font-family: 'Playfair Display', serif; font-weight: 400; font-size: clamp(32px, 4vw, 52px); line-height: 1.1; color: var(--text); margin-bottom: 48px; }
 
     /* ── INDUSTRY ─────────────────────────────────────────── */
     .industry-bg { background: var(--gray-50); }
     .chips { display: flex; flex-wrap: wrap; gap: 12px; }
     .chip {
-      font-size: 14px; font-weight: 500; padding: 10px 20px;
+      font-family: 'DM Mono', monospace;
+      font-size: 12px; font-weight: 400; letter-spacing: 0.04em;
+      padding: 10px 20px;
       border: 1.5px solid var(--border); border-radius: 100px;
       color: var(--text); background: var(--bg); transition: all 0.2s; cursor: default;
     }
@@ -275,9 +295,9 @@
       opacity: 0; transition: opacity 0.3s; pointer-events: none;
     }
     .service-card:hover::after { opacity: 1; }
-    .service-num { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; color: var(--gray-400); margin-bottom: 24px; }
-    .service-title { font-family: 'Anton', sans-serif; font-size: 26px; letter-spacing: 0.02em; color: var(--text); margin-bottom: 14px; }
-    .service-desc { font-size: 14px; line-height: 1.7; color: var(--gray-600); max-width: 280px; }
+    .service-num { font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; color: var(--gray-400); margin-bottom: 24px; }
+    .service-title { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 500; letter-spacing: 0.01em; color: var(--text); margin-bottom: 14px; }
+    .service-desc { font-size: 13px; line-height: 1.7; color: var(--gray-600); max-width: 280px; }
     .service-arrow { position: absolute; top: 48px; right: 48px; font-size: 24px; color: #ffffff; opacity: 0; transform: translate(-6px, 6px); transition: all 0.25s; }
 
     /* ── WHY US ───────────────────────────────────────────── */
@@ -288,18 +308,25 @@
       transition: border-color 0.2s, transform 0.3s, box-shadow 0.3s;
     }
     .why-card:hover { border-color: var(--gray-200); transform: translateY(-4px); box-shadow: var(--shadow-md); }
-    .why-icon { font-size: 28px; margin-bottom: 16px; }
-    .why-title { font-family: 'Anton', sans-serif; font-size: 18px; letter-spacing: 0.02em; color: var(--text); margin-bottom: 10px; }
-    .why-desc { font-size: 14px; line-height: 1.65; color: var(--gray-600); }
+    .why-title { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 500; letter-spacing: 0.01em; color: var(--text); margin-bottom: 10px; }
+    .why-desc { font-size: 13px; line-height: 1.65; color: var(--gray-600); }
 
     /* ── PORTFOLIO ────────────────────────────────────────── */
-    .portfolio-coming {
-      border: 1px solid var(--border); border-radius: var(--radius-xl);
-      padding: 80px 40px; text-align: center; background: var(--gray-50);
+    .portfolio-compact {
+      border: 1px solid var(--border); border-radius: var(--radius-lg);
+      padding: 32px 40px; display: flex; align-items: center; justify-content: space-between;
+      gap: 24px; background: var(--gray-50); flex-wrap: wrap;
     }
-    .portfolio-coming-icon { font-size: 36px; margin-bottom: 20px; }
-    .portfolio-coming h3 { font-family: 'Anton', sans-serif; font-size: 26px; letter-spacing: 0.02em; color: var(--text); margin-bottom: 12px; }
-    .portfolio-coming p { font-size: 15px; color: var(--gray-600); line-height: 1.7; max-width: 420px; margin: 0 auto 28px; }
+    .portfolio-compact p { font-size: 14px; color: var(--gray-600); line-height: 1.6; margin: 0; }
+    .portfolio-compact strong { color: var(--text); font-weight: 500; }
+    .btn-follow {
+      font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500;
+      letter-spacing: 0.10em; text-transform: uppercase;
+      padding: 10px 20px; border: 1px solid var(--border); border-radius: 4px;
+      color: var(--gray-400); text-decoration: none; white-space: nowrap;
+      transition: border-color 0.2s, color 0.2s, background 0.2s; flex-shrink: 0;
+    }
+    .btn-follow:hover { border-color: #ffffff; color: #ffffff; }
 
     /* ── PRICING TABS ─────────────────────────────────────── */
     .pricing-tab-bar {
@@ -421,37 +448,43 @@
     .faq-item { border-bottom: 1px solid var(--border); }
     .faq-item:last-child { border-bottom: none; }
     .faq-item summary {
-      list-style: none; padding: 22px 28px; font-size: 15px; font-weight: 600;
+      list-style: none; padding: 22px 28px;
+      font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 400;
       color: var(--text); cursor: pointer;
       display: flex; justify-content: space-between; align-items: center; gap: 16px;
       transition: background 0.2s; user-select: none;
     }
     .faq-item summary::-webkit-details-marker { display: none; }
-    .faq-item summary::after { content: '+'; font-size: 20px; font-weight: 300; color: var(--gray-400); flex-shrink: 0; transition: transform 0.25s; }
+    .faq-item summary::after { content: '+'; font-family: 'DM Mono', monospace; font-size: 20px; font-weight: 300; color: var(--gray-400); flex-shrink: 0; transition: transform 0.25s; }
     .faq-item[open] summary::after { transform: rotate(45deg); }
     .faq-item summary:hover { background: var(--gray-100); }
     .faq-item[open] summary { background: var(--gray-100); }
-    .faq-answer { padding: 0 28px 22px; font-size: 14px; line-height: 1.75; color: var(--gray-600); }
+    .faq-answer { padding: 0 28px 22px; font-size: 13px; line-height: 1.75; color: var(--gray-600); }
 
     /* ── CONTACT ──────────────────────────────────────────── */
     .contact-bg { background: var(--gray-50); padding: 100px 0; }
     .contact-inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-    .contact-heading { font-family: 'Anton', sans-serif; font-size: clamp(36px, 5vw, 64px); line-height: 0.95; color: var(--text); margin-bottom: 20px; }
-    .contact-sub { font-size: 15px; line-height: 1.7; color: var(--gray-600); margin-bottom: 40px; max-width: 360px; }
+    .contact-heading { font-family: 'Playfair Display', serif; font-size: clamp(36px, 5vw, 64px); font-weight: 400; line-height: 1.05; color: var(--text); margin-bottom: 20px; }
+    .contact-sub { font-size: 13px; line-height: 1.7; color: var(--gray-600); margin-bottom: 40px; max-width: 360px; }
     .contact-meta { display: flex; flex-direction: column; gap: 12px; }
-    .contact-meta-item { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--gray-600); text-decoration: none; transition: color 0.2s; }
+    .contact-meta-item { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--gray-600); text-decoration: none; transition: color 0.2s; }
     .contact-meta-item:hover { color: #ffffff; }
-    .contact-meta-icon { width: 32px; height: 32px; border-radius: var(--radius); background: var(--bg); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+    .contact-meta-icon {
+      width: 32px; height: 32px; border-radius: var(--radius); background: var(--bg); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.04em;
+      color: var(--gray-400); flex-shrink: 0;
+    }
     .contact-form { display: flex; flex-direction: column; gap: 14px; }
     .form-group { display: flex; flex-direction: column; gap: 6px; }
-    .form-label { font-size: 12px; font-weight: 600; color: var(--text); letter-spacing: 0.04em; }
-    .form-input { padding: 12px 14px; border: 1.5px solid var(--border); border-radius: var(--radius); font-size: 14px; font-family: 'Inter', sans-serif; color: var(--text); background: var(--bg); transition: border-color 0.2s; outline: none; }
+    .form-label { font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500; color: var(--text); letter-spacing: 0.08em; }
+    .form-input { padding: 12px 14px; border: 1.5px solid var(--border); border-radius: var(--radius); font-size: 13px; font-family: 'DM Mono', monospace; color: var(--text); background: var(--bg); transition: border-color 0.2s; outline: none; }
     .form-input:focus { border-color: #ffffff; }
     .form-input::placeholder { color: var(--gray-400); }
     textarea.form-input { resize: vertical; min-height: 100px; }
-    .form-submit { padding: 13px 24px; background: var(--text); color: white; border: none; border-radius: var(--radius); font-size: 14px; font-weight: 600; cursor: pointer; font-family: 'Inter', sans-serif; transition: all 0.2s; }
-    .form-submit:hover { background: #333333; transform: translateY(-1px); }
+    .form-submit { padding: 13px 24px; background: var(--text); color: #111111; border: none; border-radius: var(--radius); font-size: 12px; font-weight: 500; letter-spacing: 0.08em; cursor: pointer; font-family: 'DM Mono', monospace; transition: all 0.2s; }
+    .form-submit:hover { background: #dddddd; transform: translateY(-1px); }
     .form-submit:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
     .form-success {
       display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -461,17 +494,17 @@
       width: 52px; height: 52px; border-radius: 50%;
       background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
       display: flex; align-items: center; justify-content: center;
-      font-size: 22px; color: var(--text);
+      font-family: 'DM Mono', monospace; font-size: 20px; color: var(--text);
     }
-    .form-success-title { font-size: 18px; font-weight: 700; color: var(--text); font-family: 'Inter', sans-serif; }
-    .form-success-sub { font-size: 14px; color: var(--gray-400); font-family: 'Inter', sans-serif; }
+    .form-success-title { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 400; color: var(--text); }
+    .form-success-sub { font-family: 'DM Mono', monospace; font-size: 13px; color: var(--gray-400); }
 
     /* ── FOOTER ───────────────────────────────────────────── */
-    footer { border-top: 1px solid var(--border); padding: 28px 40px; display: flex; align-items: center; justify-content: space-between; background: var(--bg); }
-    .footer-logo { font-family: 'Anton', sans-serif; font-size: 16px; letter-spacing: 0.06em; color: var(--text); }
-    .footer-copy { font-size: 12px; color: var(--gray-400); }
-    .footer-links { display: flex; gap: 20px; }
-    .footer-links a { font-size: 12px; color: var(--gray-400); text-decoration: none; transition: color 0.2s; }
+    footer { border-top: 1px solid var(--border); padding: 28px 40px; display: flex; align-items: center; justify-content: space-between; background: var(--bg); flex-wrap: wrap; gap: 16px; }
+    .footer-logo { font-family: 'Playfair Display', serif; font-size: 16px; letter-spacing: 0.06em; color: var(--text); }
+    .footer-copy { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--gray-400); }
+    .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+    .footer-links a { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--gray-400); text-decoration: none; transition: color 0.2s; letter-spacing: 0.04em; }
     .footer-links a:hover { color: var(--text); }
 
     /* ── ANIMATIONS ───────────────────────────────────────── */
@@ -479,21 +512,9 @@
       from { opacity: 0; transform: translateY(24px); }
       to   { opacity: 1; transform: translateY(0); }
     }
-
-    /* Scroll reveal: elements slide up and fade in */
-    .reveal {
-      opacity: 0;
-      transform: translateY(32px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
+    .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
-
-    /* Stagger: children animate in sequence — NO opacity on parent */
-    .stagger > * {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.55s ease, transform 0.55s ease;
-    }
+    .stagger > * { opacity: 0; transform: translateY(24px); transition: opacity 0.55s ease, transform 0.55s ease; }
     .stagger.visible > *:nth-child(1) { opacity: 1; transform: none; transition-delay: 0.04s; }
     .stagger.visible > *:nth-child(2) { opacity: 1; transform: none; transition-delay: 0.12s; }
     .stagger.visible > *:nth-child(3) { opacity: 1; transform: none; transition-delay: 0.20s; }
@@ -501,34 +522,36 @@
     .stagger.visible > *:nth-child(5) { opacity: 1; transform: none; transition-delay: 0.36s; }
     .stagger.visible > *:nth-child(6) { opacity: 1; transform: none; transition-delay: 0.44s; }
     .stagger.visible > *:nth-child(7) { opacity: 1; transform: none; transition-delay: 0.52s; }
-
     .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .fade-up.visible { opacity: 1; transform: translateY(0); }
 
     /* ── RESPONSIVE ───────────────────────────────────────── */
     @media (max-width: 768px) {
       nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
 
-.hero { padding: 100px 20px 60px; }
+      .hero { padding: 100px 20px 60px; }
       .section { padding: 60px 20px; }
       .services-grid { grid-template-columns: 1fr; }
       .service-card { border-right: none !important; padding: 32px 24px; }
 
       .why-grid { grid-template-columns: 1fr 1fr; }
 
-      .portfolio-coming { padding: 48px 24px; }
+      .portfolio-compact { padding: 24px 20px; }
 
       .pricing-tab-bar { width: 100%; }
       .ptab { flex: 1; text-align: center; padding: 9px 8px; font-size: 11px; }
-      .pricing-grid, .pricing-grid-wide { grid-template-columns: 1fr; }
+      .pricing-grid, .pricing-grid-wide, .pricing-grid-2 { grid-template-columns: 1fr; }
 
-      .faq-item summary { padding: 18px 20px; font-size: 14px; }
+      .faq-item summary { padding: 18px 20px; font-size: 15px; }
       .faq-answer { padding: 0 20px 18px; }
 
       .contact-grid { grid-template-columns: 1fr; gap: 40px; }
       .pricing-inner, .contact-inner { padding: 0 20px; }
       .hero-stats { flex-wrap: wrap; }
-      .stat-item { width: 50%; border-right: none; border-bottom: 1px solid var(--border); }
+      .stat-item { flex: 1 1 auto; border-right: none; border-bottom: 1px solid var(--border); }
+      .stat-item:last-child { border-bottom: none; }
       footer { flex-direction: column; gap: 12px; text-align: center; padding: 24px 20px; }
     }
 
@@ -546,7 +569,7 @@
 <div id="side-drawer">
   <div class="drawer-head">
     <img src="logo3.png" alt="RN Media" class="drawer-logo">
-    <button class="drawer-close" id="drawer-close-btn" aria-label="Sulje valikko" onclick="closeDrawer()">✕</button>
+    <button class="drawer-close" id="drawer-close-btn" aria-label="Sulje valikko" onclick="closeDrawer()">&#x2715;</button>
   </div>
   <nav class="drawer-nav">
     <a href="#etusivu"         class="drawer-link drawer-close-trigger">Etusivu</a>
@@ -555,13 +578,18 @@
     <a href="#hinnat"          class="drawer-link drawer-close-trigger">Hinnat</a>
     <a href="#ukk"             class="drawer-link drawer-close-trigger">UKK</a>
     <a href="#ota-yhteytta"    class="drawer-link drawer-close-trigger">Yhteystiedot</a>
-    <a href="/asiakkaille"     class="drawer-link drawer-close-trigger">Uusi asiakas</a>
-    <a href="/asiakasportaali" class="drawer-link drawer-close-trigger">Kirjaudu sisään</a>
   </nav>
 </div>
 
 <nav id="navbar">
   <a href="#etusivu" class="nav-logo"><img src="logo3.png" alt="RN Media"></a>
+  <div class="nav-links">
+    <a href="#palvelut"     class="nav-link">Palvelut</a>
+    <a href="#portfolio"    class="nav-link">Portfolio</a>
+    <a href="#hinnat"       class="nav-link">Hinnat</a>
+    <a href="#ukk"          class="nav-link">UKK</a>
+    <a href="#ota-yhteytta" class="nav-link">Yhteystiedot</a>
+  </div>
   <button class="hamburger" id="hamburger" aria-label="Avaa valikko">
     <span></span><span></span><span></span>
   </button>
@@ -573,16 +601,24 @@
   <h1 class="hero-headline">
     NÄKYVYYTTÄ.<br><span class="blue">ASIAKKAITA.</span><br>TULOKSIA.
   </h1>
-  <p class="hero-sub">Tuotamme lyhytvideot ja somestrategian joka tuo uusia asiakkaita ovelle — ei pelkkiä tykkäyksiä.</p>
+  <p class="hero-sub">Teemme lyhytvideot ja somestrategian joka tuo uusia asiakkaita ovelle — ei pelkkiä tykkäyksiä.</p>
   <div class="hero-buttons">
     <a href="#ota-yhteytta" class="btn-primary">Aloitetaan →</a>
     <a href="#portfolio" class="btn-secondary">Katso portfolio</a>
   </div>
   <div class="hero-stats">
-    <div class="stat-item"><span class="stat-val" data-count="3">3</span><span class="stat-label">Kieltä</span></div>
-    <div class="stat-item"><span class="stat-val">24/7</span><span class="stat-label">Tavoitettavissa</span></div>
-    <div class="stat-item"><span class="stat-val">100%</span><span class="stat-label">Tuloslähtöinen</span></div>
-    <div class="stat-item"><span class="stat-val">Lohja</span><span class="stat-label">Paikallinen</span></div>
+    <div class="stat-item">
+      <span class="stat-val">Uusimaa</span>
+      <span class="stat-label">Kotialue</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-val">Launch-hinnat</span>
+      <span class="stat-label">Voimassa 31.8.2026</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-val">Ei sitoutumista</span>
+      <span class="stat-label">Peruuta milloin tahansa</span>
+    </div>
   </div>
 </section>
 
@@ -592,13 +628,13 @@
     <p class="section-label">Erikoisalat</p>
     <h2 class="section-heading">Toimialat joille<br>teemme sisältöä</h2>
     <div class="chips stagger">
-      <span class="chip">🍽 Ravintolat</span>
-      <span class="chip">🧘 Hyvinvointi</span>
-      <span class="chip">🏢 Kiinteistöhoito</span>
-      <span class="chip">💇 Kauneus &amp; Hiukset</span>
-      <span class="chip">⚽ Urheilu</span>
-      <span class="chip">⛳ Golf</span>
-      <span class="chip">👀 Ja lähes kaikki muut!</span>
+      <span class="chip">Ravintolat</span>
+      <span class="chip">Hyvinvointi</span>
+      <span class="chip">Kiinteistöhoito</span>
+      <span class="chip">Kauneus &amp; Hiukset</span>
+      <span class="chip">Urheilu</span>
+      <span class="chip">Golf</span>
+      <span class="chip">Ja lähes kaikki muut</span>
     </div>
   </div>
 </div>
@@ -610,25 +646,25 @@
   <div class="services-grid stagger">
     <div class="service-card">
       <div class="service-num">01</div>
-      <div class="service-title">LYHYTVIDEOSISÄLTÖ</div>
+      <div class="service-title">Lyhytvideosisältö</div>
       <p class="service-desc">Koukkuisat, katseenvangitsevat lyhytvideot TikTokiin, Instagramiin ja Youtubeen — jotka muuttavat katsojat asiakkaiksi.</p>
       <span class="service-arrow">↗</span>
     </div>
     <div class="service-card">
       <div class="service-num">02</div>
-      <div class="service-title">SISÄLLÖNTUOTANTO</div>
+      <div class="service-title">Sisällöntuotanto</div>
       <p class="service-desc">Ammattimainen kuvaus, editointi ja copy — kaikki yhdestä paikasta. Brändisi paras versio joka kerta.</p>
       <span class="service-arrow">↗</span>
     </div>
     <div class="service-card">
       <div class="service-num">03</div>
-      <div class="service-title">SOMESTRATEGIA</div>
+      <div class="service-title">Somestrategia</div>
       <p class="service-desc">Datalähtöinen strategia joka perustuu oikeisiin tavoitteisiisi — ei mutu-tuntumaan. Kasvu mitataan, ei arvailla.</p>
       <span class="service-arrow">↗</span>
     </div>
     <div class="service-card">
       <div class="service-num">04</div>
-      <div class="service-title">BRÄNDIN RAKENTAMINEN</div>
+      <div class="service-title">Brändin rakentaminen</div>
       <p class="service-desc">Selkeä visuaalinen identiteetti, äänensävy ja positiointi joka erottaa sinut kilpailijoista ja jää mieleen.</p>
       <span class="service-arrow">↗</span>
     </div>
@@ -642,23 +678,19 @@
     <h2 class="section-heading">Teemme somesta<br>liiketoimintaa</h2>
     <div class="why-grid stagger">
       <div class="why-card">
-        <div class="why-icon">⚡</div>
-        <div class="why-title">NOPEA TOIMITUS</div>
+        <div class="why-title">Nopea toimitus</div>
         <p class="why-desc">Ensimmäiset videot valmiina 5–7 arkipäivässä aloituksesta. Ei turhaa odottelua.</p>
       </div>
       <div class="why-card">
-        <div class="why-icon">🎯</div>
-        <div class="why-title">TULOSLÄHTÖINEN</div>
+        <div class="why-title">Tuloslähtöinen</div>
         <p class="why-desc">Mittaamme kasvua, konversioita ja liidejä — ei pelkästään tykkäyksiä ja kattavuutta.</p>
       </div>
       <div class="why-card">
-        <div class="why-icon">🤝</div>
-        <div class="why-title">EI SITOUTUMISTA</div>
+        <div class="why-title">Ei sitoutumista</div>
         <p class="why-desc">Kaikki paketit voi peruuttaa milloin tahansa. Pysyt koska tulokset puhuvat puolestaan.</p>
       </div>
       <div class="why-card">
-        <div class="why-icon">🇫🇮</div>
-        <div class="why-title">PAIKALLINEN</div>
+        <div class="why-title">Paikallinen</div>
         <p class="why-desc">Suomalainen toimija, suomenkielinen palvelu, nopea viestintä. Tunnemme markkinan.</p>
       </div>
     </div>
@@ -669,11 +701,9 @@
 <div class="section reveal" id="portfolio">
   <p class="section-label">Portfolio</p>
   <h2 class="section-heading">Töitämme</h2>
-  <div class="portfolio-coming">
-    <div class="portfolio-coming-icon">📸</div>
-    <h3>Portfolio kasvaa parhaillaan</h3>
-    <p>Olemme tuore toimisto ja portfolio täydentyy kevään mittaan. Seuraa tuoreimmat työt Instagramissa.</p>
-    <a href="https://instagram.com/rnmediafi" target="_blank" rel="noopener" class="btn-primary">Seuraa @rnmediafi ↗</a>
+  <div class="portfolio-compact">
+    <p>Portfolio täydentyy — seuraa tuoreimmat työt Instagramissa <strong>@rnmediafi</strong></p>
+    <a href="https://instagram.com/rnmediafi" target="_blank" rel="noopener" class="btn-follow">Seuraa Instagramissa ↗</a>
   </div>
 </div>
 
@@ -695,7 +725,6 @@
     <div class="pricing-panel" id="tab-kuukausi">
       <p class="panel-caption">Ei sitoutumista — peruuta milloin tahansa</p>
       <div class="pricing-grid">
-        <!-- STARTER -->
         <div class="pricing-card">
           <span class="plan-label">Launch Deal</span>
           <div class="plan-name">Starter</div>
@@ -714,7 +743,6 @@
           <a href="#ota-yhteytta" class="btn-plan btn-plan-outline">Aloitetaan</a>
           <span class="plan-setup-note">Kertaluonteinen aloitusmaksu €79.</span>
         </div>
-        <!-- GROWTH -->
         <div class="pricing-card featured">
           <span class="plan-label featured-label">Suosituin — Launch Deal</span>
           <div class="plan-name">Growth</div>
@@ -733,7 +761,6 @@
           <a href="#ota-yhteytta" class="btn-plan btn-plan-filled">Aloitetaan</a>
           <span class="plan-setup-note">Kertaluonteinen aloitusmaksu €79.</span>
         </div>
-        <!-- PREMIUM -->
         <div class="pricing-card">
           <span class="plan-label">Launch Deal</span>
           <div class="plan-name">Premium</div>
@@ -871,7 +898,7 @@
           <span class="plan-label featured-label">Kertamaksu — suosittu</span>
           <div class="plan-name">Shopify-verkkokauppa</div>
           <div class="plan-price">
-            <span class="plan-price-main">€399<span class="plan-period">/ kerta</span></span>
+            <span class="plan-price-main">lähtien €399<span class="plan-period">/ kerta</span></span>
           </div>
           <ul class="plan-features">
             <li>Valmis verkkokauppa</li>
@@ -943,19 +970,19 @@
     <div class="contact-grid reveal">
       <div>
         <p class="section-label">Yhteystiedot</p>
-        <h2 class="contact-heading">ALOITETAAN<br>YHDESSÄ</h2>
+        <h2 class="contact-heading">Aloitetaan<br>yhdessä</h2>
         <p class="contact-sub">Valmis kasvattamaan näkyvyyttäsi? Kerro projektistasi — vastataan 24 tunnin sisällä.</p>
         <div class="contact-meta">
-          <a class="contact-meta-item" href="https://instagram.com/rnmedia.fi" target="_blank" rel="noopener">
-            <div class="contact-meta-icon">📸</div>
+          <a class="contact-meta-item" href="https://instagram.com/rnmediafi" target="_blank" rel="noopener">
+            <div class="contact-meta-icon">IG</div>
             <span>@rnmediafi</span>
           </a>
           <a class="contact-meta-item" href="mailto:nikolas.ruotsalo@rnmedia.fi">
-            <div class="contact-meta-icon">✉️</div>
+            <div class="contact-meta-icon">@</div>
             <span>nikolas.ruotsalo@rnmedia.fi</span>
           </a>
           <div class="contact-meta-item">
-            <div class="contact-meta-icon">📍</div>
+            <div class="contact-meta-icon">FI</div>
             <a href="https://maps.google.com/?q=Lohja,Finland" target="_blank" rel="noopener">Lohja, Uusimaa, Finland</a>
           </div>
         </div>
@@ -966,7 +993,7 @@
           <input class="form-input" type="text" name="name" placeholder="Mikko Virtanen" required>
         </div>
         <div class="form-group">
-          <label class="form-label">SÄHKÖPOSTI</label>
+          <label class="form-label">S&#196;HK&#214;POSTI</label>
           <input class="form-input" type="email" name="email" placeholder="mikko@yritys.fi" required>
         </div>
         <div class="form-group">
@@ -977,9 +1004,9 @@
           <label class="form-label">VIESTI</label>
           <textarea class="form-input" name="message" placeholder="Kerro projektistasi..." required></textarea>
         </div>
-        <button type="submit" class="form-submit" id="contact-submit">Lähetä viesti →</button>
+        <button type="submit" class="form-submit" id="contact-submit">L&#228;het&#228; viesti &#8594;</button>
         <div class="form-success" id="form-success" style="display:none;">
-          <div class="form-success-icon">✓</div>
+          <div class="form-success-icon">&#10003;</div>
           <p class="form-success-title">Viesti lähetetty!</p>
           <p class="form-success-sub">Vastataan 24 tunnin sisällä.</p>
         </div>
@@ -991,30 +1018,28 @@
 <!-- FOOTER -->
 <footer>
   <span class="footer-logo"><img src="logo.png" alt="RN Media" style="height:36px;"></span>
-  <span class="footer-copy">© 2026 RN Media. Kaikki oikeudet pidätetään.</span>
+  <span class="footer-copy">&#169; 2026 RN Media. Kaikki oikeudet pidätetään.</span>
   <div class="footer-links">
     <a href="https://instagram.com/rnmediafi" target="_blank" rel="noopener">Instagram</a>
     <a href="mailto:nikolas.ruotsalo@rnmedia.fi">Sähköposti</a>
     <a href="https://maps.google.com/?q=Lohja,Finland" target="_blank" rel="noopener">Lohja</a>
-    <a href="/asiakasportaali">Asiakasportaali</a>
+    <a href="/asiakkaille">Uusi asiakas</a>
+    <a href="/asiakasportaali">Kirjaudu sisään</a>
   </div>
 </footer>
 
 <script>
-  // ── Scroll progress bar ────────────────────────────────
   const progressBar = document.getElementById('scroll-progress');
   window.addEventListener('scroll', () => {
     const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
     progressBar.style.width = pct + '%';
   }, { passive: true });
 
-  // ── Sticky navbar ──────────────────────────────────────
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
     navbar.classList.toggle('scrolled', window.scrollY > 20);
   }, { passive: true });
 
-  // ── Drawer ─────────────────────────────────────────────
   const hamburger = document.getElementById('hamburger');
   const drawer    = document.getElementById('side-drawer');
   const overlay   = document.getElementById('drawer-overlay');
@@ -1037,7 +1062,6 @@
   document.querySelectorAll('.drawer-close-trigger').forEach(el => el.addEventListener('click', closeDrawer));
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(); });
 
-  // ── Contact form AJAX ──────────────────────────────────
   const contactForm   = document.getElementById('contact-form');
   const contactSubmit = document.getElementById('contact-submit');
   const formSuccess   = document.getElementById('form-success');
@@ -1067,7 +1091,6 @@
     }
   });
 
-  // ── Pricing tabs ───────────────────────────────────────
   document.querySelectorAll('.ptab').forEach(tab => {
     tab.addEventListener('click', () => {
       document.querySelectorAll('.ptab').forEach(t => t.classList.remove('active'));
@@ -1077,8 +1100,6 @@
     });
   });
 
-  // ── Scroll reveal ──────────────────────────────────────
-  // rAF ensures initial CSS paint (opacity:0) happens before observer fires
   requestAnimationFrame(() => {
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach(e => {
@@ -1091,7 +1112,6 @@
     document.querySelectorAll('.reveal, .stagger, .fade-up').forEach(el => revealObserver.observe(el));
   });
 
-  // ── Service card subtle mouse-follow glow ──────────────
   document.querySelectorAll('.service-card').forEach(card => {
     card.addEventListener('mousemove', e => {
       const r = card.getBoundingClientRect();
@@ -1100,7 +1120,6 @@
     });
   });
 
-  // ── Smooth scroll ──────────────────────────────────────
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       const target = document.querySelector(a.getAttribute('href'));
