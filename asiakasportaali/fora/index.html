@@ -41,12 +41,22 @@
         // {
         //   id: "v1",
         //   platform: "TikTok",          // "TikTok" | "Instagram" | "Reels"
+        //   platforms: ["TikTok","Instagram","Reels"], // optional: multiple badges
         //   type: "video",               // "video" | "image"
-        //   embedUrl: "",                // YouTube / Vimeo URL or direct .mp4, or ""
+        //   embedUrl: "",                // YouTube / Vimeo / Google Drive preview URL or direct .mp4, or ""
         //   thumbnailUrl: "",            // fallback image, or ""
         //   caption: "Kuvateksti tähän.",
         //   status: "Odottaa",           // "Odottaa" | "Hyväksytty" | "Muutoksia pyydetty"
         // },
+        {
+          id: "v1",
+          platforms: ["TikTok", "Instagram", "Reels"],
+          type: "video",
+          embedUrl: "https://drive.google.com/file/d/1bxney9sTE-gIum3k_FFvsn6wjEDEREw6/preview",
+          thumbnailUrl: "",
+          caption: "9.6. kuvattu video",
+          status: "Odottaa",
+        },
       ],
     };
     // ============================================================
@@ -479,7 +489,9 @@
         (st === 'Hyväksytty' ? ' approved' : st === 'Muutoksia pyydetty' ? ' changes' : '');
       card.dataset.id = item.id;
 
-      const platClass = { TikTok: 'tiktok', Instagram: 'instagram', Reels: 'reels' }[item.platform] || 'tiktok';
+      const platforms = item.platforms || (item.platform ? [item.platform] : ['TikTok']);
+      const platClassMap = { TikTok: 'tiktok', Instagram: 'instagram', Reels: 'reels' };
+      const platClass = platClassMap[platforms[0]] || 'tiktok';
       const stClsMap  = {
         'Odottaa':             'status-waiting',
         'Hyväksytty':          'status-approved',
@@ -494,6 +506,8 @@
         } else if (/vimeo\.com/.test(item.embedUrl)) {
           const vid = item.embedUrl.match(/vimeo\.com\/(\d+)/)?.[1] || '';
           media = `<iframe src="https://player.vimeo.com/video/${vid}" allowfullscreen></iframe>`;
+        } else if (/drive\.google\.com/.test(item.embedUrl)) {
+          media = `<iframe src="${item.embedUrl}" allowfullscreen></iframe>`;
         } else {
           media = `<video src="${item.embedUrl}" controls playsinline></video>`;
         }
@@ -519,7 +533,7 @@
         <div class="card-media">${media}</div>
         <div class="card-body">
           <div class="card-meta">
-            <span class="platform-tag ${platClass}">${item.platform}</span>
+            <div style="display:flex;gap:4px;flex-wrap:wrap">${platforms.map(p => `<span class="platform-tag ${platClassMap[p]||'tiktok'}">${p}</span>`).join('')}</div>
             <span class="status-tag ${stClsMap[st] || 'status-waiting'}" id="stag-${item.id}">${st}</span>
           </div>
           <div class="card-caption">${item.caption || ''}</div>
@@ -572,7 +586,7 @@
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({
-          _subject: 'Muutospyyntö — ' + clientData.clientName,
+          _subject: 'Muutospyyntö — ' + clientData.clientName + ' — ' + caption,
           card_id: id, caption, feedback: msg,
         }),
       });
