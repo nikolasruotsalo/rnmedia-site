@@ -1,0 +1,12 @@
+{
+  "name": "rnmedia-notion-setup",
+  "version": "1.0.0",
+  "description": "RN Media Agency OS — Notion workspace builder",
+  "main": "setup.js",
+  "scripts": {
+    "setup": "node setup.js"
+  },
+  "dependencies": {
+    "@notionhq/client": "^2.2.15"
+  }
+}
