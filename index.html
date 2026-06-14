@@ -328,6 +328,22 @@
       transition: border-color 0.2s, color 0.2s, background 0.2s; flex-shrink: 0;
     }
     .btn-follow:hover { border-color: #ffffff; color: #ffffff; }
+    .portfolio-embed-wrap { display: flex; flex-direction: column; align-items: center; gap: 24px; }
+    .portfolio-card {
+      border: 1px solid var(--border); border-radius: var(--radius-lg);
+      padding: 28px; background: var(--gray-50); width: 100%; max-width: 600px;
+    }
+    .portfolio-card-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+    .portfolio-client { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 500; color: var(--text); }
+    .portfolio-tag {
+      font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--gray-400);
+      border: 1px solid var(--border); border-radius: 100px; padding: 3px 10px;
+    }
+    .portfolio-embed-center { display: flex; justify-content: center; }
+    .portfolio-more { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--gray-400); letter-spacing: 0.04em; }
+    .portfolio-more a { color: var(--gray-600); text-decoration: none; transition: color 0.2s; }
+    .portfolio-more a:hover { color: var(--text); }
 
     /* ── PRICING TABS ─────────────────────────────────────── */
     .pricing-tab-bar {
@@ -754,11 +770,20 @@
 <div class="section reveal" id="portfolio">
   <p class="section-label">Portfolio</p>
   <h2 class="section-heading">Töitämme</h2>
-  <div class="portfolio-compact">
-    <p>Portfolio täydentyy — seuraa tuoreimmat työt Instagramissa <strong>@rnmediafi</strong></p>
-    <a href="https://instagram.com/rnmediafi" target="_blank" rel="noopener" class="btn-follow">Seuraa Instagramissa ↗</a>
+  <div class="portfolio-embed-wrap">
+    <div class="portfolio-card">
+      <div class="portfolio-card-meta">
+        <span class="portfolio-client">Förå Oy</span>
+        <span class="portfolio-tag">Instagram Reel</span>
+      </div>
+      <div class="portfolio-embed-center">
+        <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DZcVKF-RRSK/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:3px;box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);margin:1px;max-width:540px;min-width:326px;padding:0;width:99.375%;width:calc(100% - 2px);"></blockquote>
+      </div>
+    </div>
+    <p class="portfolio-more">Lisää töitä tulossa — seuraa <a href="https://instagram.com/rnmediafi" target="_blank" rel="noopener">@rnmediafi</a></p>
   </div>
 </div>
+<script async src="//www.instagram.com/embed.js"></script>
 
 <!-- PRICING -->
 <div class="pricing-bg" id="hinnat">
