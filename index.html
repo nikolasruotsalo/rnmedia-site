@@ -188,6 +188,7 @@
     #side-drawer.open .drawer-link:nth-child(4) { transition-delay: 0.18s; }
     #side-drawer.open .drawer-link:nth-child(5) { transition-delay: 0.22s; }
     #side-drawer.open .drawer-link:nth-child(6) { transition-delay: 0.26s; }
+    #side-drawer.open .drawer-link:nth-child(7) { transition-delay: 0.30s; }
 
     /* ── HERO ─────────────────────────────────────────────── */
     .hero {
@@ -526,6 +527,36 @@
     .fade-up.visible { opacity: 1; transform: translateY(0); }
 
     /* ── RESPONSIVE ───────────────────────────────────────── */
+    /* ── MEISTÄ ──────────────────────────────────────────── */
+    .meista-grid {
+      display: grid; grid-template-columns: 320px 1fr; gap: 56px; align-items: start;
+    }
+    .meista-photo-placeholder {
+      width: 100%; height: 360px;
+      background: var(--gray-50);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gray-400);
+      font-family: 'DM Mono', monospace;
+      font-size: 12px; letter-spacing: 0.08em;
+    }
+    .meista-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px; font-weight: 500;
+      color: var(--text); display: block; margin-bottom: 4px;
+    }
+    .meista-title {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--gray-400);
+      display: block; margin-bottom: 28px;
+    }
+    .meista-text {
+      font-size: 14px; line-height: 1.75; color: var(--gray-600);
+      margin-bottom: 18px;
+    }
+
     @media (max-width: 768px) {
       nav { padding: 0 20px; }
       .nav-links { display: none; }
@@ -535,6 +566,9 @@
       .section { padding: 60px 20px; }
       .services-grid { grid-template-columns: 1fr; }
       .service-card { border-right: none !important; padding: 32px 24px; }
+
+      .meista-grid { grid-template-columns: 1fr; }
+      .meista-photo-placeholder { height: 260px; }
 
       .why-grid { grid-template-columns: 1fr 1fr; }
 
@@ -575,6 +609,7 @@
     <a href="#etusivu"         class="drawer-link drawer-close-trigger">Etusivu</a>
     <a href="#palvelut"        class="drawer-link drawer-close-trigger">Palvelut</a>
     <a href="#portfolio"       class="drawer-link drawer-close-trigger">Portfolio</a>
+    <a href="#meista"          class="drawer-link drawer-close-trigger">Meistä</a>
     <a href="#hinnat"          class="drawer-link drawer-close-trigger">Hinnat</a>
     <a href="#ukk"             class="drawer-link drawer-close-trigger">UKK</a>
     <a href="#ota-yhteytta"    class="drawer-link drawer-close-trigger">Yhteystiedot</a>
@@ -586,6 +621,7 @@
   <div class="nav-links">
     <a href="#palvelut"     class="nav-link">Palvelut</a>
     <a href="#portfolio"    class="nav-link">Portfolio</a>
+    <a href="#meista"       class="nav-link">Meistä</a>
     <a href="#hinnat"       class="nav-link">Hinnat</a>
     <a href="#ukk"          class="nav-link">UKK</a>
     <a href="#ota-yhteytta" class="nav-link">Yhteystiedot</a>
@@ -692,6 +728,23 @@
       <div class="why-card">
         <div class="why-title">Paikallinen</div>
         <p class="why-desc">Suomalainen toimija, suomenkielinen palvelu, nopea viestintä. Tunnemme markkinan.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MEISTÄ -->
+<div id="meista">
+  <div class="section reveal">
+    <p class="section-label">Meistä</p>
+    <h2 class="section-heading">Ihminen brändin takana</h2>
+    <div class="meista-grid">
+      <div class="meista-photo-placeholder">Kuva tulossa</div>
+      <div>
+        <span class="meista-name">Nikolas Ruotsalo</span>
+        <span class="meista-title">Perustaja, RN Media</span>
+        <p class="meista-text">Olen Lohjalta kotoisin oleva some- ja videomarkkinoinnin tekijä. RN Median perustin, koska näen joka päivä pieniä yrityksiä, joilla on loistava tuote mutta näkyvyys puuttuu. Se on ongelma joka ratkaistaan oikeanlaisella sisällöllä.</p>
+        <p class="meista-text">Teen kaiken itse — kuvauksen, editoinnin ja strategian. Tämä tarkoittaa nopeampaa kommunikaatiota, johdonmukaista jälkeä, ja sen, että tiedät aina kenen kanssa puhut.</p>
       </div>
     </div>
   </div>
@@ -1027,7 +1080,8 @@
     <a href="https://instagram.com/rnmediafi" target="_blank" rel="noopener">Instagram</a>
     <a href="mailto:nikolas.ruotsalo@rnmedia.fi">Sähköposti</a>
     <a href="https://maps.google.com/?q=Lohja,Finland" target="_blank" rel="noopener">Lohja</a>
-    <a href="/asiakkaille">Uusi asiakas</a>
+    <a href="#meista">Meistä</a>
+    <a href="/tietosuoja">Tietosuoja</a>
     <a href="/asiakasportaali">Kirjaudu sisään</a>
   </div>
 </footer>
