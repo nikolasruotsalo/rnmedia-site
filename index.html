@@ -3,184 +3,181 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RN Media — Somemarkkinointi</title>
+  <title>RN Media — Sisältöstudio & lyhytvideot</title>
 
   <!-- SEO -->
-  <meta name="description" content="RN Media – Suomalainen somemarkkinointitoimisto Lohjalta. Lyhytvideot, somestrategia ja brändinrakennus – tuloksia, ei pelkkiä tykkäyksiä.">
+  <meta name="description" content="RN Media on suomalainen sisältöstudio. Suunnittelemme, kuvaamme ja editoimme lyhytvideot, jotka tuovat premium-yrityksille oikeita asiakkaita — ideasta julkaisuun.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://rnmedia.fi">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://rnmedia.fi">
-  <meta property="og:title" content="RN Media — Somemarkkinointi">
-  <meta property="og:description" content="Suomalainen somemarkkinointitoimisto. Lyhytvideot ja somestrategia joka tuo uusia asiakkaita – ei pelkkiä tykkäyksiä.">
+  <meta property="og:title" content="RN Media — Sisältöstudio & lyhytvideot">
+  <meta property="og:description" content="Pieni sisältöstudio premium-yrityksille. Lyhytvideot, jotka tuovat oikeita asiakkaita — ideasta julkaisuun.">
   <meta property="og:image" content="https://rnmedia.fi/logo.png">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="RN Media — Somemarkkinointi">
-  <meta name="twitter:description" content="Suomalainen somemarkkinointitoimisto. Lyhytvideot ja somestrategia joka tuo uusia asiakkaita.">
+  <meta name="twitter:title" content="RN Media — Sisältöstudio & lyhytvideot">
+  <meta name="twitter:description" content="Pieni sisältöstudio premium-yrityksille. Lyhytvideot, jotka tuovat oikeita asiakkaita.">
 
   <link rel="icon" type="image/png" href="logo2.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
-      --bg: #111111;
-      --text: #f0f0f0;
-      --accent: #ffffff;
-      --accent-light: #222222;
-      --gray-50: #1a1a1a;
-      --gray-100: #222222;
-      --gray-200: #333333;
-      --gray-400: #888888;
-      --gray-600: #aaaaaa;
-      --border: #2e2e2e;
-      --shadow-sm: 0 1px 3px rgba(0,0,0,0.4);
-      --shadow-md: 0 4px 16px rgba(0,0,0,0.5);
-      --shadow-lg: 0 12px 40px rgba(0,0,0,0.6);
-      --radius: 8px;
-      --radius-lg: 14px;
-      --radius-xl: 20px;
+      --paper:      #F6F4EE;   /* warm bone — primary background */
+      --paper-soft: #EFECE2;   /* alternating sections */
+      --paper-deep: #E8E4D9;   /* deeper neutral */
+      --ink:        #15140F;   /* near-black, warm — primary text */
+      --ink-soft:   #57534A;   /* secondary text */
+      --ink-faint:  #908B7E;   /* labels, meta */
+      --line:       #DBD6CA;   /* hairlines */
+      --line-soft:  #E6E1D6;
+      --accent:     #9E5A3D;   /* clay — very limited use */
+      --radius:     4px;
+      --radius-lg:  10px;
+      --ease:       cubic-bezier(.22,1,.36,1);
+      --container:  1200px;
     }
-    body { font-family: 'DM Mono', monospace; background: var(--bg); color: var(--text); overflow-x: hidden; }
-
-    /* ── SCROLL PROGRESS ──────────────────────────────────── */
-    #scroll-progress {
-      position: fixed; top: 0; left: 0; z-index: 9999;
-      height: 2px; width: 0%;
-      background: #ffffff;
-      transition: width 0.1s linear;
-      pointer-events: none;
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: 'DM Mono', monospace;
+      background: var(--paper);
+      color: var(--ink);
+      overflow-x: hidden;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
+    ::selection { background: var(--ink); color: var(--paper); }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; }
 
-    /* ── NAVBAR ───────────────────────────────────────────── */
-    nav {
+    /* ── SHARED TYPE ──────────────────────────────────────── */
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 11px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--ink-faint);
+    }
+    .eyebrow::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent); flex-shrink: 0;
+    }
+    .section-label {
+      display: inline-flex; align-items: center; gap: 12px;
+      font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--ink-faint); margin-bottom: 26px;
+    }
+    .section-label::before {
+      content: ''; width: 22px; height: 1px; background: var(--accent); flex-shrink: 0;
+    }
+    .section-heading {
+      font-family: 'Playfair Display', serif; font-weight: 400;
+      font-size: clamp(30px, 4.4vw, 54px); line-height: 1.06; letter-spacing: -0.01em;
+      color: var(--ink);
+    }
+    .section-heading em { font-style: italic; }
+    .lede { font-size: 14px; line-height: 1.8; color: var(--ink-soft); }
+
+    /* ── NAV ──────────────────────────────────────────────── */
+    #navbar {
       position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-      padding: 0 40px; height: 64px;
+      padding: 0 clamp(20px, 4vw, 44px); height: 76px;
       display: flex; align-items: center; justify-content: space-between;
-      transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
+      transition: background 0.4s var(--ease), border-color 0.4s, box-shadow 0.4s, height 0.4s var(--ease);
       border-bottom: 1px solid transparent;
     }
-    nav.scrolled {
-      background: rgba(17,17,17,0.96);
-      border-color: var(--border);
-      box-shadow: var(--shadow-sm);
-      backdrop-filter: blur(14px);
+    #navbar.scrolled {
+      background: rgba(246,244,238,0.82);
+      border-color: var(--line);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      height: 64px;
     }
     .nav-logo { display: flex; align-items: center; text-decoration: none; }
-    .nav-logo img { height: 80px; width: auto; transition: opacity 0.2s; }
-    .nav-logo:hover img { opacity: 0.8; }
+    .nav-logo img { height: 30px; width: auto; transition: opacity 0.25s; }
+    .nav-logo:hover img { opacity: 0.6; }
 
-    /* ── DESKTOP NAV LINKS ──────────────────────────────────── */
-    .nav-links {
-      display: flex; align-items: center; gap: 36px;
-    }
+    .nav-right { display: flex; align-items: center; gap: clamp(20px, 2.6vw, 40px); }
+    .nav-links { display: flex; align-items: center; gap: clamp(20px, 2.4vw, 38px); }
     .nav-link {
-      font-family: 'Playfair Display', serif;
-      font-weight: 300;
-      font-size: 15px;
-      letter-spacing: 0.12em;
-      color: var(--gray-600);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .nav-link:hover { color: var(--text); }
-
-    /* ── HAMBURGER ────────────────────────────────────────── */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      justify-content: center;
-      gap: 0;
-      width: 44px; height: 44px;
-      cursor: pointer;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      background: none;
-      padding: 0;
       position: relative;
-      z-index: 210;
+      font-size: 11px; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--ink-soft); text-decoration: none; transition: color 0.2s; padding: 4px 0;
+    }
+    .nav-link::after {
+      content: ''; position: absolute; left: 0; bottom: 0; height: 1px; width: 0;
+      background: var(--accent); transition: width 0.3s var(--ease);
+    }
+    .nav-link:hover { color: var(--ink); }
+    .nav-link:hover::after { width: 100%; }
+    .nav-cta {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--paper); background: var(--ink);
+      padding: 11px 20px; border-radius: var(--radius); text-decoration: none;
+      transition: background 0.25s, transform 0.25s var(--ease);
+    }
+    .nav-cta:hover { background: var(--accent); transform: translateY(-1px); }
+
+    .hamburger {
+      display: none; flex-direction: column; justify-content: center;
+      width: 44px; height: 44px; cursor: pointer;
+      border: 1px solid var(--line); border-radius: var(--radius);
+      background: none; padding: 0; position: relative; z-index: 210;
       transition: border-color 0.2s, background 0.2s;
     }
-    .hamburger:hover { border-color: var(--gray-400); background: var(--gray-50); }
-    .hamburger.open { pointer-events: none; opacity: 0; }
+    .hamburger:hover { border-color: var(--ink-faint); }
+    .hamburger.open { opacity: 0; pointer-events: none; }
     .hamburger span {
-      display: block;
-      position: absolute;
-      left: 50%; transform: translateX(-50%);
-      width: 18px; height: 1.5px;
-      background: var(--text);
-      border-radius: 2px;
-      transition: transform 0.35s cubic-bezier(.23,1,.32,1), opacity 0.25s ease, top 0.35s cubic-bezier(.23,1,.32,1);
+      display: block; position: absolute; left: 50%; transform: translateX(-50%);
+      width: 17px; height: 1.5px; background: var(--ink); border-radius: 2px;
+      transition: transform 0.35s var(--ease), opacity 0.25s ease, top 0.35s var(--ease);
     }
-    .hamburger span:nth-child(1) { top: 15px; }
+    .hamburger span:nth-child(1) { top: 16px; }
     .hamburger span:nth-child(2) { top: 21px; }
-    .hamburger span:nth-child(3) { top: 27px; }
-    .hamburger.open span:nth-child(1) { top: 21px; transform: translateX(-50%) rotate(45deg); }
-    .hamburger.open span:nth-child(2) { opacity: 0; transform: translateX(-50%) scaleX(0); }
-    .hamburger.open span:nth-child(3) { top: 21px; transform: translateX(-50%) rotate(-45deg); }
+    .hamburger span:nth-child(3) { top: 26px; }
 
-    /* ── SLIDE-IN DRAWER ──────────────────────────────────── */
+    /* ── MOBILE DRAWER ────────────────────────────────────── */
     #drawer-overlay {
-      position: fixed; inset: 0; z-index: 400;
-      background: rgba(0,0,0,0.55);
-      opacity: 0; visibility: hidden;
-      transition: opacity 0.3s ease, visibility 0.3s ease;
+      position: fixed; inset: 0; z-index: 400; background: rgba(21,20,15,0.35);
+      opacity: 0; visibility: hidden; transition: opacity 0.35s ease, visibility 0.35s ease;
     }
     #drawer-overlay.open { opacity: 1; visibility: visible; }
-
     #side-drawer {
-      position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 410;
-      width: 100vw;
-      background: #0d0d0d;
-      display: flex; flex-direction: column;
-      transform: translateX(100%);
-      transition: transform 0.4s cubic-bezier(.23,1,.32,1);
-      overflow-y: auto;
+      position: fixed; inset: 0; z-index: 410; width: 100vw;
+      background: var(--paper); display: flex; flex-direction: column;
+      transform: translateX(100%); transition: transform 0.45s var(--ease); overflow-y: auto;
     }
     #side-drawer.open { transform: translateX(0); }
-
     .drawer-head {
       display: flex; align-items: center; justify-content: space-between;
-      padding: 16px 24px;
-      border-bottom: 1px solid var(--border);
-      min-height: 64px;
-      flex-shrink: 0;
+      padding: 22px clamp(20px, 5vw, 28px); border-bottom: 1px solid var(--line);
+      min-height: 76px; flex-shrink: 0;
     }
-    .drawer-logo { height: 44px; width: auto; opacity: 0.85; }
+    .drawer-logo { height: 26px; width: auto; }
     .drawer-close {
-      width: 44px; height: 44px;
-      border: 1px solid var(--border); border-radius: var(--radius);
-      background: none; cursor: pointer; color: var(--gray-400);
-      font-size: 18px; display: flex; align-items: center; justify-content: center;
-      transition: border-color 0.2s, color 0.2s;
-      flex-shrink: 0;
-      touch-action: manipulation;
-      position: relative; z-index: 1;
+      width: 44px; height: 44px; border: 1px solid var(--line); border-radius: var(--radius);
+      background: none; cursor: pointer; color: var(--ink-soft); font-size: 17px;
+      display: flex; align-items: center; justify-content: center;
+      transition: border-color 0.2s, color 0.2s; flex-shrink: 0; touch-action: manipulation;
     }
-    .drawer-close:hover { border-color: var(--gray-400); color: var(--text); }
-
-    .drawer-nav {
-      display: flex; flex-direction: column; align-items: center;
-      padding: 32px 0 32px;
-    }
+    .drawer-close:hover { border-color: var(--ink-faint); color: var(--ink); }
+    .drawer-nav { display: flex; flex-direction: column; padding: 12px 0 28px; }
     .drawer-link {
-      font-family: 'Playfair Display', serif;
-      font-size: 18px; font-weight: 300;
-      letter-spacing: 0.08em;
-      color: var(--gray-600); text-decoration: none;
-      padding: 16px 24px;
-      width: 100%; text-align: center;
-      border-bottom: 1px solid var(--border);
-      opacity: 0; transform: translateY(8px);
-      transition: opacity 0.25s ease, transform 0.25s cubic-bezier(.23,1,.32,1),
-                  color 0.15s, background 0.15s;
+      font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 400;
+      color: var(--ink); text-decoration: none;
+      padding: 20px clamp(20px, 6vw, 32px); border-bottom: 1px solid var(--line-soft);
+      display: flex; align-items: baseline; gap: 16px;
+      opacity: 0; transform: translateY(10px);
+      transition: opacity 0.3s ease, transform 0.4s var(--ease), color 0.2s, background 0.2s;
     }
-    .drawer-link:last-child { border-bottom: none; }
-    .drawer-link:hover { color: var(--text); background: var(--gray-50); }
+    .drawer-link .dl-num {
+      font-family: 'DM Mono', monospace; font-size: 11px; color: var(--ink-faint); letter-spacing: 0.1em;
+    }
+    .drawer-link:hover { background: var(--paper-soft); color: var(--accent); }
     #side-drawer.open .drawer-link { opacity: 1; transform: translateY(0); }
     #side-drawer.open .drawer-link:nth-child(1) { transition-delay: 0.06s; }
     #side-drawer.open .drawer-link:nth-child(2) { transition-delay: 0.10s; }
@@ -189,622 +186,491 @@
     #side-drawer.open .drawer-link:nth-child(5) { transition-delay: 0.22s; }
     #side-drawer.open .drawer-link:nth-child(6) { transition-delay: 0.26s; }
     #side-drawer.open .drawer-link:nth-child(7) { transition-delay: 0.30s; }
+    .drawer-foot {
+      margin-top: auto; padding: 24px clamp(20px, 6vw, 32px);
+      border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: 8px;
+      font-size: 12px; color: var(--ink-soft);
+    }
+    .drawer-foot a { color: var(--ink-soft); text-decoration: none; }
+    .drawer-foot a:hover { color: var(--accent); }
+
+    /* ── LAYOUT ───────────────────────────────────────────── */
+    .section {
+      max-width: var(--container); margin: 0 auto;
+      padding: clamp(72px, 11vw, 150px) clamp(20px, 5vw, 44px);
+      scroll-margin-top: 84px;
+    }
+    .band { width: 100%; }
+    .band-soft { background: var(--paper-soft); border-block: 1px solid var(--line-soft); }
 
     /* ── HERO ─────────────────────────────────────────────── */
     .hero {
-      min-height: 100vh;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      text-align: center; padding: 100px 40px 60px;
-      position: relative; overflow: hidden;
+      max-width: var(--container); margin: 0 auto;
+      padding: clamp(140px, 20vh, 220px) clamp(20px, 5vw, 44px) clamp(48px, 7vw, 88px);
+      min-height: 100svh; display: flex; flex-direction: column; justify-content: center;
+      scroll-margin-top: 84px;
     }
-    .hero::before {
-      content: '';
-      position: absolute; top: 20%; left: 50%;
-      transform: translate(-50%, -50%);
-      width: 600px; height: 400px;
-      background: radial-gradient(ellipse, rgba(255,255,255,0.03) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .hero-eyebrow {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
-      color: var(--accent); background: var(--accent-light);
-      padding: 6px 14px; border-radius: 100px; margin-bottom: 32px;
-      animation: fadeUp 0.6s ease 0.1s both;
-    }
-    .hero-eyebrow::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #ffffff; }
+    .hero-eyebrow { margin-bottom: clamp(24px, 4vw, 40px); animation: fadeUp 0.8s var(--ease) 0.05s both; }
     .hero-headline {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(52px, 8vw, 96px); line-height: 0.95; letter-spacing: 0.02em;
-      font-weight: 400;
-      color: var(--text); margin-bottom: 28px;
-      animation: fadeUp 0.7s ease 0.2s both;
+      font-family: 'Playfair Display', serif; font-weight: 400;
+      font-size: clamp(42px, 8.4vw, 104px); line-height: 0.98; letter-spacing: -0.02em;
+      color: var(--ink); max-width: 16ch; margin-bottom: clamp(26px, 3.4vw, 40px);
+      animation: fadeUp 0.9s var(--ease) 0.16s both;
     }
-    .hero-headline .blue { color: #ffffff; }
+    .hero-headline em { font-style: italic; }
     .hero-sub {
-      font-size: clamp(13px, 1.6vw, 16px); color: var(--gray-600);
-      line-height: 1.65; max-width: 540px; margin: 0 auto 40px;
-      animation: fadeUp 0.7s ease 0.35s both;
+      font-size: clamp(14px, 1.5vw, 16px); color: var(--ink-soft); line-height: 1.75;
+      max-width: 46ch; margin-bottom: clamp(34px, 4vw, 48px);
+      animation: fadeUp 0.9s var(--ease) 0.28s both;
     }
-    .hero-buttons {
-      display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 64px;
-      animation: fadeUp 0.7s ease 0.5s both;
+    .hero-cta-row {
+      display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
+      margin-bottom: clamp(56px, 8vw, 96px); animation: fadeUp 0.9s var(--ease) 0.4s both;
     }
     .btn-primary {
-      font-family: 'DM Mono', monospace;
-      font-size: 12px; font-weight: 500; letter-spacing: 0.08em;
-      padding: 14px 28px;
-      background: #ffffff; color: #111111; border-radius: var(--radius);
-      text-decoration: none; transition: all 0.2s;
+      display: inline-flex; align-items: center; gap: 12px;
+      font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.12em;
+      text-transform: uppercase; padding: 17px 30px;
+      background: var(--ink); color: var(--paper); border-radius: var(--radius);
+      text-decoration: none; transition: background 0.3s, transform 0.3s var(--ease), box-shadow 0.3s;
     }
-    .btn-primary:hover { background: #dddddd; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,255,255,0.15); }
-    .btn-secondary {
-      font-family: 'DM Mono', monospace;
-      font-size: 12px; font-weight: 400; letter-spacing: 0.08em;
-      padding: 14px 28px;
-      background: transparent; color: var(--text); border-radius: var(--radius);
-      border: 1.5px solid var(--border); text-decoration: none; transition: all 0.2s;
+    .btn-primary .arrow { transition: transform 0.3s var(--ease); }
+    .btn-primary:hover { background: var(--accent); transform: translateY(-2px); box-shadow: 0 14px 30px rgba(21,20,15,0.16); }
+    .btn-primary:hover .arrow { transform: translateX(5px); }
+    .hero-textlink {
+      font-size: 12px; letter-spacing: 0.06em; color: var(--ink-soft);
+      text-decoration: none; border-bottom: 1px solid var(--line); padding-bottom: 3px;
+      transition: color 0.2s, border-color 0.2s;
     }
-    .btn-secondary:hover { border-color: var(--text); background: var(--gray-50); }
-    .hero-stats {
-      display: flex; border: 1px solid var(--border); border-radius: var(--radius-lg);
-      overflow: hidden; background: var(--bg); box-shadow: var(--shadow-sm);
-      animation: fadeUp 0.7s ease 0.65s both;
+    .hero-textlink:hover { color: var(--ink); border-color: var(--ink); }
+    .hero-meta {
+      display: flex; flex-wrap: wrap; gap: 0; border-top: 1px solid var(--line);
+      animation: fadeUp 0.9s var(--ease) 0.52s both;
     }
-    .stat-item {
-      padding: 16px 28px; display: flex; flex-direction: column; align-items: center;
-      border-right: 1px solid var(--border); gap: 4px;
+    .hero-meta span {
+      font-size: 11px; letter-spacing: 0.08em; color: var(--ink-faint);
+      padding: 18px 26px 0 0; margin-right: 26px; position: relative;
     }
-    .stat-item:last-child { border-right: none; }
-    .stat-val { font-size: 12px; font-weight: 500; color: var(--text); letter-spacing: 0.04em; }
-    .stat-label { font-size: 10px; font-weight: 400; color: var(--gray-400); letter-spacing: 0.04em; }
+    .hero-meta span + span { padding-left: 0; }
+    .hero-meta span:not(:last-child)::after {
+      content: ''; position: absolute; right: 0; top: 20px; bottom: 2px; width: 1px; background: var(--line);
+    }
 
-    /* ── SECTIONS ─────────────────────────────────────────── */
-    .section { padding: 100px 40px; max-width: 1200px; margin: 0 auto; }
-    .section-label { font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #888888; margin-bottom: 12px; }
-    .section-heading { font-family: 'Playfair Display', serif; font-weight: 400; font-size: clamp(32px, 4vw, 52px); line-height: 1.1; color: var(--text); margin-bottom: 48px; }
-
-    /* ── INDUSTRY ─────────────────────────────────────────── */
-    .industry-bg { background: var(--gray-50); }
-    .chips { display: flex; flex-wrap: wrap; gap: 12px; }
-    .chip {
-      font-family: 'DM Mono', monospace;
-      font-size: 12px; font-weight: 400; letter-spacing: 0.04em;
-      padding: 10px 20px;
-      border: 1.5px solid var(--border); border-radius: 100px;
-      color: var(--text); background: var(--bg); transition: all 0.2s; cursor: default;
+    /* ── PHILOSOPHY ───────────────────────────────────────── */
+    .philo-grid { display: grid; grid-template-columns: 0.8fr 1.4fr; gap: clamp(32px, 6vw, 96px); align-items: start; }
+    .philo-aside { position: sticky; top: 110px; }
+    .philo-who { margin-top: 38px; }
+    .philo-who-label {
+      font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint);
+      margin-bottom: 16px;
     }
-    .chip:hover { border-color: #ffffff; color: #ffffff; background: #222222; }
+    .philo-who-list { display: flex; flex-direction: column; gap: 11px; }
+    .philo-who-list span {
+      font-size: 13px; color: var(--ink-soft); padding-bottom: 11px;
+      border-bottom: 1px solid var(--line-soft);
+    }
+    .philo-statement {
+      font-family: 'Playfair Display', serif; font-weight: 400;
+      font-size: clamp(27px, 4.2vw, 50px); line-height: 1.12; letter-spacing: -0.01em;
+      color: var(--ink); margin-bottom: clamp(28px, 3.4vw, 44px);
+    }
+    .philo-statement em { font-style: italic; color: var(--accent); }
+    .philo-body p { font-size: 14px; line-height: 1.85; color: var(--ink-soft); max-width: 52ch; }
+    .philo-body p + p { margin-top: 20px; }
 
     /* ── SERVICES ─────────────────────────────────────────── */
-    .services-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      border: 1px solid var(--border); border-radius: var(--radius-xl); overflow: hidden;
+    .services-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: clamp(36px, 5vw, 60px); flex-wrap: wrap; }
+    .services-head .lede { max-width: 34ch; }
+    .service-row {
+      display: grid; grid-template-columns: 64px 1fr 1.1fr 40px; align-items: start;
+      gap: clamp(16px, 3vw, 48px); padding: clamp(28px, 3.4vw, 44px) 8px;
+      border-top: 1px solid var(--line); text-decoration: none; color: inherit;
+      transition: padding-left 0.4s var(--ease), background 0.3s;
     }
-    .service-card {
-      padding: 48px; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border);
-      transition: background 0.3s; position: relative; overflow: hidden;
+    .service-row:last-of-type { border-bottom: 1px solid var(--line); }
+    .service-row:hover { background: var(--paper-soft); padding-left: 20px; }
+    .service-num { font-size: 12px; letter-spacing: 0.1em; color: var(--ink-faint); padding-top: 8px; }
+    .service-title { font-family: 'Playfair Display', serif; font-size: clamp(22px, 2.6vw, 31px); font-weight: 400; line-height: 1.15; color: var(--ink); }
+    .service-desc { font-size: 13.5px; line-height: 1.8; color: var(--ink-soft); max-width: 44ch; padding-top: 5px; }
+    .service-arrow {
+      justify-self: end; align-self: center; font-size: 20px; color: var(--ink-faint);
+      opacity: 0; transform: translate(-8px, 0); transition: opacity 0.3s, transform 0.3s var(--ease), color 0.3s;
     }
-    .service-card:nth-child(2n) { border-right: none; }
-    .service-card:nth-child(3), .service-card:nth-child(4) { border-bottom: none; }
-    .service-card:hover { background: var(--gray-50); }
-    .service-card:hover .service-arrow { opacity: 1; transform: translate(0,0); }
-    .service-card::after {
-      content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(255,255,255,0.03) 0%, transparent 60%);
-      opacity: 0; transition: opacity 0.3s; pointer-events: none;
-    }
-    .service-card:hover::after { opacity: 1; }
-    .service-num { font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; color: var(--gray-400); margin-bottom: 24px; }
-    .service-title { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 500; letter-spacing: 0.01em; color: var(--text); margin-bottom: 14px; }
-    .service-desc { font-size: 13px; line-height: 1.7; color: var(--gray-600); max-width: 280px; }
-    .service-arrow { position: absolute; top: 48px; right: 48px; font-size: 24px; color: #ffffff; opacity: 0; transform: translate(-6px, 6px); transition: all 0.25s; }
+    .service-row:hover .service-arrow { opacity: 1; transform: translate(0,0); color: var(--accent); }
 
-    /* ── WHY US ───────────────────────────────────────────── */
-    .why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-    .why-card {
-      background: var(--bg); border: 1px solid var(--border);
-      border-radius: var(--radius-lg); padding: 32px 28px;
-      transition: border-color 0.2s, transform 0.3s, box-shadow 0.3s;
+    /* ── PROCESS ──────────────────────────────────────────── */
+    .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; }
+    .process-step { background: var(--paper); padding: clamp(28px, 2.8vw, 40px) clamp(22px, 2vw, 30px); transition: background 0.3s; }
+    .process-step:hover { background: var(--paper-soft); }
+    .process-num {
+      font-family: 'Playfair Display', serif; font-style: italic; font-size: 30px;
+      color: var(--accent); line-height: 1; margin-bottom: 22px;
     }
-    .why-card:hover { border-color: var(--gray-200); transform: translateY(-4px); box-shadow: var(--shadow-md); }
-    .why-title { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 500; letter-spacing: 0.01em; color: var(--text); margin-bottom: 10px; }
-    .why-desc { font-size: 13px; line-height: 1.65; color: var(--gray-600); }
+    .process-title { font-family: 'Playfair Display', serif; font-size: 19px; font-weight: 500; color: var(--ink); margin-bottom: 12px; }
+    .process-desc { font-size: 12.5px; line-height: 1.75; color: var(--ink-soft); }
+    .process-note {
+      text-align: center; margin-top: clamp(40px, 5vw, 60px);
+      font-family: 'Playfair Display', serif; font-style: italic;
+      font-size: clamp(18px, 2.2vw, 26px); color: var(--ink); letter-spacing: 0.01em;
+    }
 
-    /* ── PORTFOLIO ────────────────────────────────────────── */
-    .portfolio-compact {
-      border: 1px solid var(--border); border-radius: var(--radius-lg);
-      padding: 32px 40px; display: flex; align-items: center; justify-content: space-between;
-      gap: 24px; background: var(--gray-50); flex-wrap: wrap;
+    /* ── MEISTÄ ───────────────────────────────────────────── */
+    .meista-grid { display: grid; grid-template-columns: 380px 1fr; gap: clamp(36px, 5vw, 72px); align-items: start; }
+    .meista-photo {
+      width: 100%; aspect-ratio: 4/5; overflow: hidden; border-radius: var(--radius-lg);
+      background: var(--paper-deep); border: 1px solid var(--line);
     }
-    .portfolio-compact p { font-size: 14px; color: var(--gray-600); line-height: 1.6; margin: 0; }
-    .portfolio-compact strong { color: var(--text); font-weight: 500; }
-    .btn-follow {
-      font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500;
-      letter-spacing: 0.10em; text-transform: uppercase;
-      padding: 10px 20px; border: 1px solid var(--border); border-radius: 4px;
-      color: var(--gray-400); text-decoration: none; white-space: nowrap;
-      transition: border-color 0.2s, color 0.2s, background 0.2s; flex-shrink: 0;
-    }
-    .btn-follow:hover { border-color: #ffffff; color: #ffffff; }
-    .portfolio-embed-wrap { display: flex; flex-direction: column; gap: 24px; }
-    .portfolio-grid { display: flex; flex-wrap: wrap; gap: 20px; }
-    .portfolio-card {
-      border: 1px solid var(--border); border-radius: var(--radius-lg);
-      padding: 16px; background: var(--gray-50);
-      flex: 1 1 320px; max-width: 380px;
-    }
-    .portfolio-card-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
-    .portfolio-client { font-family: 'Playfair Display', serif; font-size: 13px; font-weight: 500; color: var(--text); }
-    .portfolio-tag {
-      font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.08em;
-      text-transform: uppercase; color: var(--gray-400);
-      border: 1px solid var(--border); border-radius: 100px; padding: 2px 8px;
-    }
-    .portfolio-embed-center { display: flex; justify-content: center; }
-    .portfolio-embed-center .instagram-media { max-width: 100% !important; min-width: 0 !important; }
-    .portfolio-more { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--gray-400); letter-spacing: 0.04em; }
-    .portfolio-more a { color: var(--gray-600); text-decoration: none; transition: color 0.2s; }
-    .portfolio-more a:hover { color: var(--text); }
-
-    /* ── PRICING TABS ─────────────────────────────────────── */
-    .pricing-tab-bar {
-      display: inline-flex;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      overflow: hidden;
-      margin-bottom: 48px;
-    }
-    .ptab {
-      padding: 9px 20px; border: none; background: none;
-      color: var(--gray-400);
-      font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500;
-      letter-spacing: 0.10em; text-transform: uppercase;
-      cursor: pointer; transition: color 0.2s, background 0.2s;
-      border-right: 1px solid var(--border);
-    }
-    .ptab:last-child { border-right: none; }
-    .ptab.active { background: var(--border); color: var(--text); }
-    .ptab:hover:not(.active) { color: var(--text); }
-    .pricing-panel { display: block; animation: priceIn 0.2s ease; }
-    .pricing-panel.hidden { display: none; }
-    @keyframes priceIn { from { opacity: 0; } to { opacity: 1; } }
+    .meista-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+    .meista-name { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 500; color: var(--ink); display: block; margin-bottom: 6px; }
+    .meista-title { font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-faint); display: block; margin-bottom: 30px; }
+    .meista-text { font-size: 14.5px; line-height: 1.85; color: var(--ink-soft); max-width: 52ch; }
+    .meista-text + .meista-text { margin-top: 20px; }
+    .meista-sign { margin-top: 32px; display: inline-flex; align-items: center; gap: 12px; font-size: 12px; letter-spacing: 0.06em; color: var(--ink-faint); }
+    .meista-sign::before { content: ''; width: 28px; height: 1px; background: var(--accent); }
 
     /* ── PRICING ──────────────────────────────────────────── */
-    .pricing-bg { background: var(--bg); padding: 100px 0; }
-    .pricing-inner { max-width: 1160px; margin: 0 auto; padding: 0 40px; }
-    .pricing-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; align-items: start; border: 1px solid var(--border); border-radius: var(--radius-xl); overflow: hidden; margin-bottom: 0; }
-    .pricing-grid-2 { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; align-items: start; border: 1px solid var(--border); border-top: none; border-radius: 0 0 var(--radius-xl) var(--radius-xl); overflow: hidden; }
-    .pricing-card {
-      padding: 36px 32px 32px;
-      background: var(--bg);
-      border-right: 1px solid var(--border);
-      position: relative;
-      transition: background 0.2s;
-    }
-    .pricing-card:last-child { border-right: none; }
-    .pricing-card:hover { background: var(--gray-50); }
-    .pricing-card.featured { background: #111111; }
-    .pricing-card.featured:hover { background: #151515; }
-    .plan-label {
-      font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 500;
-      letter-spacing: 0.16em; text-transform: uppercase;
-      color: var(--gray-400); margin-bottom: 20px; min-height: 16px;
-      display: block;
-    }
-    .plan-label.featured-label { color: #cccccc; }
-    .plan-name {
-      font-family: 'DM Mono', monospace; font-size: 13px; font-weight: 500;
-      letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--text); margin-bottom: 28px;
-    }
-    .plan-price { margin-bottom: 28px; }
-    .plan-price-strike {
-      font-family: 'DM Mono', monospace; font-size: 12px;
-      color: var(--gray-400); text-decoration: line-through;
-      display: block; margin-bottom: 4px; letter-spacing: 0.04em;
-    }
-    .plan-price-main {
-      font-family: 'Playfair Display', serif; font-style: italic;
-      font-size: 40px; color: var(--text); line-height: 1;
-    }
-    .plan-price-main .plan-period {
-      font-family: 'DM Mono', monospace; font-style: normal;
-      font-size: 12px; color: var(--gray-400); margin-left: 4px;
-      letter-spacing: 0.06em;
-    }
-    .plan-price-sub {
-      font-family: 'DM Mono', monospace; font-size: 11px;
-      color: var(--gray-400); display: block; margin-top: 4px;
-      letter-spacing: 0.04em;
-    }
-    .plan-features { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
-    .plan-features li {
-      font-family: 'DM Mono', monospace; font-size: 12px;
-      color: var(--gray-600); display: flex; align-items: flex-start;
-      gap: 10px; line-height: 1.6; letter-spacing: 0.02em;
-    }
-    .plan-features li::before {
-      content: '–'; font-size: 12px; color: var(--gray-400);
-      flex-shrink: 0; margin-top: 1px;
-    }
-    .btn-plan {
-      width: 100%; padding: 12px; border-radius: 4px;
+    .pricing-head { margin-bottom: clamp(32px, 4vw, 48px); }
+    .pricing-sub { font-size: 14px; color: var(--ink-soft); margin-top: 18px; }
+    .pricing-tab-bar { display: inline-flex; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; margin-bottom: 12px; background: var(--paper); }
+    .ptab {
+      padding: 11px 22px; border: none; background: none; color: var(--ink-faint);
       font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      text-align: center; text-decoration: none; display: block;
-      transition: background 0.2s, color 0.2s, border-color 0.2s;
-      cursor: pointer;
+      letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer;
+      transition: color 0.2s, background 0.2s; border-right: 1px solid var(--line);
     }
-    .btn-plan-outline {
-      background: transparent; border: 1px solid var(--border); color: var(--gray-400);
-    }
-    .btn-plan-outline:hover { background: #ffffff; color: #000000; border-color: #ffffff; }
-    .btn-plan-filled {
-      background: transparent; border: 1px solid #ffffff; color: #ffffff;
-    }
-    .btn-plan-filled:hover { background: #ffffff; color: #000000; }
-    .pricing-caption {
-      font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.06em;
-      color: var(--gray-400); margin-top: 20px; display: block;
-    }
-    .plan-setup-note {
-      font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.04em;
-      color: var(--gray-400); margin-top: 10px; display: block; text-align: center;
-    }
-    .alv-note {
-      font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.06em;
-      color: var(--gray-400); margin-top: 20px; display: block;
-    }
-    .panel-caption {
-      font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.12em;
-      text-transform: uppercase; color: var(--gray-400); margin-bottom: 28px;
-    }
+    .ptab:last-child { border-right: none; }
+    .ptab.active { background: var(--ink); color: var(--paper); }
+    .ptab:hover:not(.active) { color: var(--ink); }
+    .pricing-panel { display: block; animation: priceIn 0.3s var(--ease); }
+    .pricing-panel.hidden { display: none; }
+    @keyframes priceIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+    .panel-caption { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); margin: 26px 0 26px; }
+
+    .pricing-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; }
+    .pricing-grid-2 { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-top: none; overflow: hidden; }
+    .pricing-grid + .pricing-grid-2 { border-radius: 0; }
+    .pricing-grid:has(+ .pricing-grid-2) { border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
+    .pricing-card { padding: clamp(28px, 2.6vw, 38px) clamp(22px, 2vw, 32px); background: var(--paper); position: relative; transition: background 0.25s; display: flex; flex-direction: column; }
+    .pricing-card:hover { background: var(--paper-soft); }
+    .pricing-card.featured { background: var(--ink); }
+    .pricing-card.featured:hover { background: #1d1b14; }
+    .plan-label { font-size: 10px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 18px; min-height: 14px; display: block; }
+    .pricing-card.featured .plan-label { color: var(--accent); }
+    .plan-name { font-family: 'DM Mono', monospace; font-size: 13px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink); margin-bottom: 24px; }
+    .pricing-card.featured .plan-name { color: var(--paper); }
+    .plan-price { margin-bottom: 26px; }
+    .plan-price-strike { font-size: 12px; color: var(--ink-faint); text-decoration: line-through; display: block; margin-bottom: 4px; letter-spacing: 0.04em; }
+    .plan-price-main { font-family: 'Playfair Display', serif; font-style: italic; font-size: 42px; color: var(--ink); line-height: 1; }
+    .pricing-card.featured .plan-price-main { color: var(--paper); }
+    .plan-price-main .plan-period { font-family: 'DM Mono', monospace; font-style: normal; font-size: 12px; color: var(--ink-faint); margin-left: 5px; letter-spacing: 0.04em; }
+    .plan-price-sub { font-size: 11px; color: var(--ink-faint); display: block; margin-top: 4px; letter-spacing: 0.04em; }
+    .plan-features { list-style: none; display: flex; flex-direction: column; gap: 11px; margin-bottom: 30px; flex-grow: 1; }
+    .plan-features li { font-size: 12.5px; color: var(--ink-soft); display: flex; align-items: flex-start; gap: 11px; line-height: 1.6; }
+    .pricing-card.featured .plan-features li { color: #c9c4b8; }
+    .plan-features li::before { content: ''; width: 14px; height: 1px; background: var(--accent); flex-shrink: 0; margin-top: 9px; }
+    .btn-plan { width: 100%; padding: 13px; border-radius: var(--radius); font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; text-align: center; text-decoration: none; display: block; transition: background 0.25s, color 0.25s, border-color 0.25s; cursor: pointer; }
+    .btn-plan-outline { background: transparent; border: 1px solid var(--line); color: var(--ink-soft); }
+    .btn-plan-outline:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+    .btn-plan-filled { background: var(--paper); border: 1px solid var(--paper); color: var(--ink); }
+    .btn-plan-filled:hover { background: var(--accent); border-color: var(--accent); color: var(--paper); }
+    .plan-setup-note { font-size: 10px; letter-spacing: 0.03em; color: var(--ink-faint); margin-top: 12px; display: block; text-align: center; }
+    .pricing-foot { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+    .pricing-caption, .alv-note { font-size: 11px; letter-spacing: 0.04em; color: var(--ink-faint); }
 
     /* ── FAQ ──────────────────────────────────────────────── */
-    .faq-bg { background: var(--gray-50); }
-    .faq-list { display: flex; flex-direction: column; border: 1px solid var(--border); border-radius: var(--radius-xl); overflow: hidden; }
-    .faq-item { border-bottom: 1px solid var(--border); }
-    .faq-item:last-child { border-bottom: none; }
+    .faq-list { border-top: 1px solid var(--line); }
+    .faq-item { border-bottom: 1px solid var(--line); }
     .faq-item summary {
-      list-style: none; padding: 22px 28px;
-      font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 400;
-      color: var(--text); cursor: pointer;
-      display: flex; justify-content: space-between; align-items: center; gap: 16px;
-      transition: background 0.2s; user-select: none;
+      list-style: none; padding: 26px 4px;
+      font-family: 'Playfair Display', serif; font-size: clamp(17px, 2vw, 22px); font-weight: 400;
+      color: var(--ink); cursor: pointer; display: flex; justify-content: space-between;
+      align-items: center; gap: 20px; transition: color 0.2s; user-select: none;
     }
     .faq-item summary::-webkit-details-marker { display: none; }
-    .faq-item summary::after { content: '+'; font-family: 'DM Mono', monospace; font-size: 20px; font-weight: 300; color: var(--gray-400); flex-shrink: 0; transition: transform 0.25s; }
-    .faq-item[open] summary::after { transform: rotate(45deg); }
-    .faq-item summary:hover { background: var(--gray-100); }
-    .faq-item[open] summary { background: var(--gray-100); }
-    .faq-answer { padding: 0 28px 22px; font-size: 13px; line-height: 1.75; color: var(--gray-600); }
+    .faq-item summary::after { content: '+'; font-family: 'DM Mono', monospace; font-size: 22px; font-weight: 300; color: var(--ink-faint); flex-shrink: 0; transition: transform 0.3s var(--ease), color 0.2s; }
+    .faq-item[open] summary::after { transform: rotate(45deg); color: var(--accent); }
+    .faq-item summary:hover { color: var(--accent); }
+    .faq-answer { padding: 0 4px 28px; font-size: 13.5px; line-height: 1.85; color: var(--ink-soft); max-width: 64ch; }
 
     /* ── CONTACT ──────────────────────────────────────────── */
-    .contact-bg { background: var(--gray-50); padding: 100px 0; }
-    .contact-inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-    .contact-heading { font-family: 'Playfair Display', serif; font-size: clamp(36px, 5vw, 64px); font-weight: 400; line-height: 1.05; color: var(--text); margin-bottom: 20px; }
-    .contact-sub { font-size: 13px; line-height: 1.7; color: var(--gray-600); margin-bottom: 40px; max-width: 360px; }
-    .contact-meta { display: flex; flex-direction: column; gap: 12px; }
-    .contact-meta-item { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--gray-600); text-decoration: none; transition: color 0.2s; }
-    .contact-meta-item:hover { color: #ffffff; }
-    .contact-meta-icon {
-      width: 32px; height: 32px; border-radius: var(--radius); background: var(--bg); border: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.04em;
-      color: var(--gray-400); flex-shrink: 0;
-    }
-    .contact-form { display: flex; flex-direction: column; gap: 14px; }
-    .form-group { display: flex; flex-direction: column; gap: 6px; }
-    .form-label { font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500; color: var(--text); letter-spacing: 0.08em; }
-    .form-input { padding: 12px 14px; border: 1.5px solid var(--border); border-radius: var(--radius); font-size: 13px; font-family: 'DM Mono', monospace; color: var(--text); background: var(--bg); transition: border-color 0.2s; outline: none; }
-    .form-input:focus { border-color: #ffffff; }
-    .form-input::placeholder { color: var(--gray-400); }
-    textarea.form-input { resize: vertical; min-height: 100px; }
-    .form-submit { padding: 13px 24px; background: var(--text); color: #111111; border: none; border-radius: var(--radius); font-size: 12px; font-weight: 500; letter-spacing: 0.08em; cursor: pointer; font-family: 'DM Mono', monospace; transition: all 0.2s; }
-    .form-submit:hover { background: #dddddd; transform: translateY(-1px); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 96px); align-items: start; }
+    .contact-heading { font-family: 'Playfair Display', serif; font-size: clamp(40px, 6vw, 76px); font-weight: 400; line-height: 1; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 24px; }
+    .contact-sub { font-size: 14px; line-height: 1.8; color: var(--ink-soft); margin-bottom: 40px; max-width: 38ch; }
+    .contact-meta { display: flex; flex-direction: column; gap: 4px; }
+    .contact-meta-item { display: flex; align-items: center; gap: 14px; padding: 14px 0; font-size: 13px; color: var(--ink-soft); text-decoration: none; border-top: 1px solid var(--line-soft); transition: color 0.2s; }
+    .contact-meta-item:last-child { border-bottom: 1px solid var(--line-soft); }
+    .contact-meta-item:hover { color: var(--accent); }
+    .contact-meta-icon { width: 34px; height: 34px; border-radius: var(--radius); border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-faint); flex-shrink: 0; }
+    .contact-form { display: flex; flex-direction: column; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 8px; }
+    .form-label { font-size: 11px; font-weight: 500; color: var(--ink); letter-spacing: 0.12em; text-transform: uppercase; }
+    .form-input { padding: 14px 16px; border: 1px solid var(--line); border-radius: var(--radius); font-size: 13px; font-family: 'DM Mono', monospace; color: var(--ink); background: var(--paper); transition: border-color 0.2s, background 0.2s; outline: none; }
+    .form-input:focus { border-color: var(--ink); background: #fffdf8; }
+    .form-input::placeholder { color: var(--ink-faint); }
+    textarea.form-input { resize: vertical; min-height: 110px; }
+    .form-submit { margin-top: 6px; padding: 16px 24px; background: var(--ink); color: var(--paper); border: none; border-radius: var(--radius); font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; font-family: 'DM Mono', monospace; transition: background 0.25s, transform 0.25s var(--ease); }
+    .form-submit:hover { background: var(--accent); transform: translateY(-1px); }
     .form-submit:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
-    .form-success {
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      gap: 10px; padding: 48px 24px; text-align: center;
-    }
-    .form-success-icon {
-      width: 52px; height: 52px; border-radius: 50%;
-      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'DM Mono', monospace; font-size: 20px; color: var(--text);
-    }
-    .form-success-title { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 400; color: var(--text); }
-    .form-success-sub { font-family: 'DM Mono', monospace; font-size: 13px; color: var(--gray-400); }
+    .form-success { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: 56px 24px; text-align: center; }
+    .form-success-icon { width: 54px; height: 54px; border-radius: 50%; background: var(--paper-soft); border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; font-size: 22px; color: var(--accent); }
+    .form-success-title { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 500; color: var(--ink); }
+    .form-success-sub { font-size: 13px; color: var(--ink-soft); }
 
     /* ── FOOTER ───────────────────────────────────────────── */
-    footer { border-top: 1px solid var(--border); padding: 28px 40px; display: flex; align-items: center; justify-content: space-between; background: var(--bg); flex-wrap: wrap; gap: 16px; }
-    .footer-logo { font-family: 'Playfair Display', serif; font-size: 16px; letter-spacing: 0.06em; color: var(--text); }
-    .footer-copy { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--gray-400); }
-    .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
-    .footer-links a { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--gray-400); text-decoration: none; transition: color 0.2s; letter-spacing: 0.04em; }
-    .footer-links a:hover { color: var(--text); }
+    footer { border-top: 1px solid var(--line); }
+    .footer-inner { max-width: var(--container); margin: 0 auto; padding: clamp(40px, 5vw, 64px) clamp(20px, 5vw, 44px); display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+    .footer-logo img { height: 46px; width: auto; margin-bottom: 16px; }
+    .footer-copy { font-size: 11px; color: var(--ink-faint); letter-spacing: 0.03em; }
+    .footer-links { display: flex; gap: 22px; flex-wrap: wrap; }
+    .footer-links a { font-size: 11px; color: var(--ink-soft); text-decoration: none; transition: color 0.2s; letter-spacing: 0.04em; }
+    .footer-links a:hover { color: var(--accent); }
 
     /* ── ANIMATIONS ───────────────────────────────────────── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
     .reveal.visible { opacity: 1; transform: translateY(0); }
-    .stagger > * { opacity: 0; transform: translateY(24px); transition: opacity 0.55s ease, transform 0.55s ease; }
-    .stagger.visible > *:nth-child(1) { opacity: 1; transform: none; transition-delay: 0.04s; }
-    .stagger.visible > *:nth-child(2) { opacity: 1; transform: none; transition-delay: 0.12s; }
-    .stagger.visible > *:nth-child(3) { opacity: 1; transform: none; transition-delay: 0.20s; }
-    .stagger.visible > *:nth-child(4) { opacity: 1; transform: none; transition-delay: 0.28s; }
-    .stagger.visible > *:nth-child(5) { opacity: 1; transform: none; transition-delay: 0.36s; }
-    .stagger.visible > *:nth-child(6) { opacity: 1; transform: none; transition-delay: 0.44s; }
-    .stagger.visible > *:nth-child(7) { opacity: 1; transform: none; transition-delay: 0.52s; }
-    .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
-    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .stagger > * { opacity: 0; transform: translateY(22px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+    .stagger.visible > * { opacity: 1; transform: none; }
+    .stagger.visible > *:nth-child(1) { transition-delay: 0.05s; }
+    .stagger.visible > *:nth-child(2) { transition-delay: 0.13s; }
+    .stagger.visible > *:nth-child(3) { transition-delay: 0.21s; }
+    .stagger.visible > *:nth-child(4) { transition-delay: 0.29s; }
+    .stagger.visible > *:nth-child(5) { transition-delay: 0.37s; }
+    .stagger.visible > *:nth-child(6) { transition-delay: 0.45s; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+      html { scroll-behavior: auto; }
+    }
 
     /* ── RESPONSIVE ───────────────────────────────────────── */
-    /* ── MEISTÄ ──────────────────────────────────────────── */
-    .meista-grid {
-      display: grid; grid-template-columns: 320px 1fr; gap: 56px; align-items: start;
+    @media (max-width: 980px) {
+      .philo-grid { grid-template-columns: 1fr; gap: 36px; }
+      .philo-aside { position: static; }
+      .philo-who { margin-top: 8px; }
+      .meista-grid { grid-template-columns: 300px 1fr; }
+      .process-grid { grid-template-columns: 1fr 1fr; }
     }
-    .meista-photo-placeholder {
-      width: 100%; height: 360px;
-      background: var(--gray-50);
-      border: 1px solid var(--border);
-      overflow: hidden;
-      border-radius: var(--radius-lg);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--gray-400);
-      font-family: 'DM Mono', monospace;
-      font-size: 12px; letter-spacing: 0.08em;
-    }
-    .meista-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 22px; font-weight: 500;
-      color: var(--text); display: block; margin-bottom: 4px;
-    }
-    .meista-title {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--gray-400);
-      display: block; margin-bottom: 28px;
-    }
-    .meista-text {
-      font-size: 14px; line-height: 1.75; color: var(--gray-600);
-      margin-bottom: 18px;
-    }
-
     @media (max-width: 768px) {
-      nav { padding: 0 20px; }
       .nav-links { display: none; }
+      .nav-cta { display: none; }
       .hamburger { display: flex; }
-
-      .hero { padding: 100px 20px 60px; }
-      .section { padding: 60px 20px; }
-      .services-grid { grid-template-columns: 1fr; }
-      .service-card { border-right: none !important; padding: 32px 24px; }
-
-      .meista-grid { grid-template-columns: 1fr; }
-      .meista-photo-placeholder { height: 260px; }
-
-      .why-grid { grid-template-columns: 1fr 1fr; }
-
-      .portfolio-compact { padding: 24px 20px; }
-
-      .pricing-tab-bar { width: 100%; }
-      .ptab { flex: 1; text-align: center; padding: 9px 8px; font-size: 11px; }
-      .pricing-grid, .pricing-grid-wide, .pricing-grid-2 { grid-template-columns: 1fr; }
-
-      .faq-item summary { padding: 18px 20px; font-size: 15px; }
-      .faq-answer { padding: 0 20px 18px; }
-
-      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
-      .pricing-inner, .contact-inner { padding: 0 20px; }
-      .hero-stats { flex-wrap: wrap; }
-      .stat-item { flex: 1 1 auto; border-right: none; border-bottom: 1px solid var(--border); }
-      .stat-item:last-child { border-bottom: none; }
-      footer { flex-direction: column; gap: 12px; text-align: center; padding: 24px 20px; }
+      .service-row { grid-template-columns: 1fr; gap: 8px; padding: 26px 4px; }
+      .service-row:hover { padding-left: 4px; }
+      .service-num { padding-top: 0; }
+      .service-arrow { display: none; }
+      .service-desc { padding-top: 0; }
+      .meista-grid { grid-template-columns: 1fr; gap: 28px; }
+      .meista-photo { max-width: 320px; aspect-ratio: 4/5; }
+      .pricing-tab-bar { width: 100%; display: flex; }
+      .ptab { flex: 1; text-align: center; padding: 11px 6px; }
+      .pricing-grid, .pricing-grid-2 { grid-template-columns: 1fr; border-radius: var(--radius-lg) !important; }
+      .pricing-grid + .pricing-grid-2 { border-top: 1px solid var(--line); margin-top: 1px; }
+      .contact-grid { grid-template-columns: 1fr; gap: 44px; }
+      .hero-meta span { padding-right: 18px; margin-right: 18px; font-size: 10px; }
     }
-
-    @media (max-width: 480px) {
-      .why-grid { grid-template-columns: 1fr; }
+    @media (max-width: 520px) {
+      .process-grid { grid-template-columns: 1fr; }
+      .hero-meta { gap: 0; }
+      .hero-meta span:not(:last-child)::after { display: none; }
+      .hero-meta span { width: 100%; border-bottom: 1px solid var(--line-soft); padding: 14px 0; margin: 0; }
     }
   </style>
 </head>
 <body>
 
-<!-- scroll progress bar -->
-<div id="scroll-progress"></div>
-
+<!-- ── MOBILE DRAWER ─────────────────────────────────────── -->
 <div id="drawer-overlay"></div>
 <div id="side-drawer">
   <div class="drawer-head">
-    <img src="logo3.png" alt="RN Media" class="drawer-logo">
+    <img src="logo-mark.png" alt="RN Media" class="drawer-logo">
     <button class="drawer-close" id="drawer-close-btn" aria-label="Sulje valikko" onclick="closeDrawer()">&#x2715;</button>
   </div>
   <nav class="drawer-nav">
-    <a href="#etusivu"         class="drawer-link drawer-close-trigger">Etusivu</a>
-    <a href="#palvelut"        class="drawer-link drawer-close-trigger">Palvelut</a>
-    <a href="#portfolio"       class="drawer-link drawer-close-trigger">Portfolio</a>
-    <a href="#meista"          class="drawer-link drawer-close-trigger">Meistä</a>
-    <a href="#hinnat"          class="drawer-link drawer-close-trigger">Hinnat</a>
-    <a href="#ukk"             class="drawer-link drawer-close-trigger">UKK</a>
-    <a href="#ota-yhteytta"    class="drawer-link drawer-close-trigger">Yhteystiedot</a>
+    <a href="#etusivu"   class="drawer-link drawer-close-trigger"><span class="dl-num">01</span>Etusivu</a>
+    <a href="#filosofia" class="drawer-link drawer-close-trigger"><span class="dl-num">02</span>Filosofia</a>
+    <a href="#palvelut"  class="drawer-link drawer-close-trigger"><span class="dl-num">03</span>Palvelut</a>
+    <a href="#prosessi"  class="drawer-link drawer-close-trigger"><span class="dl-num">04</span>Prosessi</a>
+    <a href="#meista"    class="drawer-link drawer-close-trigger"><span class="dl-num">05</span>Meistä</a>
+    <a href="#hinnat"    class="drawer-link drawer-close-trigger"><span class="dl-num">06</span>Hinnat</a>
+    <a href="#yhteys"    class="drawer-link drawer-close-trigger"><span class="dl-num">07</span>Yhteys</a>
   </nav>
+  <div class="drawer-foot">
+    <a href="https://instagram.com/rnmediafi" target="_blank" rel="noopener">@rnmediafi</a>
+    <a href="mailto:nikolas.ruotsalo@rnmedia.fi">nikolas.ruotsalo@rnmedia.fi</a>
+    <span>Lohja, Uusimaa</span>
+  </div>
 </div>
 
+<!-- ── NAV ───────────────────────────────────────────────── -->
 <nav id="navbar">
-  <a href="#etusivu" class="nav-logo"><img src="logo3.png" alt="RN Media"></a>
-  <div class="nav-links">
-    <a href="#palvelut"     class="nav-link">Palvelut</a>
-    <a href="#portfolio"    class="nav-link">Portfolio</a>
-    <a href="#meista"       class="nav-link">Meistä</a>
-    <a href="#hinnat"       class="nav-link">Hinnat</a>
-    <a href="#ukk"          class="nav-link">UKK</a>
-    <a href="#ota-yhteytta" class="nav-link">Yhteystiedot</a>
+  <a href="#etusivu" class="nav-logo"><img src="logo-mark.png" alt="RN Media"></a>
+  <div class="nav-right">
+    <div class="nav-links">
+      <a href="#filosofia" class="nav-link">Filosofia</a>
+      <a href="#palvelut"  class="nav-link">Palvelut</a>
+      <a href="#prosessi"  class="nav-link">Prosessi</a>
+      <a href="#hinnat"    class="nav-link">Hinnat</a>
+      <a href="#meista"    class="nav-link">Meistä</a>
+    </div>
+    <a href="#yhteys" class="nav-cta">Ota yhteyttä</a>
   </div>
   <button class="hamburger" id="hamburger" aria-label="Avaa valikko">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
-<!-- HERO -->
+<!-- ── HERO ──────────────────────────────────────────────── -->
 <section class="hero" id="etusivu">
-  <div class="hero-eyebrow">Suomalainen somemarkkinointi</div>
-  <h1 class="hero-headline">
-    NÄKYVYYTTÄ.<br><span class="blue">ASIAKKAITA.</span><br>TULOKSIA.
-  </h1>
-  <p class="hero-sub">Teemme lyhytvideot ja somestrategian joka tuo uusia asiakkaita ovelle — ei pelkkiä tykkäyksiä.</p>
-  <div class="hero-buttons">
-    <a href="#ota-yhteytta" class="btn-primary">Aloitetaan →</a>
-    <a href="#portfolio" class="btn-secondary">Katso portfolio</a>
+  <span class="eyebrow hero-eyebrow">Sisältöstudio — Uusimaa, Suomi</span>
+  <h1 class="hero-headline">Lyhytvideoita jotka tuovat <em>oikeita</em> asiakkaita.</h1>
+  <p class="hero-sub">Pieni sisältöstudio premium-yrityksille. Suunnittelemme, kuvaamme ja editoimme lyhytvideot, jotka muuttavat katsojat asiakkaiksi — ideasta julkaisuun.</p>
+  <div class="hero-cta-row">
+    <a href="#yhteys" class="btn-primary">Aloita projekti <span class="arrow">&#8594;</span></a>
+    <a href="#palvelut" class="hero-textlink">Katso palvelut</a>
   </div>
-  <div class="hero-stats">
-    <div class="stat-item">
-      <span class="stat-val">Uusimaa</span>
-      <span class="stat-label">Kotialue</span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-val">Launch-hinnat</span>
-      <span class="stat-label">Voimassa 31.8.2026</span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-val">Ei sitoutumista</span>
-      <span class="stat-label">Peruuta milloin tahansa</span>
-    </div>
+  <div class="hero-meta">
+    <span>Ei sitoutumista</span>
+    <span>Ensimmäiset videot 5–7 päivässä</span>
+    <span>Vastaus 24 tunnissa</span>
   </div>
 </section>
 
-<!-- INDUSTRY -->
-<div class="industry-bg">
-  <div class="section reveal">
-    <p class="section-label">Erikoisalat</p>
-    <h2 class="section-heading">Toimialat joille<br>teemme sisältöä</h2>
-    <div class="chips stagger">
-      <span class="chip">Ravintolat</span>
-      <span class="chip">Hyvinvointi</span>
-      <span class="chip">Kiinteistöhoito</span>
-      <span class="chip">Kauneus &amp; Hiukset</span>
-      <span class="chip">Urheilu</span>
-      <span class="chip">Golf</span>
-      <span class="chip">Ja lähes kaikki muut</span>
-    </div>
-  </div>
-</div>
-
-<!-- SERVICES -->
-<div class="section reveal" id="palvelut">
-  <p class="section-label">Palvelut</p>
-  <h2 class="section-heading">Mitä teemme</h2>
-  <div class="services-grid stagger">
-    <div class="service-card">
-      <div class="service-num">01</div>
-      <div class="service-title">Lyhytvideosisältö</div>
-      <p class="service-desc">Koukkuisat, katseenvangitsevat lyhytvideot TikTokiin, Instagramiin ja Youtubeen — jotka muuttavat katsojat asiakkaiksi.</p>
-      <span class="service-arrow">↗</span>
-    </div>
-    <div class="service-card">
-      <div class="service-num">02</div>
-      <div class="service-title">Sisällöntuotanto</div>
-      <p class="service-desc">Ammattimainen kuvaus, editointi ja copy — kaikki yhdestä paikasta. Brändisi paras versio joka kerta.</p>
-      <span class="service-arrow">↗</span>
-    </div>
-    <div class="service-card">
-      <div class="service-num">03</div>
-      <div class="service-title">Somestrategia</div>
-      <p class="service-desc">Datalähtöinen strategia joka perustuu oikeisiin tavoitteisiisi — ei mutu-tuntumaan. Kasvu mitataan, ei arvailla.</p>
-      <span class="service-arrow">↗</span>
-    </div>
-    <div class="service-card">
-      <div class="service-num">04</div>
-      <div class="service-title">Brändin rakentaminen</div>
-      <p class="service-desc">Selkeä visuaalinen identiteetti, äänensävy ja positiointi joka erottaa sinut kilpailijoista ja jää mieleen.</p>
-      <span class="service-arrow">↗</span>
-    </div>
-  </div>
-</div>
-
-<!-- WHY US -->
-<div class="industry-bg">
-  <div class="section reveal">
-    <p class="section-label">Miksi RN Media</p>
-    <h2 class="section-heading">Teemme somesta<br>liiketoimintaa</h2>
-    <div class="why-grid stagger">
-      <div class="why-card">
-        <div class="why-title">Nopea toimitus</div>
-        <p class="why-desc">Ensimmäiset videot valmiina 5–7 arkipäivässä aloituksesta. Ei turhaa odottelua.</p>
+<!-- ── PHILOSOPHY ────────────────────────────────────────── -->
+<div class="band">
+  <div class="section reveal" id="filosofia">
+    <div class="philo-grid">
+      <div class="philo-aside">
+        <span class="section-label">Filosofia</span>
+        <div class="philo-who">
+          <p class="philo-who-label">Kenelle teemme</p>
+          <div class="philo-who-list">
+            <span>Kuntosalit &amp; hyvinvointi</span>
+            <span>Kauneus &amp; hiukset</span>
+            <span>Ravintolat</span>
+            <span>Klinikat</span>
+            <span>Premium-palvelut</span>
+          </div>
+        </div>
       </div>
-      <div class="why-card">
-        <div class="why-title">Tuloslähtöinen</div>
-        <p class="why-desc">Mittaamme kasvua, konversioita ja liidejä — ei pelkästään tykkäyksiä ja kattavuutta.</p>
-      </div>
-      <div class="why-card">
-        <div class="why-title">Ei sitoutumista</div>
-        <p class="why-desc">Kaikki paketit voi peruuttaa milloin tahansa. Pysyt koska tulokset puhuvat puolestaan.</p>
-      </div>
-      <div class="why-card">
-        <div class="why-title">Paikallinen</div>
-        <p class="why-desc">Suomalainen toimija, suomenkielinen palvelu, nopea viestintä. Tunnemme markkinan.</p>
+      <div>
+        <h2 class="philo-statement">Vähemmän asiakkaita.<br><em>Enemmän huomiota</em> jokaiseen.</h2>
+        <div class="philo-body">
+          <p>Emme ole markkinointitoimisto. Olemme pieni studio — ja se on tarkoitus. Otamme vain muutaman asiakkaan kerrallaan, jotta jokainen video saa täyden huomion.</p>
+          <p>Jokainen video suunnitellaan, kuvataan ja editoidaan käsin — ei mallipohjista, ei liukuhihnalta. Työskentelet suoraan tekijän kanssa alusta loppuun. Ei välikäsiä, ei myyntitiimiä. Vain sisältöä, joka näyttää brändisi parhaan version.</p>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- MEISTÄ -->
-<div id="meista">
-  <div class="section reveal">
-    <p class="section-label">Meistä</p>
-    <h2 class="section-heading">Ihminen brändin takana</h2>
+<!-- ── SERVICES ──────────────────────────────────────────── -->
+<div class="band band-soft">
+  <div class="section reveal" id="palvelut">
+    <div class="services-head">
+      <div>
+        <span class="section-label">Palvelut</span>
+        <h2 class="section-heading">Mitä teemme</h2>
+      </div>
+      <p class="lede">Kaikki yhdestä paikasta — strategiasta valmiiseen, julkaisukypsään videoon.</p>
+    </div>
+    <div class="stagger">
+      <a href="#yhteys" class="service-row">
+        <span class="service-num">01</span>
+        <span class="service-title">Sisällöntuotanto</span>
+        <span class="service-desc">Idea, käsikirjoitus ja kuvaus. Rakennamme sisällön, joka pysäyttää selaamisen ja jää mieleen.</span>
+        <span class="service-arrow">&#8594;</span>
+      </a>
+      <a href="#yhteys" class="service-row">
+        <span class="service-num">02</span>
+        <span class="service-title">Lyhytvideostrategia</span>
+        <span class="service-desc">Alustakohtainen strategia: koukut, formaatit ja julkaisurytmi, joka kasvattaa näkyvyyttä ja kysyntää.</span>
+        <span class="service-arrow">&#8594;</span>
+      </a>
+      <a href="#yhteys" class="service-row">
+        <span class="service-num">03</span>
+        <span class="service-title">Editointi &amp; jälkituotanto</span>
+        <span class="service-desc">Leikkaus, tekstitykset, ääni ja värimäärittely. Cinematic-laatua, käsin viimeisteltynä.</span>
+        <span class="service-arrow">&#8594;</span>
+      </a>
+      <a href="#yhteys" class="service-row">
+        <span class="service-num">04</span>
+        <span class="service-title">Kuukausikumppanuus</span>
+        <span class="service-desc">Jatkuva sisältövirta yhdellä kiinteällä hinnalla. Suunnittelu, tuotanto ja raportointi — hoidamme kaiken.</span>
+        <span class="service-arrow">&#8594;</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ── PROCESS ───────────────────────────────────────────── -->
+<div class="band">
+  <div class="section reveal" id="prosessi">
+    <div class="services-head">
+      <div>
+        <span class="section-label">Prosessi</span>
+        <h2 class="section-heading">Näin se etenee</h2>
+      </div>
+      <p class="lede">Selkeä, läpinäkyvä prosessi. Tiedät aina missä mennään ja mitä seuraavaksi tapahtuu.</p>
+    </div>
+    <div class="process-grid stagger">
+      <div class="process-step">
+        <div class="process-num">01</div>
+        <div class="process-title">Keskustelu</div>
+        <p class="process-desc">Aloitamme lyhyellä keskustelulla — tavoitteet, kohderyhmä ja brändin ääni. Maksuton ja sitoumukseton.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">02</div>
+        <div class="process-title">Konsepti</div>
+        <p class="process-desc">Rakennamme selkeän sisältökonseptin ja julkaisusuunnitelman ennen kuin kamera käy.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">03</div>
+        <div class="process-title">Kuvaus &amp; tuotanto</div>
+        <p class="process-desc">Kuvaamme ja editoimme. Näet työn jokaisessa vaiheessa — korjauskierros sisältyy aina.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">04</div>
+        <div class="process-title">Julkaisu &amp; kasvu</div>
+        <p class="process-desc">Julkaisemme, seuraamme tuloksia ja hiomme suuntaa datan perusteella. Kasvu mitataan.</p>
+      </div>
+    </div>
+    <p class="process-note">Yksi tekijä. Suora yhteys. Ei välikäsiä.</p>
+  </div>
+</div>
+
+<!-- ── MEISTÄ ────────────────────────────────────────────── -->
+<div class="band band-soft">
+  <div class="section reveal" id="meista">
+    <span class="section-label">Meistä</span>
+    <h2 class="section-heading" style="margin-bottom: clamp(40px, 5vw, 60px);">Ihminen brändin takana</h2>
     <div class="meista-grid">
-      <div class="meista-photo-placeholder">
-        <img src="/image-1781453700843.jpg" alt="Nikolas Ruotsalo" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;">
+      <div class="meista-photo">
+        <img src="/image-1781453700843.jpg" alt="Nikolas Ruotsalo, RN Media">
       </div>
       <div>
         <span class="meista-name">Nikolas Ruotsalo</span>
-        <span class="meista-title">Perustaja, RN Media</span>
-        <p class="meista-text">Olen Lohjalta kotoisin oleva some- ja videomarkkinoinnin tekijä. RN Median perustin, koska näen joka päivä pieniä yrityksiä, joilla on loistava tuote mutta näkyvyys puuttuu. Se on ongelma joka ratkaistaan oikeanlaisella sisällöllä.</p>
-        <p class="meista-text">Teen kaiken itse — kuvauksen, editoinnin ja strategian. Tämä tarkoittaa nopeampaa kommunikaatiota, johdonmukaista jälkeä, ja sen, että tiedät aina kenen kanssa puhut.</p>
+        <span class="meista-title">Perustaja — RN Media</span>
+        <p class="meista-text">Teen kaiken itse — kuvauksen, editoinnin ja strategian. Se tarkoittaa johdonmukaista jälkeä, nopeaa viestintää ja sitä, että tiedät aina kenen kanssa työskentelet.</p>
+        <p class="meista-text">Perustin RN Median, koska näen joka päivä loistavia yrityksiä, joilta puuttuu vain näkyvyys. Oikea sisältö ratkaisee sen — ja sen tekemiseen ei tarvita isoa toimistoa, vaan tarkkaa silmää ja täyttä keskittymistä.</p>
+        <span class="meista-sign">Lohja, Uusimaa</span>
       </div>
     </div>
   </div>
 </div>
 
-<!-- PORTFOLIO -->
-<div class="section reveal" id="portfolio">
-  <p class="section-label">Portfolio</p>
-  <h2 class="section-heading">Töitämme</h2>
-  <div class="portfolio-embed-wrap">
-    <div class="portfolio-grid">
-      <div class="portfolio-card">
-        <div class="portfolio-card-meta">
-          <span class="portfolio-client">Förå Oy</span>
-          <span class="portfolio-tag">Instagram Reel</span>
-        </div>
-        <div class="portfolio-embed-center">
-          <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DZcVKF-RRSK/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:3px;box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);margin:1px;max-width:100%;min-width:0;padding:0;width:calc(100% - 2px);"></blockquote>
-        </div>
-      </div>
+<!-- ── PRICING ───────────────────────────────────────────── -->
+<div class="band">
+  <div class="section reveal" id="hinnat">
+    <div class="pricing-head">
+      <span class="section-label">Hinnat</span>
+      <h2 class="section-heading">Selkeä hinnoittelu</h2>
+      <p class="pricing-sub">Ei piilokuluja, ei pitkiä sopimuksia. Tiedät tarkalleen mistä maksat.</p>
     </div>
-    <p class="portfolio-more">Lisää töitä tulossa — seuraa <a href="https://instagram.com/rnmediafi" target="_blank" rel="noopener">@rnmediafi</a></p>
-  </div>
-</div>
-<script async src="//www.instagram.com/embed.js"></script>
 
-<!-- PRICING -->
-<div class="pricing-bg" id="hinnat">
-  <div class="pricing-inner">
-
-    <div class="reveal">
-      <p class="section-label">Hinnoittelu</p>
-      <h2 class="section-heading" style="margin-bottom:32px;">Selkeä hinnoittelu,<br>konkreettiset tulokset</h2>
-      <div class="pricing-tab-bar">
-        <button class="ptab active" data-tab="kuukausi">Kuukausipaketit</button>
-        <button class="ptab" data-tab="kerta">Kertatilaukset</button>
-        <button class="ptab" data-tab="digital">Digitaaliset</button>
-      </div>
+    <div class="pricing-tab-bar">
+      <button class="ptab active" data-tab="kuukausi">Kuukausipaketit</button>
+      <button class="ptab" data-tab="kerta">Kertatilaukset</button>
+      <button class="ptab" data-tab="digital">Digitaaliset</button>
     </div>
 
     <!-- TAB: KUUKAUSIPAKETIT -->
@@ -826,11 +692,11 @@
             <li>Kuukausiraportti</li>
             <li>Ei sitoutumista</li>
           </ul>
-          <a href="#ota-yhteytta" class="btn-plan btn-plan-outline">Aloitetaan</a>
+          <a href="#yhteys" class="btn-plan btn-plan-outline">Aloitetaan</a>
           <span class="plan-setup-note">Kertaluonteinen aloitusmaksu €79.</span>
         </div>
         <div class="pricing-card featured">
-          <span class="plan-label featured-label">Suosituin — Launch Deal</span>
+          <span class="plan-label">Suosituin — Launch Deal</span>
           <div class="plan-name">Growth</div>
           <div class="plan-price">
             <span class="plan-price-strike">€999/kk</span>
@@ -845,7 +711,7 @@
             <li>Strategia + raportti</li>
             <li>Ei sitoutumista</li>
           </ul>
-          <a href="#ota-yhteytta" class="btn-plan btn-plan-filled">Aloitetaan</a>
+          <a href="#yhteys" class="btn-plan btn-plan-filled">Aloitetaan</a>
           <span class="plan-setup-note">Kertaluonteinen aloitusmaksu €79.</span>
         </div>
         <div class="pricing-card">
@@ -859,19 +725,20 @@
             <li>Jatkuvat shootit</li>
             <li>Jopa 12 lyhytvideota</li>
             <li>Cinematic-editointi</li>
-            <li>Täysi some-hallinta — julkaisut, kommentit &amp; DM:t</li>
+            <li>Täysi some-hallinta</li>
             <li>Brändistrategia</li>
             <li>Kampanjasuunnittelu</li>
-            <li>Konsultointi</li>
             <li>Prioriteettituki</li>
             <li>Ei sitoutumista</li>
           </ul>
-          <a href="#ota-yhteytta" class="btn-plan btn-plan-outline">Aloitetaan</a>
+          <a href="#yhteys" class="btn-plan btn-plan-outline">Aloitetaan</a>
           <span class="plan-setup-note">Kertaluonteinen aloitusmaksu €79.</span>
         </div>
       </div>
-      <span class="pricing-caption">Launch-hinnat voimassa 31.8.2026 asti</span>
-      <span class="alv-note">Kaikki hinnat +alv 25,5%</span>
+      <div class="pricing-foot">
+        <span class="pricing-caption">Launch-hinnat voimassa 31.8.2026 asti</span>
+        <span class="alv-note">Kaikki hinnat + alv 25,5 %</span>
+      </div>
     </div>
 
     <!-- TAB: KERTATILAUKSET -->
@@ -889,21 +756,21 @@
             <li>Editoitu, julkaisuvalmis</li>
             <li>Toimitus 5 arkipäivässä</li>
           </ul>
-          <a href="#ota-yhteytta" class="btn-plan btn-plan-outline">Tilaa</a>
+          <a href="#yhteys" class="btn-plan btn-plan-outline">Tilaa</a>
         </div>
         <div class="pricing-card featured">
-          <span class="plan-label featured-label">Suosituin kertatilaus</span>
-          <div class="plan-name">Kuvaussessio + 2 videota</div>
+          <span class="plan-label">Suosituin kertatilaus</span>
+          <div class="plan-name">Kuvaus + 2 videota</div>
           <div class="plan-price">
             <span class="plan-price-main">€199<span class="plan-period">/ kerta</span></span>
           </div>
           <ul class="plan-features">
-            <li>1h kuvaussessio</li>
+            <li>1 h kuvaussessio</li>
             <li>2 editoitua lyhytvideota</li>
             <li>Julkaisuvalmis sisältö</li>
             <li>Näet koko prosessin</li>
           </ul>
-          <a href="#ota-yhteytta" class="btn-plan btn-plan-filled">Tilaa</a>
+          <a href="#yhteys" class="btn-plan btn-plan-filled">Tilaa</a>
         </div>
         <div class="pricing-card">
           <span class="plan-label">Täydellinen startti</span>
@@ -917,7 +784,7 @@
             <li>Kirjallinen somestrategia</li>
             <li>Täydellinen kokonaisuus</li>
           </ul>
-          <a href="#ota-yhteytta" class="btn-plan btn-plan-outline">Tilaa</a>
+          <a href="#yhteys" class="btn-plan btn-plan-outline">Tilaa</a>
         </div>
       </div>
       <div class="pricing-grid-2">
@@ -932,10 +799,10 @@
             <li>Konkreettiset kehitysehdotukset</li>
             <li>Tiedät mitä tehdä seuraavaksi</li>
           </ul>
-          <a href="#ota-yhteytta" class="btn-plan btn-plan-outline">Tilaa</a>
+          <a href="#yhteys" class="btn-plan btn-plan-outline">Tilaa</a>
         </div>
         <div class="pricing-card featured">
-          <span class="plan-label featured-label">Suosituin — katso tulokset ensin</span>
+          <span class="plan-label">Katso tulokset ensin</span>
           <div class="plan-name">Koekuukausi</div>
           <div class="plan-price">
             <span class="plan-price-main">€249<span class="plan-period">/ 1 kk</span></span>
@@ -946,7 +813,7 @@
             <li>Täydellinen tapa aloittaa</li>
             <li>Jatka jos tykkäät</li>
           </ul>
-          <a href="#ota-yhteytta" class="btn-plan btn-plan-filled">Tilaa</a>
+          <a href="#yhteys" class="btn-plan btn-plan-filled">Tilaa</a>
         </div>
         <div class="pricing-card">
           <span class="plan-label">Ilmainen aloitus</span>
@@ -960,10 +827,12 @@
             <li>Strategia, sisältö, some</li>
             <li>Jatkotunnit €99/h</li>
           </ul>
-          <a href="#ota-yhteytta" class="btn-plan btn-plan-outline">Varaa aika</a>
+          <a href="#yhteys" class="btn-plan btn-plan-outline">Varaa aika</a>
         </div>
       </div>
-      <span class="alv-note">Kaikki hinnat +alv 25,5%</span>
+      <div class="pricing-foot">
+        <span class="alv-note">Kaikki hinnat + alv 25,5 %</span>
+      </div>
     </div>
 
     <!-- TAB: DIGITAALISET -->
@@ -982,13 +851,13 @@
             <li>Nopea toimitus</li>
             <li>Julkaisuvalmis</li>
           </ul>
-          <a href="#ota-yhteytta" class="btn-plan btn-plan-outline">Tilaa</a>
+          <a href="#yhteys" class="btn-plan btn-plan-outline">Tilaa</a>
         </div>
         <div class="pricing-card featured">
-          <span class="plan-label featured-label">Kertamaksu — suosittu</span>
+          <span class="plan-label">Kertamaksu — suosittu</span>
           <div class="plan-name">Shopify-verkkokauppa</div>
           <div class="plan-price">
-            <span class="plan-price-main">lähtien €399<span class="plan-period">/ kerta</span></span>
+            <span class="plan-price-main">€399<span class="plan-period">/ alk.</span></span>
           </div>
           <ul class="plan-features">
             <li>Valmis verkkokauppa</li>
@@ -996,7 +865,7 @@
             <li>Domain yhdistettynä</li>
             <li>Julkaisuvalmis</li>
           </ul>
-          <a href="#ota-yhteytta" class="btn-plan btn-plan-filled">Tilaa</a>
+          <a href="#yhteys" class="btn-plan btn-plan-filled">Tilaa</a>
         </div>
         <div class="pricing-card">
           <span class="plan-label">Kertamaksu</span>
@@ -1010,127 +879,124 @@
             <li>Brändätty ulkoasu</li>
             <li>3 ensimmäistä julkaisua</li>
           </ul>
-          <a href="#ota-yhteytta" class="btn-plan btn-plan-outline">Tilaa</a>
+          <a href="#yhteys" class="btn-plan btn-plan-outline">Tilaa</a>
         </div>
       </div>
-      <span class="pricing-caption">Launch-hinnat voimassa 31.8.2026 asti</span>
-      <span class="alv-note">Kaikki hinnat +alv 25,5%</span>
+      <div class="pricing-foot">
+        <span class="pricing-caption">Launch-hinnat voimassa 31.8.2026 asti</span>
+        <span class="alv-note">Kaikki hinnat + alv 25,5 %</span>
+      </div>
     </div>
 
   </div>
 </div>
 
-<!-- FAQ -->
-<div class="faq-bg" id="ukk">
-  <div class="section reveal">
-    <p class="section-label">UKK</p>
-    <h2 class="section-heading">Usein kysytyt<br>kysymykset</h2>
+<!-- ── FAQ ───────────────────────────────────────────────── -->
+<div class="band band-soft">
+  <div class="section reveal" id="ukk">
+    <div class="services-head">
+      <div>
+        <span class="section-label">UKK</span>
+        <h2 class="section-heading">Hyvä tietää</h2>
+      </div>
+    </div>
     <div class="faq-list">
       <details class="faq-item">
         <summary>Mikä on sopimuksen kesto?</summary>
-        <p class="faq-answer">Ei sitoutumista. Kaikki kuukausipaketit voi peruuttaa milloin tahansa ilman irtisanomisaikaa. Pysyt vain jos tulokset puhuvat puolestaan.</p>
+        <p class="faq-answer">Ei sitoutumista. Kaikki kuukausipaketit voi peruuttaa milloin tahansa ilman irtisanomisaikaa. Pysyt vain niin kauan kuin tulokset puhuvat puolestaan.</p>
       </details>
       <details class="faq-item">
         <summary>Kuinka nopeasti saan ensimmäiset videot?</summary>
-        <p class="faq-answer">Yleensä 5–7 arkipäivää aloituksesta. Sovimme kuvausajan, editoimme materiaalin ja toimitus on valmis ennen kuin ehdit odottaa.</p>
+        <p class="faq-answer">Yleensä 5–7 arkipäivässä aloituksesta. Sovimme kuvausajan, editoimme materiaalin ja toimitamme valmiin sisällön ennen kuin ehdit odottaa.</p>
       </details>
       <details class="faq-item">
         <summary>Missä päin Suomea toimitte?</summary>
-        <p class="faq-answer">Kotipaikkamme on Lohja, Uusimaa. Teemme töitä myös ympäri Suomea ja tarvittaessa etänä — sijainti ei ole este.</p>
-      </details>
-      <details class="faq-item">
-        <summary>Tarvitsenko valmiit sometilit aloittaakseni?</summary>
-        <p class="faq-answer">Et tarvitse. Autamme sometilin perustamisessa, profilin optimoinnissa ja kaiken käynnistämisessä alusta alkaen. Katso Digitaaliset-välilehti hinnoittelusivulta.</p>
-      </details>
-      <details class="faq-item">
-        <summary>Mitä jos en ole tyytyväinen sisältöön?</summary>
-        <p class="faq-answer">Jokaiseen pakettiin sisältyy korjauskierros. Haluamme että olet 100% tyytyväinen ennen julkaisua. Lisäkierrokset sovitaan tapauskohtaisesti.</p>
+        <p class="faq-answer">Kotipaikkamme on Lohja, Uusimaa. Teemme töitä ympäri Suomea ja tarvittaessa etänä — sijainti ei ole este.</p>
       </details>
       <details class="faq-item">
         <summary>Sopiiko tämä pienelle yritykselle tai yksinyrittäjälle?</summary>
-        <p class="faq-answer">Erityisesti. Pienet yritykset ja yrittäjät hyötyvät eniten orgaanisesta näkyvyydestä somessa. Emme myy isoja paketteja joita et tarvitse — aloitetaan sopivalta tasolta.</p>
+        <p class="faq-answer">Erityisesti. Pienet yritykset ja yrittäjät hyötyvät eniten orgaanisesta näkyvyydestä. Emme myy isoja paketteja, joita et tarvitse — aloitetaan sopivalta tasolta.</p>
       </details>
     </div>
   </div>
 </div>
 
-<!-- CONTACT -->
-<div class="contact-bg" id="ota-yhteytta">
-  <div class="contact-inner">
-    <div class="contact-grid reveal">
+<!-- ── CONTACT / CTA ─────────────────────────────────────── -->
+<div class="band">
+  <div class="section reveal" id="yhteys">
+    <div class="contact-grid">
       <div>
-        <p class="section-label">Yhteystiedot</p>
-        <h2 class="contact-heading">Aloitetaan<br>yhdessä</h2>
-        <p class="contact-sub">Valmis kasvattamaan näkyvyyttäsi? Kerro projektistasi — vastataan 24 tunnin sisällä.</p>
+        <span class="section-label">Ota yhteyttä</span>
+        <h2 class="contact-heading">Aloitetaan.</h2>
+        <p class="contact-sub">Kerro lyhyesti projektistasi — palaamme asiaan 24 tunnin sisällä. Ensimmäinen keskustelu on aina maksuton.</p>
         <div class="contact-meta">
           <a class="contact-meta-item" href="https://instagram.com/rnmediafi" target="_blank" rel="noopener">
-            <div class="contact-meta-icon">IG</div>
+            <span class="contact-meta-icon">IG</span>
             <span>@rnmediafi</span>
           </a>
           <a class="contact-meta-item" href="mailto:nikolas.ruotsalo@rnmedia.fi">
-            <div class="contact-meta-icon">@</div>
+            <span class="contact-meta-icon">@</span>
             <span>nikolas.ruotsalo@rnmedia.fi</span>
           </a>
-          <div class="contact-meta-item">
-            <div class="contact-meta-icon">FI</div>
-            <a href="https://maps.google.com/?q=Lohja,Finland" target="_blank" rel="noopener">Lohja, Uusimaa, Finland</a>
-          </div>
+          <a class="contact-meta-item" href="https://maps.google.com/?q=Lohja,Finland" target="_blank" rel="noopener">
+            <span class="contact-meta-icon">FI</span>
+            <span>Lohja, Uusimaa, Suomi</span>
+          </a>
         </div>
       </div>
       <form class="contact-form" id="contact-form" novalidate>
         <div class="form-group">
-          <label class="form-label">NIMI</label>
+          <label class="form-label">Nimi</label>
           <input class="form-input" type="text" name="name" placeholder="Mikko Virtanen" required>
         </div>
         <div class="form-group">
-          <label class="form-label">S&#196;HK&#214;POSTI</label>
+          <label class="form-label">Sähköposti</label>
           <input class="form-input" type="email" name="email" placeholder="mikko@yritys.fi" required>
         </div>
         <div class="form-group">
-          <label class="form-label">YRITYS</label>
+          <label class="form-label">Yritys</label>
           <input class="form-input" type="text" name="company" placeholder="Yritys Oy">
         </div>
         <div class="form-group">
-          <label class="form-label">VIESTI</label>
-          <textarea class="form-input" name="message" placeholder="Kerro projektistasi..." required></textarea>
+          <label class="form-label">Viesti</label>
+          <textarea class="form-input" name="message" placeholder="Kerro projektistasi…" required></textarea>
         </div>
-        <button type="submit" class="form-submit" id="contact-submit">L&#228;het&#228; viesti &#8594;</button>
+        <button type="submit" class="form-submit" id="contact-submit">Lähetä viesti &#8594;</button>
         <div class="form-success" id="form-success" style="display:none;">
           <div class="form-success-icon">&#10003;</div>
-          <p class="form-success-title">Viesti lähetetty!</p>
-          <p class="form-success-sub">Vastataan 24 tunnin sisällä.</p>
+          <p class="form-success-title">Viesti lähetetty</p>
+          <p class="form-success-sub">Palaamme asiaan 24 tunnin sisällä.</p>
         </div>
       </form>
     </div>
   </div>
 </div>
 
-<!-- FOOTER -->
+<!-- ── FOOTER ────────────────────────────────────────────── -->
 <footer>
-  <span class="footer-logo"><img src="logo.png" alt="RN Media" style="height:36px;"></span>
-  <span class="footer-copy">&#169; 2026 RN Media. Kaikki oikeudet pidätetään.</span>
-  <div class="footer-links">
-    <a href="https://instagram.com/rnmediafi" target="_blank" rel="noopener">Instagram</a>
-    <a href="mailto:nikolas.ruotsalo@rnmedia.fi">Sähköposti</a>
-    <a href="https://maps.google.com/?q=Lohja,Finland" target="_blank" rel="noopener">Lohja</a>
-    <a href="#meista">Meistä</a>
-    <a href="/tietosuoja">Tietosuoja</a>
-    <a href="/asiakasportaali">Kirjaudu sisään</a>
+  <div class="footer-inner">
+    <div>
+      <span class="footer-logo"><img src="logo-full.png" alt="RN Media — Content Studio Finland"></span>
+      <div class="footer-copy">© 2026 RN Media. Kaikki oikeudet pidätetään.</div>
+    </div>
+    <div class="footer-links">
+      <a href="https://instagram.com/rnmediafi" target="_blank" rel="noopener">Instagram</a>
+      <a href="mailto:nikolas.ruotsalo@rnmedia.fi">Sähköposti</a>
+      <a href="#meista">Meistä</a>
+      <a href="/tietosuoja">Tietosuoja</a>
+      <a href="/asiakasportaali">Kirjaudu sisään</a>
+    </div>
   </div>
 </footer>
 
 <script>
-  const progressBar = document.getElementById('scroll-progress');
-  window.addEventListener('scroll', () => {
-    const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
-    progressBar.style.width = pct + '%';
-  }, { passive: true });
-
+  // navbar background on scroll
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
     navbar.classList.toggle('scrolled', window.scrollY > 20);
   }, { passive: true });
 
+  // mobile drawer
   const hamburger = document.getElementById('hamburger');
   const drawer    = document.getElementById('side-drawer');
   const overlay   = document.getElementById('drawer-overlay');
@@ -1147,12 +1013,12 @@
     hamburger.classList.remove('open');
     document.body.style.overflow = '';
   };
-
   hamburger.addEventListener('click', () => drawer.classList.contains('open') ? closeDrawer() : openDrawer());
   overlay.addEventListener('click', closeDrawer);
   document.querySelectorAll('.drawer-close-trigger').forEach(el => el.addEventListener('click', closeDrawer));
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(); });
 
+  // contact form → Formspree
   const contactForm   = document.getElementById('contact-form');
   const contactSubmit = document.getElementById('contact-submit');
   const formSuccess   = document.getElementById('form-success');
@@ -1182,6 +1048,7 @@
     }
   });
 
+  // pricing tabs
   document.querySelectorAll('.ptab').forEach(tab => {
     tab.addEventListener('click', () => {
       document.querySelectorAll('.ptab').forEach(t => t.classList.remove('active'));
@@ -1191,34 +1058,17 @@
     });
   });
 
+  // scroll reveal
   requestAnimationFrame(() => {
     const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          revealObserver.unobserve(e.target);
+      entries.forEach(en => {
+        if (en.isIntersecting) {
+          en.target.classList.add('visible');
+          revealObserver.unobserve(en.target);
         }
       });
-    }, { threshold: 0.07 });
-    document.querySelectorAll('.reveal, .stagger, .fade-up').forEach(el => revealObserver.observe(el));
-  });
-
-  document.querySelectorAll('.service-card').forEach(card => {
-    card.addEventListener('mousemove', e => {
-      const r = card.getBoundingClientRect();
-      card.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100) + '%');
-      card.style.setProperty('--my', ((e.clientY - r.top)  / r.height * 100) + '%');
-    });
-  });
-
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      const target = document.querySelector(a.getAttribute('href'));
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal, .stagger').forEach(el => revealObserver.observe(el));
   });
 </script>
 
