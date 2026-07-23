@@ -379,6 +379,41 @@
     .pricing-request { margin-top: 30px; text-align: center; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
     .pricing-request a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
     .pricing-request a:hover { color: var(--accent); }
+    .pricing-commit { text-align: center; margin-top: 26px; font-size: 12.5px; letter-spacing: 0.04em; color: var(--ink-soft); }
+
+    /* ── PRICING — DARK VARIANT ───────────────────────────── */
+    .band-dark { background: #0A0A0A; }
+    .band-dark .section-label { color: #8f8a7e; }
+    .band-dark .section-heading { color: #F6F4EE; }
+    .band-dark .pricing-sub,
+    .band-dark .panel-caption { color: #b8b3a6; }
+    .band-dark .pricing-grid { background: #262421; border-color: #262421; }
+    .band-dark .pricing-card { background: #121110; }
+    .band-dark .pricing-card:hover { background: #17160F; }
+    .band-dark .pricing-card.featured { background: #1A1813; box-shadow: inset 0 0 0 1px var(--accent); }
+    .band-dark .pricing-card.featured:hover { background: #201d16; }
+    .band-dark .plan-name,
+    .band-dark .pricing-card.featured .plan-name {
+      font-family: 'Playfair Display', serif; font-style: italic; font-weight: 500;
+      font-size: 24px; letter-spacing: 0; text-transform: none; color: #F6F4EE;
+    }
+    .band-dark .plan-price-main,
+    .band-dark .pricing-card.featured .plan-price-main { color: #F6F4EE; }
+    .band-dark .plan-price-main .plan-period { color: #8f8a7e; }
+    .band-dark .plan-label { color: #8f8a7e; }
+    .band-dark .pricing-card.featured .plan-label { color: var(--accent); }
+    .band-dark .plan-features li,
+    .band-dark .pricing-card.featured .plan-features li { color: #c4bfb3; }
+    .band-dark .btn-plan-outline { border-color: #3a3833; color: #d8d3c7; }
+    .band-dark .btn-plan-outline:hover { background: #F6F4EE; color: #0A0A0A; border-color: #F6F4EE; }
+    .band-dark .btn-plan-filled { background: #F6F4EE; border-color: #F6F4EE; color: #0A0A0A; }
+    .band-dark .btn-plan-filled:hover { background: var(--accent); border-color: var(--accent); color: #F6F4EE; }
+    .band-dark .pricing-commit { color: #c4bfb3; }
+    .band-dark .alv-note,
+    .band-dark .pricing-caption { color: #8f8a7e; }
+    .band-dark .pricing-request { color: #b8b3a6; }
+    .band-dark .pricing-request a { color: #F6F4EE; }
+    .band-dark .pricing-request a:hover { color: var(--accent); }
 
     /* ── FAQ ──────────────────────────────────────────────── */
     .faq-list { border-top: 1px solid var(--line); }
@@ -662,7 +697,7 @@
 </div>
 
 <!-- ── PRICING ───────────────────────────────────────────── -->
-<div class="band">
+<div class="band band-dark">
   <div class="section reveal" id="hinnat">
     <div class="pricing-head">
       <span class="section-label">Hinnat</span>
@@ -682,10 +717,9 @@
           <ul class="plan-features">
             <li>1 kuvaussessio / kk</li>
             <li>4 lyhytvideota</li>
-            <li>Peruseditointi</li>
+            <li>Ammattitason editointi</li>
             <li>1 korjauskierros</li>
             <li>Kuukausiraportti</li>
-            <li>Ei sitoutumista</li>
           </ul>
           <a href="#yhteys" class="btn-plan btn-plan-outline">Aloitetaan</a>
         </div>
@@ -698,11 +732,9 @@
           <ul class="plan-features">
             <li>1 kuvaussessio / kk</li>
             <li>Jopa 8 lyhytvideota</li>
-            <li>Edistynyt editointi</li>
-            <li>Hooks &amp; captions</li>
+            <li>Ammattitason editointi</li>
             <li>Julkaisu &amp; ajastus</li>
-            <li>Strategia + raportti</li>
-            <li>Ei sitoutumista</li>
+            <li>Kuukausiraportti</li>
           </ul>
           <a href="#yhteys" class="btn-plan btn-plan-filled">Aloitetaan</a>
         </div>
@@ -714,16 +746,17 @@
           <ul class="plan-features">
             <li>2 kuvaussessiota / kk</li>
             <li>Jopa 12 lyhytvideota</li>
-            <li>Cinematic-editointi</li>
+            <li>Ammattitason editointi</li>
+            <li>Julkaisu &amp; ajastus</li>
             <li>Täysi some-hallinta</li>
             <li>Brändistrategia</li>
             <li>Kampanjasuunnittelu</li>
             <li>Prioriteettituki</li>
-            <li>Ei sitoutumista</li>
           </ul>
           <a href="#yhteys" class="btn-plan btn-plan-outline">Aloitetaan</a>
         </div>
       </div>
+      <p class="pricing-commit">Sitoutuminen on vapaaehtoista — 3 kuukauden sitoutumisella saat –10 %.</p>
       <div class="pricing-foot">
         <span class="alv-note">Kaikki hinnat + alv 25,5 %</span>
       </div>
