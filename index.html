@@ -376,6 +376,9 @@
     .plan-setup-note { font-size: 10px; letter-spacing: 0.03em; color: var(--ink-faint); margin-top: 12px; display: block; text-align: center; }
     .pricing-foot { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
     .pricing-caption, .alv-note { font-size: 11px; letter-spacing: 0.04em; color: var(--ink-faint); }
+    .pricing-request { margin-top: 30px; text-align: center; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+    .pricing-request a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+    .pricing-request a:hover { color: var(--accent); }
 
     /* ── FAQ ──────────────────────────────────────────────── */
     .faq-list { border-top: 1px solid var(--line); }
@@ -667,22 +670,14 @@
       <p class="pricing-sub">Ei piilokuluja, ei pitkiä sopimuksia. Tiedät tarkalleen mistä maksat.</p>
     </div>
 
-    <div class="pricing-tab-bar">
-      <button class="ptab active" data-tab="kuukausi">Kuukausipaketit</button>
-      <button class="ptab" data-tab="kerta">Kertatilaukset</button>
-      <button class="ptab" data-tab="digital">Digitaaliset</button>
-    </div>
-
-    <!-- TAB: KUUKAUSIPAKETIT -->
+    <!-- KUUKAUSIPAKETIT -->
     <div class="pricing-panel" id="tab-kuukausi">
-      <p class="panel-caption">Ei sitoutumista — peruuta milloin tahansa</p>
+      <p class="panel-caption">Otamme rajoitetusti uusia asiakkaita — 3 paikkaa per kvartaali.</p>
       <div class="pricing-grid">
         <div class="pricing-card">
-          <span class="plan-label">Launch Deal</span>
           <div class="plan-name">Starter</div>
           <div class="plan-price">
-            <span class="plan-price-strike">€499/kk</span>
-            <span class="plan-price-main">€299<span class="plan-period">/kk</span></span>
+            <span class="plan-price-main">€499<span class="plan-period">/kk</span></span>
           </div>
           <ul class="plan-features">
             <li>1 kuvaussessio / kk</li>
@@ -693,17 +688,15 @@
             <li>Ei sitoutumista</li>
           </ul>
           <a href="#yhteys" class="btn-plan btn-plan-outline">Aloitetaan</a>
-          <span class="plan-setup-note">Kertaluonteinen aloitusmaksu €79.</span>
         </div>
         <div class="pricing-card featured">
-          <span class="plan-label">Suosituin — Launch Deal</span>
+          <span class="plan-label">Suosituin</span>
           <div class="plan-name">Growth</div>
           <div class="plan-price">
-            <span class="plan-price-strike">€999/kk</span>
-            <span class="plan-price-main">€499<span class="plan-period">/kk</span></span>
+            <span class="plan-price-main">€749<span class="plan-period">/kk</span></span>
           </div>
           <ul class="plan-features">
-            <li>2 kuvaussessiota / kk</li>
+            <li>1 kuvaussessio / kk</li>
             <li>Jopa 8 lyhytvideota</li>
             <li>Edistynyt editointi</li>
             <li>Hooks &amp; captions</li>
@@ -712,17 +705,14 @@
             <li>Ei sitoutumista</li>
           </ul>
           <a href="#yhteys" class="btn-plan btn-plan-filled">Aloitetaan</a>
-          <span class="plan-setup-note">Kertaluonteinen aloitusmaksu €79.</span>
         </div>
         <div class="pricing-card">
-          <span class="plan-label">Launch Deal</span>
           <div class="plan-name">Premium</div>
           <div class="plan-price">
-            <span class="plan-price-strike">€1 499/kk</span>
-            <span class="plan-price-main">€799<span class="plan-period">/kk</span></span>
+            <span class="plan-price-main">€1 499<span class="plan-period">/kk</span></span>
           </div>
           <ul class="plan-features">
-            <li>Jatkuvat shootit</li>
+            <li>2 kuvaussessiota / kk</li>
             <li>Jopa 12 lyhytvideota</li>
             <li>Cinematic-editointi</li>
             <li>Täysi some-hallinta</li>
@@ -732,160 +722,12 @@
             <li>Ei sitoutumista</li>
           </ul>
           <a href="#yhteys" class="btn-plan btn-plan-outline">Aloitetaan</a>
-          <span class="plan-setup-note">Kertaluonteinen aloitusmaksu €79.</span>
-        </div>
-      </div>
-      <div class="pricing-foot">
-        <span class="pricing-caption">Launch-hinnat voimassa 31.8.2026 asti</span>
-        <span class="alv-note">Kaikki hinnat + alv 25,5 %</span>
-      </div>
-    </div>
-
-    <!-- TAB: KERTATILAUKSET -->
-    <div class="pricing-panel hidden" id="tab-kerta">
-      <p class="panel-caption">Kokeile riskittömästi — ei kuukausisitoutumista</p>
-      <div class="pricing-grid">
-        <div class="pricing-card">
-          <span class="plan-label">Kokeile riskittömästi</span>
-          <div class="plan-name">1 Lyhytvideo</div>
-          <div class="plan-price">
-            <span class="plan-price-main">€99<span class="plan-period">/ kerta</span></span>
-          </div>
-          <ul class="plan-features">
-            <li>1 valmis lyhytvideo</li>
-            <li>Editoitu, julkaisuvalmis</li>
-            <li>Toimitus 5 arkipäivässä</li>
-          </ul>
-          <a href="#yhteys" class="btn-plan btn-plan-outline">Tilaa</a>
-        </div>
-        <div class="pricing-card featured">
-          <span class="plan-label">Suosituin kertatilaus</span>
-          <div class="plan-name">Kuvaus + 2 videota</div>
-          <div class="plan-price">
-            <span class="plan-price-main">€199<span class="plan-period">/ kerta</span></span>
-          </div>
-          <ul class="plan-features">
-            <li>1 h kuvaussessio</li>
-            <li>2 editoitua lyhytvideota</li>
-            <li>Julkaisuvalmis sisältö</li>
-            <li>Näet koko prosessin</li>
-          </ul>
-          <a href="#yhteys" class="btn-plan btn-plan-filled">Tilaa</a>
-        </div>
-        <div class="pricing-card">
-          <span class="plan-label">Täydellinen startti</span>
-          <div class="plan-name">3 videota + strategia</div>
-          <div class="plan-price">
-            <span class="plan-price-main">€349<span class="plan-period">/ kerta</span></span>
-          </div>
-          <ul class="plan-features">
-            <li>Kuvaussessio</li>
-            <li>3 editoitua videota</li>
-            <li>Kirjallinen somestrategia</li>
-            <li>Täydellinen kokonaisuus</li>
-          </ul>
-          <a href="#yhteys" class="btn-plan btn-plan-outline">Tilaa</a>
-        </div>
-      </div>
-      <div class="pricing-grid-2">
-        <div class="pricing-card">
-          <span class="plan-label">Tiedä missä olet</span>
-          <div class="plan-name">Brändianalyysi</div>
-          <div class="plan-price">
-            <span class="plan-price-main">€149<span class="plan-period">/ kerta</span></span>
-          </div>
-          <ul class="plan-features">
-            <li>Kirjallinen some-analyysi</li>
-            <li>Konkreettiset kehitysehdotukset</li>
-            <li>Tiedät mitä tehdä seuraavaksi</li>
-          </ul>
-          <a href="#yhteys" class="btn-plan btn-plan-outline">Tilaa</a>
-        </div>
-        <div class="pricing-card featured">
-          <span class="plan-label">Katso tulokset ensin</span>
-          <div class="plan-name">Koekuukausi</div>
-          <div class="plan-price">
-            <span class="plan-price-main">€249<span class="plan-period">/ 1 kk</span></span>
-          </div>
-          <ul class="plan-features">
-            <li>Starter-paketti, 1 kuukausi</li>
-            <li>Ei sitoutumista</li>
-            <li>Täydellinen tapa aloittaa</li>
-            <li>Jatka jos tykkäät</li>
-          </ul>
-          <a href="#yhteys" class="btn-plan btn-plan-filled">Tilaa</a>
-        </div>
-        <div class="pricing-card">
-          <span class="plan-label">Ilmainen aloitus</span>
-          <div class="plan-name">Konsultointi</div>
-          <div class="plan-price">
-            <span class="plan-price-sub">Ensimmäinen 30 min</span>
-            <span class="plan-price-main">Ilmainen</span>
-          </div>
-          <ul class="plan-features">
-            <li>30 min maksuton sessio</li>
-            <li>Strategia, sisältö, some</li>
-            <li>Jatkotunnit €99/h</li>
-          </ul>
-          <a href="#yhteys" class="btn-plan btn-plan-outline">Varaa aika</a>
         </div>
       </div>
       <div class="pricing-foot">
         <span class="alv-note">Kaikki hinnat + alv 25,5 %</span>
       </div>
-    </div>
-
-    <!-- TAB: DIGITAALISET -->
-    <div class="pricing-panel hidden" id="tab-digital">
-      <p class="panel-caption">Verkkosivut, verkkokauppa &amp; sometilit — kertamaksulla</p>
-      <div class="pricing-grid">
-        <div class="pricing-card">
-          <span class="plan-label">Kertamaksu</span>
-          <div class="plan-name">Verkkosivut</div>
-          <div class="plan-price">
-            <span class="plan-price-main">€399<span class="plan-period">/ kerta</span></span>
-          </div>
-          <ul class="plan-features">
-            <li>Täysin räätälöity design</li>
-            <li>Mobiiliystävällinen</li>
-            <li>Nopea toimitus</li>
-            <li>Julkaisuvalmis</li>
-          </ul>
-          <a href="#yhteys" class="btn-plan btn-plan-outline">Tilaa</a>
-        </div>
-        <div class="pricing-card featured">
-          <span class="plan-label">Kertamaksu — suosittu</span>
-          <div class="plan-name">Shopify-verkkokauppa</div>
-          <div class="plan-price">
-            <span class="plan-price-main">€399<span class="plan-period">/ alk.</span></span>
-          </div>
-          <ul class="plan-features">
-            <li>Valmis verkkokauppa</li>
-            <li>Tuotteet &amp; maksut kunnossa</li>
-            <li>Domain yhdistettynä</li>
-            <li>Julkaisuvalmis</li>
-          </ul>
-          <a href="#yhteys" class="btn-plan btn-plan-filled">Tilaa</a>
-        </div>
-        <div class="pricing-card">
-          <span class="plan-label">Kertamaksu</span>
-          <div class="plan-name">Sometilin perustaminen</div>
-          <div class="plan-price">
-            <span class="plan-price-main">€99<span class="plan-period">/ tili</span></span>
-          </div>
-          <ul class="plan-features">
-            <li>Instagram tai Facebook</li>
-            <li>Optimoitu bio &amp; profiili</li>
-            <li>Brändätty ulkoasu</li>
-            <li>3 ensimmäistä julkaisua</li>
-          </ul>
-          <a href="#yhteys" class="btn-plan btn-plan-outline">Tilaa</a>
-        </div>
-      </div>
-      <div class="pricing-foot">
-        <span class="pricing-caption">Launch-hinnat voimassa 31.8.2026 asti</span>
-        <span class="alv-note">Kaikki hinnat + alv 25,5 %</span>
-      </div>
+      <p class="pricing-request">Kertatilaukset ja yksittäiset palvelut (verkkosivut, brändianalyysi, konsultointi ym.) saatavilla pyynnöstä — <a href="#yhteys">ota yhteyttä</a>.</p>
     </div>
 
   </div>
@@ -1046,16 +888,6 @@
       contactSubmit.disabled = false;
       contactSubmit.textContent = 'Lähetä viesti →';
     }
-  });
-
-  // pricing tabs
-  document.querySelectorAll('.ptab').forEach(tab => {
-    tab.addEventListener('click', () => {
-      document.querySelectorAll('.ptab').forEach(t => t.classList.remove('active'));
-      document.querySelectorAll('.pricing-panel').forEach(p => p.classList.add('hidden'));
-      tab.classList.add('active');
-      document.getElementById('tab-' + tab.dataset.tab).classList.remove('hidden');
-    });
   });
 
   // scroll reveal
