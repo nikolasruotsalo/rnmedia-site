@@ -29,15 +29,15 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
-      --paper:      #F6F4EE;   /* warm bone — primary background */
-      --paper-soft: #EFECE2;   /* alternating sections */
-      --paper-deep: #E8E4D9;   /* deeper neutral */
-      --ink:        #15140F;   /* near-black, warm — primary text */
-      --ink-soft:   #57534A;   /* secondary text */
-      --ink-faint:  #908B7E;   /* labels, meta */
-      --line:       #DBD6CA;   /* hairlines */
-      --line-soft:  #E6E1D6;
-      --accent:     #9E5A3D;   /* clay — very limited use */
+      --paper:      #0C0B09;   /* near-black warm — primary background */
+      --paper-soft: #141310;   /* alternating sections / hovers */
+      --paper-deep: #1C1A15;   /* deeper neutral — cards, placeholders */
+      --ink:        #F1EFE8;   /* warm off-white — primary text */
+      --ink-soft:   #B4AFA3;   /* secondary text */
+      --ink-faint:  #837E72;   /* labels, meta */
+      --line:       #2B2924;   /* hairlines */
+      --line-soft:  #211F1B;
+      --accent:     #C06B45;   /* clay — brightened for dark ground */
       --radius:     4px;
       --radius-lg:  10px;
       --ease:       cubic-bezier(.22,1,.36,1);
@@ -92,7 +92,7 @@
       border-bottom: 1px solid transparent;
     }
     #navbar.scrolled {
-      background: rgba(246,244,238,0.82);
+      background: rgba(12,11,9,0.82);
       border-color: var(--line);
       backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
       height: 64px;
@@ -100,6 +100,8 @@
     .nav-logo { display: flex; align-items: center; text-decoration: none; }
     .nav-logo img { height: 30px; width: auto; transition: opacity 0.25s; }
     .nav-logo:hover img { opacity: 0.6; }
+    /* mono logos are dark artwork — invert to light on the dark ground */
+    .nav-logo img, .drawer-logo, .footer-logo img { filter: brightness(0) invert(0.94); }
 
     .nav-right { display: flex; align-items: center; gap: clamp(20px, 2.6vw, 40px); }
     .nav-links { display: flex; align-items: center; gap: clamp(20px, 2.4vw, 38px); }
@@ -443,7 +445,7 @@
     .form-group { display: flex; flex-direction: column; gap: 8px; }
     .form-label { font-size: 11px; font-weight: 500; color: var(--ink); letter-spacing: 0.12em; text-transform: uppercase; }
     .form-input { padding: 14px 16px; border: 1px solid var(--line); border-radius: var(--radius); font-size: 13px; font-family: 'DM Mono', monospace; color: var(--ink); background: var(--paper); transition: border-color 0.2s, background 0.2s; outline: none; }
-    .form-input:focus { border-color: var(--ink); background: #fffdf8; }
+    .form-input:focus { border-color: var(--ink); background: var(--paper-soft); }
     .form-input::placeholder { color: var(--ink-faint); }
     textarea.form-input { resize: vertical; min-height: 110px; }
     .form-submit { margin-top: 6px; padding: 16px 24px; background: var(--ink); color: var(--paper); border: none; border-radius: var(--radius); font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; font-family: 'DM Mono', monospace; transition: background 0.25s, transform 0.25s var(--ease); }
