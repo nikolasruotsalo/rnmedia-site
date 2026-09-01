@@ -417,6 +417,36 @@
     .band-dark .pricing-request a { color: #F6F4EE; }
     .band-dark .pricing-request a:hover { color: var(--accent); }
 
+    /* ── ADS / MAINONTA (subordinate to the three tiers) ── */
+    .ads-block { margin-top: clamp(54px, 7vw, 88px); padding-top: clamp(38px, 4.5vw, 56px); border-top: 1px solid var(--line); scroll-margin-top: 92px; }
+    .ads-head { margin-bottom: clamp(26px, 3.4vw, 38px); }
+    .ads-heading { font-family: 'Playfair Display', serif; font-weight: 400; font-size: clamp(24px, 3vw, 34px); line-height: 1.12; letter-spacing: -0.01em; color: var(--ink); }
+    .ads-intro { font-size: 13.5px; line-height: 1.8; color: var(--ink-soft); max-width: 58ch; margin-top: 16px; }
+    .ads-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; }
+    .ads-card { padding: clamp(22px, 2vw, 30px) clamp(18px, 1.7vw, 26px); background: var(--paper-soft); transition: background 0.25s; display: flex; flex-direction: column; }
+    .ads-card:hover { background: var(--paper-deep); }
+    .ads-name { font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink); }
+    .ads-price { margin: 14px 0 6px; }
+    .ads-price-main { font-family: 'Playfair Display', serif; font-style: italic; font-size: 28px; color: var(--ink); line-height: 1; }
+    .ads-price-main .ads-period { font-family: 'DM Mono', monospace; font-style: normal; font-size: 11px; color: var(--ink-faint); margin-left: 4px; letter-spacing: 0.04em; }
+    .ads-sub { font-size: 11.5px; letter-spacing: 0.03em; color: var(--ink-faint); margin-bottom: 22px; }
+    .ads-features { list-style: none; display: flex; flex-direction: column; gap: 9px; margin-bottom: 26px; flex-grow: 1; }
+    .ads-features li { font-size: 12px; color: var(--ink-soft); display: flex; align-items: flex-start; gap: 10px; line-height: 1.6; }
+    .ads-features li::before { content: ''; width: 12px; height: 1px; background: var(--accent); flex-shrink: 0; margin-top: 8px; }
+    .ads-terms { margin: 22px auto 0; max-width: 76ch; text-align: center; font-size: 11.5px; line-height: 1.75; letter-spacing: 0.03em; color: var(--ink-faint); }
+    .band-dark .ads-block { border-top-color: #262421; }
+    .band-dark .ads-heading { color: #F6F4EE; }
+    .band-dark .ads-intro { color: #b8b3a6; }
+    .band-dark .ads-grid { background: #262421; border-color: #262421; }
+    .band-dark .ads-card { background: #0E0D0B; }
+    .band-dark .ads-card:hover { background: #141310; }
+    .band-dark .ads-name { color: #F6F4EE; }
+    .band-dark .ads-price-main { color: #F6F4EE; }
+    .band-dark .ads-price-main .ads-period,
+    .band-dark .ads-sub,
+    .band-dark .ads-terms { color: #8f8a7e; }
+    .band-dark .ads-features li { color: #c4bfb3; }
+
     /* ── FAQ ──────────────────────────────────────────────── */
     .faq-list { border-top: 1px solid var(--line); }
     .faq-item { border-bottom: 1px solid var(--line); }
@@ -504,6 +534,7 @@
       .pricing-tab-bar { width: 100%; display: flex; }
       .ptab { flex: 1; text-align: center; padding: 11px 6px; }
       .pricing-grid, .pricing-grid-2 { grid-template-columns: 1fr; border-radius: var(--radius-lg) !important; }
+      .ads-grid { grid-template-columns: 1fr; }
       .pricing-grid + .pricing-grid-2 { border-top: 1px solid var(--line); margin-top: 1px; }
       .contact-grid { grid-template-columns: 1fr; gap: 44px; }
       .hero-meta span { padding-right: 18px; margin-right: 18px; font-size: 10px; }
@@ -638,6 +669,12 @@
         <span class="service-desc">Jatkuva sisältövirta yhdellä kiinteällä hinnalla. Suunnittelu, tuotanto ja raportointi — hoidamme kaiken.</span>
         <span class="service-arrow">&#8594;</span>
       </a>
+      <a href="#mainonta" class="service-row">
+        <span class="service-num">05</span>
+        <span class="service-title">Maksettu mainonta</span>
+        <span class="service-desc">Meta-mainonta samalla sisällöllä, jonka olemme jo tuottaneet. Kampanjoiden rakennus, kohderyhmät, optimointi ja kuukausiraportointi.</span>
+        <span class="service-arrow">&#8594;</span>
+      </a>
     </div>
   </div>
 </div>
@@ -767,6 +804,59 @@
       <p class="pricing-request">Kertatilaukset ja yksittäiset palvelut (verkkosivut, brändianalyysi, konsultointi ym.) saatavilla pyynnöstä — <a href="#yhteys">ota yhteyttä</a>.</p>
     </div>
 
+    <!-- MAINONTA — lisäkerros kuukausipakettien päälle, ei neljäs taso -->
+    <div class="ads-block" id="mainonta">
+      <div class="ads-head">
+        <h3 class="ads-heading">Mainonta</h3>
+        <p class="ads-intro">Kun sisältö toimii, sen taakse kannattaa laittaa budjettia. Käytämme videoita, jotka olemme jo tehneet — emme tuota mainoksia erikseen.</p>
+      </div>
+      <div class="ads-grid">
+        <div class="ads-card">
+          <div class="ads-name">Lisäosa</div>
+          <div class="ads-price">
+            <span class="ads-price-main">490 €<span class="ads-period">/kk</span></span>
+          </div>
+          <div class="ads-sub">Nykyisen kuukausipaketin päälle.</div>
+          <ul class="ads-features">
+            <li>Kampanjoiden rakennus ja optimointi</li>
+            <li>Jopa 4 mainosluovaa kuukaudessa olemassa olevasta sisällöstä</li>
+            <li>3 koukkuversiota testissä</li>
+            <li>Kohderyhmät, uudelleenmarkkinointi ja liidilomake</li>
+            <li>Viikoittainen optimointi ja kuukausiraportti</li>
+          </ul>
+          <a href="#yhteys" class="btn-plan btn-plan-outline">Aloitetaan</a>
+        </div>
+        <div class="ads-card">
+          <div class="ads-name">Erillinen</div>
+          <div class="ads-price">
+            <span class="ads-price-main">890 €<span class="ads-period">/kk</span></span>
+          </div>
+          <div class="ads-sub">Ilman kuukausipakettia.</div>
+          <ul class="ads-features">
+            <li>Kaikki mitä Lisäosassa</li>
+            <li>Yksi 2 tunnin kuvaus neljännesvuosittain</li>
+            <li>Jopa 6 mainosluovaa kuukaudessa</li>
+            <li>Mainoksiin erikseen suunnitellut konseptit</li>
+          </ul>
+          <a href="#yhteys" class="btn-plan btn-plan-outline">Aloitetaan</a>
+        </div>
+        <div class="ads-card">
+          <div class="ads-name">Kampanja</div>
+          <div class="ads-price">
+            <span class="ads-price-main">1 290 €</span>
+          </div>
+          <div class="ads-sub">Kertaluontoinen, 6 viikkoa.</div>
+          <ul class="ads-features">
+            <li>Kuvaus, rakennus, ajo ja raportointi</li>
+            <li>Sesonkikampanjat ja lanseeraukset</li>
+            <li>Ei sitoutumista</li>
+          </ul>
+          <a href="#yhteys" class="btn-plan btn-plan-outline">Aloitetaan</a>
+        </div>
+      </div>
+      <p class="ads-terms">Aloitusmaksu 300 €. Mediabudjetti vähintään 500 €/kk, jonka asiakas maksaa suoraan Metalle omalta mainostililtään. Minimisitoutuminen 3 kk. Emme lupaa liidimääriä emmekä liidihintaa.</p>
+    </div>
+
   </div>
 </div>
 
@@ -795,6 +885,14 @@
       <details class="faq-item">
         <summary>Sopiiko tämä pienelle yritykselle tai yksinyrittäjälle?</summary>
         <p class="faq-answer">Kyllä — jos markkinointibudjettisi on vähintään noin 700 €/kk. Sitä pienemmällä budjetilla emme ole oikea kumppani, ja sanomme sen mieluummin heti kuin ensimmäisen laskun jälkeen.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Kuka maksaa mainosbudjetin?</summary>
+        <p class="faq-answer">Sinä, suoraan Metalle omalta mainostililtäsi. Emme koskaan käsittele mainosrahaa, joten näet itse tarkalleen mihin se menee. Suositeltu minimi on 500 €/kk.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Lupaatteko tietyn määrän liidejä?</summary>
+        <p class="faq-answer">Emme. Kukaan rehellinen toimija ei voi luvata sitä etukäteen. Lupaamme selkeän kuukausiraportin, josta näet mitä rahalla saatiin.</p>
       </details>
     </div>
   </div>
