@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Förå Oy – Asiakasportaali</title>
+  <title>Förå Oy | Asiakasportaali</title>
   <link rel="icon" href="/logo2.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
   <script>
-    // Auth check — redirect to router if session flag is missing
+    // Auth check: redirect to router if session flag is missing
     if (sessionStorage.getItem('rnmedia_auth_fora') !== 'true') {
       window.location.replace('/asiakasportaali');
     }
@@ -18,7 +18,7 @@
 
   <script>
     // ============================================================
-    //  ✏️  EDIT HERE — update this object each month.
+    //  ✏️  EDIT HERE: update this object each month.
     //  No other code needs to be touched.
     // ============================================================
     const clientData = {
@@ -85,8 +85,8 @@
       --red-border:   #991b1b;
       --r:            10px;
       --r-sm:         6px;
-      --mono:         'DM Mono', monospace;
-      --serif:        'Playfair Display', serif;
+      --mono:         'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      --serif:        'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
     }
 
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -465,7 +465,7 @@
     document.getElementById('sp-tot').textContent = d.postsTotal;
     document.getElementById('pp').style.width = pct(d.postsScheduled, d.postsTotal);
 
-    document.getElementById('ss-date').textContent = d.nextShootDate || '—';
+    document.getElementById('ss-date').textContent = d.nextShootDate || 'Ei sovittu';
     document.getElementById('ss-report-date').textContent = d.nextReportDate ? 'Pvm: ' + d.nextReportDate : '';
 
     const pillMap = {
@@ -598,7 +598,7 @@
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({
-          _subject: 'Muutospyyntö — ' + clientData.clientName + ' — ' + caption,
+          _subject: 'Muutospyyntö: ' + clientData.clientName + ' / ' + caption,
           card_id: id, caption, feedback: msg,
         }),
       });
@@ -620,10 +620,10 @@
     const statusEl = document.getElementById('submit-status');
     const btn = document.getElementById('submit-btn');
     if (done === total && total > 0) {
-      statusEl.innerHTML = `<strong>${approved} hyväksytty</strong>, ${changes} muutospyyntöä — kaikki käyty läpi.`;
+      statusEl.innerHTML = `<strong>${approved} hyväksytty</strong>, ${changes} muutospyyntöä. Kaikki käyty läpi.`;
       btn.disabled = false;
     } else {
-      statusEl.innerHTML = `${done} / ${total} käyty läpi — <strong>${total - done} jäljellä</strong>.`;
+      statusEl.innerHTML = `${done} / ${total} käyty läpi, <strong>${total - done} jäljellä</strong>.`;
       btn.disabled = true;
     }
   }
@@ -643,7 +643,7 @@
     btn.disabled = true; btn.textContent = 'Lähetetään...';
     try {
       const fd = new FormData();
-      fd.append('_subject', clientData.clientName + ' – Sisällön hyväksynnät');
+      fd.append('_subject', clientData.clientName + ' / Sisällön hyväksynnät');
       fd.append('asiakas', clientData.clientName);
       fd.append('hyväksynnät', rows.join('\n\n---\n\n'));
       const r = await fetch('https://formspree.io/f/' + FORMSPREE_ID, {

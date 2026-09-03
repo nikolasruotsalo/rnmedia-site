@@ -3,588 +3,71 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RN Media — Sisältöstudio & lyhytvideot</title>
+  <title>RN Media | Lyhytvideot, jotka tuovat asiakkaita</title>
 
   <!-- SEO -->
-  <meta name="description" content="RN Media on suomalainen sisältöstudio. Suunnittelemme, kuvaamme ja editoimme lyhytvideot, jotka tuovat premium-yrityksille oikeita asiakkaita — ideasta julkaisuun.">
+  <meta name="description" content="RN Media on suomalainen sisältöstudio. Suunnittelemme, kuvaamme ja editoimme lyhytvideot premium-yrityksille. Ensimmäiset videot 5-7 arkipäivässä.">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://rnmedia.fi">
+  <link rel="canonical" href="https://rnmedia.fi/">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://rnmedia.fi">
-  <meta property="og:title" content="RN Media — Sisältöstudio & lyhytvideot">
-  <meta property="og:description" content="Pieni sisältöstudio premium-yrityksille. Lyhytvideot, jotka tuovat oikeita asiakkaita — ideasta julkaisuun.">
+  <meta property="og:locale" content="fi_FI">
+  <meta property="og:site_name" content="RN Media">
+  <meta property="og:url" content="https://rnmedia.fi/">
+  <meta property="og:title" content="RN Media | Lyhytvideot, jotka tuovat asiakkaita">
+  <meta property="og:description" content="Sisältöstudio premium-yrityksille. Suunnittelemme, kuvaamme ja editoimme jokaisen videon itse. Ensimmäiset videot 5-7 arkipäivässä.">
   <meta property="og:image" content="https://rnmedia.fi/logo.png">
 
-  <!-- Twitter Card -->
+  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="RN Media — Sisältöstudio & lyhytvideot">
-  <meta name="twitter:description" content="Pieni sisältöstudio premium-yrityksille. Lyhytvideot, jotka tuovat oikeita asiakkaita.">
+  <meta name="twitter:title" content="RN Media | Lyhytvideot, jotka tuovat asiakkaita">
+  <meta name="twitter:description" content="Sisältöstudio premium-yrityksille. Ensimmäiset videot 5-7 arkipäivässä.">
+  <meta name="twitter:image" content="https://rnmedia.fi/logo.png">
 
-  <link rel="icon" type="image/png" href="logo2.png">
+  <link rel="icon" type="image/png" href="/logo2.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    :root {
-      --paper:      #0C0B09;   /* near-black warm — primary background */
-      --paper-soft: #141310;   /* alternating sections / hovers */
-      --paper-deep: #1C1A15;   /* deeper neutral — cards, placeholders */
-      --ink:        #F1EFE8;   /* warm off-white — primary text */
-      --ink-soft:   #B4AFA3;   /* secondary text */
-      --ink-faint:  #837E72;   /* labels, meta */
-      --line:       #2B2924;   /* hairlines */
-      --line-soft:  #211F1B;
-      --accent:     #C06B45;   /* clay — brightened for dark ground */
-      --radius:     4px;
-      --radius-lg:  10px;
-      --ease:       cubic-bezier(.22,1,.36,1);
-      --container:  1200px;
-    }
-    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-    body {
-      font-family: 'DM Mono', monospace;
-      background: var(--paper);
-      color: var(--ink);
-      overflow-x: hidden;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-    }
-    ::selection { background: var(--ink); color: var(--paper); }
-    img { display: block; max-width: 100%; }
-    a { color: inherit; }
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/site.css">
 
-    /* ── SHARED TYPE ──────────────────────────────────────── */
-    .eyebrow {
-      display: inline-flex; align-items: center; gap: 10px;
-      font-size: 11px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase;
-      color: var(--ink-faint);
-    }
-    .eyebrow::before {
-      content: ''; width: 6px; height: 6px; border-radius: 50%;
-      background: var(--accent); flex-shrink: 0;
-    }
-    .section-label {
-      display: inline-flex; align-items: center; gap: 12px;
-      font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--ink-faint); margin-bottom: 26px;
-    }
-    .section-label::before {
-      content: ''; width: 22px; height: 1px; background: var(--accent); flex-shrink: 0;
-    }
-    .section-heading {
-      font-family: 'Playfair Display', serif; font-weight: 400;
-      font-size: clamp(30px, 4.4vw, 54px); line-height: 1.06; letter-spacing: -0.01em;
-      color: var(--ink);
-    }
-    .section-heading em { font-style: italic; }
-    .lede { font-size: 14px; line-height: 1.8; color: var(--ink-soft); }
-
-    /* ── NAV ──────────────────────────────────────────────── */
-    #navbar {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-      padding: 0 clamp(20px, 4vw, 44px); height: 76px;
-      display: flex; align-items: center; justify-content: space-between;
-      transition: background 0.4s var(--ease), border-color 0.4s, box-shadow 0.4s, height 0.4s var(--ease);
-      border-bottom: 1px solid transparent;
-    }
-    #navbar.scrolled {
-      background: rgba(12,11,9,0.82);
-      border-color: var(--line);
-      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-      height: 64px;
-    }
-    .nav-logo { display: flex; align-items: center; text-decoration: none; }
-    .nav-logo img { height: 30px; width: auto; transition: opacity 0.25s; }
-    .nav-logo:hover img { opacity: 0.6; }
-    /* mono logos are dark artwork — invert to light on the dark ground */
-    .nav-logo img, .drawer-logo, .footer-logo img { filter: brightness(0) invert(0.94); }
-
-    .nav-right { display: flex; align-items: center; gap: clamp(20px, 2.6vw, 40px); }
-    .nav-links { display: flex; align-items: center; gap: clamp(20px, 2.4vw, 38px); }
-    .nav-link {
-      position: relative;
-      font-size: 11px; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase;
-      color: var(--ink-soft); text-decoration: none; transition: color 0.2s; padding: 4px 0;
-    }
-    .nav-link::after {
-      content: ''; position: absolute; left: 0; bottom: 0; height: 1px; width: 0;
-      background: var(--accent); transition: width 0.3s var(--ease);
-    }
-    .nav-link:hover { color: var(--ink); }
-    .nav-link:hover::after { width: 100%; }
-    .nav-cta {
-      font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--paper); background: var(--ink);
-      padding: 11px 20px; border-radius: var(--radius); text-decoration: none;
-      transition: background 0.25s, transform 0.25s var(--ease);
-    }
-    .nav-cta:hover { background: var(--accent); transform: translateY(-1px); }
-
-    .hamburger {
-      display: none; flex-direction: column; justify-content: center;
-      width: 44px; height: 44px; cursor: pointer;
-      border: 1px solid var(--line); border-radius: var(--radius);
-      background: none; padding: 0; position: relative; z-index: 210;
-      transition: border-color 0.2s, background 0.2s;
-    }
-    .hamburger:hover { border-color: var(--ink-faint); }
-    .hamburger.open { opacity: 0; pointer-events: none; }
-    .hamburger span {
-      display: block; position: absolute; left: 50%; transform: translateX(-50%);
-      width: 17px; height: 1.5px; background: var(--ink); border-radius: 2px;
-      transition: transform 0.35s var(--ease), opacity 0.25s ease, top 0.35s var(--ease);
-    }
-    .hamburger span:nth-child(1) { top: 16px; }
-    .hamburger span:nth-child(2) { top: 21px; }
-    .hamburger span:nth-child(3) { top: 26px; }
-
-    /* ── MOBILE DRAWER ────────────────────────────────────── */
-    #drawer-overlay {
-      position: fixed; inset: 0; z-index: 400; background: rgba(21,20,15,0.35);
-      opacity: 0; visibility: hidden; transition: opacity 0.35s ease, visibility 0.35s ease;
-    }
-    #drawer-overlay.open { opacity: 1; visibility: visible; }
-    #side-drawer {
-      position: fixed; inset: 0; z-index: 410; width: 100vw;
-      background: var(--paper); display: flex; flex-direction: column;
-      transform: translateX(100%); transition: transform 0.45s var(--ease); overflow-y: auto;
-    }
-    #side-drawer.open { transform: translateX(0); }
-    .drawer-head {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 22px clamp(20px, 5vw, 28px); border-bottom: 1px solid var(--line);
-      min-height: 76px; flex-shrink: 0;
-    }
-    .drawer-logo { height: 26px; width: auto; }
-    .drawer-close {
-      width: 44px; height: 44px; border: 1px solid var(--line); border-radius: var(--radius);
-      background: none; cursor: pointer; color: var(--ink-soft); font-size: 17px;
-      display: flex; align-items: center; justify-content: center;
-      transition: border-color 0.2s, color 0.2s; flex-shrink: 0; touch-action: manipulation;
-    }
-    .drawer-close:hover { border-color: var(--ink-faint); color: var(--ink); }
-    .drawer-nav { display: flex; flex-direction: column; padding: 12px 0 28px; }
-    .drawer-link {
-      font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 400;
-      color: var(--ink); text-decoration: none;
-      padding: 20px clamp(20px, 6vw, 32px); border-bottom: 1px solid var(--line-soft);
-      display: flex; align-items: baseline; gap: 16px;
-      opacity: 0; transform: translateY(10px);
-      transition: opacity 0.3s ease, transform 0.4s var(--ease), color 0.2s, background 0.2s;
-    }
-    .drawer-link .dl-num {
-      font-family: 'DM Mono', monospace; font-size: 11px; color: var(--ink-faint); letter-spacing: 0.1em;
-    }
-    .drawer-link:hover { background: var(--paper-soft); color: var(--accent); }
-    #side-drawer.open .drawer-link { opacity: 1; transform: translateY(0); }
-    #side-drawer.open .drawer-link:nth-child(1) { transition-delay: 0.06s; }
-    #side-drawer.open .drawer-link:nth-child(2) { transition-delay: 0.10s; }
-    #side-drawer.open .drawer-link:nth-child(3) { transition-delay: 0.14s; }
-    #side-drawer.open .drawer-link:nth-child(4) { transition-delay: 0.18s; }
-    #side-drawer.open .drawer-link:nth-child(5) { transition-delay: 0.22s; }
-    #side-drawer.open .drawer-link:nth-child(6) { transition-delay: 0.26s; }
-    #side-drawer.open .drawer-link:nth-child(7) { transition-delay: 0.30s; }
-    .drawer-foot {
-      margin-top: auto; padding: 24px clamp(20px, 6vw, 32px);
-      border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: 8px;
-      font-size: 12px; color: var(--ink-soft);
-    }
-    .drawer-foot a { color: var(--ink-soft); text-decoration: none; }
-    .drawer-foot a:hover { color: var(--accent); }
-
-    /* ── LAYOUT ───────────────────────────────────────────── */
-    .section {
-      max-width: var(--container); margin: 0 auto;
-      padding: clamp(72px, 11vw, 150px) clamp(20px, 5vw, 44px);
-      scroll-margin-top: 84px;
-    }
-    .band { width: 100%; }
-    .band-soft { background: var(--paper-soft); border-block: 1px solid var(--line-soft); }
-
-    /* ── HERO ─────────────────────────────────────────────── */
-    .hero {
-      max-width: var(--container); margin: 0 auto;
-      padding: clamp(140px, 20vh, 220px) clamp(20px, 5vw, 44px) clamp(48px, 7vw, 88px);
-      min-height: 100svh; display: flex; flex-direction: column; justify-content: center;
-      scroll-margin-top: 84px; position: relative; isolation: isolate;
-    }
-    /* full-bleed media layer — breaks out of the centred container */
-    .hero-media {
-      position: absolute; top: 0; bottom: 0; left: 50%; width: 100vw;
-      transform: translateX(-50%); overflow: hidden; z-index: 0; pointer-events: none;
-      background: var(--paper);
-    }
-    .hero-media video { width: 100%; height: 100%; object-fit: cover; display: block; }
-    /* scrim — keeps the headline legible over any footage */
-    .hero-media::after {
-      content: ''; position: absolute; inset: 0;
-      background:
-        linear-gradient(to right, rgba(12,11,9,0.94) 0%, rgba(12,11,9,0.80) 46%, rgba(12,11,9,0.44) 100%),
-        linear-gradient(to bottom, rgba(12,11,9,0.88) 0%, rgba(12,11,9,0.30) 34%, rgba(12,11,9,0.82) 100%);
-    }
-    /* hero content sits above the media layer */
-    .hero > *:not(.hero-media) { position: relative; z-index: 1; }
-    .hero-eyebrow { margin-bottom: clamp(24px, 4vw, 40px); animation: fadeUp 0.8s var(--ease) 0.05s both; }
-    .hero-headline {
-      font-family: 'Playfair Display', serif; font-weight: 400;
-      font-size: clamp(42px, 8.4vw, 104px); line-height: 0.98; letter-spacing: -0.02em;
-      color: var(--ink); max-width: 16ch; margin-bottom: clamp(26px, 3.4vw, 40px);
-      animation: fadeUp 0.9s var(--ease) 0.16s both;
-    }
-    .hero-headline em { font-style: italic; }
-    .hero-sub {
-      font-size: clamp(14px, 1.5vw, 16px); color: var(--ink-soft); line-height: 1.75;
-      max-width: 46ch; margin-bottom: clamp(34px, 4vw, 48px);
-      animation: fadeUp 0.9s var(--ease) 0.28s both;
-    }
-    .hero-cta-row {
-      display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
-      margin-bottom: clamp(56px, 8vw, 96px); animation: fadeUp 0.9s var(--ease) 0.4s both;
-    }
-    .btn-primary {
-      display: inline-flex; align-items: center; gap: 12px;
-      font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.12em;
-      text-transform: uppercase; padding: 17px 30px;
-      background: var(--ink); color: var(--paper); border-radius: var(--radius);
-      text-decoration: none; transition: background 0.3s, transform 0.3s var(--ease), box-shadow 0.3s;
-    }
-    .btn-primary .arrow { transition: transform 0.3s var(--ease); }
-    .btn-primary:hover { background: var(--accent); transform: translateY(-2px); box-shadow: 0 14px 30px rgba(21,20,15,0.16); }
-    .btn-primary:hover .arrow { transform: translateX(5px); }
-    .hero-textlink {
-      font-size: 12px; letter-spacing: 0.06em; color: var(--ink-soft);
-      text-decoration: none; border-bottom: 1px solid var(--line); padding-bottom: 3px;
-      transition: color 0.2s, border-color 0.2s;
-    }
-    .hero-textlink:hover { color: var(--ink); border-color: var(--ink); }
-    .hero-meta {
-      display: flex; flex-wrap: wrap; gap: 0; border-top: 1px solid var(--line);
-      animation: fadeUp 0.9s var(--ease) 0.52s both;
-    }
-    .hero-meta span {
-      font-size: 11px; letter-spacing: 0.08em; color: var(--ink-faint);
-      padding: 18px 26px 0 0; margin-right: 26px; position: relative;
-    }
-    .hero-meta span + span { padding-left: 0; }
-    .hero-meta span:not(:last-child)::after {
-      content: ''; position: absolute; right: 0; top: 20px; bottom: 2px; width: 1px; background: var(--line);
-    }
-
-    /* ── PHILOSOPHY ───────────────────────────────────────── */
-    .philo-grid { display: grid; grid-template-columns: 0.8fr 1.4fr; gap: clamp(32px, 6vw, 96px); align-items: start; }
-    .philo-aside { position: sticky; top: 110px; }
-    .philo-who { margin-top: 38px; }
-    .philo-who-label {
-      font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint);
-      margin-bottom: 16px;
-    }
-    .philo-who-list { display: flex; flex-direction: column; gap: 11px; }
-    .philo-who-list span {
-      font-size: 13px; color: var(--ink-soft); padding-bottom: 11px;
-      border-bottom: 1px solid var(--line-soft);
-    }
-    .philo-statement {
-      font-family: 'Playfair Display', serif; font-weight: 400;
-      font-size: clamp(27px, 4.2vw, 50px); line-height: 1.12; letter-spacing: -0.01em;
-      color: var(--ink); margin-bottom: clamp(28px, 3.4vw, 44px);
-    }
-    .philo-statement em { font-style: italic; color: var(--accent); }
-    .philo-body p { font-size: 14px; line-height: 1.85; color: var(--ink-soft); max-width: 52ch; }
-    .philo-body p + p { margin-top: 20px; }
-
-    /* ── SERVICES ─────────────────────────────────────────── */
-    .services-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: clamp(36px, 5vw, 60px); flex-wrap: wrap; }
-    .services-head .lede { max-width: 34ch; }
-    .service-row {
-      display: grid; grid-template-columns: 64px 1fr 1.1fr 40px; align-items: start;
-      gap: clamp(16px, 3vw, 48px); padding: clamp(28px, 3.4vw, 44px) 8px;
-      border-top: 1px solid var(--line); text-decoration: none; color: inherit;
-      transition: padding-left 0.4s var(--ease), background 0.3s;
-    }
-    .service-row:last-of-type { border-bottom: 1px solid var(--line); }
-    .service-row:hover { background: var(--paper-soft); padding-left: 20px; }
-    .service-num { font-size: 12px; letter-spacing: 0.1em; color: var(--ink-faint); padding-top: 8px; }
-    .service-title { font-family: 'Playfair Display', serif; font-size: clamp(22px, 2.6vw, 31px); font-weight: 400; line-height: 1.15; color: var(--ink); }
-    .service-desc { font-size: 13.5px; line-height: 1.8; color: var(--ink-soft); max-width: 44ch; padding-top: 5px; }
-    .service-arrow {
-      justify-self: end; align-self: center; font-size: 20px; color: var(--ink-faint);
-      opacity: 0; transform: translate(-8px, 0); transition: opacity 0.3s, transform 0.3s var(--ease), color 0.3s;
-    }
-    .service-row:hover .service-arrow { opacity: 1; transform: translate(0,0); color: var(--accent); }
-
-    /* ── PROCESS ──────────────────────────────────────────── */
-    .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; }
-    .process-step { background: var(--paper); padding: clamp(28px, 2.8vw, 40px) clamp(22px, 2vw, 30px); transition: background 0.3s; }
-    .process-step:hover { background: var(--paper-soft); }
-    .process-num {
-      font-family: 'Playfair Display', serif; font-style: italic; font-size: 30px;
-      color: var(--accent); line-height: 1; margin-bottom: 22px;
-    }
-    .process-title { font-family: 'Playfair Display', serif; font-size: 19px; font-weight: 500; color: var(--ink); margin-bottom: 12px; }
-    .process-desc { font-size: 12.5px; line-height: 1.75; color: var(--ink-soft); }
-    .process-note {
-      text-align: center; margin-top: clamp(40px, 5vw, 60px);
-      font-family: 'Playfair Display', serif; font-style: italic;
-      font-size: clamp(18px, 2.2vw, 26px); color: var(--ink); letter-spacing: 0.01em;
-    }
-
-    /* ── MEISTÄ ───────────────────────────────────────────── */
-    .meista-grid { display: grid; grid-template-columns: 380px 1fr; gap: clamp(36px, 5vw, 72px); align-items: start; }
-    .meista-photo {
-      width: 100%; aspect-ratio: 4/5; overflow: hidden; border-radius: var(--radius-lg);
-      background: var(--paper-deep); border: 1px solid var(--line);
-    }
-    .meista-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
-    .meista-name { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 500; color: var(--ink); display: block; margin-bottom: 6px; }
-    .meista-title { font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-faint); display: block; margin-bottom: 30px; }
-    .meista-text { font-size: 14.5px; line-height: 1.85; color: var(--ink-soft); max-width: 52ch; }
-    .meista-text + .meista-text { margin-top: 20px; }
-    .meista-sign { margin-top: 32px; display: inline-flex; align-items: center; gap: 12px; font-size: 12px; letter-spacing: 0.06em; color: var(--ink-faint); }
-    .meista-sign::before { content: ''; width: 28px; height: 1px; background: var(--accent); }
-
-    /* ── PRICING ──────────────────────────────────────────── */
-    .pricing-head { margin-bottom: clamp(32px, 4vw, 48px); }
-    .pricing-sub { font-size: 14px; color: var(--ink-soft); margin-top: 18px; }
-    .pricing-tab-bar { display: inline-flex; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; margin-bottom: 12px; background: var(--paper); }
-    .ptab {
-      padding: 11px 22px; border: none; background: none; color: var(--ink-faint);
-      font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500;
-      letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer;
-      transition: color 0.2s, background 0.2s; border-right: 1px solid var(--line);
-    }
-    .ptab:last-child { border-right: none; }
-    .ptab.active { background: var(--ink); color: var(--paper); }
-    .ptab:hover:not(.active) { color: var(--ink); }
-    .pricing-panel { display: block; animation: priceIn 0.3s var(--ease); }
-    .pricing-panel.hidden { display: none; }
-    @keyframes priceIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
-    .panel-caption { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); margin: 26px 0 26px; }
-
-    .pricing-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; }
-    .pricing-grid-2 { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-top: none; overflow: hidden; }
-    .pricing-grid + .pricing-grid-2 { border-radius: 0; }
-    .pricing-grid:has(+ .pricing-grid-2) { border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
-    .pricing-card { padding: clamp(28px, 2.6vw, 38px) clamp(22px, 2vw, 32px); background: var(--paper); position: relative; transition: background 0.25s; display: flex; flex-direction: column; }
-    .pricing-card:hover { background: var(--paper-soft); }
-    .pricing-card.featured { background: var(--ink); }
-    .pricing-card.featured:hover { background: #1d1b14; }
-    .plan-label { font-size: 10px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 18px; min-height: 14px; display: block; }
-    .pricing-card.featured .plan-label { color: var(--accent); }
-    .plan-name { font-family: 'DM Mono', monospace; font-size: 13px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink); margin-bottom: 24px; }
-    .pricing-card.featured .plan-name { color: var(--paper); }
-    .plan-price { margin-bottom: 26px; }
-    .plan-price-strike { font-size: 12px; color: var(--ink-faint); text-decoration: line-through; display: block; margin-bottom: 4px; letter-spacing: 0.04em; }
-    .plan-price-main { font-family: 'Playfair Display', serif; font-style: italic; font-size: 42px; color: var(--ink); line-height: 1; }
-    .pricing-card.featured .plan-price-main { color: var(--paper); }
-    .plan-price-main .plan-period { font-family: 'DM Mono', monospace; font-style: normal; font-size: 12px; color: var(--ink-faint); margin-left: 5px; letter-spacing: 0.04em; }
-    .plan-price-sub { font-size: 11px; color: var(--ink-faint); display: block; margin-top: 4px; letter-spacing: 0.04em; }
-    .plan-features { list-style: none; display: flex; flex-direction: column; gap: 11px; margin-bottom: 30px; flex-grow: 1; }
-    .plan-features li { font-size: 12.5px; color: var(--ink-soft); display: flex; align-items: flex-start; gap: 11px; line-height: 1.6; }
-    .pricing-card.featured .plan-features li { color: #c9c4b8; }
-    .plan-features li::before { content: ''; width: 14px; height: 1px; background: var(--accent); flex-shrink: 0; margin-top: 9px; }
-    .btn-plan { width: 100%; padding: 13px; border-radius: var(--radius); font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; text-align: center; text-decoration: none; display: block; transition: background 0.25s, color 0.25s, border-color 0.25s; cursor: pointer; }
-    .btn-plan-outline { background: transparent; border: 1px solid var(--line); color: var(--ink-soft); }
-    .btn-plan-outline:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
-    .btn-plan-filled { background: var(--paper); border: 1px solid var(--paper); color: var(--ink); }
-    .btn-plan-filled:hover { background: var(--accent); border-color: var(--accent); color: var(--paper); }
-    .plan-setup-note { font-size: 10px; letter-spacing: 0.03em; color: var(--ink-faint); margin-top: 12px; display: block; text-align: center; }
-    .pricing-foot { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
-    .pricing-caption, .alv-note { font-size: 11px; letter-spacing: 0.04em; color: var(--ink-faint); }
-    .pricing-request { margin-top: 30px; text-align: center; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
-    .pricing-request a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
-    .pricing-request a:hover { color: var(--accent); }
-    .pricing-commit { text-align: center; margin-top: 26px; font-size: 12.5px; letter-spacing: 0.04em; color: var(--ink-soft); }
-
-    /* ── PRICING — DARK VARIANT ───────────────────────────── */
-    .band-dark { background: #0A0A0A; }
-    .band-dark .section-label { color: #8f8a7e; }
-    .band-dark .section-heading { color: #F6F4EE; }
-    .band-dark .pricing-sub,
-    .band-dark .panel-caption { color: #b8b3a6; }
-    .band-dark .pricing-grid { background: #262421; border-color: #262421; }
-    .band-dark .pricing-card { background: #121110; }
-    .band-dark .pricing-card:hover { background: #17160F; }
-    .band-dark .pricing-card.featured { background: #1A1813; box-shadow: inset 0 0 0 1px var(--accent); }
-    .band-dark .pricing-card.featured:hover { background: #201d16; }
-    .band-dark .plan-name,
-    .band-dark .pricing-card.featured .plan-name {
-      font-family: 'Playfair Display', serif; font-style: italic; font-weight: 500;
-      font-size: 24px; letter-spacing: 0; text-transform: none; color: #F6F4EE;
-    }
-    .band-dark .plan-price-main,
-    .band-dark .pricing-card.featured .plan-price-main { color: #F6F4EE; }
-    .band-dark .plan-price-main .plan-period { color: #8f8a7e; }
-    .band-dark .plan-label { color: #8f8a7e; }
-    .band-dark .pricing-card.featured .plan-label { color: var(--accent); }
-    .band-dark .plan-features li,
-    .band-dark .pricing-card.featured .plan-features li { color: #c4bfb3; }
-    .band-dark .btn-plan-outline { border-color: #3a3833; color: #d8d3c7; }
-    .band-dark .btn-plan-outline:hover { background: #F6F4EE; color: #0A0A0A; border-color: #F6F4EE; }
-    .band-dark .btn-plan-filled { background: #F6F4EE; border-color: #F6F4EE; color: #0A0A0A; }
-    .band-dark .btn-plan-filled:hover { background: var(--accent); border-color: var(--accent); color: #F6F4EE; }
-    .band-dark .pricing-commit { color: #c4bfb3; }
-    .band-dark .alv-note,
-    .band-dark .pricing-caption { color: #8f8a7e; }
-    .band-dark .pricing-request { color: #b8b3a6; }
-    .band-dark .pricing-request a { color: #F6F4EE; }
-    .band-dark .pricing-request a:hover { color: var(--accent); }
-
-    /* ── ADS / MAINONTA (subordinate to the three tiers) ── */
-    .ads-block { margin-top: clamp(54px, 7vw, 88px); padding-top: clamp(38px, 4.5vw, 56px); border-top: 1px solid var(--line); scroll-margin-top: 92px; }
-    .ads-head { margin-bottom: clamp(26px, 3.4vw, 38px); }
-    .ads-heading { font-family: 'Playfair Display', serif; font-weight: 400; font-size: clamp(24px, 3vw, 34px); line-height: 1.12; letter-spacing: -0.01em; color: var(--ink); }
-    .ads-intro { font-size: 13.5px; line-height: 1.8; color: var(--ink-soft); max-width: 58ch; margin-top: 16px; }
-    .ads-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; }
-    .ads-card { padding: clamp(22px, 2vw, 30px) clamp(18px, 1.7vw, 26px); background: var(--paper-soft); transition: background 0.25s; display: flex; flex-direction: column; }
-    .ads-card:hover { background: var(--paper-deep); }
-    .ads-name { font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink); }
-    .ads-price { margin: 14px 0 6px; }
-    .ads-price-main { font-family: 'Playfair Display', serif; font-style: italic; font-size: 28px; color: var(--ink); line-height: 1; }
-    .ads-price-main .ads-period { font-family: 'DM Mono', monospace; font-style: normal; font-size: 11px; color: var(--ink-faint); margin-left: 4px; letter-spacing: 0.04em; }
-    .ads-sub { font-size: 11.5px; letter-spacing: 0.03em; color: var(--ink-faint); margin-bottom: 22px; }
-    .ads-features { list-style: none; display: flex; flex-direction: column; gap: 9px; margin-bottom: 26px; flex-grow: 1; }
-    .ads-features li { font-size: 12px; color: var(--ink-soft); display: flex; align-items: flex-start; gap: 10px; line-height: 1.6; }
-    .ads-features li::before { content: ''; width: 12px; height: 1px; background: var(--accent); flex-shrink: 0; margin-top: 8px; }
-    .ads-terms { margin: 22px auto 0; max-width: 76ch; text-align: center; font-size: 11.5px; line-height: 1.75; letter-spacing: 0.03em; color: var(--ink-faint); }
-    .band-dark .ads-block { border-top-color: #262421; }
-    .band-dark .ads-heading { color: #F6F4EE; }
-    .band-dark .ads-intro { color: #b8b3a6; }
-    .band-dark .ads-grid { background: #262421; border-color: #262421; }
-    .band-dark .ads-card { background: #0E0D0B; }
-    .band-dark .ads-card:hover { background: #141310; }
-    .band-dark .ads-name { color: #F6F4EE; }
-    .band-dark .ads-price-main { color: #F6F4EE; }
-    .band-dark .ads-price-main .ads-period,
-    .band-dark .ads-sub,
-    .band-dark .ads-terms { color: #8f8a7e; }
-    .band-dark .ads-features li { color: #c4bfb3; }
-
-    /* ── FAQ ──────────────────────────────────────────────── */
-    .faq-list { border-top: 1px solid var(--line); }
-    .faq-item { border-bottom: 1px solid var(--line); }
-    .faq-item summary {
-      list-style: none; padding: 26px 4px;
-      font-family: 'Playfair Display', serif; font-size: clamp(17px, 2vw, 22px); font-weight: 400;
-      color: var(--ink); cursor: pointer; display: flex; justify-content: space-between;
-      align-items: center; gap: 20px; transition: color 0.2s; user-select: none;
-    }
-    .faq-item summary::-webkit-details-marker { display: none; }
-    .faq-item summary::after { content: '+'; font-family: 'DM Mono', monospace; font-size: 22px; font-weight: 300; color: var(--ink-faint); flex-shrink: 0; transition: transform 0.3s var(--ease), color 0.2s; }
-    .faq-item[open] summary::after { transform: rotate(45deg); color: var(--accent); }
-    .faq-item summary:hover { color: var(--accent); }
-    .faq-answer { padding: 0 4px 28px; font-size: 13.5px; line-height: 1.85; color: var(--ink-soft); max-width: 64ch; }
-
-    /* ── CONTACT ──────────────────────────────────────────── */
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 96px); align-items: start; }
-    .contact-heading { font-family: 'Playfair Display', serif; font-size: clamp(40px, 6vw, 76px); font-weight: 400; line-height: 1; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 24px; }
-    .contact-sub { font-size: 14px; line-height: 1.8; color: var(--ink-soft); margin-bottom: 40px; max-width: 38ch; }
-    .contact-meta { display: flex; flex-direction: column; gap: 4px; }
-    .contact-meta-item { display: flex; align-items: center; gap: 14px; padding: 14px 0; font-size: 13px; color: var(--ink-soft); text-decoration: none; border-top: 1px solid var(--line-soft); transition: color 0.2s; }
-    .contact-meta-item:last-child { border-bottom: 1px solid var(--line-soft); }
-    .contact-meta-item:hover { color: var(--accent); }
-    .contact-meta-icon { width: 34px; height: 34px; border-radius: var(--radius); border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-faint); flex-shrink: 0; }
-    .contact-form { display: flex; flex-direction: column; gap: 16px; }
-    .form-group { display: flex; flex-direction: column; gap: 8px; }
-    .form-label { font-size: 11px; font-weight: 500; color: var(--ink); letter-spacing: 0.12em; text-transform: uppercase; }
-    .form-input { padding: 14px 16px; border: 1px solid var(--line); border-radius: var(--radius); font-size: 13px; font-family: 'DM Mono', monospace; color: var(--ink); background: var(--paper); transition: border-color 0.2s, background 0.2s; outline: none; }
-    .form-input:focus { border-color: var(--ink); background: var(--paper-soft); }
-    .form-input::placeholder { color: var(--ink-faint); }
-    textarea.form-input { resize: vertical; min-height: 110px; }
-    .form-submit { margin-top: 6px; padding: 16px 24px; background: var(--ink); color: var(--paper); border: none; border-radius: var(--radius); font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; font-family: 'DM Mono', monospace; transition: background 0.25s, transform 0.25s var(--ease); }
-    .form-submit:hover { background: var(--accent); transform: translateY(-1px); }
-    .form-submit:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
-    .form-success { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: 56px 24px; text-align: center; }
-    .form-success-icon { width: 54px; height: 54px; border-radius: 50%; background: var(--paper-soft); border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; font-size: 22px; color: var(--accent); }
-    .form-success-title { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 500; color: var(--ink); }
-    .form-success-sub { font-size: 13px; color: var(--ink-soft); }
-
-    /* ── FOOTER ───────────────────────────────────────────── */
-    footer { border-top: 1px solid var(--line); }
-    .footer-inner { max-width: var(--container); margin: 0 auto; padding: clamp(40px, 5vw, 64px) clamp(20px, 5vw, 44px); display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
-    .footer-logo img { height: 46px; width: auto; margin-bottom: 16px; }
-    .footer-copy { font-size: 11px; color: var(--ink-faint); letter-spacing: 0.03em; }
-    .footer-links { display: flex; gap: 22px; flex-wrap: wrap; }
-    .footer-links a { font-size: 11px; color: var(--ink-soft); text-decoration: none; transition: color 0.2s; letter-spacing: 0.04em; }
-    .footer-links a:hover { color: var(--accent); }
-
-    /* ── ANIMATIONS ───────────────────────────────────────── */
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
-    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    .stagger > * { opacity: 0; transform: translateY(22px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
-    .stagger.visible > * { opacity: 1; transform: none; }
-    .stagger.visible > *:nth-child(1) { transition-delay: 0.05s; }
-    .stagger.visible > *:nth-child(2) { transition-delay: 0.13s; }
-    .stagger.visible > *:nth-child(3) { transition-delay: 0.21s; }
-    .stagger.visible > *:nth-child(4) { transition-delay: 0.29s; }
-    .stagger.visible > *:nth-child(5) { transition-delay: 0.37s; }
-    .stagger.visible > *:nth-child(6) { transition-delay: 0.45s; }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-      html { scroll-behavior: auto; }
-    }
-
-    /* ── RESPONSIVE ───────────────────────────────────────── */
-    @media (max-width: 980px) {
-      .philo-grid { grid-template-columns: 1fr; gap: 36px; }
-      .philo-aside { position: static; }
-      .philo-who { margin-top: 8px; }
-      .meista-grid { grid-template-columns: 300px 1fr; }
-      .process-grid { grid-template-columns: 1fr 1fr; }
-    }
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .nav-cta { display: none; }
-      .hamburger { display: flex; }
-      .service-row { grid-template-columns: 1fr; gap: 8px; padding: 26px 4px; }
-      .service-row:hover { padding-left: 4px; }
-      .service-num { padding-top: 0; }
-      .service-arrow { display: none; }
-      .service-desc { padding-top: 0; }
-      .meista-grid { grid-template-columns: 1fr; gap: 28px; }
-      .meista-photo { max-width: 320px; aspect-ratio: 4/5; }
-      .pricing-tab-bar { width: 100%; display: flex; }
-      .ptab { flex: 1; text-align: center; padding: 11px 6px; }
-      .pricing-grid, .pricing-grid-2 { grid-template-columns: 1fr; border-radius: var(--radius-lg) !important; }
-      .ads-grid { grid-template-columns: 1fr; }
-      .pricing-grid + .pricing-grid-2 { border-top: 1px solid var(--line); margin-top: 1px; }
-      .contact-grid { grid-template-columns: 1fr; gap: 44px; }
-      .hero-meta span { padding-right: 18px; margin-right: 18px; font-size: 10px; }
-      .hero-media::after {
-        background:
-          linear-gradient(to bottom, rgba(12,11,9,0.92) 0%, rgba(12,11,9,0.82) 40%, rgba(12,11,9,0.93) 100%);
-      }
-    }
-    @media (max-width: 520px) {
-      .process-grid { grid-template-columns: 1fr; }
-      .hero-meta { gap: 0; }
-      .hero-meta span:not(:last-child)::after { display: none; }
-      .hero-meta span { width: 100%; border-bottom: 1px solid var(--line-soft); padding: 14px 0; margin: 0; }
-    }
-  </style>
+  <script>
+    /* Vanhat ankkurilinkit ohjataan uusille sivuille, jotta jaetut osoitteet toimivat. */
+    (function () {
+      var map = {
+        '#filosofia': '/meista/',
+        '#palvelut':  '/palvelut/',
+        '#prosessi':  '/meista/#prosessi',
+        '#hinnat':    '/hinnat/',
+        '#ukk':       '/hinnat/#ukk',
+        '#mainonta':  '/hinnat/#mainonta',
+        '#meista':    '/meista/'
+      };
+      var target = map[window.location.hash];
+      if (target) window.location.replace(target);
+    })();
+  </script>
 </head>
 <body>
+
+<a class="skip-link" href="#main">Siirry sisältöön</a>
 
 <!-- ── MOBILE DRAWER ─────────────────────────────────────── -->
 <div id="drawer-overlay"></div>
 <div id="side-drawer">
   <div class="drawer-head">
-    <img src="logo-mark.png" alt="RN Media" class="drawer-logo">
-    <button class="drawer-close" id="drawer-close-btn" aria-label="Sulje valikko" onclick="closeDrawer()">&#x2715;</button>
+    <img src="/logo-mark.png" alt="RN Media" class="drawer-logo">
+    <button class="drawer-close drawer-close-trigger" aria-label="Sulje valikko">&#x2715;</button>
   </div>
-  <nav class="drawer-nav">
-    <a href="#etusivu"   class="drawer-link drawer-close-trigger"><span class="dl-num">01</span>Etusivu</a>
-    <a href="#filosofia" class="drawer-link drawer-close-trigger"><span class="dl-num">02</span>Filosofia</a>
-    <a href="#palvelut"  class="drawer-link drawer-close-trigger"><span class="dl-num">03</span>Palvelut</a>
-    <a href="#prosessi"  class="drawer-link drawer-close-trigger"><span class="dl-num">04</span>Prosessi</a>
-    <a href="#meista"    class="drawer-link drawer-close-trigger"><span class="dl-num">05</span>Meistä</a>
-    <a href="#hinnat"    class="drawer-link drawer-close-trigger"><span class="dl-num">06</span>Hinnat</a>
-    <a href="#yhteys"    class="drawer-link drawer-close-trigger"><span class="dl-num">07</span>Yhteys</a>
+  <nav class="drawer-nav" aria-label="Mobiilivalikko">
+    <a href="/" class="drawer-link is-active drawer-close-trigger">Etusivu</a>
+    <a href="/palvelut/" class="drawer-link">Palvelut</a>
+    <a href="/hinnat/" class="drawer-link">Hinnat</a>
+    <a href="/meista/" class="drawer-link">Meistä</a>
   </nav>
+  <div class="drawer-actions">
+    <a href="#yhteys" class="btn btn-accent btn-block drawer-close-trigger">Ota yhteyttä</a>
+  </div>
   <div class="drawer-foot">
     <a href="https://instagram.com/rnmediafi" target="_blank" rel="noopener">@rnmediafi</a>
     <a href="mailto:nikolas.ruotsalo@rnmedia.fi">nikolas.ruotsalo@rnmedia.fi</a>
@@ -593,15 +76,14 @@
 </div>
 
 <!-- ── NAV ───────────────────────────────────────────────── -->
-<nav id="navbar">
-  <a href="#etusivu" class="nav-logo"><img src="logo-mark.png" alt="RN Media"></a>
+<nav id="navbar" aria-label="Päävalikko">
+  <a href="/" class="nav-logo"><img src="/logo-mark.png" alt="RN Media"></a>
   <div class="nav-right">
     <div class="nav-links">
-      <a href="#filosofia" class="nav-link">Filosofia</a>
-      <a href="#palvelut"  class="nav-link">Palvelut</a>
-      <a href="#prosessi"  class="nav-link">Prosessi</a>
-      <a href="#hinnat"    class="nav-link">Hinnat</a>
-      <a href="#meista"    class="nav-link">Meistä</a>
+      <a href="/" class="nav-link is-active" aria-current="page">Etusivu</a>
+      <a href="/palvelut/" class="nav-link">Palvelut</a>
+      <a href="/hinnat/" class="nav-link">Hinnat</a>
+      <a href="/meista/" class="nav-link">Meistä</a>
     </div>
     <a href="#yhteys" class="nav-cta">Ota yhteyttä</a>
   </div>
@@ -610,328 +92,100 @@
   </button>
 </nav>
 
+<main id="main">
+
 <!-- ── HERO ──────────────────────────────────────────────── -->
 <section class="hero" id="etusivu">
-  <!-- Taustamedia: pudota hero.mp4 ja hero-poster.jpg repon juureen.
-       Ennen sitä hero näkyy nykyisellään tummana — mikään ei hajoa. -->
+  <!-- Taustavideo on valinnainen: pudota hero.mp4 ja hero-poster.jpg repon juureen.
+       Ilman niitä hero näkyy tummana taustana eikä mikään hajoa. -->
   <div class="hero-media" aria-hidden="true">
-    <video class="hero-video" poster="hero-poster.jpg"
-           muted loop playsinline preload="none" data-src="hero.mp4"></video>
+    <video class="hero-video" poster="/hero-poster.jpg"
+           muted loop playsinline preload="none" data-src="/hero.mp4"></video>
   </div>
-  <span class="eyebrow hero-eyebrow">Sisältöstudio — Uusimaa, Suomi</span>
-  <h1 class="hero-headline">Lyhytvideot, jotka <em>erottuvat</em> feedissä.</h1>
-  <p class="hero-sub">Pieni sisältöstudio vaativille brändeille. Suunnittelemme, kuvaamme ja editoimme jokaisen videon itse — ideasta julkaisuun.</p>
+  <span class="eyebrow hero-eyebrow">Sisältöstudio, Uusimaa</span>
+  <h1>Lyhytvideot, jotka tuovat asiakkaita.</h1>
+  <p class="hero-sub">Suunnittelemme, kuvaamme ja editoimme jokaisen videon itse. Ensimmäiset videot ovat käsissäsi 5-7 arkipäivässä.</p>
   <div class="hero-cta-row">
-    <a href="#yhteys" class="btn-primary">Aloita projekti <span class="arrow">&#8594;</span></a>
-    <a href="#palvelut" class="hero-textlink">Katso palvelut</a>
+    <a href="#yhteys" class="btn btn-accent">Aloita projekti <span class="arrow" aria-hidden="true">&#8594;</span></a>
+    <a href="/hinnat/" class="textlink">Katso hinnat</a>
   </div>
   <div class="hero-meta">
-    <span>Yksi tekijä — ei välikäsiä</span>
-    <span>Ensimmäiset videot 5–7 arkipäivässä</span>
+    <span>Yksi tekijä, ei välikäsiä</span>
+    <span>Ensimmäiset videot 5-7 arkipäivässä</span>
     <span>Vastaus 2 arkipäivässä</span>
   </div>
 </section>
 
-<!-- ── PHILOSOPHY ────────────────────────────────────────── -->
-<div class="band">
-  <div class="section reveal" id="filosofia">
-    <div class="philo-grid">
-      <div class="philo-aside">
-        <span class="section-label">Filosofia</span>
-        <div class="philo-who">
-          <p class="philo-who-label">Kenelle teemme</p>
-          <div class="philo-who-list">
-            <span>Klinikat &amp; yksityislääkärit</span>
-            <span>Hammas- ja estetiikkaklinikat</span>
-            <span>Kiinteistönvälitys</span>
-            <span>Arkkitehdit &amp; sisustus</span>
-            <span>Premium-palvelut</span>
-          </div>
-        </div>
-      </div>
-      <div>
-        <h2 class="philo-statement">Vähemmän asiakkaita.<br><em>Enemmän huomiota</em> jokaiseen.</h2>
-        <div class="philo-body">
-          <p>Emme ole markkinointitoimisto. Olemme pieni studio — ja se on tarkoitus. Otamme vain muutaman asiakkaan kerrallaan, jotta jokainen video saa täyden huomion.</p>
-          <p>Jokainen video suunnitellaan, kuvataan ja editoidaan käsin — ei mallipohjista, ei liukuhihnalta. Työskentelet suoraan tekijän kanssa alusta loppuun. Ei välikäsiä, ei myyntitiimiä. Vain sisältöä, joka näyttää brändisi parhaan version.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ── SERVICES ──────────────────────────────────────────── -->
+<!-- ── MITÄ TEEMME ───────────────────────────────────────── -->
 <div class="band band-soft">
-  <div class="section reveal" id="palvelut">
-    <div class="services-head">
+  <section class="section reveal">
+    <div class="split">
       <div>
-        <span class="section-label">Palvelut</span>
-        <h2 class="section-heading">Mitä teemme</h2>
+        <span class="section-label">Mitä teemme</span>
+        <h2>Sisältö, joka myy</h2>
       </div>
-      <p class="lede">Kaikki yhdestä paikasta — strategiasta valmiiseen, julkaisukypsään videoon.</p>
+      <div class="prose">
+        <p>Teemme lyhytvideot premium-yrityksille alusta loppuun: idea, kuvaus, editointi ja julkaisu. Otamme kerrallaan vain muutaman asiakkaan, joten jokainen video saa täyden huomion. Hinnat näkyvät sivustolla, eikä laskulle ilmesty piilokuluja.</p>
+      </div>
     </div>
-    <div class="stagger">
-      <a href="#yhteys" class="service-row">
-        <span class="service-num">01</span>
-        <span class="service-title">Sisällöntuotanto</span>
-        <span class="service-desc">Idea, käsikirjoitus ja kuvaus. Rakennamme sisällön, joka pysäyttää selaamisen ja jää mieleen.</span>
-        <span class="service-arrow">&#8594;</span>
-      </a>
-      <a href="#yhteys" class="service-row">
-        <span class="service-num">02</span>
-        <span class="service-title">Lyhytvideostrategia</span>
-        <span class="service-desc">Alustakohtainen strategia: koukut, formaatit ja julkaisurytmi, joka kasvattaa näkyvyyttä ja kysyntää.</span>
-        <span class="service-arrow">&#8594;</span>
-      </a>
-      <a href="#yhteys" class="service-row">
-        <span class="service-num">03</span>
-        <span class="service-title">Editointi &amp; jälkituotanto</span>
-        <span class="service-desc">Leikkaus, tekstitykset, ääni ja värimäärittely. Cinematic-laatua, käsin viimeisteltynä.</span>
-        <span class="service-arrow">&#8594;</span>
-      </a>
-      <a href="#yhteys" class="service-row">
-        <span class="service-num">04</span>
-        <span class="service-title">Kuukausikumppanuus</span>
-        <span class="service-desc">Jatkuva sisältövirta yhdellä kiinteällä hinnalla. Suunnittelu, tuotanto ja raportointi — hoidamme kaiken.</span>
-        <span class="service-arrow">&#8594;</span>
-      </a>
-      <a href="#mainonta" class="service-row">
-        <span class="service-num">05</span>
-        <span class="service-title">Maksettu mainonta</span>
-        <span class="service-desc">Meta-mainonta samalla sisällöllä, jonka olemme jo tuottaneet. Kampanjoiden rakennus, kohderyhmät, optimointi ja kuukausiraportointi.</span>
-        <span class="service-arrow">&#8594;</span>
-      </a>
-    </div>
-  </div>
+  </section>
 </div>
 
-<!-- ── PROCESS ───────────────────────────────────────────── -->
+<!-- ── LUKUJA ────────────────────────────────────────────── -->
 <div class="band">
-  <div class="section reveal" id="prosessi">
-    <div class="services-head">
-      <div>
-        <span class="section-label">Prosessi</span>
-        <h2 class="section-heading">Näin se etenee</h2>
+  <section class="section reveal">
+    <div class="proof-grid">
+      <div class="proof-item">
+        <div class="proof-value">5-7 arkipäivää</div>
+        <p class="proof-label">Ensimmäiset valmiit videot aloituksesta.</p>
       </div>
-      <p class="lede">Selkeä, läpinäkyvä prosessi. Tiedät aina missä mennään ja mitä seuraavaksi tapahtuu.</p>
-    </div>
-    <div class="process-grid stagger">
-      <div class="process-step">
-        <div class="process-num">01</div>
-        <div class="process-title">Keskustelu</div>
-        <p class="process-desc">Aloitamme lyhyellä keskustelulla — tavoitteet, kohderyhmä ja brändin ääni. Maksuton.</p>
+      <div class="proof-item">
+        <div class="proof-value">2 arkipäivää</div>
+        <p class="proof-label">Vastaamme jokaiseen yhteydenottoon.</p>
       </div>
-      <div class="process-step">
-        <div class="process-num">02</div>
-        <div class="process-title">Konsepti</div>
-        <p class="process-desc">Rakennamme selkeän sisältökonseptin ja julkaisusuunnitelman ennen kuin kamera käy.</p>
-      </div>
-      <div class="process-step">
-        <div class="process-num">03</div>
-        <div class="process-title">Kuvaus &amp; tuotanto</div>
-        <p class="process-desc">Kuvaamme ja editoimme. Näet työn jokaisessa vaiheessa — korjauskierros sisältyy aina.</p>
-      </div>
-      <div class="process-step">
-        <div class="process-num">04</div>
-        <div class="process-title">Julkaisu &amp; kasvu</div>
-        <p class="process-desc">Julkaisemme, seuraamme tuloksia ja hiomme suuntaa datan perusteella. Kasvu mitataan.</p>
+      <div class="proof-item">
+        <div class="proof-value">Ei piilokuluja</div>
+        <p class="proof-label">Hinnat ovat sivustolla. Sen päälle tulee vain alv.</p>
       </div>
     </div>
-    <p class="process-note">Yksi tekijä. Suora yhteys. Ei välikäsiä.</p>
-  </div>
+  </section>
 </div>
 
-<!-- ── MEISTÄ ────────────────────────────────────────────── -->
+<!-- ── OHJAUS MUILLE SIVUILLE ────────────────────────────── -->
 <div class="band band-soft">
-  <div class="section reveal" id="meista">
-    <span class="section-label">Meistä</span>
-    <h2 class="section-heading" style="margin-bottom: clamp(40px, 5vw, 60px);">Ihminen brändin takana</h2>
-    <div class="meista-grid">
-      <div class="meista-photo">
-        <img src="/image-1781453700843.jpg" alt="Nikolas Ruotsalo, RN Media">
-      </div>
-      <div>
-        <span class="meista-name">Nikolas Ruotsalo</span>
-        <span class="meista-title">Perustaja — RN Media</span>
-        <p class="meista-text">Teemme kaiken itse — kuvauksen, editoinnin ja strategian. Se tarkoittaa johdonmukaista jälkeä, nopeaa viestintää ja sitä, että tiedät aina kenen kanssa työskentelet.</p>
-        <p class="meista-text">Perustimme RN Median, koska näemme joka päivä loistavia yrityksiä, joilta puuttuu vain näkyvyys. Oikea sisältö ratkaisee sen — ja sen tekemiseen ei tarvita isoa toimistoa, vaan tarkkaa silmää ja täyttä keskittymistä.</p>
-        <span class="meista-sign">Lohja, Uusimaa</span>
-      </div>
+  <section class="section reveal">
+    <div class="section-head">
+      <span class="section-label">Sivusto</span>
+      <h2>Mistä haluat aloittaa</h2>
     </div>
-  </div>
+    <div class="card-grid">
+      <a href="/palvelut/" class="card-link">
+        <h3>Palvelut</h3>
+        <p>Viisi palvelua ideasta julkaisuun. Sisällöntuotanto, strategia, editointi, kuukausikumppanuus ja maksettu mainonta.</p>
+        <span class="card-more">Katso palvelut</span>
+      </a>
+      <a href="/hinnat/" class="card-link">
+        <h3>Hinnat</h3>
+        <p>Kaikki paketit ja hinnat näkyvissä. Vähimmäissopimus 3 kuukautta, ei piilokuluja.</p>
+        <span class="card-more">Katso hinnat</span>
+      </a>
+      <a href="/meista/" class="card-link">
+        <h3>Meistä</h3>
+        <p>Kuka työn tekee ja miten projekti etenee keskustelusta julkaisuun.</p>
+        <span class="card-more">Tutustu meihin</span>
+      </a>
+    </div>
+  </section>
 </div>
 
-<!-- ── PRICING ───────────────────────────────────────────── -->
-<div class="band band-dark">
-  <div class="section reveal" id="hinnat">
-    <div class="pricing-head">
-      <span class="section-label">Hinnat</span>
-      <h2 class="section-heading">Selkeä hinnoittelu</h2>
-      <p class="pricing-sub">Ei piilokuluja, ei pitkiä sopimuksia. Tiedät tarkalleen mistä maksat.</p>
-    </div>
-
-    <!-- KUUKAUSIPAKETIT -->
-    <div class="pricing-panel" id="tab-kuukausi">
-      <div class="pricing-grid">
-        <div class="pricing-card">
-          <div class="plan-name">Starter</div>
-          <div class="plan-price">
-            <span class="plan-price-main">€690<span class="plan-period">/kk</span></span>
-          </div>
-          <ul class="plan-features">
-            <li>1 kuvaussessio (3 h)</li>
-            <li>5 lyhytvideota</li>
-            <li>Ammattitason editointi + tekstitykset</li>
-            <li>1 korjauskierros / video</li>
-            <li>Kuukausiraportti</li>
-          </ul>
-          <a href="#yhteys" class="btn-plan btn-plan-outline">Aloitetaan</a>
-        </div>
-        <div class="pricing-card featured">
-          <span class="plan-label">Suosituin</span>
-          <div class="plan-name">Growth</div>
-          <div class="plan-price">
-            <span class="plan-price-main">€1 190<span class="plan-period">/kk</span></span>
-          </div>
-          <ul class="plan-features">
-            <li>Kaikki Starterista, plus:</li>
-            <li>Kuvaussessio laajennettuna (4 h)</li>
-            <li>10 lyhytvideota</li>
-            <li>Julkaisu &amp; ajastus kaikkiin kanaviin</li>
-            <li>Kuukausittainen sisältösuunnitelma</li>
-            <li>2 korjauskierrosta / video</li>
-          </ul>
-          <a href="#yhteys" class="btn-plan btn-plan-filled">Aloitetaan</a>
-        </div>
-        <div class="pricing-card">
-          <div class="plan-name">Premium</div>
-          <div class="plan-price">
-            <span class="plan-price-main">€1 990<span class="plan-period">/kk</span></span>
-          </div>
-          <ul class="plan-features">
-            <li>Kaikki Growthista, plus:</li>
-            <li>1 laajennettu kuvauspäivä (6–7 h, useita lokaatioita ja asuja)</li>
-            <li>18 lyhytvideota</li>
-            <li>Brändistrategia + kvartaalikatsaus</li>
-            <li>Kampanjasuunnittelu</li>
-            <li>Kuukausittainen strategiapuhelu</li>
-            <li>Prioriteettituki — vastaus samana arkipäivänä</li>
-          </ul>
-          <a href="#yhteys" class="btn-plan btn-plan-outline">Aloitetaan</a>
-        </div>
-      </div>
-      <p class="pricing-commit">Brändipaketti — kertaluontoinen 1 590 €: yksi kuvauspäivä, 12 valmista lyhytvideota, ei jatkuvaa sitoutumista.</p>
-      <p class="pricing-commit">Räätälöity ratkaisu suuremmille brändeille — hinta pyynnöstä.</p>
-      <p class="pricing-commit">Vähimmäissopimus 3 kk. 6 kk sitoutumisella −10 %, 12 kk sitoutumisella −15 %. Yksi kuukausi on siirrettävissä sopimuskauden aikana.</p>
-      <p class="pricing-commit">Matkakulut sisältyvät hintaan Uudellamaalla. Muualle Suomeen +0,60 €/km.</p>
-      <div class="pricing-foot">
-        <span class="alv-note">Kaikki hinnat + alv 25,5 %</span>
-      </div>
-      <p class="pricing-request">Kertatilaukset ja yksittäiset palvelut (verkkosivut, brändianalyysi, konsultointi ym.) saatavilla pyynnöstä — <a href="#yhteys">ota yhteyttä</a>.</p>
-    </div>
-
-    <!-- MAINONTA — lisäkerros kuukausipakettien päälle, ei neljäs taso -->
-    <div class="ads-block" id="mainonta">
-      <div class="ads-head">
-        <h3 class="ads-heading">Mainonta</h3>
-        <p class="ads-intro">Kun sisältö toimii, sen taakse kannattaa laittaa budjettia. Käytämme videoita, jotka olemme jo tehneet.</p>
-      </div>
-      <div class="ads-grid">
-        <div class="ads-card">
-          <div class="ads-name">Lisäosa</div>
-          <div class="ads-price">
-            <span class="ads-price-main">490 €<span class="ads-period">/kk</span></span>
-          </div>
-          <div class="ads-sub">Nykyisen kuukausipaketin päälle.</div>
-          <ul class="ads-features">
-            <li>Kampanjoiden rakennus ja optimointi</li>
-            <li>Jopa 4 mainosluovaa kuukaudessa olemassa olevasta sisällöstä</li>
-            <li>3 koukkuversiota testissä</li>
-            <li>Kohderyhmät, uudelleenmarkkinointi ja liidilomake</li>
-            <li>Viikoittainen optimointi ja kuukausiraportti</li>
-          </ul>
-          <a href="#yhteys" class="btn-plan btn-plan-outline">Aloitetaan</a>
-        </div>
-        <div class="ads-card">
-          <div class="ads-name">Erillinen</div>
-          <div class="ads-price">
-            <span class="ads-price-main">890 €<span class="ads-period">/kk</span></span>
-          </div>
-          <div class="ads-sub">Ilman kuukausipakettia.</div>
-          <ul class="ads-features">
-            <li>Kaikki mitä Lisäosassa</li>
-            <li>Yksi 2 tunnin kuvaus neljännesvuosittain</li>
-            <li>Jopa 6 mainosluovaa kuukaudessa</li>
-            <li>Mainoksiin erikseen suunnitellut konseptit</li>
-          </ul>
-          <a href="#yhteys" class="btn-plan btn-plan-outline">Aloitetaan</a>
-        </div>
-        <div class="ads-card">
-          <div class="ads-name">Kampanja</div>
-          <div class="ads-price">
-            <span class="ads-price-main">1 290 €</span>
-          </div>
-          <div class="ads-sub">Kertaluontoinen, 6 viikkoa.</div>
-          <ul class="ads-features">
-            <li>Kuvaus, rakennus, ajo ja raportointi</li>
-            <li>Sesonkikampanjat ja lanseeraukset</li>
-            <li>Ei sitoutumista</li>
-          </ul>
-          <a href="#yhteys" class="btn-plan btn-plan-outline">Aloitetaan</a>
-        </div>
-      </div>
-      <p class="ads-terms">Aloitusmaksu 100 €. Kaikki hinnat + alv 25,5 %.</p>
-    </div>
-
-  </div>
-</div>
-
-<!-- ── FAQ ───────────────────────────────────────────────── -->
-<div class="band band-soft">
-  <div class="section reveal" id="ukk">
-    <div class="services-head">
-      <div>
-        <span class="section-label">UKK</span>
-        <h2 class="section-heading">Hyvä tietää</h2>
-      </div>
-    </div>
-    <div class="faq-list">
-      <details class="faq-item">
-        <summary>Mikä on sopimuksen kesto? Onko sitoutumista?</summary>
-        <p class="faq-answer">Vähimmäissopimus on 3 kuukautta. Syy on yksinkertainen: ensimmäinen kuukausi menee brändin ilmeen löytämiseen, ja tulokset näkyvät vasta kun sisältöä on julkaistu johdonmukaisesti. Kolme kuukautta on lyhin aika, jossa työ voidaan tehdä kunnolla. Sen jälkeen sopimus jatkuu kuukausi kerrallaan.</p>
-      </details>
-      <details class="faq-item">
-        <summary>Kuinka nopeasti saan ensimmäiset videot?</summary>
-        <p class="faq-answer">Yleensä 5–7 arkipäivässä aloituksesta. Sovimme kuvausajan, editoimme materiaalin ja toimitamme valmiin sisällön ennen kuin ehdit odottaa.</p>
-      </details>
-      <details class="faq-item">
-        <summary>Missä päin Suomea toimitte?</summary>
-        <p class="faq-answer">Kotipaikkamme on Lohja, Uusimaa. Teemme töitä ympäri Suomea ja tarvittaessa etänä — sijainti ei ole este. Uudellamaalla matkakulut sisältyvät hintaan — muualle Suomeen lisätään matkakulut 0,60 €/km.</p>
-      </details>
-      <details class="faq-item">
-        <summary>Sopiiko tämä pienelle yritykselle tai yksinyrittäjälle?</summary>
-        <p class="faq-answer">Kyllä — jos markkinointibudjettisi on vähintään noin 700 €/kk. Sitä pienemmällä budjetilla emme ole oikea kumppani, ja sanomme sen mieluummin heti kuin ensimmäisen laskun jälkeen.</p>
-      </details>
-      <details class="faq-item">
-        <summary>Kuka maksaa mainosbudjetin?</summary>
-        <p class="faq-answer">Sinä, suoraan Metalle omalta mainostililtäsi. Emme koskaan käsittele mainosrahaa, joten näet itse tarkalleen mihin se menee. Suositeltu minimi on 500 €/kk.</p>
-      </details>
-      <details class="faq-item">
-        <summary>Lupaatteko tietyn määrän liidejä?</summary>
-        <p class="faq-answer">Emme. Kukaan rehellinen toimija ei voi luvata sitä etukäteen. Lupaamme selkeän kuukausiraportin, josta näet mitä rahalla saatiin.</p>
-      </details>
-    </div>
-  </div>
-</div>
-
-<!-- ── CONTACT / CTA ─────────────────────────────────────── -->
+<!-- ── YHTEYS ────────────────────────────────────────────── -->
 <div class="band">
-  <div class="section reveal" id="yhteys">
+  <section class="section reveal" id="yhteys">
     <div class="contact-grid">
       <div>
         <span class="section-label">Ota yhteyttä</span>
-        <h2 class="contact-heading">Aloitetaan.</h2>
-        <p class="contact-sub">Kerro lyhyesti projektistasi — palaamme asiaan 2 arkipäivässä.</p>
+        <h2>Aloitetaan.</h2>
+        <p class="lede stack-sm">Kerro lyhyesti projektistasi. Vastaamme 2 arkipäivässä.</p>
         <div class="contact-meta">
           <a class="contact-meta-item" href="https://instagram.com/rnmediafi" target="_blank" rel="noopener">
             <span class="contact-meta-icon">IG</span>
@@ -949,22 +203,23 @@
       </div>
       <form class="contact-form" id="contact-form" novalidate>
         <div class="form-group">
-          <label class="form-label">Nimi</label>
-          <input class="form-input" type="text" name="name" placeholder="Mikko Virtanen" required>
+          <label class="form-label" for="f-name">Nimi</label>
+          <input class="form-input" id="f-name" type="text" name="name" placeholder="Mikko Virtanen" required>
         </div>
         <div class="form-group">
-          <label class="form-label">Sähköposti</label>
-          <input class="form-input" type="email" name="email" placeholder="mikko@yritys.fi" required>
+          <label class="form-label" for="f-email">Sähköposti</label>
+          <input class="form-input" id="f-email" type="email" name="email" placeholder="mikko@yritys.fi" required>
         </div>
         <div class="form-group">
-          <label class="form-label">Yritys</label>
-          <input class="form-input" type="text" name="company" placeholder="Yritys Oy">
+          <label class="form-label" for="f-company">Yritys</label>
+          <input class="form-input" id="f-company" type="text" name="company" placeholder="Yritys Oy">
         </div>
         <div class="form-group">
-          <label class="form-label">Viesti</label>
-          <textarea class="form-input" name="message" placeholder="Kerro projektistasi…" required></textarea>
+          <label class="form-label" for="f-message">Viesti</label>
+          <textarea class="form-input" id="f-message" name="message" placeholder="Kerro projektistasi" required></textarea>
         </div>
-        <button type="submit" class="form-submit" id="contact-submit">Lähetä viesti &#8594;</button>
+        <button type="submit" class="btn btn-accent" id="contact-submit">Lähetä viesti</button>
+        <p class="form-note">Käsittelemme tiedot <a href="/tietosuoja">tietosuojaselosteen</a> mukaisesti.</p>
         <div class="form-success" id="form-success" style="display:none;">
           <div class="form-success-icon">&#10003;</div>
           <p class="form-success-title">Viesti lähetetty</p>
@@ -972,109 +227,29 @@
         </div>
       </form>
     </div>
-  </div>
+  </section>
 </div>
+
+</main>
 
 <!-- ── FOOTER ────────────────────────────────────────────── -->
 <footer>
   <div class="footer-inner">
     <div>
-      <span class="footer-logo"><img src="logo-full.png" alt="RN Media — Content Studio Finland"></span>
-      <div class="footer-copy">© 2026 RN Media / Nikolas Ruotsalo — Y-tunnus 3481521-6, Lohja.</div>
+      <span class="footer-logo"><img src="/logo-full.png" alt="RN Media"></span>
+      <div class="footer-copy">&copy; 2026 RN Media / Nikolas Ruotsalo. Y-tunnus 3481521-6, Lohja.</div>
     </div>
     <div class="footer-links">
+      <a href="/palvelut/">Palvelut</a>
+      <a href="/hinnat/">Hinnat</a>
+      <a href="/meista/">Meistä</a>
       <a href="https://instagram.com/rnmediafi" target="_blank" rel="noopener">Instagram</a>
       <a href="mailto:nikolas.ruotsalo@rnmedia.fi">Sähköposti</a>
-      <a href="#meista">Meistä</a>
       <a href="/tietosuoja">Tietosuoja</a>
     </div>
   </div>
 </footer>
 
-<script>
-  // navbar background on scroll
-  const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 20);
-  }, { passive: true });
-
-  // mobile drawer
-  const hamburger = document.getElementById('hamburger');
-  const drawer    = document.getElementById('side-drawer');
-  const overlay   = document.getElementById('drawer-overlay');
-
-  function openDrawer() {
-    drawer.classList.add('open');
-    overlay.classList.add('open');
-    hamburger.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  window.closeDrawer = function() {
-    drawer.classList.remove('open');
-    overlay.classList.remove('open');
-    hamburger.classList.remove('open');
-    document.body.style.overflow = '';
-  };
-  hamburger.addEventListener('click', () => drawer.classList.contains('open') ? closeDrawer() : openDrawer());
-  overlay.addEventListener('click', closeDrawer);
-  document.querySelectorAll('.drawer-close-trigger').forEach(el => el.addEventListener('click', closeDrawer));
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(); });
-
-  // contact form → Formspree
-  const contactForm   = document.getElementById('contact-form');
-  const contactSubmit = document.getElementById('contact-submit');
-  const formSuccess   = document.getElementById('form-success');
-
-  contactForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    if (!contactForm.checkValidity()) { contactForm.reportValidity(); return; }
-    contactSubmit.disabled = true;
-    contactSubmit.textContent = 'Lähetetään…';
-    try {
-      const res = await fetch('https://formspree.io/f/xeedvgln', {
-        method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: new FormData(contactForm),
-      });
-      if (res.ok) {
-        contactForm.querySelectorAll('.form-group').forEach(g => g.style.display = 'none');
-        contactSubmit.style.display = 'none';
-        formSuccess.style.display = 'flex';
-      } else {
-        contactSubmit.disabled = false;
-        contactSubmit.textContent = 'Lähetä viesti →';
-      }
-    } catch {
-      contactSubmit.disabled = false;
-      contactSubmit.textContent = 'Lähetä viesti →';
-    }
-  });
-
-  // scroll reveal
-  requestAnimationFrame(() => {
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(en => {
-        if (en.isIntersecting) {
-          en.target.classList.add('visible');
-          revealObserver.unobserve(en.target);
-        }
-      });
-    }, { threshold: 0.08 });
-    document.querySelectorAll('.reveal, .stagger').forEach(el => revealObserver.observe(el));
-  });
-
-  // hero background video — poster only on narrow screens, reduced motion or Save-Data
-  (() => {
-    const video = document.querySelector('.hero-video');
-    if (!video || !video.dataset.src) return;
-    const heavy = window.matchMedia('(max-width: 768px)').matches
-      || window.matchMedia('(prefers-reduced-motion: reduce)').matches
-      || (navigator.connection && navigator.connection.saveData);
-    if (heavy) return;                       // poster image stands in
-    video.src = video.dataset.src;
-    video.play().catch(() => {});            // autoplay blocked → poster stays
-  })();
-</script>
-
+<script src="/assets/site.js" defer></script>
 </body>
 </html>
