@@ -20,8 +20,10 @@
   --line-soft: #1A1A1E;
 
   /* ── the one accent ── */
-  --accent:    #FF5A1F;
-  --accent-ink:#0B0B0C;
+  --accent:       #5B8CFF;
+  --accent-hover: #7FA6FF;
+  --accent-soft:  rgba(91, 140, 255, 0.12);
+  --accent-ink:   #0B0B0C;
 
   /* ── type scale (1.25) ── */
   --fs-xs:   0.8rem;      /* 12.8px  labels, meta */
@@ -71,7 +73,7 @@ p, li { color: var(--fg-muted); overflow-wrap: break-word; }
 a { color: inherit; }
 img { display: block; max-width: 100%; }
 ::selection { background: var(--accent); color: var(--accent-ink); }
-:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; box-shadow: 0 0 0 6px var(--accent-soft); }
 
 .skip-link {
   position: absolute; left: -9999px; top: 0; z-index: 999;
@@ -121,7 +123,7 @@ img { display: block; max-width: 100%; }
   transition: background 0.22s, color 0.22s, border-color 0.22s, transform 0.22s var(--ease);
 }
 .btn-accent { background: var(--accent); color: var(--accent-ink); }
-.btn-accent:hover { transform: translateY(-2px); background: #FF6D38; }
+.btn-accent:hover { transform: translateY(-2px); background: var(--accent-hover); }
 .btn-solid { background: var(--fg); color: var(--bg); }
 .btn-solid:hover { transform: translateY(-2px); background: #fff; }
 .btn-ghost { background: transparent; color: var(--fg); border-color: var(--line); }
@@ -177,7 +179,7 @@ body.has-solid-nav #navbar { background: rgba(11,11,12,0.88); border-color: var(
   padding: 11px 20px; border-radius: var(--radius); text-decoration: none;
   transition: background 0.22s, transform 0.22s var(--ease);
 }
-.nav-cta:hover { background: #FF6D38; transform: translateY(-1px); }
+.nav-cta:hover { background: var(--accent-hover); transform: translateY(-1px); }
 
 .hamburger {
   display: none; width: 44px; height: 44px; cursor: pointer;
