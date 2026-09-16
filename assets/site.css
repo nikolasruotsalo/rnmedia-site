@@ -241,12 +241,30 @@ body.has-solid-nav #navbar { background: rgba(11,11,12,0.88); border-color: var(
 .drawer-foot a { color: var(--fg-muted); text-decoration: none; }
 .drawer-foot a:hover { color: var(--accent); }
 
-/* ── HERO ──────────────────────────────────────────────── */
-.hero {
-  max-width: var(--container); margin: 0 auto;
+/* ── HERO: ONE SCROLL-DRIVEN SEQUENCE ──────────────────── */
+/* .hero-stage is a tall scroll track. .hero-pin sticks for its whole
+   length while site.js writes progress vars (--t-*, --logo-*, --c*)
+   onto the pin once per frame. Every moving part reads those vars, so
+   the hero is a single timeline rather than a set of independent
+   fade-ins. Without JS, or under reduced motion, .js-hero is never
+   added: the logo is not rendered and the copy sits in a plain,
+   static hero that needs no scrolling to read. */
+.hero-stage {
+  position: relative; isolation: isolate; scroll-margin-top: 88px;
+}
+.hero-pin {
+  position: relative; overflow: hidden;
   padding: clamp(132px, 19vh, 200px) var(--gutter) clamp(48px, 7vw, 84px);
   min-height: 92svh; display: flex; flex-direction: column; justify-content: center;
-  position: relative; isolation: isolate; scroll-margin-top: 88px;
+}
+/* svh, not vh: a pinned full-screen frame must not change height when a
+   mobile browser's toolbar hides, or the sequence reflows mid-scroll. */
+html.js-hero .hero-stage { height: 300svh; }
+html.js-hero .hero-pin {
+  position: sticky; top: 0; height: 100svh; min-height: 0;
+  /* the tall hero padding is for a static hero; pinned, it only pushes
+     the frame off centre, so the pin clears the nav and nothing more. */
+  padding: 88px var(--gutter) 56px;
 }
 .hero-media {
   position: absolute; top: 0; bottom: 0; left: 50%; width: 100vw;
@@ -260,9 +278,71 @@ body.has-solid-nav #navbar { background: rgba(11,11,12,0.88); border-color: var(
     linear-gradient(to right, rgba(11,11,12,0.95) 0%, rgba(11,11,12,0.82) 48%, rgba(11,11,12,0.48) 100%),
     linear-gradient(to bottom, rgba(11,11,12,0.90) 0%, rgba(11,11,12,0.35) 36%, rgba(11,11,12,0.86) 100%);
 }
-.hero > *:not(.hero-media) { position: relative; z-index: 1; }
+/* logo and copy share one grid cell so the logo can hand over to the
+   copy as a crossfade, with no layout shift between the two phases. */
+.hero-frame {
+  position: relative; z-index: 1;
+  width: 100%; max-width: var(--container); margin: 0 auto;
+  display: grid;
+}
+.hero-frame > * { grid-area: 1 / 1; align-self: center; }
+
+.hero-logo { display: none; }
+html.js-hero .hero-logo {
+  display: block; justify-self: center;
+  width: min(86vw, 860px); color: var(--fg);
+  transform: translate(var(--logo-x, 0%), var(--logo-y, 0%)) scale(var(--logo-s, 1));
+  opacity: var(--logo-o, 1);
+  will-change: transform, opacity;
+}
+.rn-logo { display: block; width: 100%; height: auto; }
+
+/* the five "Media" letters rise in sequence; --t-<letter> is eased in JS */
+.rn-logo #wordmark > * {
+  transform-box: view-box;
+  opacity: var(--t, 0);
+  transform: translateY(calc(44px * (1 - var(--t, 0))));
+}
+.rn-logo #m { --t: var(--t-m, 0); }
+.rn-logo #e { --t: var(--t-e, 0); }
+.rn-logo #d { --t: var(--t-d, 0); }
+.rn-logo #i { --t: var(--t-i, 0); }
+.rn-logo #a { --t: var(--t-a, 0); }
+
+/* the dot lands last, and is the one place the accent appears in the hero */
+.rn-logo #wordmark-dot {
+  transform-box: fill-box; transform-origin: center;
+  color: var(--accent);
+  opacity: var(--t-dot, 0);
+  transform: scale(var(--s-dot, 0.3));
+}
+
+html.js-hero .hero-copy > * {
+  opacity: var(--c, 0);
+  transform: translateY(calc(28px * (1 - var(--c, 0))));
+}
+html.js-hero .hero-copy > :nth-child(1) { --c: var(--c1, 0); }
+html.js-hero .hero-copy > :nth-child(2) { --c: var(--c2, 0); }
+html.js-hero .hero-copy > :nth-child(3) { --c: var(--c3, 0); }
+html.js-hero .hero-copy > :nth-child(4) { --c: var(--c4, 0); }
+html.js-hero .hero-copy > :nth-child(5) { --c: var(--c5, 0); }
+
+.hero-hint { display: none; }
+html.js-hero .hero-hint {
+  display: flex; align-items: center; gap: 10px;
+  position: absolute; left: 50%; bottom: 26px; transform: translateX(-50%);
+  z-index: 2; opacity: var(--t-hint, 1);
+  font-size: var(--fs-xs); font-weight: 500;
+  letter-spacing: 0.16em; text-transform: uppercase; color: var(--fg-faint);
+  pointer-events: none;
+}
+html.js-hero .hero-hint::after {
+  content: ''; width: 1px; height: 26px;
+  background: linear-gradient(to bottom, var(--fg-faint), transparent);
+}
+
 .hero-eyebrow { margin-bottom: clamp(22px, 3.5vw, 34px); }
-.hero h1 { max-width: 22ch; margin-bottom: clamp(22px, 3vw, 30px); text-wrap: pretty; }
+.hero-copy h1 { max-width: 22ch; margin-bottom: clamp(22px, 3vw, 30px); text-wrap: pretty; }
 .hero-sub { font-size: var(--fs-lg); line-height: 1.55; color: var(--fg-muted); max-width: 48ch; margin-bottom: clamp(30px, 4vw, 42px); }
 .hero-cta-row { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; margin-bottom: clamp(48px, 7vw, 84px); }
 .hero-meta { display: flex; flex-wrap: wrap; gap: 0; border-top: 1px solid var(--line); }
@@ -437,6 +517,10 @@ footer { border-top: 1px solid var(--line); }
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; }
+  /* the sequence never starts (js-hero is not added), so the copy is
+     simply present and the stage is a single ordinary screen. */
+  .hero-stage { height: auto; }
+  .hero-pin { position: relative; height: auto; }
 }
 
 /* ── RESPONSIVE ────────────────────────────────────────── */
